@@ -42,7 +42,7 @@ var SubmissionSchema = new Schema({
         type: String,
         required: 'Please put the neighborhood that this happened in'
     },
-    map: {
+    mapCoordinates: {
         type: String,
         required: 'Please put coordinates here'
     },
@@ -51,7 +51,7 @@ var SubmissionSchema = new Schema({
         required: '4 digit zip codes only'
     },
     description: {
-        type: String,
+        type: String
 
     },
     // change this once we know how to have it store files

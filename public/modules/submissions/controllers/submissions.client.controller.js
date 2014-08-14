@@ -14,7 +14,7 @@ angular.module('submissions').controller('SubmissionsController', ['$scope', '$s
                 email: this.email,
                 projectTitle: this.projectTitle,
                 neighborhood: this.neighborhood,
-                map: this.map,
+                mapCoordinates: this.mapCoordinates,
                 zipCode: this.zipCode,
                 description: this.description,
                 fileUpload: this.fileUpload
@@ -33,7 +33,7 @@ angular.module('submissions').controller('SubmissionsController', ['$scope', '$s
             this.email = '';
             this.projectTitle = '';
             this.neighborhood = '';
-            this.map = '';
+            this.mapCoordinates = '';
             this.zipCode = '';
             this.description = '';
             this.fileUpload = '';
