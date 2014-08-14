@@ -9,7 +9,15 @@ angular.module('submissions').controller('SubmissionsController', ['$scope', '$s
 		$scope.create = function() {
 			// Create new Submission object
 			var submission = new Submissions ({
-				name: this.name
+				name: this.name,
+                bio: this.bio,
+                email: this.email,
+                projectTitle: this.projectTitle,
+                neighborhood: this.neighborhood,
+                mapCoordinates: this.mapCoordinates,
+                zipCode: this.zipCode,
+                description: this.description,
+                fileUpload: this.fileUpload
 			});
 
 			// Redirect after save
@@ -21,6 +29,15 @@ angular.module('submissions').controller('SubmissionsController', ['$scope', '$s
 
 			// Clear form fields
 			this.name = '';
+            this.bio = '';
+            this.email = '';
+            this.projectTitle = '';
+            this.neighborhood = '';
+            this.mapCoordinates = '';
+            this.zipCode = '';
+            this.description = '';
+            this.fileUpload = '';
+
 		};
 
 		// Remove existing Submission
