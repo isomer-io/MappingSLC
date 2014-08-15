@@ -11,7 +11,7 @@ git clone <YOUR_GITHUB_REPO>
 Now, we also need to refer back to the original project that you forked from if we want to pull changes in the future.
 
 ```
-git add remote upstream <YOUR_UPSTREAM_URL>
+git remote add upstream <YOUR_UPSTREAM_URL>
 ```
 
 Cool, so here's the configuration we have:
