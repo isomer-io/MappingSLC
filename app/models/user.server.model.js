@@ -88,7 +88,29 @@ var UserSchema = new Schema({
 	},
   	resetPasswordExpires: {
   		type: Date
-  	}
+  	},
+    bio: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    profilePicture: {
+        type: String,
+        default: "models/defaultUserImage.png",
+        trim: true
+    },
+    stories: [
+        {
+            type: Schema.ObjectId,
+            ref: 'Story'
+        }
+    ],
+    submissions: [
+        {
+            type: Schema.ObjectId,
+            ref: 'Submission'
+        }
+    ]
 });
 
 /**
