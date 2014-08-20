@@ -4,10 +4,10 @@
 angular.module('map').controller('MapController', ['$scope', 'Authentication', '$http', '$templateCache',
     function($scope, Authentication, $http, $templateCache) {
         // This provides Authentication context.
-        $scope.authentication = Authentication;
+        $scope.authentication = Authentication;git
         $scope.method = 'GET';
 //        $scope.url = 'http://api.census.gov/data/2010/sf1?get=P0010001&for=tract:*&in=state:49+county:035&key=4d396163ae90829a66916a08b3af462608c87316';
-        $scope.url = 'https://api.twitter.com/1.1/search/tweets.json?q=%23freebandnames&since_id=24012619984051000&max_id=250126199840518145&result_type=mixed&count=4';
+        $scope.url = ''
         /**
          ** make an api call to Census Data API
          **/
