@@ -17,6 +17,7 @@
     "angular-cookies": "~1.2",
     "angular-touch": "~1.2",
     "angular-sanitize": "~1.2",
-    "angular-mapbox": "*"
+    "angular-mapbox": "*",
+    "angular-leaflet-directive": "~0.7.7"
   }
 }

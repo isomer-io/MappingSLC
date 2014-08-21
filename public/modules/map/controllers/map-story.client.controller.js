@@ -79,9 +79,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             })
             .addTo(map);
 
-<<<<<<< HEAD
-=======
-
             /**
              *
              * Add ability to toggle markers based on categories, where categories is a variable
@@ -145,8 +142,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 //
 //
 
-
->>>>>>> added marker functionality and merged local changes
 //load GeoJSON
 //            var geojson = [
 //                {
