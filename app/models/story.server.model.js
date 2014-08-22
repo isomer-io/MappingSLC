@@ -27,6 +27,21 @@ var StorySchema = new Schema({
         type: String,
         default: '',
         trim: true
+    },
+    address: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    city: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    zipcode: {
+        type: Number,
+        default: '',
+        trim: true
     }
 });
 

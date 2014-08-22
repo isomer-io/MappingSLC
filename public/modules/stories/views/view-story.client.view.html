@@ -14,11 +14,15 @@
         <div
             data-ng-bind="story.body" ng-readonly = "true">
         </div>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="story.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="story.user.displayName"></span>
-		</em>
+        <em class="text-info" data-ng-bind="story.address" ng-readonly ="true"></em>
+        <em class="text-info" data-ng-bind="story.city" ng-readonly ="true"></em>
+        <em class="text-info" data-ng-bind="story.zipcode" ng-readonly ="true"></em>
+        <br>
+		    <em class="text-muted">
+			    Posted on
+			    <span data-ng-bind="story.created | date:'mediumDate'"></span>
+			    by
+			    <span data-ng-bind="story.user.displayName"></span>
+		    </em>
 	</small>
 </section>
