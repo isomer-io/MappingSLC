@@ -23,3 +23,12 @@ h2 {
 p {
     color: #245269;
 }
+.ui-select {
+    background:#fff;
+    position:absolute;
+    margin-top:50px;
+    right:10px;
+    z-index:100;
+    padding:10px;
+    border-radius:3px;
+}
