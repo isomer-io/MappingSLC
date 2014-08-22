@@ -18,6 +18,8 @@
     "angular-touch": "~1.2",
     "angular-sanitize": "~1.2",
     "angular-mapbox": "*",
-    "angular-leaflet-directive": "~0.7.7"
+    "angular-leaflet-directive": "~0.7.7",
+    "ng-ckeditor": "~0.2.1",
+    "jquery": "~1.9.1"
   }
 }

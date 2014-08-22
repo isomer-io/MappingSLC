@@ -5,6 +5,20 @@ angular.module('categories').controller('CategoriesController', ['$scope', '$sta
 	function($scope, $stateParams, $location, Authentication, Categories ) {
 		$scope.authentication = Authentication;
 
+        // setup editor options
+        $scope.editorOptions = {
+            uiColor: '#000000'
+        };
+
+        $scope.readOnlyWYSIWYG = {
+            uiColor: '#000000',
+            readOnly: true
+        }
+
+        $scope.$on("ckeditor.ready", function( event ) {
+            $scope.isReady = true;
+        });
+
 		// Create new Category
 		$scope.create = function() {
 			// Create new Category object
