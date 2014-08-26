@@ -2,13 +2,10 @@
 	<div class="page-header">
 		<h1 data-ng-bind="category.title"></h1>
 
-        <div>
-            <textarea data-ng-bind="category.description" ng-readonly="true"
-               style="width:400px; height:200px;"
-             >
-            </textarea>
+        <div style="padding: 5px 20px;">
+                <span ng-bind-html="category.description"></span>
         </div>
-        <div>
+        <div style="padding-top: 5px;">
             <span>Is active:&nbsp; </span><span data-ng-bind="category.isActive"/>
         </div>
 
