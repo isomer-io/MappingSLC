@@ -1,6 +1,6 @@
 ## Mapping SLC workflow
 
-First, you need to fork your team leads project (Bob or Chris)
+First, you need to fork the main mapping SLC repository.
 
 Next, you need to clone the project from YOUR GITHUB ACCOUNT
 
@@ -29,10 +29,11 @@ git fetch upstream
 This pulls all of the changes from upstream onto our local machine so that we can rebase with them.
 
 ```
-git merge upstream/master
+git rebase upstream/master
 ```
 
-Now, we can apply our changes on top of the changes from upstream.
+Now, we can apply our changes on top of the changes from upstream. We do this by rebasing.
+
 Once this is done, we need to
 
 ```
@@ -42,7 +43,7 @@ git add -u (or -A)
 All of our changes and then
 
 ```
-git commit
+git commit -m 'Message text goes here!'
 ```
 
 Those changes. Now we can do a 
