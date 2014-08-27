@@ -1,6 +1,7 @@
 <section data-ng-controller="SubmissionsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="submission.name"></h1>
+
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == submission.user._id">
 		<a class="btn btn-primary" href="/#!/submissions/{{submission._id}}/edit">

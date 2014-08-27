@@ -18,16 +18,16 @@ var SubmissionSchema = new Schema({
 		trim: true
 	},
     bio: {
-        type: String,
-        required: 'Tell us about yourself'
+        type: String
+//        required: 'Tell us about yourself'
     },
     user: {
         type: Schema.ObjectId,
         ref: 'User'
     },
     email: {
-        type: String,
-        required: 'Please put in your email'
+        type: String
+//        required: 'Please put in your email'
     },
 	created: {
 		type: Date,
@@ -35,20 +35,20 @@ var SubmissionSchema = new Schema({
 	},
 
     projectTitle: {
-        type: String,
-        required: 'Please enter a project title'
+        type: String
+//        required: 'Please enter a project title'
     },
     neighborhood: {
-        type: String,
-        required: 'Please put the neighborhood that this happened in'
+        type: String
+//        required: 'Please put the neighborhood that this happened in'
     },
     mapCoordinates: {
-        type: String,
-        required: 'Please put coordinates here'
+        type: String
+//        required: 'Please put coordinates here'
     },
     zipCode: {
-        type: Number,
-        required: '4 digit zip codes only'
+        type: Number
+//        required: '4 digit zip codes only'
     },
     description: {
         type: String
