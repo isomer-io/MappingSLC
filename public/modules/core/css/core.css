@@ -52,4 +52,22 @@ html{
     position: relative;
     top: 100px;
     width: 800px;
+    height: 550px;
     z-index: 2; }
+
+.home{
+     color:white
+ }
+.home h1{
+    color:white;
+}
+.home p{
+    color:white
+}
+.home h2{
+    color:white
+}
+
+.home .page-header{
+    margin: 20px 0 10px;
+}
