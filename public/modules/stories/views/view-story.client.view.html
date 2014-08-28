@@ -1,0 +1,28 @@
+<section data-ng-controller="StoriesController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="story.title" ng-readonly = "true"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == story.user._id">
+		<a class="btn btn-primary" href="/#!/stories/{{story._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+        <div
+            data-ng-bind="story.body" ng-readonly = "true">
+        </div>
+        <em class="text-info" data-ng-bind="story.address" ng-readonly ="true"></em>
+        <em class="text-info" data-ng-bind="story.city" ng-readonly ="true"></em>
+        <em class="text-info" data-ng-bind="story.zipcode" ng-readonly ="true"></em>
+        <br>
+		    <em class="text-muted">
+			    Posted on
+			    <span data-ng-bind="story.created | date:'mediumDate'"></span>
+			    by
+			    <span data-ng-bind="story.user.displayName"></span>
+		    </em>
+	</small>
+</section>
