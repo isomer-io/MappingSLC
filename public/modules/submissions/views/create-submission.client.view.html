@@ -3,20 +3,83 @@
         <h1>New Submission</h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+        <form class="form" data-ng-submit="create()" novalidate>
             <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
+                <div class="form-group" >
+                    <label class="control-label sr-only" for="name">Name</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name">
                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="bio">Bio</label>
+                    <div class="controls">
+                        <textarea data-ng-model="bio" id="bio" class="form-control" placeholder="Bio"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="user">User Name</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="user" id="user" class="form-control" placeholder="User Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="email">E-mail Address</label>
+                    <div class="controls">
+                        <div class="input-group">
+                            <div class="input-group-addon">@</div>
+                            <input type="email" data-ng-model="email" id="email" class="form-control" placeholder="Email Address">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="created">Date Created</label>
+                    <div class="controls">
+                        <input type="date" data-ng-model="created" id="created" class="form-control" placeholder="Created">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="projectTitle">Project Title</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="projectTitle" id="projectTitle" class="form-control" placeholder="Project Title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="neighborhood">Neighborhood</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="neighborhood" id="neighborhood" class="form-control" placeholder="Neighborhood">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="mapCoordinates">Map</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="mapCoordinates" id="mapCoordinates" class="form-control" placeholder="Map">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="zipCode">Zip Code</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="zipCode" id="zipCode" class="form-control" placeholder="Zip Code">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="description">Description</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="description" id="description" class="form-control" placeholder="Description">
+                        <p class="help-block">Tell us about any photos, audio, video to accompany your work (and if you have the right to use them).</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label sr-only" for="fileUpload">File Upload</label>
+                    <input type="file" data-ng-model="fileUpload" id="fileUpload" placeholder="File Upload">
+                    <p class="help-block">Please be sure to upload the correct file type and file size. If your files are significantly larger than the form allows, you may email supporting items to map@mappingslc.org after you submit your initial project info.</p>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
             </fieldset>
         </form>
     </div>

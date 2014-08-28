@@ -23,7 +23,8 @@ var SubmissionSchema = new Schema({
     },
     user: {
         type: Schema.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: 'Enter your username'
     },
     email: {
         type: String,
@@ -40,15 +41,15 @@ var SubmissionSchema = new Schema({
     },
     neighborhood: {
         type: String,
-        required: 'Please put the neighborhood that this happened in'
+        required: 'Please enter the neighborhood where this happened'
     },
     mapCoordinates: {
         type: String,
-        required: 'Please put coordinates here'
+        required: 'Enter map coordinates here'
     },
     zipCode: {
         type: Number,
-        required: '4 digit zip codes only'
+        required: '5 digit zip codes only'
     },
     description: {
         type: String
