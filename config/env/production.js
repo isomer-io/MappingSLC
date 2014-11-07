@@ -1,5 +1,5 @@
 'use strict';
-//test1
+//test
 module.exports = {
 	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/mapping-salt-lake-city',
 	assets: {
