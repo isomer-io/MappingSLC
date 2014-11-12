@@ -1,10 +1,12 @@
 <section ng-include="'/modules/map/views/map-story.client.view.html'" id="gmap"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="425" height="350"></section>
 
-<div id="container">
-        <section data-ng-controller="HomeController">
-        <!-- page content -->
-       <div class="home">
-            <div class="container">
+<section data-ng-controller="HomeController">
+
+    <span data-ng-hide="toggle">
+
+        <div id="containerOn">
+            <span class="switch-on" data-ng-click="toggle=!toggle">X</span>
+            <div class="home">
                 <div class="col-md-9">
                     <div class="page-header">
                         <h1>Mapping SLC </h1>
@@ -14,20 +16,26 @@
                 </div>
             </div>
 
-            <!--these are the columns divs-->
-            <div class="row-fluid">
+            <div class="row-fluid"> <!--these are the columns divs-->
                 <div class="col-md-5 pull-left">
                     <div class="text-center page-header">
                         <h2>Submit your project</h2>
                     </div>
                     <p>Mapping Salt Lake City invites all interested visitors to add their voices to the mix. We are looking for all kinds of essays (written, audio, photo, video) on topics related to Salt Lake City</p>
-                    <a href="/#!/stories/create" class="btn btn-primary btn-lg" role="button">Submit a story</a>
-                </div >
+                    <a href="/#!/projects/create" class="btn btn-primary btn-lg" role="button">Submit a story</a>
+                </div>
                 <div class="col-md-5 pull-right">
                     <div class="text-center page-header">
                         <h2>Featured Projects</h2>
                     </div>
                 </div>
             </div>
-       </div>
-</div>
+        </div>
+    </span>
+
+    <span data-ng-show="toggle">
+        <div id="containerOff">
+            <span class="switch-off" data-ng-click="toggle=!toggle">Menu</span>
+        </div>
+   </span>
+</section>

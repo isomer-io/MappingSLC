@@ -40,6 +40,50 @@ body { min-height: 100%; height: 100%; }
     text-align: center;
 }
 
+/*
+/ creates On/Off Toggle switch
+*/
+.switch-on{
+    background: #DA2C15;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.4em;
+    height: 50px;
+    left: -25px;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: -25px;
+    width: 50px;
+}
+
+.switch-on:hover{
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.switch-off {
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    /*border-radius: 50%;*/
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.4em;
+    height: 40px;
+    left: -615px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    top: -25px;
+    width: 60px;
+}
+
+.switch-off:hover {
+    background: rgba(0, 0, 0, 0.8);
+    border: 5px solid rgba(255, 255, 255, 0.4);
+}
+
 #gmap {
     height: 100%;
     left: 0;
@@ -49,7 +93,7 @@ body { min-height: 100%; height: 100%; }
     z-index: 1; /* Has to be at least one increment smaller in value than the container's z-index */
 }
 
-#container{
+#containerOn{
     background: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
     border: 3px solid #fff;
@@ -61,6 +105,18 @@ body { min-height: 100%; height: 100%; }
     top: 100px;
     width: 800px;
     height: 550px;
+    z-index: 2;
+}
+
+#containerOff {
+    background: rgba(0, 0, 0, 0.0);
+    margin: 0 auto;
+    overflow: visible !important; /* Has to be !important only if you're using an on/off switch */
+    padding: 4px;
+    position: relative;
+    top: 100px;
+    width: 25px;
+    height: 25px;
     z-index: 2;
 }
 
