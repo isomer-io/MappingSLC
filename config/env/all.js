@@ -3,7 +3,7 @@
 module.exports = {
 	app: {
 		title: 'Mapping Salt Lake City',
-		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
+		description: 'MEANjs',
 		keywords: 'MongoDB, Express, AngularJS, Node.js'
 	},
 	port: process.env.PORT || 3000,

@@ -1,5 +1,5 @@
 'use strict';
-//test2
+
 module.exports = {
 	db: 'mongodb://localhost/mapping-salt-lake-city-dev',
 	app: {
