@@ -13,6 +13,13 @@
 		"angular-sanitize": "~1.2",
 		"angular-bootstrap": "~0.11.0",
 		"angular-ui-utils": "~0.1.1",
-		"angular-ui-router": "~0.2.10"
+		"angular-ui-router": "~0.2.10",
+		"font-awesome": "~4.1.0",
+		"textAngular": "~1.2.2",
+		"rangy": "~1.2.3",
+		"angular-mapbox": "*",
+		"angular-leaflet-directive": "~0.7.7",
+		"ng-ckeditor": "~0.2.1",
+		"jquery": "~1.9.1"
 	}
 }

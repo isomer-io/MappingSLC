@@ -15,17 +15,30 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+				'public/lib/font-awesome/css/font-awesome.min.css',
+				'//api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css',
+				'//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/leaflet.fullscreen.css',
+				'public/lib/ng-ckeditor/ng-ckeditor.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
-				'public/lib/angular-resource/angular-resource.js', 
-				'public/lib/angular-cookies/angular-cookies.js', 
-				'public/lib/angular-animate/angular-animate.js', 
-				'public/lib/angular-touch/angular-touch.js', 
-				'public/lib/angular-sanitize/angular-sanitize.js', 
+				'public/lib/angular-resource/angular-resource.js',
+				'public/lib/angular-cookies/angular-cookies.js',
+				'public/lib/angular-animate/angular-animate.js',
+				'public/lib/angular-touch/angular-touch.js',
+				'public/lib/angular-sanitize/angular-sanitize.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/lib/textAngular/dist/textAngular.min.js',
+				'public/lib/textAngular/dist/textAngular-sanitize.min.js',
+				'public/lib/rangy/rangy-core.js',
+				'//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js',
+				'//api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js',
+				'public/lib/angular-leaflet-directive/dist/angular-leaflet-directive.js',
+				'//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/Leaflet.fullscreen.min.js',
+				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
+				'public/lib/ng-ckeditor/ng-ckeditor.js'
 			]
 		},
 		css: [
