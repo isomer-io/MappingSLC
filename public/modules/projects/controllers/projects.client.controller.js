@@ -21,7 +21,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				$location.path('projects/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.firstname = '';
+				$scope.lastname = '';
+				$scope.email = '';
+				$scope.story = '';
+				$scope.address= '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
