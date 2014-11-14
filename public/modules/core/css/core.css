@@ -44,7 +44,7 @@ body { min-height: 100%; height: 100%; }
 / creates On/Off Toggle switch
 */
 .switch-on{
-    background: #DA2C15;
+    background: #023a31;
     border: 2px solid #fff;
     border-radius: 50%;
     color: #fff;
@@ -103,8 +103,8 @@ body { min-height: 100%; height: 100%; }
     padding: 40px;
     position: relative;
     top: 100px;
-    width: 800px;
-    height: 550px;
+    width: 80%;
+    height: 40em;
     z-index: 2;
 }
 
@@ -121,7 +121,8 @@ body { min-height: 100%; height: 100%; }
 }
 
 .home{
-     color:white
+    color:white;
+    text-align: justify;
  }
 
 .home h1{
@@ -129,13 +130,46 @@ body { min-height: 100%; height: 100%; }
 }
 
 .home p{
-    color:white
+    color:white;
 }
 
 .home h2{
-    color:white
+    color:white;
 }
 
 .home .page-header{
     margin: 20px 0 10px;
+
+}
+
+.logo {
+    padding: 0 25px 25px 50px;
+}
+
+.page-header .content {
+    color: #ffffff;
+    margin-top: 0;
+}
+
+.home-text {
+    color: #ffffff;
+}
+
+.btn {
+    cursor:pointer;
+    border-radius: 5px;
+    display:inline-block;
+    padding:10px;
+    margin: 5px;
+    border:5px solid #fff;
+    background: #023a31;
+}
+
+.btn:focus .btn:hover {
+    background: #023a31;
+    border: 4px solid #fff;
+}
+
+.photo {
+    padding: 15px;
 }

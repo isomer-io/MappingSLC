@@ -2,38 +2,46 @@
 
 <section data-ng-controller="HomeController">
 
-    <span data-ng-hide="toggle">
+    <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
+    <span data-ng-show="toggle">
 
         <div id="containerOn">
             <span class="switch-on" data-ng-click="toggle=!toggle">X</span>
             <div class="home">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Mapping SLC </h1>
-                        <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
+                        <div>
+                            <img class="logo" src="modules/core/img/brand/mapping.png">
+                        </div>
+                        <p class="content">Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
                         <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
                     </div>
                 </div>
             </div>
 
             <div class="row-fluid"> <!--these are the columns divs-->
-                <div class="col-md-5 pull-left">
+                <div class="col-md-6 pull-left">
                     <div class="text-center page-header">
-                        <h2>Submit your project</h2>
+                        <h2 class="home-text">Submit your project</h2>
                     </div>
-                    <p>Mapping Salt Lake City invites all interested visitors to add their voices to the mix. We are looking for all kinds of essays (written, audio, photo, video) on topics related to Salt Lake City</p>
+                    <p class="home-text">Mapping Salt Lake City invites all interested visitors to add their voices to the mix. We are looking for all kinds of essays (written, audio, photo, video) on topics related to Salt Lake City</p>
                     <a href="/#!/projects/create" class="btn btn-primary btn-lg" role="button">Submit a story</a>
                 </div>
-                <div class="col-md-5 pull-right">
+                <div class="col-md-6 pull-right">
                     <div class="text-center page-header">
-                        <h2>Featured Projects</h2>
+                        <h2 class="home-text">Featured Projects</h2>
+                    </div>
+                    <div>
+                        <img ng-src="modules/core/img/{{photo1}}_thumb_bw.png" class="photo" width="175" height="auto">
+
+                        <img src="modules/core/img/{{photo2}}_thumb_bw.png" class="photo pull-right" width="175px" height="auto">
                     </div>
                 </div>
             </div>
         </div>
     </span>
 
-    <span data-ng-show="toggle">
+    <span data-ng-hide="toggle">
         <div id="containerOff">
             <span class="switch-off" data-ng-click="toggle=!toggle">Menu</span>
         </div>
