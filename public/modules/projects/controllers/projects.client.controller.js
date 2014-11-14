@@ -9,7 +9,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.create = function() {
 			// Create new Project object
 			var project = new Projects ({
-				name: this.name
+				firstname: this.firstname,
+				lastname: this.lastname,
+				email: this.email,
+				story: this.story,
+				address: this.address
 			});
 
 			// Redirect after save

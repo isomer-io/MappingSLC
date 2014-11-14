@@ -15,23 +15,21 @@ var validateEmail = function(email){
 };
 
 
-var validateAddress = function(address) {
-
-addressValidator.validate(address,addressValidator.match.streetAddress,function(err,exact,inexact){
-
-});
-
-};
-
 /**
  * Project Schema
  */
 var ProjectSchema = new Schema({
-	name: {
+	firstname: {
 		type: String,
 		default: '',
-		required: 'Please fill Project name',
+		required: 'Please fill out first name',
 		trim: true
+	},
+	lastname: {
+		type: String,
+		default: '',
+		required: 'Please fill out last name',
+		trim:true
 	},
 	created: {
 		type: Date,
@@ -46,7 +44,7 @@ var ProjectSchema = new Schema({
 		default: '',
 		required: '',
 		trim: true,
-		validate: [validateEmail(),'Please inset a correct email']
+		validate: [validateEmail,'Please inset a correct email']
 	},
 	story: {
 		type: String,
