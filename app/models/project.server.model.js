@@ -12,26 +12,24 @@ var mongoose = require('mongoose'),
 
 var validateEmail = function(email){
 	return validator.isEmail(email);
-}
+};
 
-
-//var validateAddress = function(address) {
-//
-//addressValidator.validate(address,addressValidator.match.streetAddress,function(err,exact,inexact){
-//
-//});
-//
-//};
 
 /**
  * Project Schema
  */
 var ProjectSchema = new Schema({
-	name: {
+	firstname: {
 		type: String,
 		default: '',
-		required: 'Please fill Project name',
+		required: 'Please fill out first name',
 		trim: true
+	},
+	lastname: {
+		type: String,
+		default: '',
+		required: 'Please fill out last name',
+		trim:true
 	},
 	created: {
 		type: Date,
