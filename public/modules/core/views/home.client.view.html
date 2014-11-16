@@ -9,16 +9,49 @@
             <span class="switch-on" data-ng-click="toggle=!toggle">X</span>
             <div class="home">
                 <div class="col-md-12">
-                    <div>
-                        <ul class="pull-right" data-ng-hide="authentication.user">
-                            <li ui-route="/signup" ng-class="{active: $uiRoute}">
-                                <a href="/#!/signup">Sign Up</a>
-                            </li>
-                            <!--<li class="divider-vertical"></li>-->
-                            <li ui-route="/signin" ng-class="{active: $uiRoute}">
-                                <a href="/#!/signin">Sign In</a>
+
+                    <div>  <!-- signin  signout functionality -->
+
+                        <ul class="pull-right" data-ng-show="!authentication.user">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span>Sign In</span> <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li ui-route="/signup" ng-class="{active: $uiRoute}">
+                                        <a href="/#!/signup">Sign Up</a>
+                                    </li>
+                                    <!--<li class="divider-vertical"></li>-->
+                                    <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                                        <a href="/#!/signin">Sign In</a>
+                                    </li>
+                                </ul>
+                                </li>
+                            </ul>
+
+                        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="/#!/settings/profile">Edit Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#!/settings/accounts">Manage Social Accounts</a>
+                                    </li>
+                                    <li data-ng-show="authentication.user.provider === 'local'">
+                                        <a href="/#!/settings/password">Change Password</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="/auth/signout">Signout</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
+
                     </div>
                     <div class="page-header">
                         <div>
@@ -50,33 +83,33 @@
             <!--<div>-->
                 <ul class="grid cs-style-4">
                     <li>
-                        <figure>
+                        <figure class="col-md-4">
                             <div><img src="modules/core/img/as_thumb_bw.png"></div>
                             <figcaption>
                                 <a href="/#!/shaw"><span>Andrew Shaw</span></a>
                                 <h3>The Artist Interview Series</h3>
                             </figcaption>
                         </figure>
-                    </li>
+                    <!--</li>-->
                 </ul>
             <!--</div>-->
                 <!-- /container -->
 
 
-                    <!--<div>-->
-                        <ul class="grid cs-style-4">
-                            <li>
-                                <figure>
-                                    <div><img src="modules/core/img/wli.png" width="150px" height="150px"></div>
-                                    <figcaption>
-                                        <a href="/#!/westside-leadership-institute"><span>Westside Leadership</span></a>
-                                        <h3>An Introduction</h3>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                    <!--</div>-->
-                <!-- /container -->
+            <!--<div>-->
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure class="col-md-4">
+                            <div><img src="modules/core/img/wli.png"></div>
+                            <figcaption>
+                                <a href="/#!/westside-leadership-institute"><span>Westside Leadership</span></a>
+                                <h3>An Introduction</h3>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            <!--</div>-->
+        <!-- /container -->
 
                 </div>
             </div>

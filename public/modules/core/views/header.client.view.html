@@ -1,96 +1,67 @@
-<!--<div>-->
-	<!--&lt;!&ndash;<div class="container" data-ng-controller="HeaderController">&ndash;&gt;-->
+<div class="container" data-ng-controller="HeaderController">
+	<div class="navbar-header">
+		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a href="/#!/" class="navbar-brand">MapIt</a>
+	</div>
+	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
+			<li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
+				<a ng-switch-when="dropdown" class="dropdown-toggle">
+					<span data-ng-bind="item.title"></span>
+					<b class="caret"></b>
+				</a>
+				<ul ng-switch-when="dropdown" class="dropdown-menu">
+					<li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+						<a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
+					</li>
+				</ul>
+				<a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
+			</li>
+		</ul>
 
-	<!--<div class="container">-->
-		<!--<ul id="gn-menu" class="gn-menu-main">-->
-			<!--<li class="gn-trigger">-->
-				<!--<a class="gn-icon gn-icon-menu"><span>Menu</span></a>-->
-				<!--<nav class="gn-menu-wrapper">-->
-					<!--<div class="gn-scroller">-->
-						<!--<ul class="gn-menu">-->
-							<!--<li class="gn-search-item">-->
-								<!--<input placeholder="Search" type="search" class="gn-search">-->
-								<!--<a class="gn-icon gn-icon-search"><span>Search</span></a>-->
-							<!--</li>-->
-							<!--<li>-->
-								<!--<a class="gn-icon gn-icon-download">Downloads</a>-->
-								<!--<ul class="gn-submenu">-->
-									<!--<li><a class="gn-icon gn-icon-illustrator">Vector Illustrations</a></li>-->
-									<!--<li><a class="gn-icon gn-icon-photoshop">Photoshop files</a></li>-->
-								<!--</ul>-->
-							<!--</li>-->
-							<!--<li><a class="gn-icon gn-icon-cog">Settings</a></li>-->
-							<!--<li><a class="gn-icon gn-icon-help">Help</a></li>-->
-							<!--<li>-->
-								<!--<a class="gn-icon gn-icon-archive">Archives</a>-->
-								<!--<ul class="gn-submenu">-->
-									<!--<li><a class="gn-icon gn-icon-article">Articles</a></li>-->
-									<!--<li><a class="gn-icon gn-icon-pictures">Images</a></li>-->
-									<!--<li><a class="gn-icon gn-icon-videos">Videos</a></li>-->
-								<!--</ul>-->
-							<!--</li>-->
-						<!--</ul>-->
-					<!--</div>&lt;!&ndash; /gn-scroller &ndash;&gt;-->
-				<!--</nav>-->
-			<!--</li>-->
-			<!--<li><a href="http://tympanus.net/codrops">Codrops</a></li>-->
-			<!--<li><a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/HeaderEffects/"><span>Previous Demo</span></a></li>-->
-			<!--<li><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=16030"><span>Back to the Codrops Article</span></a></li>-->
-		<!--</ul>-->
-		<!--<header>-->
-			<!--<h1>Google Nexus Website Menu <span>A sidebar menu as seen on the <a href="http://www.google.com/nexus/index.html">Google Nexus 7</a> page</span></h1>-->
-		<!--</header>-->
-	<!--</div>&lt;!&ndash; /container &ndash;&gt;-->
+		<ul class="nav navbar-nav navbar-right" data-ng-show="!authentication.user">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Sign In</span> <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li ui-route="/signup" ng-class="{active: $uiRoute}">
+						<a href="/#!/signup">Sign Up</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li ui-route="/signin" ng-class="{active: $uiRoute}">
+						<a href="/#!/signin">Sign In</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
 
-<!--</div>-->
-
-<!--<script>-->
-
-	<!--_initEvents : function() {-->
-		<!--var self = this;-->
-
-		<!--if( !mobilecheck() ) {-->
-			<!--this.trigger.addEventListener( 'mouseover', function(ev) { self._openIconMenu(); } );-->
-			<!--this.trigger.addEventListener( 'mouseout', function(ev) { self._closeIconMenu(); } );-->
-
-			<!--this.menu.addEventListener( 'mouseover', function(ev) {-->
-				<!--self._openMenu();-->
-				<!--document.addEventListener( self.eventtype, self.bodyClickFn );-->
-			<!--} );-->
-		<!--}-->
-		<!--this.trigger.addEventListener( this.eventtype, function( ev ) {-->
-			<!--ev.stopPropagation();-->
-			<!--ev.preventDefault();-->
-			<!--if( self.isMenuOpen ) {-->
-				<!--self._closeMenu();-->
-				<!--document.removeEventListener( self.eventtype, self.bodyClickFn );-->
-			<!--}-->
-			<!--else {-->
-				<!--self._openMenu();-->
-				<!--document.addEventListener( self.eventtype, self.bodyClickFn );-->
-			<!--}-->
-		<!--} );-->
-		<!--this.menu.addEventListener( this.eventtype, function(ev) { ev.stopPropagation(); } );-->
-	<!--},-->
-	<!--_openIconMenu : function() {-->
-		<!--classie.add( this.menu, 'gn-open-part' );-->
-	<!--},-->
-	<!--_closeIconMenu : function() {-->
-		<!--classie.remove( this.menu, 'gn-open-part' );-->
-	<!--},-->
-	<!--_openMenu : function() {-->
-		<!--if( this.isMenuOpen ) return;-->
-		<!--classie.add( this.trigger, 'gn-selected' );-->
-		<!--this.isMenuOpen = true;-->
-		<!--classie.add( this.menu, 'gn-open-all' );-->
-		<!--this._closeIconMenu();-->
-	<!--},-->
-	<!--_closeMenu : function() {-->
-		<!--if( !this.isMenuOpen ) return;-->
-		<!--classie.remove( this.trigger, 'gn-selected' );-->
-		<!--this.isMenuOpen = false;-->
-		<!--classie.remove( this.menu, 'gn-open-all' );-->
-		<!--this._closeIconMenu();-->
-	<!--}-->
-
-<!--</script>-->
+		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="/#!/settings/profile">Edit Profile</a>
+					</li>
+					<li>
+						<a href="/#!/settings/accounts">Manage Social Accounts</a>
+					</li>
+					<li data-ng-show="authentication.user.provider === 'local'">
+						<a href="/#!/settings/password">Change Password</a>
+					</li>
+					<li class="divider"></li>
+					<li>
+						<a href="/auth/signout">Signout</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</div>

@@ -5,10 +5,26 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
         $scope.toggle = true;
 
+        $http.get('config/env/keys.js')
+            .success(function(data, status, headers, config){
+                $scope.mapboxKey = data.mapboxKey;
+                $scope.mapboxAccessToken = data.mapboxAccessToken;
+                console.log(data);
+                console.log(mapboxKey);
+                console.log(mapboxAccessToken);
+            })
+            .error(function(data, status, headers, config){
+                alert('Danger, danger, this didn\'t work! \nmapboxKey: ' + mapboxKey + '\nmapboxAccessToken: ' + mapboxAccessToken +
+                '\nData: ' + data + '\nStatus: ' + status);
+            });
+
         $scope.mapFunction = function() {
 
+            //pk.eyJ1IjoicG9ldHNyb2NrIiwiYSI6Imc1b245cjAifQ.vwb579x58Ma-CcnfQNamiw
+            //L.mapbox.accessToken = mapboxAccessToken;
             L.mapbox.accessToken = 'pk.eyJ1IjoicG9ldHNyb2NrIiwiYSI6Imc1b245cjAifQ.vwb579x58Ma-CcnfQNamiw';
-
+            //poetsrock.map-55znsh8b
+            //var map = L.mapbox.map('map', mapboxKey)
             var map = L.mapbox.map('map', 'poetsrock.map-55znsh8b')
                 .setView([40.773, -111.902], 12);
             var filters = document.getElementById('filters');
@@ -71,8 +87,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
              * Add ability to toggle markers based on categories, where categories is a variable
              *
              */
-
-
 
         };
 

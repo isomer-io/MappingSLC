@@ -4,7 +4,19 @@ html {
     width: 100%; /* If you don't do this, gremlins will eat your nose. */
 }
 
-body { min-height: 100%; height: 100%; }
+body {
+    min-height: 100%; height: 100%;
+}
+
+
+ul {
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+li a {
+    color: #f5deb3;
+}
 
 .undecorated-link:hover {
 	text-decoration: none;
