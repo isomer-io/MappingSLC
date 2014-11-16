@@ -9,33 +9,75 @@
             <span class="switch-on" data-ng-click="toggle=!toggle">X</span>
             <div class="home">
                 <div class="col-md-12">
+                    <div>
+                        <ul class="pull-right" data-ng-hide="authentication.user">
+                            <li ui-route="/signup" ng-class="{active: $uiRoute}">
+                                <a href="/#!/signup">Sign Up</a>
+                            </li>
+                            <!--<li class="divider-vertical"></li>-->
+                            <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                                <a href="/#!/signin">Sign In</a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="page-header">
                         <div>
                             <img class="logo" src="modules/core/img/brand/mapping.png">
                         </div>
-                        <p class="content">Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
-                        <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
+
+                            <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake City’s
+                                neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
+                            <p class="home-text">We invite people to engage with and evolve this site by submitting their own contributions.</p>
+
                     </div>
                 </div>
             </div>
 
             <div class="row-fluid"> <!--these are the columns divs-->
-                <div class="col-md-6 pull-left">
+                <div class="col-md-5 pull-left">
                     <div class="text-center page-header">
                         <h2 class="home-text">Submit your project</h2>
                     </div>
-                    <p class="home-text">Mapping Salt Lake City invites all interested visitors to add their voices to the mix. We are looking for all kinds of essays (written, audio, photo, video) on topics related to Salt Lake City</p>
-                    <a href="/#!/projects/create" class="btn btn-primary btn-lg" role="button">Submit a story</a>
+                    <p class="home-text">Mapping Salt Lake City invites all interested visitors to add their voices to the mix. We are looking for all kinds of essays (written, audio, photo, video) on topics related to Salt Lake City.</p>
+                    <a href="/#!/projects/create" class="btn btn-primary btn-lg btn-main" role="button">Submit a
+                        story</a>
                 </div>
-                <div class="col-md-6 pull-right">
+                <div class="col-md-7 pull-right">
                     <div class="text-center page-header">
                         <h2 class="home-text">Featured Projects</h2>
                     </div>
-                    <div>
-                        <img ng-src="modules/core/img/{{photo1}}_thumb_bw.png" class="photo" width="175" height="auto">
 
-                        <img src="modules/core/img/{{photo2}}_thumb_bw.png" class="photo pull-right" width="175px" height="auto">
-                    </div>
+            <!--<div>-->
+                <ul class="grid cs-style-4">
+                    <li>
+                        <figure>
+                            <div><img src="modules/core/img/as_thumb_bw.png"></div>
+                            <figcaption>
+                                <a href="/#!/shaw"><span>Andrew Shaw</span></a>
+                                <h3>The Artist Interview Series</h3>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            <!--</div>-->
+                <!-- /container -->
+
+
+                    <!--<div>-->
+                        <ul class="grid cs-style-4">
+                            <li>
+                                <figure>
+                                    <div><img src="modules/core/img/wli.png" width="150px" height="150px"></div>
+                                    <figcaption>
+                                        <a href="/#!/westside-leadership-institute"><span>Westside Leadership</span></a>
+                                        <h3>An Introduction</h3>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        </ul>
+                    <!--</div>-->
+                <!-- /container -->
+
                 </div>
             </div>
         </div>

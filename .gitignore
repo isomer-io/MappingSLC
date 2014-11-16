@@ -7,3 +7,5 @@ public/lib
 app/tests/coverage/
 .bower-*/
 .idea/
+*/env/keys.js
+config/env/keys.js

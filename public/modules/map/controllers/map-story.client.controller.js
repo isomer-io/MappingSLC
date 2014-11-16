@@ -3,6 +3,8 @@
 angular.module('map').controller('MapController', ['$scope', 'Authentication', '$http', '$templateCache',
     function($scope, Authentication, $http, $templateCache) {
 
+        $scope.toggle = true;
+
         $scope.mapFunction = function() {
 
             L.mapbox.accessToken = 'pk.eyJ1IjoicG9ldHNyb2NrIiwiYSI6Imc1b245cjAifQ.vwb579x58Ma-CcnfQNamiw';

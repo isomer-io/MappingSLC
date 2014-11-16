@@ -12,16 +12,16 @@ var mongoose = require('mongoose'),
 
 var validateEmail = function(email){
 	return validator.isEmail(email);
-};
+}
 
 
-var validateAddress = function(address) {
-
-addressValidator.validate(address,addressValidator.match.streetAddress,function(err,exact,inexact){
-
-});
-
-};
+//var validateAddress = function(address) {
+//
+//addressValidator.validate(address,addressValidator.match.streetAddress,function(err,exact,inexact){
+//
+//});
+//
+//};
 
 /**
  * Project Schema
@@ -46,7 +46,7 @@ var ProjectSchema = new Schema({
 		default: '',
 		required: '',
 		trim: true,
-		validate: [validateEmail(),'Please inset a correct email']
+		validate: [validateEmail,'Please inset a correct email']
 	},
 	story: {
 		type: String,
