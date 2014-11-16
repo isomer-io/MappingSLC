@@ -5,6 +5,11 @@ module.exports = {
 	app: {
 		title: 'Mapping Salt Lake City - Development Environment'
 	},
+
+	var require = function() {
+
+	},
+
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || '319019724936363',
 		clientSecret: process.env.FACEBOOK_SECRET || '3ebfd75fff26823c6ab3f462c7060af0',
