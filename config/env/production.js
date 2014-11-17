@@ -1,7 +1,7 @@
 'use strict';
 
-var apiKeys = require('./keys.js');
-console.log(apiKeys);
+//var apiKeys = require('./keys.js');
+//console.log(apiKeys);
 
 module.exports = {
 	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/mapping-salt-lake-city',
@@ -9,7 +9,7 @@ module.exports = {
 		lib: {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.min.css',
-				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
+				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css'
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
@@ -27,23 +27,23 @@ module.exports = {
 		js: 'public/dist/application.min.js'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || apiKeys.facebookKey,
-		clientSecret: process.env.FACEBOOK_SECRET || apiKeys.facebookSecret,
+		clientID: process.env.FACEBOOK_ID || 'facebookKey',
+		clientSecret: process.env.FACEBOOK_SECRET || 'facebookSecret',
 		callbackURL: 'http://localhost:3000/auth/facebook/callback'
 	},
 	twitter: {
-		clientID: process.env.TWITTER_KEY || apiKeys.twitterKey,
-		clientSecret: process.env.TWITTER_SECRET || apiKeys.twitterSecret,
+		clientID: process.env.TWITTER_KEY || 'twitterKey',
+		clientSecret: process.env.TWITTER_SECRET || 'twitterSecret',
 		callbackURL: 'http://localhost:3000/auth/twitter/callback'
 	},
 	google: {
-		clientID: process.env.GOOGLE_ID || apiKeys.googleKey,
-		clientSecret: process.env.GOOGLE_SECRET || apiKeys.googleSecret,
+		clientID: process.env.GOOGLE_ID || 'googleKey',
+		clientSecret: process.env.GOOGLE_SECRET || 'googleSecret',
 		callbackURL: 'http://localhost:3000/auth/google/callback'
 	},
 	linkedin: {
-		clientID: process.env.LINKEDIN_ID || apiKeys.linkedInKey,
-		clientSecret: process.env.LINKEDIN_SECRET || apiKeys.linkedInSecret,
+		clientID: process.env.LINKEDIN_ID || 'linkedInKey',
+		clientSecret: process.env.LINKEDIN_SECRET || 'linkedInSecret',
 		callbackURL: 'http://localhost:3000/auth/linkedin/callback'
 	}
 };

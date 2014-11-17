@@ -6,6 +6,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.authentication = Authentication;
 		//toggles off/on for main overlay page and menu
 		$scope.toggle = true;
+		$scope.sidemenu = false;
 
 		//placeholder for featured projects images
 		//todo once admin module is built, create a function that makes photo1 and 2 dynamic rather than hard-coded

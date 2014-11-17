@@ -2,6 +2,12 @@
 
     <div id='filters' class='ui-select'>
         <span data-ng-show="toggle">
+            <span class="switch-on" data-ng-click="toggle=!toggle">
+                    <i class="fa fa-chevron-right"></i>
+            </span>
+
+
+        <span data-ng-show="toggle">
             <span class="switch-on" data-ng-click="toggle=!toggle">X</span>
             <div><input type='checkbox' checked=checked class='filter'
                         name='filter' id='Historical' value='Historical'/><label for='Historical'>Historical</label></div>

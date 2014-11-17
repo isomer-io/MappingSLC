@@ -31,6 +31,12 @@ var ProjectSchema = new Schema({
 		required: 'Please fill out last name',
 		trim:true
 	},
+	title: {
+		type: String,
+		default: '',
+		required: 'Please fill out the name of your project',
+		trim:true
+	},
 	created: {
 		type: Date,
 		default: Date.now
@@ -52,13 +58,58 @@ var ProjectSchema = new Schema({
 		required: '',
 		trim: true
 	},
-	address: {
+	street: {
 		type: String,
 		default: '',
 		required: '',
 		trim: true
 		// TODO: Add validation for backend will validate addresses on front end
+	},
+
+	city: {
+		type: String,
+		default: '',
+		required: '',
+		trim: true
+	},
+
+	state: {
+		type: String,
+		default: '',
+		required: '',
+		trim: true
+
+	},
+
+	zip: {
+		type: Number,
+		default: '',
+		required: '',
+		trim: true
+	},
+
+	url: {
+		type: String,
+		default: '',
+		required: '',
+		trim: true
+	},
+
+	lat: {
+		type: String,
+		default: '',
+		required: '',
+		trim: true
+	},
+
+
+	long: {
+		type: String,
+		default: '',
+		required: '',
+		trim: true
 	}
+
 });
 
 mongoose.model('Project', ProjectSchema);

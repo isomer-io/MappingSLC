@@ -1,0 +1,85 @@
+
+/* =============================================================
+   SIDE MENU BASIC STYLING
+ ============================================================ */
+
+.p-set {
+    padding-top: 120px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.hr-set {
+    border-top: 1px solid rgba(0, 0, 0, 0)!important;
+    margin-bottom: 20px;
+}
+
+.hr-set-two {
+    border-top: 1px solid rgba(0, 0, 0, 0.05)!important;
+    margin-bottom: 5px;
+}
+
+
+/* =============================================================
+   SIDE MENU TWEAKS
+ ============================================================ */
+
+#side-menu {
+    height: 100%;
+    position: fixed;
+    /*top: -1000px;
+    left: -250px;*/
+    background-color:  rgba(0, 0, 0, 0.8);
+    color: #fff;
+    z-index: 999;
+    overflow: auto;
+    max-width: 500px;
+}
+
+#side-menu ul {
+    list-style: none;
+    padding: 0px;
+}
+
+#side-menu ul li {
+    border-bottom: 1px solid rgba(95, 87, 88, 0.2);
+    padding:  20px 25px;
+    display: inline-block;
+}
+
+#side-menu ul li a i {
+    padding-right: 10px;
+}
+
+#side-menu ul li a,#side-menu ul li a:hover {
+    color: #fff;
+    text-decoration: none;
+    font-size:  16px;
+}
+
+.logo-text {
+    padding:  20px 30px;
+    cursor:  pointer;
+    font-size: 20px;
+    font-weight: 900;
+
+}
+.menu-close-icon {
+    padding: 0 10px;
+    cursor:  pointer;
+    color: #000;
+    font-size: 25px;
+
+}
+.menu-open-icon {
+    cursor: pointer;
+    color: #fff;
+    padding: 20px 30px;
+    /*padding: 20px 25px;*/
+    position: fixed;
+    z-index:  998;
+}
+.intro-txt {
+    padding: 20px;
+}

@@ -1,6 +1,6 @@
 <section data-ng-controller="ProjectsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="project.name"></h1>
+		<h1 data-ng-bind="project.title"></h1>
 	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == project.user._id))">
 		<a class="btn btn-primary" href="/#!/projects/{{project._id}}/edit">
@@ -15,7 +15,8 @@
 			Posted on
 			<span data-ng-bind="project.created | date:'mediumDate'"></span>
 			by
-			<span data-ng-bind="project.user.displayName"></span>
+			<span data-ng-bind="project.firstname + ' ' + project.lastname"></span>
+
 		</em>
 	</small>
 </section>

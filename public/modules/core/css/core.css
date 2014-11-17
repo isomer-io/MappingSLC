@@ -14,8 +14,19 @@ ul {
     list-style-type: none;
 }
 
-li a {
+.navbar-brand, .navbar-nav, li a {
     color: #f5deb3;
+    background: rgba(0, 0, 0, 0.0);
+}
+
+ .dropdown-toggle {
+    background: rgba(0, 0, 0, 0.0);
+}
+
+.dropdown-menu, .divider, .nav, .nav .open a, .nav .open a:hover, .nav .open a:focus, a:hover, a:focus,
+.nav li a:hover, .nav li a:focus {
+    color: #f5deb3;
+    background: rgba(0, 0, 0, 0.6);
 }
 
 .undecorated-link:hover {

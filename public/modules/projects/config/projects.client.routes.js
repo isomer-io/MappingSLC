@@ -32,9 +32,9 @@ angular.module('projects').config(['$stateProvider',
 			templateUrl: 'modules/projects/views/view-project.client.wli.html'
 		}).
 
-			state('birds', {
-				url: '/birds',
-				templateUrl: 'modules/projects/views/view-project.client.birds.html'
-			});
+		state('birds', {
+			url: '/birds',
+			templateUrl: 'modules/projects/views/view-project.client.birds.html'
+		});
 	}
 ]);

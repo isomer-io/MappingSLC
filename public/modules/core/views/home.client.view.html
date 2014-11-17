@@ -1,4 +1,4 @@
-<section ng-include="'/modules/map/views/map-story.client.view.html'" id="gmap"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="425" height="350"></section>
+<section ng-include="'/modules/map/views/map.client.view.html'" id="gmap"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="425" height="350"></section>
 
 <section data-ng-controller="HomeController">
 
@@ -26,8 +26,8 @@
                                         <a href="/#!/signin">Sign In</a>
                                     </li>
                                 </ul>
-                                </li>
-                            </ul>
+                            </li>
+                        </ul>
 
                         <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
                             <li class="dropdown">
@@ -51,17 +51,14 @@
                                 </ul>
                             </li>
                         </ul>
-
                     </div>
                     <div class="page-header">
                         <div>
                             <img class="logo" src="modules/core/img/brand/mapping.png">
                         </div>
-
                             <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake City’s
                                 neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
                             <p class="home-text">We invite people to engage with and evolve this site by submitting their own contributions.</p>
-
                     </div>
                 </div>
             </div>
@@ -80,7 +77,6 @@
                         <h2 class="home-text">Featured Projects</h2>
                     </div>
 
-            <!--<div>-->
                 <ul class="grid cs-style-4">
                     <li>
                         <figure class="col-md-4">
@@ -90,17 +86,13 @@
                                 <h3>The Artist Interview Series</h3>
                             </figcaption>
                         </figure>
-                    <!--</li>-->
+                    </li>
                 </ul>
-            <!--</div>-->
-                <!-- /container -->
 
-
-            <!--<div>-->
                 <ul class="grid cs-style-4">
                     <li>
                         <figure class="col-md-4">
-                            <div><img src="modules/core/img/wli.png"></div>
+                            <div><img src="modules/core/img/wli_sq.png"></div>
                             <figcaption>
                                 <a href="/#!/westside-leadership-institute"><span>Westside Leadership</span></a>
                                 <h3>An Introduction</h3>
@@ -108,8 +100,7 @@
                         </figure>
                     </li>
                 </ul>
-            <!--</div>-->
-        <!-- /container -->
+
 
                 </div>
             </div>
@@ -121,4 +112,50 @@
             <span class="switch-off" data-ng-click="toggle=!toggle">Menu</span>
         </div>
    </span>
+
+    <div id="side-menu" class="move-me" data-ng-class="{ 'hidden': ! showDetails }">
+        <hr class="hr-set"/>
+        <span class="logo-text" > <img class="logo pull-left" src="modules/core/img/brand/mapping_150w.png"></span>  <i  class="menu-close-icon glyphicon glyphicon-align-justify"></i>
+        <hr class="hr-set-two" />
+
+        <ul>
+            <li>
+                <a href="/"> <i class="glyphicon glyphicon-home"></i>    Home</a>
+            </li>
+            <li>
+                <a href="/projects" >  <i class="glyphicon glyphicon-th"></i>
+                    Projects</a>
+            </li>
+            <li>
+                <a href="#" > <i class="glyphicon glyphicon-time"></i>  Submit</a>
+            </li>
+            <li>
+                <a href="#" >  <i class="glyphicon glyphicon-user"></i>  About Us</a>
+            </li>
+            <li>
+                <a href="#" > <i class="glyphicon glyphicon-map-marker"></i> Contact</a>
+            </li>
+        </ul>
+        <div class="intro-txt">
+            <br />
+            <hr />
+            <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s
+                neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
+            <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
+
+        </div>
+
+    </div>
+    <!-- SIDE MENU SECTION END-->
+
+
+    <div class="container">
+        <h1>
+            <strong>
+                <i class="menu-open-icon glyphicon glyphicon-align-justify" data-ng-click="showDetails = ! showDetails">
+                </i>
+            </strong>
+        </h1>
+    </div>
+
 </section>

@@ -71,7 +71,5 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			});
 		};
 
-
-
 	}
 ]);
