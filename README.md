@@ -7,6 +7,19 @@ Mapping Salt Lake City is a community-created archive of Salt Lake City’s neig
 We invite people to engage with and evolve this site by submitting their own contributions.
 
 
+## About Us
+Paisley Rekdal is the Editor for Mapping Salt Lake City.
+Chris Tanseer serves as the Assistant Editor and Web Developer for the project.
+But, but most of all, Mapping Salt Lake City is brought to you by the people in Salt Lake who have contribute their
+projects. We welcome you to [submit work](http://www.mappingslc.org/index
+.php?option=com_k2&view=item&layout=item&id=4&Itemid=279) and join our community.
+
+Funding has been provided by [The Utah Humanities Council](http://www.utahhumanities.org/), [The University of Utah]
+(http://www.utah.edu/), The Richard B. Siegel Foundation, and [Westminster College](http://www.westminstercollege.edu/).
+
+Mapping Salt Lake City was inspired by the work of [Rebecca Solnit](http://rebeccasolnit.net/)
+
+
 ## Prerequisites
 Make sure you have installed all these prerequisites on your development machine.
 * Node.js - [Download & Install Node.js](http://www.nodejs.org/download/) and the npm package manager, if you encounter any problems, you can also use this [Github Gist](https://gist.github.com/isaacs/579814) to install Node.js.
@@ -57,21 +70,6 @@ Your application should run on the 3000 port so in your browser just go to [http
                             
 That's it! your application should be running by now, to proceed with your development check the other sections in this documentation. 
 If you encounter any problem try the Troubleshooting section.
-
-## Getting Started With Mapping Salt Lake City
-
-
-## About Us
-Paisley Rekdal is the Editor for Mapping Salt Lake City.
-Chris Tanseer serves as the Assistant Editor and Web Developer for the project.
-But, but most of all, Mapping Salt Lake City is brought to you by the people in Salt Lake who have contribute their
-projects. We welcome you to [submit work](http://www.mappingslc.org/index
-.php?option=com_k2&view=item&layout=item&id=4&Itemid=279) and join our community.
-
-Funding has been provided by [The Utah Humanities Council](http://www.utahhumanities.org/), [The University of Utah]
-(http://www.utah.edu/), The Richard B. Siegel Foundation, and [Westminster College](http://www.westminstercollege.edu/).
-
-Mapping Salt Lake City was inspired by the work of [Rebecca Solnit](http://rebeccasolnit.net/)
 
 ## License
 (The MIT License)
