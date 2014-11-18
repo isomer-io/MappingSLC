@@ -1,21 +1,31 @@
 <section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
 
-    <div id='filters' class='ui-select'>
-        <span data-ng-show="toggle">
-            <span class="switch-on" data-ng-click="toggle=!toggle">
-                    <i class="fa fa-chevron-right"></i>
-            </span>
 
+    <span data-ng-show="markers">
+        <div id='filters' class='ui-select' ng-show="'fa fa-chevron-right'">
 
-        <span data-ng-show="toggle">
-            <span class="switch-on" data-ng-click="toggle=!toggle">X</span>
-            <div><input type='checkbox' checked=checked class='filter'
-                        name='filter' id='Historical' value='Historical'/><label for='Historical'>Historical</label></div>
-            <div><input type='checkbox' checked=checked class='filter'
-                        name='filter' id='Food' value='Food'/><label for='Food'>Food</label></div>
-            <div><input type='checkbox' checked=checked class='filter'
-                        name='filter' id='Local Business' value='Local Business'/><label for='Local Business'>Local Business</label></div>
-        </span>
+            <div><span class="fa fa-chevron-right pull-right" data-ng-click="markers=!markers"
+                       ng-class="{ active: 'fa fa-chevron-right'}"></span></div>
+            <div>
+                <input type='checkbox' checked=checked class='filter' name='filter' id='Interviews' value='Interviews'/><label for='Interviews'>Interviews</label>
+            </div>
+            <div>
+                <input type='checkbox' checked=checked class='filter'name='filter' id='Essay' value='Essay'/><label for='Essay'>Essay</label>
+            </div>
+            <div>
+                <input type='checkbox' checked=checked class='filter'name='filter' id='Multimedia' value='Multimedia'/><label for='Multimedia'>Multimedia</label>
+            </div>
+
+        </div>
+    </span>
+
+    <span data-ng-hide="markers">
+        <div id='filters' class='ui-select'>
+            <span class="fa fa-chevron-left" data-ng-click="markers=!markers"></span>
+        </div>
+    </span>
+                <!--<i class="fa fa-chevron-right"></i>-->
+
     </div>
     <!--to call MapBox map-->
     <div id='map' class='map'></div>

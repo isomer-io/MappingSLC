@@ -115,7 +115,11 @@
 
     <div id="side-menu" class="move-me" data-ng-class="{ 'hidden': ! showDetails }">
         <hr class="hr-set"/>
-        <span class="logo-text" > <img class="logo pull-left" src="modules/core/img/brand/mapping_150w.png"></span>  <i  class="menu-close-icon glyphicon glyphicon-align-justify"></i>
+        <span>
+            <div><i  class="menu-close-icon glyphicon glyphicon-align-justify" data-ng-click="showDetails = ! showDetails"></i>
+                <img class="logo pull-right" src="modules/core/img/brand/mapping_150w.png">
+            </div>
+        </span>
         <hr class="hr-set-two" />
 
         <ul>

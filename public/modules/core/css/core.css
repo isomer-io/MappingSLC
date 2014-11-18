@@ -19,14 +19,23 @@ ul {
     background: rgba(0, 0, 0, 0.0);
 }
 
- .dropdown-toggle {
+ /*.dropdown-toggle {*/
+    /*background: rgba(0, 0, 0, 0.0);*/
+/*}*/
+
+.nav .open a:focus, .nav li a:hover, .nav li a:focus {
+    color: #f5deb3;
     background: rgba(0, 0, 0, 0.0);
 }
 
-.dropdown-menu, .divider, .nav, .nav .open a, .nav .open a:hover, .nav .open a:focus, a:hover, a:focus,
-.nav li a:hover, .nav li a:focus {
-    color: #f5deb3;
-    background: rgba(0, 0, 0, 0.6);
+.nav .open a {
+    color: #ffffff;
+}
+
+.open > .dropdown-menu {
+    background: rgba(0, 0, 0, 0.8);
+    border: solid 3px #101010;
+    border-radius: 15px;
 }
 
 .undecorated-link:hover {

@@ -3,16 +3,15 @@
 angular.module('map').controller('MapController', ['$scope', 'Authentication', '$http', '$templateCache',
     function($scope, Authentication, $http, $templateCache) {
 
-        $scope.toggle = true;
+        $scope.markers = true;
 
         $http.get('/mapKeys')
             .success(function(data){
 
                 mapFunction(data.mapboxKey, data.mapboxAccessToken);
             })
-            .error(function(data, status, headers, config){
-                alert('Danger, danger, this didn\'t work! \nmapboxKey: ' + mapboxKey + '\nmapboxAccessToken: ' + mapboxAccessToken +
-                '\nData: ' + data + '\nStatus: ' + status);
+            .error(function(data, status){
+                alert("Failed to load Mapbox API key. Status: " + status);
             });
 
         var mapFunction = function(key, accessToken) {

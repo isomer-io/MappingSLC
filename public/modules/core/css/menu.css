@@ -30,6 +30,8 @@
     position: fixed;
     /*top: -1000px;
     left: -250px;*/
+    top: 0;
+    left: 0;
     background-color:  rgba(0, 0, 0, 0.8);
     color: #fff;
     z-index: 999;
@@ -69,7 +71,8 @@
     padding: 0 10px;
     cursor:  pointer;
     color: #000;
-    font-size: 25px;
+    font-size: 35px;
+    top: -30px;
 
 }
 .menu-open-icon {
@@ -79,6 +82,8 @@
     /*padding: 20px 25px;*/
     position: fixed;
     z-index:  998;
+    left: -20px;
+    top: -10px;
 }
 .intro-txt {
     padding: 20px;
