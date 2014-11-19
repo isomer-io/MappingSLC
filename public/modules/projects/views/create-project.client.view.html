@@ -8,8 +8,7 @@
                 <div class="form-group">
                     <label class="control-label" for="firstname">First Name</label>
                     <div class="controls width">
-                        <input type="text" data-ng-model="firstname" id="firstname" class="form-control"
-                               placeholder="First Name" required>
+                        <input type="text" data-ng-model="name" id="firstname" class="form-control" placeholder="First Name" required>
                     </div>
                     <label class="control-label">Last Name</label>
                     <div class="controls">
@@ -29,8 +28,7 @@
                     </div>
                     <label class="control-label">Story</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="story" id="story" class="form-control" placeholder="Story"
-                               required>
+                        <textarea ckeditor="editorOptions" ng-model="modelName"></textarea>
                     </div>
                     <label class="control-label">Street</label>
                     <div class="controls">
