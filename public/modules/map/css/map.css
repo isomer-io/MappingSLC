@@ -45,7 +45,16 @@ span div:nth-child(2) {
 .fa-chevron-left, .fa-chevron-right, input[type="checkbox"] {
     cursor: pointer;
 }
+.fa-chevron-left:hover, .fa-chevron-right:hover,  {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    background: rgba(0, 0, 0, 0.8);
+}
 
+label {
+    font-weight: normal;
+}
 
 /*
 animate

@@ -7,11 +7,10 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
         $http.get('/mapKeys')
             .success(function(data){
-
                 mapFunction(data.mapboxKey, data.mapboxAccessToken);
             })
             .error(function(data, status){
-                alert("Failed to load Mapbox API key. Status: " + status);
+                alert('Failed to load Mapbox API key. Status: ' + status);
             });
 
         var mapFunction = function(key, accessToken) {

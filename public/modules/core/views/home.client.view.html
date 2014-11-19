@@ -6,6 +6,7 @@
     <span data-ng-show="toggle">
 
         <div id="containerOn">
+            <!--<span class="switch-on" data-ng-click="toggle=!toggle">X</span>-->
             <span class="switch-on" data-ng-click="toggle=!toggle">X</span>
             <div class="home">
                 <div class="col-md-12">
@@ -63,75 +64,98 @@
                 </div>
             </div>
 
+
+
             <div class="row-fluid"> <!--these are the columns divs-->
+
+
+                <!--Submit your Project Panel -->
                 <div class="col-md-5 pull-left">
                     <div class="text-center page-header">
                         <h2 class="home-text">Submit your project</h2>
                     </div>
                     <p class="home-text">Mapping Salt Lake City invites all interested visitors to add their voices to the mix. We are looking for all kinds of essays (written, audio, photo, video) on topics related to Salt Lake City.</p>
-                    <a href="/#!/projects/create" class="btn btn-primary btn-lg btn-main" role="button">Submit a
+                    <a href="/#!/projects/create" class="btn btn-primary btn-lg btn-main grow" role="button">Submit a
                         story</a>
                 </div>
+
+
+                <!--Featured Projects Panel -->
                 <div class="col-md-7 pull-right">
                     <div class="text-center page-header">
                         <h2 class="home-text">Featured Projects</h2>
                     </div>
 
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure class="col-md-4">
-                            <div><img src="modules/core/img/as_thumb_bw.png"></div>
-                            <figcaption>
-                                <a href="/#!/shaw"><span>Andrew Shaw</span></a>
-                                <h3>The Artist Interview Series</h3>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
+                    <ul class="grid cs-style-4">
 
-                <ul class="grid cs-style-4">
-                    <li>
-                        <figure class="col-md-4">
-                            <div><img src="modules/core/img/wli_sq.png"></div>
-                            <figcaption>
-                                <a href="/#!/westside-leadership-institute"><span>Westside Leadership</span></a>
-                                <h3>An Introduction</h3>
-                            </figcaption>
-                        </figure>
-                    </li>
-                </ul>
+                            <figure class="col-md-4">
+                                <div><img src="modules/core/img/as_thumb_bw.png"></div>
+                                <figcaption>
+                                    <a href="/#!/shaw"><span>Andrew Shaw</span></a>
+                                    <!--<h5>The Artist Interview Series</h5>-->
+                                </figcaption>
+                            </figure>
 
+                    </ul>
 
-                </div>
+                    <ul class="grid cs-style-4">
+
+                            <figure class="col-md-4">
+                                <div><img src="modules/core/img/wli_sq_sm.png"></div>
+                                <figcaption>
+                                    <a href="/#!/westside-leadership-institute"><span>Westside Leadership</span></a>
+                                    <!--<h5>An Introduction</h5>-->
+                                </figcaption>
+                            </figure>
+
+                    </ul>
+
+                    <ul class="grid cs-style-4">
+
+                            <figure class="col-md-4">
+                                <div><img src="modules/core/img/wli_sq_sm.png"></div>
+                                <figcaption>
+                                    <a href="/#!/westside-leadership-institute"><span>Westside Leadership</span></a>
+                                    <!--<h5>An Introduction</h5>-->
+                                </figcaption>
+                            </figure>
+
+                    </ul>
+
+                </div>  <!--End of Featured Projects Panel -->
+
             </div>
         </div>
     </span>
 
-    <span data-ng-hide="toggle">
-        <div id="containerOff">
-            <span class="switch-off" data-ng-click="toggle=!toggle">Menu</span>
-        </div>
-   </span>
+    <!--<span data-ng-hide="toggle">-->
+        <!--<div id="containerOff">-->
+            <!--<span class="switch-off" data-ng-click="toggle=!toggle">Menu</span>-->
+        <!--</div>-->
+   <!--</span>-->
 
-    <div id="side-menu" class="move-me" data-ng-class="{ 'hidden': ! showDetails }">
+
+
+    <!-- BEGINNING OF SIDEBAR MENU -->
+
+    <div id="side-menu" class="move-me" data-ng-class="{ 'hidden': ! showDetails }" data-ng-model="clicked">
+
         <hr class="hr-set"/>
-        <span>
-            <div><i  class="menu-close-icon glyphicon glyphicon-align-justify" data-ng-click="showDetails = ! showDetails"></i>
-                <img class="logo pull-right" src="modules/core/img/brand/mapping_150w.png">
-            </div>
+        <span><i class="menu-close-icon glyphicon glyphicon-align-justify"data-ng-click="showDetails = !showDetails"></i>
+            <img class="logo pull-right" src="modules/core/img/brand/mapping_150w.png">
         </span>
         <hr class="hr-set-two" />
 
         <ul>
             <li>
-                <a href="/"> <i class="glyphicon glyphicon-home"></i>    Home</a>
+                <a href="/#!/"> <i class="glyphicon glyphicon-home"></i>    Home</a>
             </li>
             <li>
-                <a href="/projects" >  <i class="glyphicon glyphicon-th"></i>
+                <a href="/#!/projects">  <i class="glyphicon glyphicon-th"></i>
                     Projects</a>
             </li>
             <li>
-                <a href="#" > <i class="glyphicon glyphicon-time"></i>  Submit</a>
+                <a href="/#!/projects/create" > <i class="glyphicon glyphicon-time"></i>  Submit</a>
             </li>
             <li>
                 <a href="#" >  <i class="glyphicon glyphicon-user"></i>  About Us</a>
@@ -151,7 +175,6 @@
 
     </div>
     <!-- SIDE MENU SECTION END-->
-
 
     <div class="container">
         <h1>

@@ -2,10 +2,10 @@
 
 
     <span data-ng-show="markers">
-        <div id='filters' class='ui-select' ng-show="'fa fa-chevron-right'">
+        <div id='filters' class='ui-select' data-ng-show="'fa fa-chevron-right'">
 
             <div><span class="fa fa-chevron-right pull-right" data-ng-click="markers=!markers"
-                       ng-class="{ active: 'fa fa-chevron-right'}"></span></div>
+                       data-ng-class="{ active: 'fa fa-chevron-right'}"></span></div>
             <div>
                 <input type='checkbox' checked=checked class='filter' name='filter' id='Interviews' value='Interviews'/><label for='Interviews'>Interviews</label>
             </div>

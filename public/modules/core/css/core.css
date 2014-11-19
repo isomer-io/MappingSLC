@@ -88,6 +88,9 @@ ul {
 }
 
 .switch-on:hover{
+    -webkit-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    transform: scale(1.01);
     background: rgba(0, 0, 0, 0.8);
 }
 
@@ -131,6 +134,7 @@ ul {
     padding: 0 20px 20px 20px;
     position: relative;
     width: 80%;
+    /*width: 70em;*/
     height: 40em;
     z-index: 2;
 }
@@ -167,6 +171,10 @@ ul {
     color: #f5deb3;
 }
 
+.photo {
+    padding: 15px;
+}
+
 .btn-main {
     cursor:pointer;
     /*border-radius: 5px;*/
@@ -179,18 +187,38 @@ ul {
 
 .btn-main:focus, .btn-main:hover {
     background: #023a31;
-    border: 4px solid #fff;
+    border: 2px solid #fff;
 }
 
-.photo {
-    padding: 15px;
+/*button animation*/
+/* Grow */
+
+.grow {
+    display: inline-block;
+    -webkit-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition: all 0.3s ease 0s;
 }
 
+.grow:hover {
+    -webkit-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    transform: scale(1.01);
+    background: rgba(0, 0, 0, 0.5);
+}
 
 
 
 /*
 //
+slide over image animation
 //
 */
 
@@ -198,7 +226,7 @@ ul {
 .grid {
     /*padding: 20px;*/
     max-width: 1300px;
-    margin: 0 auto;
+    margin: 0;
     list-style: none;
     /*text-align: center;*/
     display: inline;
@@ -223,15 +251,18 @@ ul {
     max-width: 100%;
     display: inline;
     position: relative;
+    border-radius: 5px;
+    border: solid 2px #151515;
 }
 
 .grid figcaption {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 20px;
-    background: #2c3f52;
-    color: #ed4e6e;
+    padding: 2px;
+    /*background: #023a31;*/
+    background: rgba(2, 58, 49, 0.5);
+    color: #ffffff;
 }
 
 .grid figcaption h3 {
@@ -247,9 +278,10 @@ ul {
 .grid figcaption a {
     text-align: center;
     padding: 5px 10px;
-    border-radius: 2px;
+    border-radius: 5px;
     display: inline-block;
-    background: #ed4e6e;
+    background: #023a31;
+    border: solid 1px #ffffff;
     color: #fff;
 }
 
@@ -290,7 +322,7 @@ ul {
 
 .cs-style-4 figcaption {
     height: 100%;
-    width: 100%;
+    width: 91%;
     opacity: 0;
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
@@ -352,3 +384,8 @@ figure {
     }
 }
 
+@media (min-width: 992px) {
+    .col-md-4 {
+        width: 31%;
+    }
+}
