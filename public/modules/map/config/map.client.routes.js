@@ -7,7 +7,7 @@ angular.module('map').config(['$stateProvider',
 		$stateProvider.
 		state('map', {
 			url: '/map',
-			templateUrl: 'modules/map/views/map-story.client.view.html'
+			templateUrl: 'modules/map/views/map.client.view.html'
 		});
 	}
 ]);

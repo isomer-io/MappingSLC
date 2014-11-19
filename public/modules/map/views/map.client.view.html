@@ -1,0 +1,33 @@
+<section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
+
+
+    <span data-ng-show="markers">
+        <div id='filters' class='ui-select' data-ng-show="'fa fa-chevron-right'">
+
+            <div><span class="fa fa-chevron-right pull-right" data-ng-click="markers=!markers"
+                       data-ng-class="{ active: 'fa fa-chevron-right'}"></span></div>
+            <div>
+                <input type='checkbox' checked=checked class='filter' name='filter' id='Interviews' value='Interviews'/><label for='Interviews'>Interviews</label>
+            </div>
+            <div>
+                <input type='checkbox' checked=checked class='filter'name='filter' id='Essay' value='Essay'/><label for='Essay'>Essay</label>
+            </div>
+            <div>
+                <input type='checkbox' checked=checked class='filter'name='filter' id='Multimedia' value='Multimedia'/><label for='Multimedia'>Multimedia</label>
+            </div>
+
+        </div>
+    </span>
+
+    <span data-ng-hide="markers">
+        <div id='filters' class='ui-select'>
+            <span class="fa fa-chevron-left" data-ng-click="markers=!markers"></span>
+        </div>
+    </span>
+                <!--<i class="fa fa-chevron-right"></i>-->
+
+    </div>
+    <!--to call MapBox map-->
+    <div id='map' class='map'></div>
+
+</section>

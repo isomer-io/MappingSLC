@@ -33,7 +33,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
 		// Remove existing Project
 		$scope.remove = function(project) {
-			if ( project ) { 
+			if ( project ) {
 				project.$remove();
 
 				for (var i in $scope.projects) {
@@ -66,9 +66,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
 		// Find existing Project
 		$scope.findOne = function() {
-			$scope.project = Projects.get({ 
+			$scope.project = Projects.get({
 				projectId: $stateParams.projectId
 			});
 		};
+
 	}
 ]);

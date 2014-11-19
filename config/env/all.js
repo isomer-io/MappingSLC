@@ -38,7 +38,8 @@ module.exports = {
 				'public/lib/angular-leaflet-directive/dist/angular-leaflet-directive.js',
 				'//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/Leaflet.fullscreen.min.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
-				'public/lib/ng-ckeditor/ng-ckeditor.js'
+				'public/lib/ng-ckeditor/ng-ckeditor.js',
+				'//modernizr.com/downloads/modernizr-latest.js'
 			]
 		},
 		css: [

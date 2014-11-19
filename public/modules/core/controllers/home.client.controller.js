@@ -4,8 +4,12 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	function($scope, Authentication) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+		//toggles off/on for main overlay page and menu
 		$scope.toggle = true;
-		//todo create a function that makes photo1 and 2 dynamic rather than hard-coded.
+		$scope.sidemenu = false;
+
+		//placeholder for featured projects images
+		//todo once admin module is built, create a function that makes photo1 and 2 dynamic rather than hard-coded
 		$scope.photo1 = 'as';
 		$scope.photo2 = 'dw';
 	}

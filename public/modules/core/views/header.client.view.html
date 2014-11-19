@@ -1,4 +1,5 @@
 <div class="container" data-ng-controller="HeaderController">
+
 	<div class="navbar-header">
 		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
 			<span class="sr-only">Toggle navigation</span>
@@ -6,7 +7,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a href="/#!/" class="navbar-brand">Mapping Salt Lake City</a>
+		<a href="/#!/" class="navbar-brand">MapIt</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
 		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
@@ -23,15 +24,24 @@
 				<a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
 			</li>
 		</ul>
-		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-			<li ui-route="/signup" ng-class="{active: $uiRoute}">
-				<a href="/#!/signup">Sign Up</a>
-			</li>
-			<li class="divider-vertical"></li>
-			<li ui-route="/signin" ng-class="{active: $uiRoute}">
-				<a href="/#!/signin">Sign In</a>
+
+		<ul class="nav navbar-nav navbar-right" data-ng-show="!authentication.user">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<span>Sign In</span> <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li ui-route="/signup" ng-class="{active: $uiRoute}">
+						<a href="/#!/signup">Sign Up</a>
+					</li>
+					<li class="divider-vertical"></li>
+					<li ui-route="/signin" ng-class="{active: $uiRoute}">
+						<a href="/#!/signin">Sign In</a>
+					</li>
+				</ul>
 			</li>
 		</ul>
+
 		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -55,4 +65,3 @@
 			</li>
 		</ul>
 	</nav>
-</div>

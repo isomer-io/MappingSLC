@@ -20,6 +20,21 @@ angular.module('projects').config(['$stateProvider',
 		state('editProject', {
 			url: '/projects/:projectId/edit',
 			templateUrl: 'modules/projects/views/edit-project.client.view.html'
+		}).
+
+		state('andrewShaw', {
+			url: '/shaw',
+			templateUrl: 'modules/projects/views/view-project.client.shaw.html'
+	  	}).
+
+		state('westsideLeadershipInstitute', {
+			url: '/westside-leadership-institute',
+			templateUrl: 'modules/projects/views/view-project.client.wli.html'
+		}).
+
+		state('birds', {
+			url: '/birds',
+			templateUrl: 'modules/projects/views/view-project.client.birds.html'
 		});
 	}
 ]);

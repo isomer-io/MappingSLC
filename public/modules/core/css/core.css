@@ -4,10 +4,34 @@ html {
     width: 100%; /* If you don't do this, gremlins will eat your nose. */
 }
 
-body { min-height: 100%; height: 100%; }
+body {
+    min-height: 100%; height: 100%;
+}
 
-.content {
-	margin-top: 50px;
+
+ul {
+    margin-top: 20px;
+    list-style-type: none;
+}
+
+.navbar-brand, .navbar-nav, li a {
+    color: #f5deb3;
+    background: rgba(0, 0, 0, 0.0);
+}
+
+.nav .open a:focus, .nav li a:hover, .nav li a:focus {
+    color: #f5deb3;
+    background: rgba(0, 0, 0, 0.0);
+}
+
+.nav .open a {
+    color: #ffffff;
+}
+
+.open > .dropdown-menu {
+    background: rgba(0, 0, 0, 0.8);
+    border: solid 3px #101010;
+    border-radius: 15px;
 }
 
 .undecorated-link:hover {
@@ -60,13 +84,16 @@ body { min-height: 100%; height: 100%; }
 }
 
 .switch-on:hover{
+    -webkit-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    transform: scale(1.01);
     background: rgba(0, 0, 0, 0.8);
 }
 
 .switch-off {
     background: rgba(0, 0, 0, 0.4);
     border: 2px solid rgba(0, 0, 0, 0.8);
-    /*border-radius: 50%;*/
+    border-radius: 15%;
     color: #fff;
     cursor: pointer;
     font-size: 1.4em;
@@ -98,12 +125,12 @@ body { min-height: 100%; height: 100%; }
     border-radius: 20px;
     border: 3px solid #fff;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    margin: 0 auto;
+    margin: 35px auto;
     overflow: visible !important; /* Has to be !important only if you're using an on/off switch */
-    padding: 40px;
+    padding: 0 20px 20px 20px;
     position: relative;
-    top: 100px;
     width: 80%;
+    /*width: 70em;*/
     height: 40em;
     z-index: 2;
 }
@@ -121,55 +148,64 @@ body { min-height: 100%; height: 100%; }
 }
 
 .home{
-    color:white;
     text-align: justify;
- }
-
-.home h1{
-    color:white;
-}
-
-.home p{
-    color:white;
-}
-
-.home h2{
-    color:white;
-}
+  }
 
 .home .page-header{
-    margin: 20px 0 10px;
-
+    margin: 20px 0 10px 0;
 }
 
 .logo {
-    padding: 0 25px 25px 50px;
+    padding: 0 0 25px 50px;
 }
 
-.page-header .content {
-    color: #ffffff;
-    margin-top: 0;
-}
+/*.page-header .content {*/
+    /*margin-top: 0;*/
+/*}*/
 
 .home-text {
-    color: #ffffff;
-}
-
-.btn {
-    cursor:pointer;
-    border-radius: 5px;
-    display:inline-block;
-    padding:10px;
-    margin: 5px;
-    border:5px solid #fff;
-    background: #023a31;
-}
-
-.btn:focus .btn:hover {
-    background: #023a31;
-    border: 4px solid #fff;
+    color: #f5deb3;
 }
 
 .photo {
     padding: 15px;
+}
+
+.btn-main {
+    cursor:pointer;
+    /*border-radius: 5px;*/
+    /*display:inline-block;*/
+    /*padding:10px;*/
+    /*margin: 5px;*/
+    border:2px solid #fff;
+    background: #023a31;
+}
+
+.btn-main:focus, .btn-main:hover {
+    background: #023a31;
+    border: 2px solid #fff;
+}
+
+/*button animation*/
+/* Grow */
+
+.grow {
+    display: inline-block;
+    -webkit-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition: all 0.3s ease 0s;
+}
+
+.grow:hover {
+    -webkit-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    transform: scale(1.01);
+    background: rgba(0, 0, 0, 0.5);
 }
