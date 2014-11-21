@@ -16,9 +16,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/font-awesome/css/font-awesome.min.css',
-				'//api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css',
-				'//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/leaflet.fullscreen.css',
-				'public/lib/ng-ckeditor/ng-ckeditor.css'
+				'public/lib/ng-ckeditor/ng-ckeditor.css',
+				'public/lib/angular-mapbox/lib/mapbox.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -33,13 +32,13 @@ module.exports = {
 				'public/lib/textAngular/dist/textAngular.min.js',
 				'public/lib/textAngular/dist/textAngular-sanitize.min.js',
 				'public/lib/rangy/rangy-core.js',
-				'//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js',
-				'//api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js',
+				'public/lib/leaflet/dist/leaflet.js',
+				'public/lib/angular-mapbox/lib/mapbox.js',
 				'public/lib/angular-leaflet-directive/dist/angular-leaflet-directive.js',
-				'//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/Leaflet.fullscreen.min.js',
+				'public/modules/_cdns/Leaflet.fullscreen.min.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
-				'//modernizr.com/downloads/modernizr-latest.js'
+				'public/modules/_cdns/modernizr.js'
 			]
 		},
 		css: [
