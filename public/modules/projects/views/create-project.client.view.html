@@ -8,7 +8,8 @@
                 <div class="form-group">
                     <label class="control-label" for="firstname">First Name</label>
                     <div class="controls width">
-                        <input type="text" data-ng-model="name" id="firstname" class="form-control" placeholder="First Name" required>
+                        <input type="text" data-ng-model="firstname" id="firstname" class="form-control"
+                               placeholder="First Name" required>
                     </div>
                     <label class="control-label">Last Name</label>
                     <div class="controls">
@@ -28,7 +29,33 @@
                     </div>
                     <label class="control-label">Story</label>
                     <div class="controls">
-                        <textarea ckeditor="editorOptions" ng-model="modelName"></textarea>
+					<textarea ckeditor="editorOptions" ng-model="modelName"></textarea>
+          
+                    </div>
+                    <label class="control-label">Street</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="street" id="street" class="form-control" placeholder="Street"
+                               required>
+                    </div>
+                    <label class="control-label">City</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="city" id="city" class="form-control" placeholder="City"
+                               required>
+                    </div>
+                    <label class="control-label">State</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="state" id="state" class="form-control" placeholder="State"
+                               required>
+                    </div>
+                    <label class="control-label">Zip Code</label>
+                    <div class="controls">
+                        <input type="number" data-ng-model="zip" id="zip" class="form-control" placeholder="Zip Code"
+                               required>
+                    </div>
+                    <label class="control-label">Project Url</label>
+                    <div class="controls">
+                        <input type="url" data-ng-model="url" id="url" class="form-control" placeholder="Project Url"
+                               required>
                     </div>
                     <label class="control-label">Street</label>
                     <div class="controls">
