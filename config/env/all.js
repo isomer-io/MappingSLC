@@ -35,8 +35,10 @@ module.exports = {
 				'public/lib/leaflet/dist/leaflet.js',
 				'public/lib/angular-mapbox/lib/mapbox.js',
 				'public/lib/angular-leaflet-directive/dist/angular-leaflet-directive.js',
+				'//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/Leaflet.fullscreen.min.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
+				'//modernizr.com/downloads/modernizr-latest.js',
 				'//maps.googleapis.com/maps/api/js?libraries=places&sensor=false',
 				'public/lib/ngAutocomplete/src/ngAutocomplete.js'
 			]

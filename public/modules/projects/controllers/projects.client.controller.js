@@ -76,8 +76,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			language: 'en',
 			uiColor: '#000000'
 		};
+
 		$scope.result1 = '';
 		$scope.options1 = null;
 		$scope.details1 = '';
+
 	}
 ]);
