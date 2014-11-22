@@ -7,74 +7,61 @@
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="firstname">First Name</label>
-                    <div class="controls width">
+                    <div class="controls">
                         <input type="text" data-ng-model="firstname" id="firstname" class="form-control"
-                               placeholder="First Name" required>
+                               placeholder="First Name" autocomplete="on" required>
                     </div>
                     <label class="control-label">Last Name</label>
                     <div class="controls">
                         <input type="text" data-ng-model="lastname" id="lastname" class="form-control"
-                               placeholder="Last Name" required>
-                    </div>
-                    <label class="control-label">Project Title</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="title" id="title" class="form-control"
-                               placeholder="Project Title"
-                               required>
+                               placeholder="Last Name" autocomplete="on" required>
                     </div>
                     <label class="control-label">E-mail Address</label>
                     <div class="controls">
                         <input type="email" data-ng-model="email" id="email" class="form-control" placeholder="E-mail"
-                               required>
-                    </div>
-                    <label class="control-label">Story</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="story" id="story" class="form-control" placeholder="Story"
-                               required>
+                               autocomplete="on" required>
                     </div>
                     <label class="control-label">Street</label>
                     <div class="controls">
                         <input type="text" data-ng-model="street" id="street" class="form-control" placeholder="Street"
-                               required>
+                               autocomplete="on" required>
                     </div>
                     <label class="control-label">City</label>
                     <div class="controls">
                         <input type="text" data-ng-model="city" id="city" class="form-control" placeholder="City"
-                               required>
+                               autocomplete="on" required>
                     </div>
                     <label class="control-label">State</label>
                     <div class="controls">
                         <input type="text" data-ng-model="state" id="state" class="form-control" placeholder="State"
-                               required>
+                               autocomplete="on" required>
                     </div>
                     <label class="control-label">Zip Code</label>
                     <div class="controls">
                         <input type="number" data-ng-model="zip" id="zip" class="form-control" placeholder="Zip Code"
-                               required>
+                               autocomplete="on" required>
                     </div>
                     <label class="control-label">Project Url</label>
                     <div class="controls">
                         <input type="url" data-ng-model="url" id="url" class="form-control" placeholder="Project Url"
-                               required>
+                               autocomplete="on" required>
                     </div>
-                    <label class="control-label">Latitude</label>
+                    <label class="control-label">Project Title</label>
                     <div class="controls">
-                        <input type="number" data-ng-model="lat" id="lat" class="form-control" placeholder="Latitude"
-                               required>
+                        <input type="text" data-ng-model="title" id="title" class="form-control"
+                               placeholder="Project Title" autocomplete="on" required>
                     </div>
-                    <label class="control-label">Longitude</label>
+                    <label class="control-label">Story</label>
                     <div class="controls">
-                        <input type="number" data-ng-model="long" id="long" class="form-control" placeholder="Longitude"
-                               required>
+                        <textarea ckeditor="editorOptions" data-ng-model="modelName"></textarea>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
             </fieldset>
         </form>
     </div>

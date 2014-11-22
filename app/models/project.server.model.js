@@ -50,7 +50,7 @@ var ProjectSchema = new Schema({
 		default: '',
 		required: '',
 		trim: true,
-		validate: [validateEmail,'Please inset a correct email']
+		validate: [validateEmail,'Please insert a correct email']
 	},
 	story: {
 		type: String,

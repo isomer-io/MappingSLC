@@ -4,6 +4,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
     function($scope, Authentication, $http, $templateCache) {
 
         $scope.markers = true;
+        $scope.filters = true;
 
         $http.get('/mapKeys')
             .success(function(data){
