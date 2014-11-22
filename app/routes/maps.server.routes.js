@@ -1,9 +1,6 @@
 /**
 * Created by poetsrock on 11/18/14.
 */
-/**
-* Created by poetsrock on 11/16/14.
-*/
 
 'use strict';
 

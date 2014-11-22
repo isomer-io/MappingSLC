@@ -11,3 +11,4 @@ app/tests/coverage/
 config/env/keys.js
 config/env/mapKeys.js
 public/modules/admins/To Dos.txt
+email_template.html

@@ -2,7 +2,8 @@
 
 
     <span data-ng-show="markers">
-        <div id='filters' class='ui-select' data-ng-show="'fa fa-chevron-right'">
+        <div id='filters' class='ui-select' data-ng-show="'fa fa-chevron-right'" ng-class="{true: 'ui-select-on', false:
+        'ui-select-off'}[filters]">
 
             <div><span class="fa fa-chevron-right pull-right" data-ng-click="markers=!markers"
                        data-ng-class="{ active: 'fa fa-chevron-right'}"></span></div>
