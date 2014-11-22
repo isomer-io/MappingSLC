@@ -39,7 +39,9 @@ module.exports = {
 				'//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/Leaflet.fullscreen.min.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
-				'//modernizr.com/downloads/modernizr-latest.js'
+				'//modernizr.com/downloads/modernizr-latest.js',
+				'//maps.googleapis.com/maps/api/js?libraries=places&sensor=false',
+				'public/lib/ngAutocomplete/src/ngAutocomplete.js'
 			]
 		},
 		css: [
