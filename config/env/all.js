@@ -35,10 +35,10 @@ module.exports = {
 				'public/lib/leaflet/dist/leaflet.js',
 				'public/lib/angular-mapbox/lib/mapbox.js',
 				'public/lib/angular-leaflet-directive/dist/angular-leaflet-directive.js',
-				'public/modules/_cdns/Leaflet.fullscreen.min.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
-				'public/modules/_cdns/modernizr.js'
+				'//maps.googleapis.com/maps/api/js?libraries=places&sensor=false',
+				'public/lib/ngAutocomplete/src/ngAutocomplete.js'
 			]
 		},
 		css: [

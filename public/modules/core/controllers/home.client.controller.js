@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication',
+angular.module('core').controller('HomeController', ['$scope', 'Authentication',// 'input', 'inputDate', 'checkbox',
 	function($scope, Authentication) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
@@ -13,5 +13,18 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.photo1 = 'as_thumb.png';
 		$scope.photo2 = 'wli_thumb.png';
 		$scope.photo3 = 'dw_thumb.png';
+
+		//form logic
+		//function AppController() {
+		//	var appCtrl = this;
+        //
+		//	appCtrl.user = {
+		//		name: '',
+		//		email: '',
+		//		age: '',
+		//		birth: ''
+		//	};
+		//}
+
 	}
 ]);

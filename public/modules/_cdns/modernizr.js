@@ -860,7 +860,7 @@ window.Modernizr = (function( window, document, undefined ) {
 
         // Only input placeholder is tested while textarea's placeholder is not.
         // Currently Safari 4 and Opera 11 have support only for the input placeholder
-        // Both tests are available in feature-detects/forms-placeholder.js
+        // Both tests are available in feature-detects/form-placeholder.js
         Modernizr['input'] = (function( props ) {
             for ( var i = 0, len = props.length; i < len; i++ ) {
                 attrs[ props[i] ] = !!(props[i] in inputElem);
@@ -880,7 +880,7 @@ window.Modernizr = (function( window, document, undefined ) {
         //   true/false like all the other tests; instead, it returns an object
         //   containing each input type with its corresponding true/false value
 
-        // Big thanks to @miketaylr for the html5 forms expertise. miketaylr.com/
+        // Big thanks to @miketaylr for the html5 form expertise. miketaylr.com/
         Modernizr['inputtypes'] = (function(props) {
 
             for ( var i = 0, bool, inputElemType, defaultView, len = props.length; i < len; i++ ) {
