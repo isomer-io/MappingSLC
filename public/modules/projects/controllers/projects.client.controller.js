@@ -1,10 +1,10 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', 'ngAutocomplete',
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects',
 	function($scope, $stateParams, $location, Authentication, Projects) {
 		$scope.authentication = Authentication;
-		console.log(ngAutocomplete);
+
 		// Create new Project
 		$scope.create = function() {
 			// Create new Project object
@@ -75,10 +75,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			language: 'en',
 			uiColor: '#000000'
 		};
-
-		$scope.result1 = '';
-		$scope.options1 = null;
-		$scope.details1 = '';
-
+		
 	}
 ]);

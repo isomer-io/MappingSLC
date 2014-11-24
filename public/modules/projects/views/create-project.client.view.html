@@ -9,33 +9,34 @@
                     <label class="control-label" for="firstname">First Name</label>
                     <div class="controls width">
                         <input type="text" data-ng-model="firstname" id="firstname" class="form-control"
-                               placeholder="First Name" required>
+                               placeholder="First Name" autocomplete="on" required>
                     </div>
                     <label class="control-label">Last Name</label>
                     <div class="controls width">
                         <input type="text" data-ng-model="lastname" id="lastname" class="form-control"
-                               placeholder="Last Name" required>
+                               placeholder="Last Name" autocomplete="on" required>
                     </div>
 
                     <label class="control-label">E-mail Address</label>
                     <div class="controls width">
                         <input type="email" data-ng-model="email" id="email" class="form-control" placeholder="E-mail"
-                               required>
+                               autocomplete="on" required>
                     </div>
 
                     <label class="control-label">Street</label>
                     <div class="controls width">
                         <input type="text" data-ng-model="street" id="street" class="form-control" placeholder="Street"
-                               required>
+                               autocomplete="on" required>
                     </div>
                     <label class="control-label">City</label>
                     <div class="controls width">
-                        <input type="text" data-ng-model ="city" type="text" id="city" class="form-control"/>
+                        <input type="text" data-ng-model="city" id="city" class="form-control" placeholder="City"
+                               autocomplete="on" required>
                     </div>
                     <label class="control-label">State</label>
                     <div class="controls width">
                         <input type="text" data-ng-model="state" id="state" class="form-control" placeholder="State"
-                               required>
+                               autocomplete="on" required>
                     </div>
                     <label class="control-label">Zip Code</label>
                     <div class="controls width">
@@ -45,13 +46,12 @@
                     <label class="control-label">Project Title</label>
                     <div class="controls width">
                         <input type="text" data-ng-model="title" id="title" class="form-control"
-                               placeholder="Project Title"
-                               required>
+                               placeholder="Project Title" autocomplete="on" required>
                     </div>
 
                     <label class="control-label">Story</label>
-                    <div class="controls">
-                        <textarea ckeditor="editorOptions" ng-model="modelName"></textarea>
+                    <div class="controls width">
+                        <textarea ckeditor="editorOptions" data-ng-model="modelName"></textarea>
                     </div>
                 </div>
 

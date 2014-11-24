@@ -1,0 +1,16 @@
+<section data-ng-controller="HomeController">
+
+    <form name="materialForm" novalidate="">
+        <paper-input label="Name" type="text" model-ref="appCtrl.user.name" required=""></paper-input>
+        <paper-input label="Email" type="email" model-ref="appCtrl.user.email"></paper-input>
+        <paper-input label="Number input" type="number" model-ref="appCtrl.user.age" required=""></paper-input>
+        <paper-input-date label="Date" type="text" model-ref="appCtrl.user.birth" date=""></paper-input-date>
+        <paper-checkbox idx="pc1" label="Notifications" model="appCtrl.user.checkMe">
+            <p>Notify me about how great I am every hour.</p>
+        </paper-checkbox>
+        <paper-checkbox idx="pc2" label="Check me" model="appCtrl.user.checkMe2">
+            <p>check me</p>
+        </paper-checkbox>
+    </form>
+
+</section>
