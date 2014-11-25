@@ -162,4 +162,9 @@ figure {
     .col-md-4 {
         width: 31%;
     }
+
+    .container-footer .col-md-4 {
+        width: 35%;
+        margin: 5px;
+    }
 }

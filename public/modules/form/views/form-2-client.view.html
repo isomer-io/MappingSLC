@@ -1,0 +1,58 @@
+<section data-ng-controller="formController">
+    <label>The Basics</label>
+
+    <div class="form-group">
+
+        <div class="text">
+            <input type="text" class="form-control" name="firstName" ng-model="formData.firstName" placeholder="First Name">
+        </div>
+
+        <div class="text">
+            <input type="text" class="form-control" name="lastName" ng-model="formData.lastName" placeholder="Last Name">
+        </div>
+
+        <!--<div class="radio">-->
+            <!--<label>Male</label>-->
+            <!--<input type="radio" class="form-control" name="gender" value="male" ng-model="formData.gender">-->
+        <!--</div>-->
+
+        <!--<div class="radio">-->
+            <!--<label>Female</label>-->
+            <!--<input type="radio" class="form-control" name="gender" value="female" ng-model="formData.gender">-->
+        <!--</div>-->
+
+        <div class="radio">
+            <label>
+                <input type="radio" ng-model="formData.gender" value="male">
+                Male
+            </label>
+
+            <label>
+                <input type="radio" ng-model="formData.gender" value="female">
+                Female
+            </label>
+        </div>
+
+        <div class="text">
+            <input type="password" class="form-control" name="password" ng-model="formData.password" placeholder="Password">
+        </div>
+
+        <div class="text">
+            <input type="password" class="form-control" name="confirmPassword" ng-model="formData.confirmPassword" placeholder="Confirm Password">
+        </div>
+
+    </div>
+
+       <div class="col-xs-4 col-xs-offset-2">
+            <a ui-sref="signupForm.page1" class="btn btn-block btn-info">
+                Back<span class="glyphicon glyphicon-circle-arrow-left"></span>
+            </a>
+        </div>
+        <div class="col-xs-4 col-xs-offset-2">
+            <a ui-sref="signupForm.page3" class="btn btn-block btn-info">
+                Next<span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </div>
+
+
+</section>

@@ -12,9 +12,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			url: '/',
 			templateUrl: 'modules/core/views/home.client.view.html'
 		}).
-		state('form', {
-			url: '/form',
-			templateUrl: 'modules/core/views/form.client.view.html'
+		state('subscribeForm', {
+			url: '/subscribe-form',
+			templateUrl: 'modules/core/views/subscribe-form.client.view.html'
 		});
 
 	}

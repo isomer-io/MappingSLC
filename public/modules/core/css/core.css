@@ -143,7 +143,7 @@
     overflow: visible !important; /* Has to be !important only if you're using an on/off switch */
     padding: 0 20px 20px 20px;
     position: relative;
-    width: 80%;
+    width: 100%;
     height: 45em;
     top: 75px;
     z-index: 2;
@@ -237,9 +237,9 @@
     overflow: visible !important; /* Has to be !important only if you're using an on/off switch */
     padding: 0 20px 20px 20px;
     position: relative;
-    width: 80%;
-    height: 9em;
-    top: 95px;
+    width: 100%;
+    height: 11em;
+    top: 80px;
     z-index: 2;
 }
 
@@ -337,6 +337,10 @@
 /* active state */
 .footer input:focus ~ .highlight {
     animation:inputHighlighter 0.3s ease;
+}
+
+.home-form {
+    padding: 10px;
 }
 
 
