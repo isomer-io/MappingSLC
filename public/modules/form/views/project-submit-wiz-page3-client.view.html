@@ -1,0 +1,22 @@
+<section data-ng-controller="formController">
+    <div class="text-center">
+        <h3>Company Info</h3>
+
+        <label class="control-label">Story</label>
+        <div class="controls">
+            <textarea ckeditor="editorOptions" ng-model="projectSubmission"></textarea>
+        </div>
+
+        <div class="col-md-4">
+            <a ui-sref="signupwiz.page2" class="btn btn-info">
+                <span class="glyphicon glyphicon-circle-arrow-left"></span>  Back
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <button data-ng-show="completed" type="submit" class="btn btn-info btn-danger">Submit</button>
+        </div>
+
+    </div>
+
+</section>
