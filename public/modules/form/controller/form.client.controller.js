@@ -1,32 +1,34 @@
 'use strict';
 
-angular.module('signupwiz-form').controller('formController', ['$scope', '$location',
+angular.module('project-submission').controller('formController', ['$scope', '$location',
     function($scope, $location) {
 
         // Create new User Account
-        $scope.createAccount = function() {
+        $scope.createProject = function() {
 
             // Create new User Account object
-            var signupForm = new SignupForms ({
+            var projectSubmit = new ProjectSubmits ({
                 email: this.email,
                 firstName: this.firstName,
                 lastName: this.lastName,
-                businessName: this.businessName,
-                street: this.street,
-                zip: this.zip
+                projectTitle: this.projectTitle,
+                projectStreet: this.projectStreet,
+                projectZip: this.projectZip,
+                projectSubmission: this.projectSubmission //projectSubmission is the field where the project itself will be stored
             });
 
             // Redirect to mothership after save
-            signupForm.$save(function() {
+            projectSubmit.$save(function() {
                 $location.path('api/user');
 
                 // Clear form fields
                 $scope.email = '';
                 $scope.firstName = '';
                 $scope.lastName = '';
-                $scope.businessName = '';
-                $scope.street = '';
-                $scope.zip = '';
+                $scope.projectTitle = '';
+                $scope.projectStreet = '';
+                $scope.projectZip = '';
+                $scope.projectSubmission = '';
 
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
@@ -35,25 +37,17 @@ angular.module('signupwiz-form').controller('formController', ['$scope', '$locat
         };
 
 
-        //show submit button when all required fields are true; otherwise, show which fields need to be filled out
+        //$scope.completed = true when all required fields are true, and form will display submit button; otherwise, show which fields need to be filled out
         $scope.completed = function() {
-            var signupField;
-            for (signupField in $scope.formData) {
-                if ($scope.formData === null) {
+            var formField;
+            for (formField in $scope.createProject) {
+                if ($scope.createProject === null) {
                     return $scope.completed = false;
                 } else {
                     $scope.completed = true;
                 }
             }
         };
-
-
-        // function to process the form
-
-        //$scope.creatAccount = function() {
-        //    $http.post('/api/user');
-        //    alert('Thanks! Now, let\'s get started!');
-        //};
 
     }
 

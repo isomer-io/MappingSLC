@@ -12,4 +12,12 @@ module.exports = function(app) {
         .get(function(req, res) {
                 res.jsonp(keys);
             });
+    //
+    //var projectObj = require('../models/project.server.model.js');
+    //
+    //// Maps Routes
+    //app.route('/projectObj')
+    //    .get(function(req, res) {
+    //        res.jsonp(projectObj);
+    //    });
 };

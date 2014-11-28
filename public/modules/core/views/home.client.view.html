@@ -5,9 +5,8 @@
     <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
     <span data-ng-show="toggle">
 
-        <div id="containerOn" class="core" ng-class="{false: 'hide-overlay-yes'}[count <= 0]">
-            <!--<span class="switch-on" data-ng-click="toggle=!toggle">X</span>-->
-            <span class="switch-on" data-ng-click="toggle=!toggle">X</span>
+        <div class="containerOn core" ng-class="{false: 'hide-overlay-yes'}[count === 0]">
+            <span class="switch-on" data-ng-click="toggle=!toggle; count = count + 1">X</span>
             <div class="home">
                 <div class="col-md-12">
 
@@ -54,10 +53,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-12">
-                        <div>
-                            <img class="logo" src="modules/core/img/brand/mapping.png">
-                        </div>
-                        <div>
+                        <div class="main-text">
                             <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
 
                             <p class="home-text">We invite people to engage with and evolve this site by submitting their own contributions.</p>
@@ -67,9 +63,8 @@
 
 
 
-
-                <div class="row-fluid"> <!--these are the columns divs-->
-
+                <!-- two column div begin here -->
+                <div class="row-fluid">
 
                     <!--Submit your Project Panel -->
 
@@ -134,10 +129,12 @@
 
 
         <div class="container-footer" ng-class="{false: 'hide-overlay-yes'}[count <= 0]">
+
             <div class="row">
 
                 <div class="col-md-4">
                     <div class="row">
+
 
                         <div class="col-md-4">
                             <a href="http://www.utahhumanities.org/" target="_blank">
@@ -155,51 +152,58 @@
                             </a>
                         </div>
 
+
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="footer">
 
 
-                        <!--<form>-->
 
-                            <!--<div class="group">-->
-                                <!--<input type="text" required>-->
-                                <!--<span class="highlight"></span>-->
-                                <!--<span class="bar"></span>-->
-                                <!--<label>Email</label>-->
-                            <!--</div>-->
+                <div class="footer">
 
-                            <!--<div class="group">-->
-                                <!--<input type="text" required>-->
-                                <!--<span class="highlight"></span>-->
-                                <!--<span class="bar"></span>-->
-                                <!--<label>First (optional)</label>-->
-                            <!--</div>-->
 
-                            <!--<div class="group">-->
-                                <!--<input type="text" required>-->
-                                <!--<span class="highlight"></span>-->
-                                <!--<span class="bar"></span>-->
-                                <!--<label>Last (optional)</label>-->
-                            <!--</div>-->
+                    <!--<form>-->
 
-                        <!--</form>-->
-                        <div class="home-form">
-                            <form action="http://enternewurihere" method="post" autocomplete="on">
+                    <!--<div class="group">-->
+                    <!--<input type="text" required>-->
+                    <!--<span class="highlight"></span>-->
+                    <!--<span class="bar"></span>-->
+                    <!--<label>Email</label>-->
+                    <!--</div>-->
 
-                            <input id="fieldEmail" name="cm-cikljy-cikljy" placeholder="Newsletter: Enter your E-mail" required="" type="email" />
+                    <!--<div class="group">-->
+                    <!--<input type="text" required>-->
+                    <!--<span class="highlight"></span>-->
+                    <!--<span class="bar"></span>-->
+                    <!--<label>First (optional)</label>-->
+                    <!--</div>-->
 
-                            <button class="btn btn-primary btn-lg btn-main grow" type="submit">Subscribe</button>
+                    <!--<div class="group">-->
+                    <!--<input type="text" required>-->
+                    <!--<span class="highlight"></span>-->
+                    <!--<span class="bar"></span>-->
+                    <!--<label>Last (optional)</label>-->
+                    <!--</div>-->
 
-                            </form>
+                    <!--</form>-->
+                    <form action="http://enternewurihere" method="post" autocomplete="on">
+
+                        <div class="clearfix col-xs-offset-7">
+
+                            <div class="form-inline">
+                                <input name="subscribe-email" class="input-footer" placeholder="Newsletter: Enter your E-mail" required="" type="email" />
+                                <button class="btn btn-main btn-footer grow" type="submit">Subscribe</button>
+                            </div>
+
                         </div>
-                    </div>
-                </div>
-            </div>
 
+
+                    </form>
+                </div>
+
+            </div>
         </div>
+
 
         <!-- END OF THE FOOTER -->
 
@@ -213,7 +217,6 @@
 
         <hr class="hr-set"/>
         <span><i class="menu-close-icon glyphicon glyphicon-align-justify"data-ng-click="showDetails = !showDetails"></i>
-            <img class="logo pull-right" src="modules/core/img/brand/mapping_150w.png">
         </span>
         <hr class="hr-set-two" />
 
