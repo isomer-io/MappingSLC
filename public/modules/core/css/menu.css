@@ -26,6 +26,8 @@
  ============================================================ */
 
 #side-menu {
+    background: url('../img/brand/mapping.png') no-repeat top right;
+    background-position: 90% 2%;
     height: 100%;
     position: fixed;
     top: 0;

@@ -6,8 +6,6 @@ var ApplicationConfiguration = (function() {
 	var applicationModuleName = 'mapping-salt-lake-city';
 	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'leaflet-directive', 'ngCkeditor'];
 
-	// need to add in these injections when time: 'ngLocale'
-
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
 		// Create angular module
