@@ -5,16 +5,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
         $scope.markers = true;
         $scope.filters = true;
-        //$scope.title = function(){
-        //    $http.get('/')
-        //        .success(function(data){
-        //            mapFunction(data.mapboxKey, data.mapboxAccessToken);
-        //        })
-        //        .error(function(data, status){
-        //            alert('Failed to load Mapbox API key. Status: ' + status);
-        //        });
-        //
-        //};
 
         $http.get('/mapKeys')
             .success(function(data){
@@ -23,6 +13,17 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             .error(function(data, status){
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
+
+        $scope.geocodeTest = function(street, zip) {
+            //$http.get('http://api.tiles.mapbox.com/v4/geocode/mapbox.places-v1/street + " " + zip.json?access_token=accessToken')
+            $http.get('http://api.tiles.mapbox.com/v4/geocode/mapbox.places-v1/1600+pennsylvania+ave+nw.json?access_token=pk.eyJ1IjoicG9ldHNyb2NrIiwiYSI6Imc1b245cjAifQ.vwb579x58Ma-CcnfQNamiw')
+                .success(function (data){
+                    console.log(data);
+                })
+                .error(function (data, status) {
+                    console.log(data, status);
+                });
+        };
 
         var mapFunction = function(key, accessToken) {
 
@@ -48,11 +49,12 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 //                return false;
 //            }
 //
-//// When the form is touched, re-filter markers
-//            filters.onchange = change;
-//// Initially filter the markers
-//            change();
-//
+            //// When the form is touched, re-filter markers
+            //            filters.onchange = change;
+            //// Initially filter the markers
+            //            change();
+            //
+
             L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
                 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
                 maxZoom: 18,
