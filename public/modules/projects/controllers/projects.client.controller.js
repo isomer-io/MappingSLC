@@ -29,8 +29,8 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				$scope.email = '';
 				$scope.story = '';
 				$scope.street= '';
-				$scope.zip='';
-				$scope.title='';
+				$scope.zip= '';
+				$scope.title= '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
