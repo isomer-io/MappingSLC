@@ -1,77 +1,85 @@
 <section data-ng-controller="ProjectsController">
-    <div class="page-header">
-        <h1>New Project</h1>
+    <div class="col-lg-4">
+    <a href="/#!/"><img ng-src="{{logo}}"></a>
     </div>
-    <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create()" novalidate>
-            <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="firstname">First Name</label>
-                    <div class="controls width">
-                        <input type="text" data-ng-model="firstname" id="firstname" class="form-control"
-                               placeholder="First Name" required>
+    <div class="container">
+        <div class="page-header">
+            <h1>Project Submission Form</h1>
+        </div>
+        <div class="col-md-12">
+            <div class="">
+                <img ng-src="{{mapImage}}">
+            </div>
+            <form class="form-horizontal" data-ng-submit="create()" novalidate>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label" for="firstname">First Name</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="firstname" id="firstname" class="form-control"
+                                   placeholder="First Name" required>
+                        </div>
+                        <label class="control-label">Last Name</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="lastname" id="lastname" class="form-control"
+                                   placeholder="Last Name" required>
+                        </div>
+
+                        <label class="control-label">E-mail Address</label>
+                        <div class="controls width">
+                            <input type="email" data-ng-model="email" id="email" class="form-control" placeholder="E-mail"
+                                   required>
+                        </div>
+
+
+                        <label class="control-label">Street</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="street" id="street" class="form-control" placeholder="Street"
+                                   required>
+                        </div>
+
+
+                        <label class="control-label">City</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model ="city" type="text" id="city" class="form-control"/>
+                        </div>
+
+                        <label class="control-label">State</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="state" id="state" class="form-control" placeholder="State"
+                                   required>
+                        </div>
+
+
+                        <label class="control-label">Zip Code</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="zip" id="zip" class="form-control" placeholder="Zip Code"
+                                   required>
+                        </div>
+
+
+                        <label class="control-label">Project Title</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="title" id="title" class="form-control"
+                                   placeholder="Project Title"
+                                   required>
+                        </div>
+
+                        <label class="control-label">Story</label>
+                        <div class="controls">
+                            <textarea ckeditor="editorOptions" ng-model="modelName"></textarea>
+                        </div>
+
                     </div>
-                    <label class="control-label">Last Name</label>
-                    <div class="controls width">
-                        <input type="text" data-ng-model="lastname" id="lastname" class="form-control"
-                               placeholder="Last Name" required>
+
+                    <button class="btn btn-primary btn-lg btn-main grow" data-ng-click="geocode(street, zip); mapImage()">Geocode Me, Baby!</button>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default">
                     </div>
-
-                    <label class="control-label">E-mail Address</label>
-                    <div class="controls width">
-                        <input type="email" data-ng-model="email" id="email" class="form-control" placeholder="E-mail"
-                               required>
+                    <div data-ng-show="error" class="text-danger">
+                        <strong data-ng-bind="error"></strong>
                     </div>
-
-
-                    <label class="control-label">Street</label>
-                    <div class="controls width">
-                        <input type="text" data-ng-model="street" id="street" class="form-control" placeholder="Street"
-                               required>
-                    </div>
-
-
-                    <label class="control-label">City</label>
-                    <div class="controls width">
-                        <input type="text" data-ng-model ="city" type="text" id="city" class="form-control"/>
-                    </div>
-
-                    <label class="control-label">State</label>
-                    <div class="controls width">
-                        <input type="text" data-ng-model="state" id="state" class="form-control" placeholder="State"
-                               required>
-                    </div>
-
-
-                    <label class="control-label">Zip Code</label>
-                    <div class="controls width">
-                        <input type="text" data-ng-model="zip" id="zip" class="form-control" placeholder="Zip Code"
-                               required>
-                    </div>
-
-
-                    <label class="control-label">Project Title</label>
-                    <div class="controls width">
-                        <input type="text" data-ng-model="title" id="title" class="form-control"
-                               placeholder="Project Title"
-                               required>
-                    </div>
-
-                    <label class="control-label">Story</label>
-                    <div class="controls">
-                        <textarea ckeditor="editorOptions" ng-model="modelName"></textarea>
-                    </div>
-
-                </div>
-
-                <button class="btn btn-primary btn-lg btn-main grow" data-ng-click="geocode(street, zip)">Geocode Me, Baby!</button>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-default">
-                </div>
-                <div data-ng-show="error" class="text-danger">
-                    <strong data-ng-bind="error"></strong>
-                </div>
-            </fieldset>
-        </form>
+                </fieldset>
+            </form>
+        </div>
     </div>
 </section>
