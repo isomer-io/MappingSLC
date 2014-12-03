@@ -6,8 +6,10 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	validator = require('validator'),
-	addressValidator = require('address-validator'),
-	Address = addressValidator.Address,
+	//addressValidator = require('address-validator'),
+		//commented out below line because i'm not sure we can validate '.Address' anymore,
+		// it has been changed to street, city, state, zip
+	//Address = addressValidator.Address,
 	_ = require('underscore');
 
 var validateEmail = function(email){
@@ -40,6 +42,26 @@ var ProjectSchema = new Schema({
 	created: {
 		type: Date,
 		default: Date.now
+	},
+	createdBy: {
+		type: String,
+		default: ''
+		//todo test function that auto-generates current user to make sure it works
+		//default: (function(currentUser){
+		//	this.Schema.user = currentUser;
+		//})
+	},
+	modified: {
+		type: Date,
+		default: Date.now
+	},
+	modifiedBy: {
+		type: String,
+		default: ''
+		//todo test function that auto-generates current user to make sure it works
+		//default: (function(currentUser){
+		//	this.Schema.user = currentUser;
+		//})
 	},
 	user: {
 		type: Schema.ObjectId,

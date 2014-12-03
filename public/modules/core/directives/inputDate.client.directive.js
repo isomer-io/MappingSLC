@@ -19,7 +19,7 @@ angular.module('core').directive('inputDate', ['$scope', 'element', 'attrs',
   return {
    compile: function(tElement,tAttrs){
     var groupEl = tElement[0].querySelector('.paper-input');
-    var input = tElement[0].querySelector('input')
+    var input = tElement[0].querySelector('input');
     // if(tAttrs.date){
     groupEl.setAttribute('ng-click','openDatePicker($event)');
     input.setAttribute('is-open','state.opened');
