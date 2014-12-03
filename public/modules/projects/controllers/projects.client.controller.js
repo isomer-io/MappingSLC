@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', 'Users', '$http',
-	function($scope, $stateParams, $location, Authentication, Projects, $http, Users) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects',
+	function($scope, $stateParams, $location, Authentication, Projects) {
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
 
@@ -12,7 +12,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			var project = new Projects ({
 				created: this.created,
 				createdBy: this.createdBy,
-				email: this.email,
 				street: this.street,
 				city: this.city,
 				state: this.state,
@@ -26,7 +25,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				$location.path('projects/' + response._id);
 
 				// Clear form fields
-				$scope.email = '';
 				$scope.street = '';
 				$scope.city = '';
 				$scope.state = '';
