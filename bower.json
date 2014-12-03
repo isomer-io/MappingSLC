@@ -21,6 +21,6 @@
     "angular-leaflet-directive": "~0.7.9",
     "ng-ckeditor": "~0.2.1",
     "jquery": "~1.9.1",
-    "ngAutocomplete": "~1.0.0"
+    "modernizr": "~2.8.3"
   }
 }

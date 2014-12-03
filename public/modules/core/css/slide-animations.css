@@ -157,9 +157,3 @@ figure {
         min-width: 150px;
     }
 }
-
-@media (min-width: 992px) {
-    .col-md-4 {
-        width: 31%;
-    }
-}
