@@ -27,17 +27,15 @@ var ProjectSchema = new Schema({
 		required: 'Please fill out first name',
 		trim: true
 	},
-	lastname: {
+	lastnname: {
 		type: String,
 		default: '',
 		required: 'Please fill out last name',
 		trim:true
 	},
-	title: {
+	status: {
 		type: String,
-		default: '',
-		required: 'Please fill out the name of your project',
-		trim:true
+		default: 'Pending'
 	},
 	created: {
 		type: Date,
@@ -74,12 +72,6 @@ var ProjectSchema = new Schema({
 		trim: true,
 		validate: [validateEmail,'Please insert a correct email']
 	},
-	story: {
-		type: String,
-		default: '',
-		required: '',
-		trim: true
-	},
 	street: {
 		type: String,
 		default: '',
@@ -87,48 +79,49 @@ var ProjectSchema = new Schema({
 		trim: true
 		// TODO: Add validation for backend will validate addresses on front end
 	},
-
 	city: {
 		type: String,
 		default: '',
 		required: '',
 		trim: true
 	},
-
 	state: {
 		type: String,
 		default: '',
 		required: '',
 		trim: true
-
 	},
-
 	zip: {
 		type: Number,
 		default: '',
 		required: '',
 		trim: true
 	},
-
+	story: {
+		type: String,
+		default: 'Enter and format your project here',
+		required: '',
+		trim: true
+	},
+	title: {
+		type: String,
+		default: '',
+		required: 'Please fill out the title of your submission',
+		trim:true
+	},
 	url: {
 		type: String,
 		default: '',
-		required: '',
 		trim: true
 	},
-
 	lat: {
-		type: String,
+		type: Number,
 		default: '',
-		required: '',
 		trim: true
 	},
-
-
 	long: {
-		type: String,
+		type: Number,
 		default: '',
-		required: '',
 		trim: true
 	}
 
