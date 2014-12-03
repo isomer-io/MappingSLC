@@ -1,3 +1,15 @@
-/**
- * Created by poetsrock on 11/15/14.
- */
+'use strict';
+
+angular.module('map').service('Map', ['$http',
+	function() {
+		// Map service logic
+		// ...
+
+		// Public API
+		return {
+			someMethod: function() {
+				return true;
+			}
+		};
+	}
+]);

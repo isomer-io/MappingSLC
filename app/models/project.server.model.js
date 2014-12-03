@@ -108,7 +108,7 @@ var ProjectSchema = new Schema({
 		default: '',
 		required: '',
 		trim: true
-	}
+	},
 
 });
 
