@@ -15,8 +15,7 @@
 			Posted on
 			<span data-ng-bind="project.created | date:'mediumDate'"></span>
 			by
-			<span data-ng-bind="project.firstname + ' ' + project.lastname"></span>
-
+			<span data-ng-bind="project.user.displayName"></span>
 		</em>
 	</small>
 </section>

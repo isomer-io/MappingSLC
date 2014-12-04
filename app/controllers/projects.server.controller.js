@@ -4,7 +4,7 @@
 * Module dependencies.
 */
 var mongoose = require('mongoose'),
-	//errorHandler = require('./errors.server.controller'),
+	errorHandler = require('./errors.server.controller'),
 	Project = mongoose.model('Project'),
 	_ = require('lodash');
 
@@ -17,11 +17,10 @@ exports.create = function(req, res) {
 
 	project.save(function(err) {
 		if (err) {
-			//todo define error handler
-			//return res.status(400).send({
-			//	message: errorHandler.getErrorMessage(err)
-			//});
-		//} else {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
 			res.jsonp(project);
 		}
 	});
@@ -44,11 +43,10 @@ exports.update = function(req, res) {
 
 	project.save(function(err) {
 		if (err) {
-			//todo define error handler
-			//return res.status(400).send({
-			//	message: errorHandler.getErrorMessage(err)
-			//});
-		//} else {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
 			res.jsonp(project);
 		}
 	});
@@ -62,11 +60,10 @@ exports.delete = function(req, res) {
 
 	project.remove(function(err) {
 		if (err) {
-			//todo define error handler
-			// return res.status(400).send({
-			//	message: errorHandler.getErrorMessage(err)
-			//});
-		//} else {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
 			res.jsonp(project);
 		}
 	});
@@ -78,11 +75,10 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) { 
 	Project.find().sort('-created').populate('user', 'displayName').exec(function(err, projects) {
 		if (err) {
-			//todo define error handler
-			//return res.status(400).send({
-			//	message: errorHandler.getErrorMessage(err)
-			//});
-		//} else {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
 			res.jsonp(projects);
 		}
 	});

@@ -1,3 +1,10 @@
+html {
+    background-image: url(http://api.tiles.mapbox.com/v4/examples.map-zr0njcqy/40.357,-111.539,13/500x300.png?access_token=pk.eyJ1IjoicG9ldHNyb2NrIiwiYSI6Imc1b245cjAifQ.vwb579x58Ma-CcnfQNamiw) no-repeat center center fixed;
+}
+.page-header{
+    margin-top: 150px;
+}
+
 .width {
     width: 50%;
 }
