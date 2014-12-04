@@ -1,19 +1,22 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects','$http',
-	function($scope, $stateParams, $location, Authentication, Projects,$http) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects',
+	function($scope, $stateParams, $location, Authentication, Projects) {
 		$scope.authentication = Authentication;
 
 		// Create new Project
 		$scope.create = function() {
 			// Create new Project object
+
+			console.log("Hello");
 			var project = new Projects ({
 				firstname: this.firstname,
-				lastname: this.lastname,
-				email: this.email,
-				story: this.story,
-				address: this.address
+				lastname: this.lastname
+				//,
+				//email: this.email,
+				//story: this.story,
+				//address: this.address
 			});
 
 			// Redirect after save
@@ -23,9 +26,9 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				// Clear form fields
 				$scope.firstname = '';
 				$scope.lastname = '';
-				$scope.email = '';
-				$scope.story = '';
-				$scope.address= '';
+				//$scope.email = '';
+				//$scope.story = '';
+				//$scope.address= '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
