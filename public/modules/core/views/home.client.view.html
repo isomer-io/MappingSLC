@@ -1,7 +1,7 @@
 <section ng-include="'/modules/map/views/map.client.view.html'" id="gmap"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="425" height="350"></section>
 
 <section data-ng-controller="HomeController">
-
+<div>
     <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
     <span data-ng-show="toggle">
 
@@ -177,6 +177,7 @@
         </div>
 
 
+
         <!-- END OF THE FOOTER -->
 
     </span>
@@ -185,7 +186,7 @@
 
     <!-- BEGINNING OF SIDEBAR MENU -->
 
-    <div id="side-menu" class="move-me core" data-ng-class="{ 'hidden': ! showDetails }">
+    <div class="side-menu move-me core" data-ng-class="{ 'hidden': ! showDetails, 'animate-menu': ! showDetails }">
 
         <hr class="hr-set"/>
         <span><i class="menu-close-icon glyphicon glyphicon-align-justify" data-ng-click="showDetails = !showDetails"></i>
@@ -211,7 +212,7 @@
                 <a href="#" > <i class="glyphicon glyphicon-map-marker"></i> Contact</a>
             </li>
         </ul>
-        <div class="intro-txt">
+        <div>
             <br />
             <hr />
             <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s
@@ -221,27 +222,9 @@
         </div>
 
 
-
-        <div class="col-md-4">
-            <div>
-                <form id="mod-finder-searchform" action="/component/finder/search" method="get" class="form-search">
-                    <div class="finder">
-                        <label for="mod-finder-searchword" class="finder" style="color:#ffffff">Search Mapping SLC</label>
-                        <br />
-                        <input type="text" name="q" id="mod-finder-searchword" class="search-query input-medium" size="25" value="" />
-
-                        <button class="btn btn-primary" type="submit" title="Go"><i class="fa fa-search fa-white"></i>
-                        </button>
-                        <br />
-                        <a style="color:white" href="/insert/new/search/page/here">Advanced Search</a>
-                        <input type="hidden" name="Itemid" value="101" />
-                    </div>
-                </form>
-            </div>
-        </div>
-
     </div>
-    <!-- SIDE MENU SECTION END-->
+
+    <!-- End OF SIDEBAR MENU -->
 
     <div class="container">
         <h1>
@@ -250,6 +233,7 @@
                 </i>
             </strong>
         </h1>
-    </div>
 
+    </div>
+</div>
 </section>

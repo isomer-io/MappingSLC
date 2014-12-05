@@ -1,11 +1,11 @@
-.core body,
-.core html {
+.core body, .core html {
     height: 100%;
     width: 100%; /* If you don't do this, gremlins will eat your nose. */
 }
 
 .core body {
-    min-height: 100%; height: 100%;
+    min-height: 100%;
+    height: 100%;
 }
 
 .core ul {
@@ -167,8 +167,12 @@ p:first-child::first-letter {
     margin: 20px 0 10px 0;
 }
 
-div.home .logo {
-    padding: 0 0 20px 50px;
+.logo {
+    background: url('../img/brand/mapping.png') no-repeat top right;
+    background-position: 15% 5%;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
@@ -182,8 +186,6 @@ div.home .logo {
 /*}*/
 
 div.home div.col-lg-12 {
-    background: url('../img/brand/mapping.png') no-repeat;
-    background-position: 0% 0%;
     padding-top: 85px;
     padding-bottom: 20px;
 }
