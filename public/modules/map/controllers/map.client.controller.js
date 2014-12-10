@@ -13,31 +13,18 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             .error(function (data, status) {
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
-
-        //$scope.geocodeTest = function(street, zip) {
-        //    //$http.get('http://api.tiles.mapbox.com/v4/geocode/mapbox.places-v1/street + " " + zip.json?access_token=accessToken')
-        //    $http.get('http://api.tiles.mapbox.com/v4/geocode/mapbox.places-v1/1600+pennsylvania+ave+nw.json?access_token=pk.eyJ1IjoicG9ldHNyb2NrIiwiYSI6Imc1b245cjAifQ.vwb579x58Ma-CcnfQNamiw')
-        //        .success(function (data){
+        //
+        //var geocoder = function() {
+        //
+        //    L.mapbox.geocoder('mapbox.places-v1');
+        //    geocoder.query('454+3rd+ave+salt+lake+city+ut+84103')
+        //        .success(function (data) {
         //            console.log(data);
         //        })
-        //        .error(function (data, status) {
-        //            console.log(data, status);
+        //        .error(function (err) {
+        //            console.log(err);
         //        });
         //};
-
-
-
-        var geocoder = function() {
-
-            L.mapbox.geocoder('mapbox.places-v1');
-            geocoder.query('454+3rd+ave+salt+lake+city+ut+84103')
-                .success(function (data) {
-                    console.log(data);
-                })
-                .error(function (err) {
-                    console.log(err);
-                });
-        };
 
 
         var mapFunction = function(key, accessToken) {
