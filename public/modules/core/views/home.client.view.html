@@ -1,7 +1,14 @@
 <section ng-include="'/modules/map/views/map.client.view.html'" id="gmap"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="425" height="350"></section>
 
 <section data-ng-controller="HomeController">
-<div>
+
+    <div>
+
+        <div class="main logo">
+            <img ng-src="{{logo}}">
+            <!--logo goes here -- from map.css-->
+        </div>
+
     <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
     <span data-ng-show="toggle">
 
@@ -65,7 +72,7 @@
 
                 <!-- two column div begin here -->
                 <div class="row-fluid">
-
+                    <div class="col-lg-12 row-group">
                     <!--Submit your Project Panel -->
 
                     <div class="col-md-5 pull-left">
@@ -73,7 +80,7 @@
                             <h2>Submit your project</h2>
                         </div>
                         <p class="home-text">Mapping Salt Lake City invites all interested visitors to add their voices to the mix. We are looking for all kinds of essays (written, audio, photo, video) on topics related to Salt Lake City.</p>
-                        <a href="/#!/projects/create" class="btn btn-primary btn-lg btn-main grow" role="button">Submit a
+                        <a href="/#!/projects/create" class="btn btn-primary btn-lg btn-main grow pull-right" role="button">Submit a
                             story</a>
                     </div>
 
@@ -120,6 +127,7 @@
                         </ul>
 
                     </div>  <!--End of Featured Projects Panel -->
+                </div>
                 </div>
             </div>
         </div>
@@ -212,6 +220,7 @@
                 <a href="#" > <i class="glyphicon glyphicon-map-marker"></i> Contact</a>
             </li>
         </ul>
+
         <div>
             <br />
             <hr />

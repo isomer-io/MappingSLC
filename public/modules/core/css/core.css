@@ -143,8 +143,6 @@ p:first-child::first-letter {
 }
 
 .containerOn{
-    /*background: url('../img/brand/mapping.png') no-repeat top right;*/
-    /*background-position: 15% 5%;*/
     background: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
     border: 3px solid #fff;
@@ -159,20 +157,19 @@ p:first-child::first-letter {
     z-index: 2;
 }
 
+div .main .logo img {
+    width: 300px;
+    height: 300px;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
 .home{
     text-align: justify;
   }
 
 .home .page-header{
     margin: 20px 0 10px 0;
-}
-
-.logo {
-    background: url('../img/brand/mapping.png') no-repeat top right;
-    background-position: 15% 5%;
-    width: 150px;
-    height: 100%;
-    z-index: 2;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
@@ -186,8 +183,22 @@ p:first-child::first-letter {
 /*}*/
 
 div.home div.col-lg-12 {
-    padding-top: 85px;
+    padding-top: 15px;
     padding-bottom: 20px;
+}
+
+div.col-lg-12.row-group {
+    margin-top: 35px;
+}
+
+div.col-lg-12.row-group p {
+    line-height: 175%;
+    font-size: 1.6rem;
+}
+
+div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
+    margin-right: 6%;
+    margin-top: -4%;
 }
 
 .home-text {
@@ -246,8 +257,9 @@ button > .grow {
     padding: 0 0 0 15px;
 }
 
-div.container-footer .row {
+.container-footer > div.row {
     padding: 0;
+    margin-top: 5px;
 }
 
 .container-footer {
@@ -396,12 +408,12 @@ div.container-footer .row {
     }
 
     .container-footer .col-md-4 {
-        width: 25%;
+        width: 29%;
         margin: 5px;
     }
 
     img .container-footer .col-md-4 {
-        width: 305%;
+        width: 35%;
         margin: 5px;
     }
 }

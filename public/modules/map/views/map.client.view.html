@@ -1,6 +1,5 @@
 <section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
 
-
     <span data-ng-show="markers">
         <div id='filters' class='ui-select' data-ng-show="'fa fa-chevron-right'" ng-class="{true: 'ui-select-on', false:
         'ui-select-off'}[filters]">
@@ -16,7 +15,6 @@
             <div>
                 <input type='checkbox' checked=checked class='filter'name='filter' id='Multimedia' value='Multimedia'/><label for='Multimedia'>Multimedia</label>
             </div>
-            <button class="btn btn-primary btn-lg btn-main grow" ng-click="geocoder()">Geocode!</button>
         </div>
     </span>
 
@@ -25,10 +23,9 @@
             <span class="fa fa-chevron-left" data-ng-click="markers=!markers"></span>
         </div>
     </span>
-                <!--<i class="fa fa-chevron-right"></i>-->
 
-    </div>
     <!--to call MapBox map-->
-    <div id='map' class='map'></div>
+    <!--turned off to save map views-->
+    <!--<div id='map' class='map'></div>-->
 
 </section>

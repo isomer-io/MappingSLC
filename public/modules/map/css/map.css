@@ -14,15 +14,6 @@
     top: 75px;
 }
 
-/*h2 {*/
-    /*color: wheat;*/
-    /*font-weight: bold;*/
-/*}*/
-
-/*p {*/
-   /*color: papayawhip;*/
-/*}*/
-
 .ui-select {
     background: rgba(0, 0, 0, 0.8);
     position:absolute;
@@ -30,8 +21,8 @@
     right:0;
     z-index:100;
     padding:10px;
-    border-radius:3px;
-    color: #f5f5f5;
+    border-radius: 10px 0 0 10px;
+    color: #f5deb3;
 }
 
 .ui-select-off {

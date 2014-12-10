@@ -5,10 +5,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 	function($scope, $stateParams, $location, Authentication, Projects, $http) {
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
-		//var width = '100%';
-		//var height = 'auto';
-		var width = '1600';
-		var height = '900';
+
 		$scope.street = '547 South 300 East';
 		$scope.city = 'Salt Lake City';
 		$scope.state = 'UT';
@@ -46,17 +43,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 							//console.log('all: ' + data.Response.View.Result.Location.DisplayPosition.Latitude);
 							//data = $scope.geoData;
 							//console.log('response: ' + $scope.geoData);
-
-							////create static map from lat and long
-							////todo -- turn into a directive
-							//$scope.mapImage =
-							//	'http://api.tiles.mapbox.com/v4/{' +
-							//	data.mapboxKey + '/' +
-							//	project.geocode.long + ',' +
-							//	project.geocode.lat +
-							//	',10/' + //set the map zoom: default '10'
-							//	width + 'x' + height + '.png?access_token=' +
-							//	data.mapboxAccessToken;
 
 
 							//Redirect after save

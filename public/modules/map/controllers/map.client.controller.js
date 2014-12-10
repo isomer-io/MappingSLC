@@ -6,26 +6,14 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.markers = true;
         $scope.filters = true;
 
-        $http.get('/mapKeys')
+        $http.get('/keys')
             .success(function (data) {
-                mapFunction(data.mapboxKey, data.mapboxAccessToken);
+
+                  mapFunction(data.mapboxKey, data.mapboxAccessToken);
             })
             .error(function (data, status) {
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
-        //
-        //var geocoder = function() {
-        //
-        //    L.mapbox.geocoder('mapbox.places-v1');
-        //    geocoder.query('454+3rd+ave+salt+lake+city+ut+84103')
-        //        .success(function (data) {
-        //            console.log(data);
-        //        })
-        //        .error(function (err) {
-        //            console.log(err);
-        //        });
-        //};
-
 
         var mapFunction = function(key, accessToken) {
 

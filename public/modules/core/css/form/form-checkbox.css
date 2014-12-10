@@ -1,21 +1,21 @@
 /* basic css */
-.paper-checkbox  {
+.filter-checkbox  {
     position: relative;
 }
-.paper-checkbox > input[type=checkbox] {
+.filter-checkbox > input[type=checkbox] {
     display: none;
 }
-.paper-checkbox > label,
-.paper-checkbox p {
+.filter-checkbox > label,
+.filter-checkbox p {
     padding-left: 50px;
 }
 
 /* checkbox css */
 
-.paper-checkbox > label {
+.filter-checkbox > label {
     cursor: pointer;
 }
-.paper-checkbox label > span {
+.filter-checkbox label > span {
     display: block;
     position: absolute;
     left: 0;
@@ -23,7 +23,7 @@
     -moz-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
-.paper-checkbox label > .circle{
+.filter-checkbox label > .circle{
     background-color: transparent;
     left: -30px;
     top: -30px;
@@ -35,7 +35,7 @@
     -moz-animation: growCircle 0.3s ease;
     animation: growCircle 0.3s ease;
 }
-.paper-checkbox label > .box {
+.filter-checkbox label > .box {
     border: 2px solid #000;
     height: 20px;
     width: 20px;
@@ -44,7 +44,7 @@
     -moz-transition-delay: 0.2s;
     transition-delay: 0.2s;
 }
-.paper-checkbox label > .check {
+.filter-checkbox label > .check {
     top: -7px;
     left: 6px;
     width: 12px;
@@ -66,13 +66,13 @@
 /* when checkbox is checked */
 
 
-.paper-checkbox input[type=checkbox]:checked ~ label > .box {
+.filter-checkbox input[type=checkbox]:checked ~ label > .box {
     opacity: 0;
     -webkit-transform: scale(0) rotate(-180deg);
     -moz-transform: scale(0) rotate(-180deg);
     transform: scale(0) rotate(-180deg);
 }
-.paper-checkbox input[type=checkbox]:checked ~ label > .check {
+.filter-checkbox input[type=checkbox]:checked ~ label > .check {
     opacity: 1;
     -webkit-transform: scale(1) rotate(45deg);
     -moz-transform: scale(1) rotate(45deg);
