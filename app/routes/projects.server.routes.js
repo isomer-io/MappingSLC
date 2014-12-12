@@ -36,14 +36,29 @@ module.exports = function(app) {
 
 // Maps Routes
 
-    /*
-    var keys = require('../../config/env/mapKeys.js');
 
+    var mapKeys = require('../../config/env/mapKeys.js');
     app.route('/mapKeys')
         .get(function(req, res) {
-            res.jsonp(keys);
+            res.jsonp(mapKeys);
         });
-    */
+
+
+    var keys = require('../../config/env/keys.js');
+    app.route('/keys')
+          .get(function(req, res) {
+              res.jsonp(keys);
+          });
+
+    //var projectData = require('../models/project.server.model.js');
+    //app.route('/projectData')
+    //      .get(function(req, res) {
+    //          res.jsonp(projectData);
+    //          console.log('project D = ' + projectData);
+    //      });
+    //// Setting up the users api
+    //app.route('/projectData')
+    //      .put(project.geocode);
 
 
     //var projectObj = require('../models/project.server.model.js');
