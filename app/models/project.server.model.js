@@ -111,15 +111,17 @@ var ProjectSchema = new Schema({
 		default: '',
 		trim: true
 	},
-	lat: {
-		type: Number,
-		default: '',
-		trim: true
-	},
-	long: {
-		type: Number,
-		default: '',
-		trim: true
+	geocode: {
+		lat: {
+			type: Number,
+			default: '',
+			trim: true
+		},
+		long: {
+			type: Number,
+			default: '',
+			trim: true
+		}
 	}
 
 });

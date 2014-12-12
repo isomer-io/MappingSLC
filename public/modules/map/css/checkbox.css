@@ -1,41 +1,46 @@
 /* basic css */
-.filter-checkbox  {
+div#check-awesome.form-group div input#interviews.filter [type=checkbox] {
+    display: none !important;
+}
+
+
+div#check-awesome.form-group div label {
+    padding-left: 50px !important;
+    font-weight: normal !important;
+    font-size: 2rem;
+}
+
+#check-awesome {
     position: relative;
-}
-.filter-checkbox > input[type=checkbox] {
-    display: none;
-}
-.filter-checkbox > label,
-.filter-checkbox p {
-    padding-left: 50px;
 }
 
 /* checkbox css */
-
-.filter-checkbox > label {
+div#check-awesome.form-group div label {
     cursor: pointer;
 }
-.filter-checkbox label > span {
-    display: block;
-    position: absolute;
-    left: 0;
+
+div#check-awesome.form-group div label span {
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
     -webkit-transition-duration: 0.3s;
     -moz-transition-duration: 0.3s;
     transition-duration: 0.3s;
 }
-.filter-checkbox label > .circle{
-    background-color: transparent;
-    left: -30px;
-    top: -30px;
-    height: 80px;
-    width: 80px;
-    /* z-index: -1; */
-    border-radius: 50%;
-    -webkit-animation: growCircle 0.3s ease;
-    -moz-animation: growCircle 0.3s ease;
-    animation: growCircle 0.3s ease;
+
+div#check-awesome.form-group div label .circle {
+    background: #FFF !important;
+    left: -30px !important;
+    top: -30px !important;
+    height: 80px !important;
+    width: 80px !important;
+    z-index: -1 !important;
+    border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
 }
-.filter-checkbox label > .box {
+
+div#check-awesome.form-group div label .box {
     border: 2px solid #000;
     height: 20px;
     width: 20px;
@@ -44,7 +49,8 @@
     -moz-transition-delay: 0.2s;
     transition-delay: 0.2s;
 }
-.filter-checkbox label > .check {
+
+div#check-awesome.form-group div label .check {
     top: -7px;
     left: 6px;
     width: 12px;
@@ -61,56 +67,57 @@
     -moz-transition-delay: 0.3s;
     transition-delay: 0.3s;
 }
+
 /* handling click events */
 
 /* when checkbox is checked */
+div#check-awesome.form-group div label .circle {
+    -webkit-animation: growCircle 0.3s ease;
+    -moz-animation: growCircle 0.3s ease;
+    animation: growCircle 0.3s ease;
+}
 
-
-.filter-checkbox input[type=checkbox]:checked ~ label > .box {
+div#check-awesome.form-group div input[type=checkbox]:checked ~ label .box {
     opacity: 0;
     -webkit-transform: scale(0) rotate(-180deg);
     -moz-transform: scale(0) rotate(-180deg);
     transform: scale(0) rotate(-180deg);
 }
-.filter-checkbox input[type=checkbox]:checked ~ label > .check {
+
+div#check-awesome.form-group div input[type=checkbox]:checked ~ label .check {
     opacity: 1;
     -webkit-transform: scale(1) rotate(45deg);
     -moz-transform: scale(1) rotate(45deg);
     transform: scale(1) rotate(45deg);
 }
+
 /* bubble animation */
 
 @-webkit-keyframes growCircle {
-    0%,
-    100% {
+    0%, 100% {
         -webkit-transform: scale(0);
-        transform: scale(0);
     }
     70% {
-        opacity: 0.5;
-        background: #ddd;
+        background: #DDD;
         -webkit-transform: scale(1.25);
-        transform: scale(1.25);
     }
 }
+
 @-moz-keyframes growCircle {
-    0%,
-    100% {
+    0%, 100% {
         -moz-transform: scale(0);
     }
     70% {
-        opacity: 0.5;
         background: #DDD;
         -moz-transform: scale(1.25);
     }
 }
+
 @keyframes growCircle {
-    0%,
-    100% {
+    0%, 100% {
         transform: scale(0);
     }
     70% {
-        opacity: 0.5;
         background: #DDD;
         transform: scale(1.25);
     }

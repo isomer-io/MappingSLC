@@ -1,34 +1,69 @@
 <section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
-
+    <div id="logo">
+        <!--logo goes here -- from map.css-->
+    </div>
 
     <span data-ng-show="markers">
-        <div id='filters' class='ui-select' data-ng-show="'fa fa-chevron-right'" ng-class="{true: 'ui-select-on', false:
-        'ui-select-off'}[filters]">
+        <div id="filters" class="ui-select" data-ng-show="fa fa-chevron-right" ng-class="{true: "ui-select-on", false:
+        "ui-select-off"}[filters]">
 
-            <div><span class="fa fa-chevron-right pull-right" data-ng-click="markers=!markers"
-                       data-ng-class="{ active: 'fa fa-chevron-right'}"></span></div>
-            <div>
-                <input type='checkbox' checked=checked class='filter' name='filter' id='Interviews' value='Interviews'/><label for='Interviews'>Interviews</label>
+            <!--beginning of input fields-->
+            <div id="check-awesome" class="form-group">
+
+                <div>
+                    <input type="checkbox" checked=checked class="filter" name="filter" id="interviews" value="interviews">
+                    <label for="interviews">
+                        <span class="circle"></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Interviews
+                    </label>
+                </div>
+
             </div>
-            <div>
-                <input type='checkbox' checked=checked class='filter'name='filter' id='Essay' value='Essay'/><label for='Essay'>Essay</label>
+
+
+            <div id="check-awesome" class="form-group">
+
+                <div>
+                    <input type="checkbox" checked=checked class="filter" name="filter" id="essays" value="essays">
+                    <label for="essays">
+                        <span class="circle"></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Essays
+                    </label>
+                </div>
+
             </div>
-            <div>
-                <input type='checkbox' checked=checked class='filter'name='filter' id='Multimedia' value='Multimedia'/><label for='Multimedia'>Multimedia</label>
+
+
+            <div id="check-awesome" class="form-group">
+
+                <div>
+                    <input type="checkbox" id="multimedia">
+                    <label for="multimedia">
+                        <span class="circle"></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Multimedia
+                    </label>
+                </div>
+
             </div>
-            <button class="btn btn-primary btn-lg btn-main grow" ng-click="geocoder()">Geocode!</button>
+            <!-- end of form input fields-->
+
         </div>
     </span>
 
     <span data-ng-hide="markers">
-        <div id='filters' class='ui-select'>
+        <div id="filters" class="ui-select">
             <span class="fa fa-chevron-left" data-ng-click="markers=!markers"></span>
         </div>
     </span>
-                <!--<i class="fa fa-chevron-right"></i>-->
 
-    </div>
     <!--to call MapBox map-->
-    <div id='map' class='map'></div>
+    <!--turned off to save map views-->
+    <div id="map" class="map"></div>
 
 </section>

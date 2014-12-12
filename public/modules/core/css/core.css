@@ -1,11 +1,11 @@
-.core body,
-.core html {
+.core body, .core html {
     height: 100%;
     width: 100%; /* If you don't do this, gremlins will eat your nose. */
 }
 
 .core body {
-    min-height: 100%; height: 100%;
+    min-height: 100%;
+    height: 100%;
 }
 
 .core ul {
@@ -17,6 +17,7 @@
     color: lightyellow;
     text-shadow: #023a31;
 }
+
 
 p:first-child {
     margin-bottom: 15px;
@@ -143,8 +144,6 @@ p:first-child::first-letter {
 }
 
 .containerOn{
-    /*background: url('../img/brand/mapping.png') no-repeat top right;*/
-    /*background-position: 15% 5%;*/
     background: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
     border: 3px solid #fff;
@@ -167,10 +166,6 @@ p:first-child::first-letter {
     margin: 20px 0 10px 0;
 }
 
-div.home .logo {
-    padding: 0 0 20px 50px;
-}
-
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
     background: rgba(0, 0, 0, 0);
     color: #f5f5f5;
@@ -182,10 +177,22 @@ div.home .logo {
 /*}*/
 
 div.home div.col-lg-12 {
-    background: url('../img/brand/mapping.png') no-repeat;
-    background-position: 0% 0%;
-    padding-top: 85px;
+    padding-top: 15px;
     padding-bottom: 20px;
+}
+
+div.col-lg-12.row-group {
+    margin-top: 35px;
+}
+
+div.col-lg-12.row-group p {
+    line-height: 175%;
+    font-size: 1.6rem;
+}
+
+div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
+    margin-right: 6%;
+    margin-top: -4%;
 }
 
 .home-text {
@@ -244,8 +251,9 @@ button > .grow {
     padding: 0 0 0 15px;
 }
 
-div.container-footer .row {
+.container-footer > div.row {
     padding: 0;
+    margin-top: 5px;
 }
 
 .container-footer {
@@ -394,12 +402,12 @@ div.container-footer .row {
     }
 
     .container-footer .col-md-4 {
-        width: 25%;
+        width: 29%;
         margin: 5px;
     }
 
     img .container-footer .col-md-4 {
-        width: 305%;
+        width: 35%;
         margin: 5px;
     }
 }
