@@ -18,6 +18,7 @@
     text-shadow: #023a31;
 }
 
+
 p:first-child {
     margin-bottom: 15px;
 }
@@ -157,13 +158,6 @@ p:first-child::first-letter {
     z-index: 2;
 }
 
-div .main .logo img {
-    width: 300px;
-    height: 300px;
-    top: 0;
-    left: 0;
-    z-index: 999;
-}
 .home{
     text-align: justify;
   }

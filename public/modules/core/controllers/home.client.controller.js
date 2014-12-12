@@ -8,7 +8,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.toggle = true;
 		$scope.count = {};
 		$scope.featuredProjects = {};
-		$scope.logo = '../img/brand/mapping.png';
 
 		//placeholder for featured projects images
 		//todo once admin module is built, create a function that makes photo1 and 2 dynamic rather than hard-coded

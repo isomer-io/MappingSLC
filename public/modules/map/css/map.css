@@ -37,7 +37,18 @@ span div input:nth-child(2) {
     margin-top: 20px;
 }
 
-.fa-chevron-left, .fa-chevron-right, input[type="checkbox"] {
+#logo {
+    content: url(../../core/img/brand/mapping.png);
+    width: 150px;
+    height: 47px;
+    position: absolute;
+    display: block;
+    z-index: 999;
+    left: 2.75%;
+    top: 0.75%;
+}
+
+.fa-chevron-left, .fa-chevron-right, {
     cursor: pointer;
 }
 
@@ -46,10 +57,6 @@ span div input:nth-child(2) {
     -ms-transform: scale(1.2);
     transform: scale(1.2);
     background: rgba(0, 0, 0, 0.8);
-}
-
-label {
-    font-weight: normal;
 }
 
 /*
