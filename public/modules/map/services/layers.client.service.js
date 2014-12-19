@@ -1,26 +1,8 @@
 'use strict';
 
 //Menu service used for managing  menus
-angular.module('map').factory('mapboxMap', ['$http',
-      function($http) {
-
-
-            $http.get('/keys')
-                  .success(function (data) {
-
-                        mapFunction(data.mapboxKey, data.mapboxAccessToken);
-                  })
-                  .error(function (data, status) {
-                        alert('Failed to load Mapbox API key. Status: ' + status);
-                  });
-
-            var mapFunction = function (key, accessToken) {
-
-                  //creates a Mapbox Map
-                  L.mapbox.accessToken = accessToken;
-                  var map = L.mapbox.map('map', key)
-                        .setView([40.773, -111.902], 12);
-
+angular.module('map').factory('mapboxLayers', [,
+      function() {
 
                   L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
                         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -43,8 +25,8 @@ angular.module('map').factory('mapboxMap', ['$http',
                               ]
                         },
                         properties: {
-                              title: 'Peregrine Espresso',
-                              description: '1718 14th St NW, Washington, DC',
+                              title: 'title',
+                              description: 'description',
                               // one can customize markers by adding simplestyle properties
                               // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
                               'marker-size': 'large',
@@ -54,7 +36,6 @@ angular.module('map').factory('mapboxMap', ['$http',
                   })
                         .addTo(map);
 
-            };
 
             //todo: Add ability to toggle markers based on categories, where categories is a variable
       }

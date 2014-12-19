@@ -1,11 +1,12 @@
 <section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
-    <div id="logo">
+
+    <div id="logo" >
         <!--logo goes here -- from map.css-->
     </div>
 
     <span data-ng-show="markers">
-        <div id="filters" class="ui-select" data-ng-show="fa fa-chevron-right" ng-class="{true: "ui-select-on", false:
-        "ui-select-off"}[filters]">
+        <div id="filters" class="ui-select" data-ng-show="'fa fa-chevron-right'" ng-class="{true: 'ui-select-on', false:
+        'ui-select-off'}[filters]">
 
             <!--beginning of input fields-->
             <div id="check-awesome" class="form-group">

@@ -5,13 +5,28 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 	function($scope, $stateParams, $location, Authentication, Projects, $http) {
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
+		var catId = 7999;
 
-		$scope.street = '547 South 300 East';
-		$scope.city = 'Salt Lake City';
-		$scope.state = 'UT';
-		$scope.zip = 84111;
-		$scope.title = 'Title This, Yo!';
-		$scope.story = 'You ready?';
+		$http.get('/keys')
+		.success(function(data) {
+
+				$http.get('http://geocoder.cit.api.here.com/6.2/search.json' +
+				'?state=Utah' +
+				'&city=Salt+Lake+City' +
+				'?searchtext=categoryids=7999' +
+				'&app_id=' + data.hereKey +
+				'&app_code=' + data.hereSecret)
+			.success(function (landmarkData) {
+					$scope.landmarks = landmarkData;
+					console.log('landmarkData: ' + landmarkData);
+			})
+			.error(function (status) {
+				$scope.error = alert('error ' + status);
+			})
+		})
+		.error(function (status) {
+				$scope.error = alert('error ' + status);
+		});
 
 		// Create new Project
 		$scope.create = function() {
@@ -69,7 +84,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 						.error(function (data, status) {
 							console.log(data, status);
 						});
-					})
+				})
 				.error(function(data, status){
 					alert('Failed to load Here API key. Status: ' + status);
 				});
