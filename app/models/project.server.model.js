@@ -111,19 +111,25 @@ var ProjectSchema = new Schema({
 		default: '',
 		trim: true
 	},
-	geocode: {
-		lat: {
-			type: Number,
-			default: '',
-			trim: true
-		},
-		long: {
-			type: Number,
-			default: '',
-			trim: true
-		}
-	}
+	lat: {
+		type: Number,
+		default: '',
+		trim: true
+	},
+	lng: {
+		type: Number,
+		default: '',
+		trim: true
+	},
 
+	//stores a static map image, created on new project creation
+	//calls from mapbox web services static map image:
+	//https://www.mapbox.com/developers/api/static/#images
+	mapImage: {
+		type: String,
+		default: '',
+		trim: true
+	}
 });
 
 mongoose.model('Project', ProjectSchema);

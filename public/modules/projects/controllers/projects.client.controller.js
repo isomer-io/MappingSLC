@@ -5,28 +5,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 	function($scope, $stateParams, $location, Authentication, Projects, $http) {
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
-		var catId = 7999;
+		var width = '800';
+		var height = '350';
 
-		$http.get('/keys')
-		.success(function(data) {
-
-				$http.get('http://geocoder.cit.api.here.com/6.2/search.json' +
-				'?state=Utah' +
-				'&city=Salt+Lake+City' +
-				'?searchtext=categoryids=7999' +
-				'&app_id=' + data.hereKey +
-				'&app_code=' + data.hereSecret)
-			.success(function (landmarkData) {
-					$scope.landmarks = landmarkData;
-					console.log('landmarkData: ' + landmarkData);
-			})
-			.error(function (status) {
-				$scope.error = alert('error ' + status);
-			})
-		})
-		.error(function (status) {
-				$scope.error = alert('error ' + status);
-		});
+		$scope.mapImage = '';
 
 		// Create new Project
 		$scope.create = function() {
@@ -41,11 +23,18 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				zip: this.zip,
 				title: this.title,
 				story: this.story
+				//lat: this.lat,
+				//lng: this.lng
+
 			});
 
+			//back-end request to get mapbox and here api access
 			$http.get('/keys')
 				.success(function(data){
+					var mapboxKey = data.mapboxKey;
+					var mapboxSecret = data.mapboxSecret;
 
+					//from submitted project's address fields, return lng. and lat. coordinates
 					$http.get('http://geocoder.cit.api.here.com/6.2/geocode.json' +
 					'?state=' + project.state +
 					'&city=' + project.city +
@@ -54,11 +43,23 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 					'&gen=8' +
 					'&app_id=' + data.hereKey +
 					'&app_code=' + data.hereSecret)
-						.success(function (data) {
-							//console.log('all: ' + data.Response.View.Result.Location.DisplayPosition.Latitude);
-							//data = $scope.geoData;
-							//console.log('response: ' + $scope.geoData);
+						.success(function (geoData) {
+							project.lat = geoData.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
+							project.lng = geoData.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+							project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
+							//save lat & lng to backend
+					console.log('http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret);
+					$scope.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
 
+					//create static map image from mapbox api to use as background in layout on project view template
+					//$scope.mapImage =
+					//	'http://api.tiles.mapbox.com/v4/' +
+					//	mapboxKey + '/' +
+					//	project.lng + ',' +
+					//	project.lat +
+					//	',13/' + //set the map zoom: default '13'
+					//	width + 'x' + height + '.png?access_token=' +
+					//	mapboxSecret;
 
 							//Redirect after save
 							project.$save(function(response) {
@@ -74,11 +75,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 							}, function(errorResponse) {
 								$scope.error = errorResponse.data.message;
 							});
-							console.log(data);
-							//var tempData = data;
-							//var geoData = tempData | json;
-							console.log('response: ' + data.Response.View[0]);
-							//project.geocode.long = data['Response']['View']['Result']['Location'];  .Result[2].Location.DisplayPosition.Latitude
 
 						})
 						.error(function (data, status) {
