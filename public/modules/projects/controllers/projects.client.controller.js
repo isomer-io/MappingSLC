@@ -7,7 +7,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
 		var width = '800';
 		var height = '350';
-
+		var markerUrl = 'url-http%3A%2F%2Fwww.mappingslc.org%2Fimages%2Fsite_img%2Flogo_marker_150px.png';
 		$scope.mapImage = '';
 
 		// Create new Project
@@ -23,9 +23,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				zip: this.zip,
 				title: this.title,
 				story: this.story
-				//lat: this.lat,
-				//lng: this.lng
-
 			});
 
 			//back-end request to get mapbox and here api access
@@ -44,24 +41,15 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 					'&app_id=' + data.hereKey +
 					'&app_code=' + data.hereSecret)
 						.success(function (geoData) {
+							//save lat & lng to backend
 							project.lat = geoData.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
 							project.lng = geoData.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
-							project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
-							//save lat & lng to backend
-					console.log('http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret);
-					$scope.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
 
-					//create static map image from mapbox api to use as background in layout on project view template
-					//$scope.mapImage =
-					//	'http://api.tiles.mapbox.com/v4/' +
-					//	mapboxKey + '/' +
-					//	project.lng + ',' +
-					//	project.lat +
-					//	',13/' + //set the map zoom: default '13'
-					//	width + 'x' + height + '.png?access_token=' +
-					//	mapboxSecret;
+							//save to backend static map image that is centered on the lat & lng for an individual project sub;
+							//map and custom icon will be displayed on project-view page
+							project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
 
-							//Redirect after save
+								//Redirect after save
 							project.$save(function(response) {
 								$location.path('projects/' + response._id);
 
