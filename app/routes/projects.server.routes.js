@@ -36,14 +36,6 @@ module.exports = function(app) {
 
 // Maps Routes
 
-
-    var mapKeys = require('../../config/env/mapKeys.js');
-    app.route('/mapKeys')
-        .get(function(req, res) {
-            res.jsonp(mapKeys);
-        });
-
-
     var keys = require('../../config/env/keys.js');
     app.route('/keys')
           .get(function(req, res) {
