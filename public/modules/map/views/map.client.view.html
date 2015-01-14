@@ -1,65 +1,45 @@
 <section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
 
-    <div id="logo" class="img-responsive">
-        <!--logo goes here -- from map.css-->
-    </div>
-
-    <span data-ng-show="markers">
+    <span data-ng-show="categoryFilters">
         <div id="filters" class="ui-select" data-ng-show="'fa fa-chevron-right'" ng-class="{true: 'ui-select-on', false:
         'ui-select-off'}[filters]">
 
             <!--beginning of input fields-->
-            <div id="check-awesome" class="form-group">
 
-                <div>
-                    <input type="checkbox" checked=checked class="filter" name="filter" id="interviews" value="interviews">
+                <div id="check-awesome" class="form-group filter">
+                    <input type="checkbox" checked=checked name="filters" id="interviews" value="interviews">
                     <label for="interviews">
-                        <span class="circle"></span>
-                        <span class="check"></span>
-                        <span class="box"></span>
-                        Interviews
-                    </label>
+                            <span class="check"></span>
+                            <span class="box"></span>
+                            Interviews
+                    <label/>
                 </div>
 
+            <div id="check-awesome" class="form-group filter">
+                <input type="checkbox" checked=checked name="filters" id="essays" value="essays">
+                <label for="essays">
+                    <span class="check"></span>
+                    <span class="box"></span>
+                    Essays
+                </label>
             </div>
-
 
             <div id="check-awesome" class="form-group">
-
-                <div>
-                    <input type="checkbox" checked=checked class="filter" name="filter" id="essays" value="essays">
-                    <label for="essays">
-                        <span class="circle"></span>
-                        <span class="check"></span>
-                        <span class="box"></span>
-                        Essays
-                    </label>
-                </div>
-
+                <input type="checkbox" id="multimedia" checked="checked" name="filters" value="multimedia">
+                <label for="multimedia">
+                    <span class="check"></span>
+                    <span class="box"></span>
+                    Multimedia
+                </label>
             </div>
-
-
-            <div id="check-awesome" class="form-group">
-
-                <div>
-                    <input type="checkbox" id="multimedia">
-                    <label for="multimedia">
-                        <span class="circle"></span>
-                        <span class="check"></span>
-                        <span class="box"></span>
-                        Multimedia
-                    </label>
-                </div>
-
-            </div>
-            <!-- end of form input fields-->
+        <!-- end of form input fields-->
 
         </div>
     </span>
 
-    <span data-ng-hide="markers">
+    <span data-ng-hide="categoryFilters">
         <div id="filters" class="ui-select">
-            <span class="fa fa-chevron-left" data-ng-click="markers=!markers"></span>
+            <span class="fa fa-chevron-left" data-ng-click="categoryFilters=!categoryFilters"></span>
         </div>
     </span>
 

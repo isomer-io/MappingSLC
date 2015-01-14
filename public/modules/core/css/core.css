@@ -87,6 +87,18 @@ p:first-child::first-letter {
 }
 
 
+/* mapping slc small logo */
+.small-main-logo {
+    content: url(../../core/img/brand/mapping.png);
+    width: 150px;
+    height: 47px;
+    position: absolute;
+    display: block;
+    z-index: 999;
+    left: 2.75%;
+    top: 0.75%;
+}
+
 /*
 / creates On/Off Toggle switch
 */

@@ -10,7 +10,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             $http.get('/keys')
             .success(function (data) {
                   mapFunction(data.mapboxKey, data.mapboxSecret);
-				  console.log('accessToken: ' + data.mapboxSecret);
             })
             .error(function (data, status) {
                   alert('Failed to load Mapbox API key. Status: ' + status);
@@ -23,30 +22,30 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                   var map = L.mapbox.map('map', key)
                   .setView([40.773, -111.902], 12);
 
-                  //var filters = document.getElementById('filters');
-                  //var checkboxes = document.getElementsByClassName('filter');
-                  //
-                  //function change() {
-                  //    // Find all checkboxes that are checked and build a list of their values
-                  //    var on = [];
-                  //    for (var i = 0; i < checkboxes.length; i++) {
-                  //        if (checkboxes[i].checked) on.push(checkboxes[i].value);
-                  //    }
-                  //    // The filter function takes a GeoJSON feature object
-                  //    // and returns true to show it or false to hide it.
-                  //    map.featureLayer.setFilter(function (f) {
-                  //        // check each marker's symbol to see if its value is in the list
-                  //        // of symbols that should be on, stored in the 'on' array
-                  //        return on.indexOf(f.properties['marker-symbol']) !== -1;
-                  //    });
-                  //    return false;
-                  //}
-                  //
-                  //      // When the form is touched, re-filter markers
-                  //                  filters.onchange = change;
-                  //      // Initially filter the markers
-                  //                  change();
-                  //
+                  var filters = document.getElementById('filters');
+                  var checkboxes = document.getElementsByClassName('filter');
+
+                  function change() {
+                      // Find all checkboxes that are checked and build a list of their values
+                      var on = [];
+                      for (var i = 0; i < checkboxes.length; i++) {
+                          if (checkboxes[i].checked) on.push(checkboxes[i].value);
+                      }
+                      // The filter function takes a GeoJSON feature object
+                      // and returns true to show it or false to hide it.
+                      map.featureLayer.setFilter(function (f) {
+                          // check each marker's symbol to see if its value is in the list
+                          // of symbols that should be on, stored in the 'on' array
+                          return on.indexOf(f.properties['marker-symbol']) !== -1;
+                      });
+                      return false;
+                  }
+
+                        // When the form is touched, re-filter markers
+                                    filters.onchange = change;
+                        // Initially filter the markers
+                                    change();
+
 
                   L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
                         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -74,9 +73,10 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                                 description: 'description',
                                 // one can customize markers by adding simplestyle properties
                                 // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
+                                //see also: https://www.mapbox.com/maki/
                                 'marker-size': 'large',
                                 'marker-color': '#BE9A6B',
-                                'marker-symbol': 'cafe'
+                                'marker-symbol': 'cross'
                             }
                         })
                         .addTo(map);
@@ -91,5 +91,26 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
 
             };
+
+
+// per css-tricks restarting css animations
+// http://css-tricks.com/restart-css-animation/
+//            $('label').click(function() {
+//
+//                  // find the first span which is our circle/bubble
+//                  var el = $(this).children('span:first-child');
+//
+//                  // add the bubble class (we do this so it doesnt show on page load)
+//                  el.addClass('circle');
+//
+//                  // clone it
+//                  var newone = el.clone(true);
+//
+//                  // add the cloned version before our original
+//                  el.before(newone);
+//
+//                  // remove the original so that it is ready to run on next click
+//                  $("." + el.attr("class") + ":last").remove();
+//            });
       }
 ]);
