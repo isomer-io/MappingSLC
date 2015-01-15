@@ -6,14 +6,52 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.markers = true;
         $scope.filters = true;
 
-        //get mapbox api key and access token, referred to as mapboxSecret
+        //get api keys, and also access token, referred to as 'mapboxSecret'
         $http.get('/keys')
-            .success(function(data) {
-                mapFunction(data.mapboxKey, data.mapboxSecret);
+            .success(function(api) {
+                censusData(api.censusKey);
+                mapFunction(api.mapboxKey, api.mapboxSecret);
             })
-            .error(function (data, status) {
-                alert('Failed to load Mapbox API key. Status: ' + status);
+            .error(function (errorData, errorStatus) {
+                alert('Failed to load Mapbox API key. Status: ' + errorStatus);
             });
+
+        $http.get('/tractGeoJson')
+            .success(function(tractGeojson) {
+                featureLayer(tractGeojson);
+            })
+            .error(function (errorData, errorStatus) {
+                alert('Failed to load UTah Tract GeoJSON file. Status: ' + errorStatus);
+            });
+
+        //us census api call
+        var censusData = function(censusKey) {
+            $http.get('http://api.census.gov/data/2010/sf1?get=P0010001&for=tract:*&in=state:49+county:035&key=' + censusKey).
+                success(function (censusData) {
+                    var censusDataArray = [];
+                    for (var i = 0; i < censusData.length; i++) {
+                        censusDataArray.push(censusData[i]);
+                    }
+                    //console.log('censusDataArray: ', censusDataArray);
+                    console.log('censusDataArray[1][1,2,0]: ', censusDataArray[1][1] + censusDataArray[1][2] + censusDataArray[1][0]);
+                    return censusDataArray
+                }).
+                error(function (errorData, errorStatus) {
+                    $scope.data = errorData || 'Request failed';
+                    $scope.status = errorStatus;
+                });
+        };
+
+        //var censusGeo = function() {
+        //    console.log('censusDataArray in censusGeo: ', censusDataArray);
+        //    $http.get('http://census.ire.org/geo/1.0/boundary-set/tracts/490351529').
+        //    success(function(censusBoundaryData) {
+        //         console.log('censusBoundaryData', censusBoundaryData);
+        //    })
+        //};
+
+        var featureLayer = L.mapbox.featureLayer(geojson)
+            .addTo(map);
 
         var mapFunction = function (key, accessToken) {
 
