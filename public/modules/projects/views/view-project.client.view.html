@@ -5,6 +5,9 @@
 	<div class="page-header">
 		<h1 data-ng-bind="project.title"></h1>
 	</div>
+	<div>
+		<img ng-src="{{project.mapImage}}">
+	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == project.user._id))">
 		<a class="btn btn-primary" href="/#!/projects/{{project._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
@@ -15,6 +18,18 @@
 	</div>
 	<small>
 		<em class="text-muted">
+			<span data-ng-bind="project.street"></span>,
+			<span data-ng-bind="project.city"></span>
+			<span data-ng-bind="project.state"></span>
+			<span data-ng-bind="project.zip"></span>
+			<hr>
+			Lat:
+			<span data-ng-bind="project.lat"></span>
+			 & Lng:
+			<span data-ng-bind="project.lng"></span>
+			<hr>
+			<span data-ng-bind="project.story"></span>
+			<hr>
 			Posted on
 			<span data-ng-bind="project.created | date:'mediumDate'"></span>
 			by

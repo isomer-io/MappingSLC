@@ -5,10 +5,10 @@
 'use strict';
 
 module.exports = function(app) {
-    var keys = require('../../config/env/mapKeys.js');
+    var keys = require('../../config/env/keys.js');
 
         // Maps Routes
-            app.route('/mapKeys')
+            app.route('/keys')
         .get(function(req, res) {
                 res.jsonp(keys);
             });

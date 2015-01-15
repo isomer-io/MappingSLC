@@ -5,13 +5,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 	function($scope, $stateParams, $location, Authentication, Projects, $http) {
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
-
-		$scope.street = '547 South 300 East';
-		$scope.city = 'Salt Lake City';
-		$scope.state = 'UT';
-		$scope.zip = 84111;
-		$scope.title = 'Title This, Yo!';
-		$scope.story = 'You ready?';
+		var width = '800';
+		var height = '350';
+		var markerUrl = 'url-http%3A%2F%2Fwww.mappingslc.org%2Fimages%2Fsite_img%2Flogo_marker_150px.png';
+		$scope.mapImage = '';
 
 		// Create new Project
 		$scope.create = function() {
@@ -28,9 +25,13 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				story: this.story
 			});
 
+			//back-end request to get mapbox and here api access
 			$http.get('/keys')
 				.success(function(data){
+					var mapboxKey = data.mapboxKey;
+					var mapboxSecret = data.mapboxSecret;
 
+					//from submitted project's address fields, return lng. and lat. coordinates
 					$http.get('http://geocoder.cit.api.here.com/6.2/geocode.json' +
 					'?state=' + project.state +
 					'&city=' + project.city +
@@ -39,13 +40,16 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 					'&gen=8' +
 					'&app_id=' + data.hereKey +
 					'&app_code=' + data.hereSecret)
-						.success(function (data) {
-							//console.log('all: ' + data.Response.View.Result.Location.DisplayPosition.Latitude);
-							//data = $scope.geoData;
-							//console.log('response: ' + $scope.geoData);
+						.success(function (geoData) {
+							//save lat & lng to backend
+							project.lat = geoData.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
+							project.lng = geoData.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
 
+							//save to backend static map image that is centered on the lat & lng for an individual project sub;
+							//map and custom icon will be displayed on project-view page
+							project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
 
-							//Redirect after save
+								//Redirect after save
 							project.$save(function(response) {
 								$location.path('projects/' + response._id);
 
@@ -59,17 +63,12 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 							}, function(errorResponse) {
 								$scope.error = errorResponse.data.message;
 							});
-							console.log(data);
-							//var tempData = data;
-							//var geoData = tempData | json;
-							console.log('response: ' + data.Response.View[0]);
-							//project.geocode.long = data['Response']['View']['Result']['Location'];  .Result[2].Location.DisplayPosition.Latitude
 
 						})
 						.error(function (data, status) {
 							console.log(data, status);
 						});
-					})
+				})
 				.error(function(data, status){
 					alert('Failed to load Here API key. Status: ' + status);
 				});
