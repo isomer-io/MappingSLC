@@ -5,16 +5,16 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
-	//validator = require('validator'),
+	validator = require('validator'),
 	//addressValidator = require('address-validator'),
 		//commented out below line because i'm not sure we can validate '.Address' anymore,
 		// it has been changed to street, city, state, zip
 	//Address = addressValidator.Address,
 	_ = require('underscore');
 
-//var validateEmail = function(email){
-//	return validator.isEmail(email);
-//};
+var validateEmail = function(email){
+	return validator.isEmail(email);
+};
 
 
 /**
@@ -66,8 +66,8 @@ var ProjectSchema = new Schema({
 	email: {
 		type: String,
 		default: '',
-		trim: true
-		//validate: [validateEmail,'Please insert a correct email']
+		trim: true,
+		validate: [validateEmail,'Please insert a correct email']
 	},
 	street: {
 		type: String,
@@ -78,14 +78,12 @@ var ProjectSchema = new Schema({
 	},
 	city: {
 		type: String,
-		default: '',
-		required: '',
+		default: 'Salt Lake City',
 		trim: true
 	},
 	state: {
 		type: String,
-		default: '',
-		required: '',
+		default: 'Utah',
 		trim: true
 	},
 	zip: {

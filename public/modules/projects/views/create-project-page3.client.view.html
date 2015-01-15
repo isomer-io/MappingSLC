@@ -1,0 +1,34 @@
+<section>
+    <div class="text-center">
+        <h3>Story</h3>
+
+        <div class="controls">
+            <text-angular data-ng-model="formData.story" ta-toolbar="[['h1','h2','h3','ol'],['bold','italics','underline'],['insertLink','insertVideo']]">
+
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">Hello</button>
+                </div>
+
+
+
+                </text-anngular>
+        </div>
+
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-xs-3 col-xs-offset-3">
+            <a ui-sref="createProject.2" class="btn btn-info">
+                <span class="glyphicon glyphicon-circle-arrow-left"></span>  Back
+            </a>
+        </div>
+
+        <div class="col-md-4 col-md-offset-1">
+            <button data-ng-show="completed" type="submit" class="btn btn-info btn-danger">Submit</button>
+        </div>
+
+    </div>
+</section>
