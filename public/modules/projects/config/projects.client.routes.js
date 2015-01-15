@@ -10,6 +10,7 @@ angular.module('projects').config(['$stateProvider',
 			templateUrl: 'modules/projects/views/list-projects.client.view.html'
 		}).
 		state('createProject', {
+
 			url: '/projects/create',
 			templateUrl: 'modules/projects/views/create-project.client.view.html'
 		}).

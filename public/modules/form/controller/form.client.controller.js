@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('project-submission').controller('formController', ['$scope', '$location',
-    function($scope, $location) {
+angular.module('project-submission').controller('formController', ['$scope', '$location','$http',
+    function($scope, $location ,$http) {
+
+
 
         // Create new User Account
         $scope.createProject = function() {

@@ -6,12 +6,22 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
 
-		$scope.street = '547 South 300 East';
-		$scope.city = 'Salt Lake City';
-		$scope.state = 'UT';
-		$scope.zip = 84111;
-		$scope.title = 'Title This, Yo!';
-		$scope.story = 'You ready?';
+		$scope.userLoggedin = function () {
+			// get requetto /users/me
+			console.log('TEST111');
+			$http.get('http://localhost:3000/users/me').success(function(data) {
+				if(data === 'null') {
+
+						$location.path('/signup');
+
+
+					console.log(data);
+				} else {
+					console.log('else: ', data);
+				}
+			})
+		}();
+
 
 		// Create new Project
 		$scope.create = function() {
