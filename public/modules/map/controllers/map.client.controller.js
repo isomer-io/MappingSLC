@@ -16,15 +16,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 alert('Failed to load Mapbox API key. Status: ' + errorStatus);
             });
 
-        $http.get('/utahTract')
-            .success(function(tractGeojson) {
-                console.log(tractGeojson);
-                featureLayer(tractGeojson);
-            })
-            .error(function (errorData, errorStatus) {
-                alert('Failed to load UTah Tract GeoJSON file. Status: ' + errorStatus);
-            });
-
         //us census api call
         var censusData = function(censusKey) {
             $http.get('http://api.census.gov/data/2010/sf1?get=P0010001&for=tract:*&in=state:49+county:035&key=' + censusKey).
@@ -43,13 +34,25 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 });
         };
 
-        //var censusGeo = function() {
-        //    console.log('censusDataArray in censusGeo: ', censusDataArray);
-        //    $http.get('http://census.ire.org/geo/1.0/boundary-set/tracts/490351529').
-        //    success(function(censusBoundaryData) {
-        //         console.log('censusBoundaryData', censusBoundaryData);
-        //    })
-        //};
+
+        //get the geojson file with the polygon tract coordinates
+        $http.get('/utahTract')
+            .success(function(tractGeojson) {
+                console.log(tractGeojson);
+                featureLayer(tractGeojson);
+            })
+            .error(function (errorData, errorStatus) {
+                alert('Failed to load UTah Tract GeoJSON file. Status: ' + errorStatus);
+            });
+
+
+        var censusGeo = function() {
+            console.log('censusDataArray in censusGeo: ', censusDataArray);
+            $http.get('http://census.ire.org/geo/1.0/boundary-set/tracts/490351529').
+            success(function(censusBoundaryData) {
+                 console.log('censusBoundaryData', censusBoundaryData);
+            })
+        };
 
         var featureLayer = L.mapbox.featureLayer(tractGeojson)
             .addTo(map);
