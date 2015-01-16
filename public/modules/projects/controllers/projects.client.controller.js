@@ -24,6 +24,23 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				title: this.title,
 				story: this.story
 			});
+			project.$save(function(response) {
+				$location.path('projects/' + response._id);
+			// Clear form fields
+				$scope.firstname = '';
+				$scope.lastname = '';
+				$scope.email = '';
+				$scope.street = '';
+				$scope.city = '';
+				$scope.state = '';
+				$scope.zip = '';
+				$scope.story = '';
+				$scope.title = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+
+			});
+		};
 
 			//back-end request to get mapbox and here api access
 			$http.get('/keys')
@@ -73,8 +90,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 					alert('Failed to load Here API key. Status: ' + status);
 				});
 
-		};
-
 		// Remove existing Project
 		$scope.remove = function(project) {
 			if ( project ) {
@@ -115,9 +130,15 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			});
 		};
 
-		$scope.editorOptions = {
-			language: 'en',
-			uiColor: '#000000'
+		$scope.completed = function() {
+			var formField;
+			for (formField in $scope.createProject) {
+				if ($scope.createProject === null) {
+					return $scope.completed = false;
+				} else {
+					$scope.completed = true;
+				}
+			}
 		};
 
 	}

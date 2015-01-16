@@ -1,0 +1,52 @@
+<section class="create-project">
+
+
+        <div class="row">
+
+
+                <div class="form-group">
+                    <input type="text" data-ng-model="formData.title" id="title" class="form-control"
+                           placeholder="The Title of Your Project" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control"  data-ng-model="formData.street" id="street"
+                           placeholder="Your Project's Street Location*">
+                </div>
+
+                <div class="form-group">
+                    <input type="number" class="form-control" data-ng-model="formData.zip" id="zip" placeholder="Zip Code*">
+                </div>
+
+                <p>This adddress and zip code information will be used to place a link to your project on the home page map. We understand many projects either have more than one location or do not have a precise location. In these cases, please come up with an address and zip code that makes the most sense to you.</p>
+
+
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-xs-3 col-xs-offset-1">
+
+                <a ui-sref="createProject.1" class="btn btn-block btn-info">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> Back
+                </a>
+
+            </div>
+
+            <div class="col-xs-3 col-xs-offset-3">
+            <a ui-sref="createProject.3" class="btn btn-block btn-info">
+                Next <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+</section>
