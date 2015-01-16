@@ -16,8 +16,9 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 alert('Failed to load Mapbox API key. Status: ' + errorStatus);
             });
 
-        $http.get('/tractGeoJson')
+        $http.get('/utahTract')
             .success(function(tractGeojson) {
+                console.log(tractGeojson);
                 featureLayer(tractGeojson);
             })
             .error(function (errorData, errorStatus) {
@@ -50,7 +51,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         //    })
         //};
 
-        var featureLayer = L.mapbox.featureLayer(geojson)
+        var featureLayer = L.mapbox.featureLayer(tractGeojson)
             .addTo(map);
 
         var mapFunction = function (key, accessToken) {

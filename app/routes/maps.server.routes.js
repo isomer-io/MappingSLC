@@ -6,7 +6,7 @@
 
 module.exports = function(app) {
     var keys = require('../../config/env/keys.js');
-    var utahGeoJson = require('../../config/env/utahTract.json');
+    var utahTract = require('../../config/env/utahTract.json');
 
     // Maps Routes
     app.route('/keys')
@@ -15,9 +15,9 @@ module.exports = function(app) {
     });
 
     // Route for Utah TractGeoJSON Data
-    app.route('/tractGeoJson')
+    app.route('/utahTract')
     .get(function(req, res) {
-        res.jsonp(tractGeoJson);
+        res.jsonp(utahTract);
     });
 
     //
