@@ -6,11 +6,8 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	validator = require('validator'),
-	//addressValidator = require('address-validator'),
-		//commented out below line because i'm not sure we can validate '.Address' anymore,
-		// it has been changed to street, city, state, zip
-	//Address = addressValidator.Address,
-	_ = require('underscore');
+	_ = require('underscore'),
+	mongoosastic = require('mongoosastic');
 
 var validateEmail = function(email){
 	return validator.isEmail(email);
@@ -94,12 +91,14 @@ var ProjectSchema = new Schema({
 	},
 	story: {
 		type: String,
+		es_indexed: true,
 		default: 'Enter and format your project here',
 		required: '',
 		trim: true
 	},
 	title: {
 		type: String,
+		es_indexed: true,
 		default: '',
 		required: 'Please fill out the title of your submission',
 		trim:true
@@ -130,4 +129,23 @@ var ProjectSchema = new Schema({
 	}
 });
 
-mongoose.model('Project', ProjectSchema);
+// Using Mongoosastic to watch what's going on with the MongoDB server and feeding into Elastic Search
+
+ProjectSchema.plugin(mongoosastic);
+
+// Add model
+
+var Project = mongoose.model('Project', ProjectSchema)
+	, stream =Project.synchronize()
+	, count = 0;
+
+stream.on('data', function(err, doc){
+	count++;
+});
+stream.on('close', function(){
+	console.log('indexed ' + count + ' documents!');
+});
+stream.on('error', function(err){
+	//console.log(err);
+});
+
