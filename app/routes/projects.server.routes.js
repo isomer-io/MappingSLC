@@ -41,6 +41,14 @@ module.exports = function(app) {
           .get(function(req, res) {
               res.jsonp(keys);
           });
+    // This is the search route, make a GET request on this endpoitn to return search results
+    app.route('/search')
+        .post(function(req,res){
+            Project.search({query:req.body.q}, function(err, results){
+                res.send(results);
+            });
+    });
+
 
     //var projectData = require('../models/project.server.model.js');
     //app.route('/projectData')
