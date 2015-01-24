@@ -6,12 +6,15 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.markers = true;
         $scope.filters = true;
 
+        .success(function(){
+
+        }) {
 
         //get api keys, and also access token, referred to as 'mapboxSecret'
         $http.get('/keys')
             .success(function(api) {
                 censusData(api.censusKey);
-                //mapFunction(api.mapboxKey, api.mapboxSecret);
+                mapFunction(api.mapboxKey, api.mapboxSecret);
             })
             .error(function (errorData, errorStatus) {
                 alert('Failed to load Mapbox API key. Status: ' + errorStatus);
