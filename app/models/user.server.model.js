@@ -41,18 +41,35 @@ var UserSchema = new Schema({
 		type: String,
 		trim: true
 	},
+    street: {
+        type: String,
+        default: '',
+        required: '',
+        trim: true
+    },
+    city: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    state: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    zip: {
+        type: Number,
+        default: '',
+        required: '',
+        trim: true
+    },
 	email: {
 		type: String,
+        unique: true,
 		trim: true,
 		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your email'],
+		validate: [validateLocalStrategyProperty, 'Please enter your email, and make sure you have not already signed up with this email.'],
 		match: [/.+\@.+\..+/, 'Please fill a valid email address']
-	},
-	username: {
-		type: String,
-		unique: true,
-		required: 'Please fill in a username',
-		trim: true
 	},
 	password: {
 		type: String,
@@ -71,7 +88,7 @@ var UserSchema = new Schema({
 	roles: {
 		type: [{
 			type: String,
-			enum: ['user', 'admin']
+			enum: ['user', 'contributor', 'admin', 'superUser']
 		}],
 		default: ['user']
 	},
@@ -81,7 +98,14 @@ var UserSchema = new Schema({
 	created: {
 		type: Date,
 		default: Date.now
-	}
+	},
+    lastVisit: {
+        type: Date
+    },
+    //this field will store info about users browsing history and preferences
+    browseHistory: {
+        type: Object
+    }
 });
 
 /**
