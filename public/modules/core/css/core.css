@@ -432,3 +432,6 @@ button > .grow {
         height: 80em;
     }
 }
+.social-media-button{
+    display: block;
+}
