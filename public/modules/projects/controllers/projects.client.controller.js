@@ -6,23 +6,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
 
-		$scope.userLoggedin = function () {
-			// get requetto /users/me
-			console.log('TEST111');
-			$http.get('http://localhost:3000/users/me').success(function(data) {
-				if(data === 'null') {
-
-						$location.path('/signup');
-
-
-					console.log(data);
-				} else {
-					console.log('else: ', data);
-				}
-			})
-		}();
-
-
 		// Create new Project
 		$scope.create = function() {
 
@@ -69,7 +52,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 							}, function(errorResponse) {
 								$scope.error = errorResponse.data.message;
 							});
-							console.log(data);
+
 							//var tempData = data;
 							//var geoData = tempData | json;
 							console.log('response: ' + data.Response.View[0]);

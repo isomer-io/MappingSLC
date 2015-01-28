@@ -45,12 +45,19 @@
 
 <body class="ng-cloak">
 	<!--<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>-->
+
+	<!-- Add Modal ng-include -->
+
 	<section class="content">
+
 		<section class="container">
+			<div ng-include="'/modules/core/views/modal.client.view.html'"></div>
 			{% block content %}{% endblock %}
 		</section>
-	</section>
 
+
+	</section>
+	<!--</div>-->
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};
