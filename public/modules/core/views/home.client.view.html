@@ -4,8 +4,16 @@
 
     <div>
 
+
+
+
     <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
     <span data-ng-show="toggle">
+
+        <!--create main logo-->
+        <div class="small-main-logo img-responsive" ng-class="{false: 'hide-overlay-yes'}[count === 0]">
+            <!--logo goes here -- from core.css-->
+        </div>
 
         <div class="containerOn core" ng-class="{false: 'hide-overlay-yes'}[count === 0]">
             <span class="switch-on" data-ng-click="toggle=!toggle; count = count + 1">X</span>
@@ -59,6 +67,7 @@
                             <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
 
                             <p class="home-text">We invite people to engage with and evolve this site by submitting their own contributions.</p>
+
                         </div>
                     </div>
                 </div>
@@ -189,7 +198,7 @@
 
     <!-- BEGINNING OF SIDEBAR MENU -->
 
-    <div class="side-menu move-me core" data-ng-class="{ 'hidden': ! showDetails, 'animate-menu': ! showDetails }">
+    <div class="side-menu move-me core" data-ng-class="{'hidden': !showDetails, 'animate-menu': !showDetails}">
 
         <hr class="hr-set"/>
         <span><i class="menu-close-icon glyphicon glyphicon-align-justify" data-ng-click="showDetails = !showDetails"></i>
@@ -214,6 +223,18 @@
             <li>
                 <a href="#" > <i class="glyphicon glyphicon-map-marker"></i> Contact</a>
             </li>
+            <div class="social-media-button">
+            <li>
+                <a href="https://twitter.com/mappingslc">
+                    <i class="fa fa-twitter-square"></i> Twitter
+                </a>
+            </li>
+            <li>
+                <a href="https:www.facebook.com/MappingSaltLakeCity">
+                    <i class="fa fa-facebook-square"></i> Facebook
+                </a>
+            </li>
+            </div>
         </ul>
 
         <div>

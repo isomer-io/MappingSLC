@@ -5,6 +5,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 	function($scope, $stateParams, $location, Authentication, Projects, $http) {
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
+		var width = '800';
+		var height = '350';
+		var markerUrl = 'url-http%3A%2F%2Fwww.mappingslc.org%2Fimages%2Fsite_img%2Flogo_marker_150px.png';
+		$scope.mapImage = '';
 
 		// Create new Project
 		$scope.create = function() {
@@ -20,10 +24,31 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				title: this.title,
 				story: this.story
 			});
+			project.$save(function(response) {
+				$location.path('projects/' + response._id);
+			// Clear form fields
+				$scope.firstname = '';
+				$scope.lastname = '';
+				$scope.email = '';
+				$scope.street = '';
+				$scope.city = '';
+				$scope.state = '';
+				$scope.zip = '';
+				$scope.story = '';
+				$scope.title = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
 
+			});
+		};
+
+			//back-end request to get mapbox and here api access
 			$http.get('/keys')
 				.success(function(data){
+					var mapboxKey = data.mapboxKey;
+					var mapboxSecret = data.mapboxSecret;
 
+					//from submitted project's address fields, return lng. and lat. coordinates
 					$http.get('http://geocoder.cit.api.here.com/6.2/geocode.json' +
 					'?state=' + project.state +
 					'&city=' + project.city +
@@ -32,13 +57,16 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 					'&gen=8' +
 					'&app_id=' + data.hereKey +
 					'&app_code=' + data.hereSecret)
-						.success(function (data) {
-							//console.log('all: ' + data.Response.View.Result.Location.DisplayPosition.Latitude);
-							//data = $scope.geoData;
-							//console.log('response: ' + $scope.geoData);
+						.success(function (geoData) {
+							//save lat & lng to backend
+							project.lat = geoData.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
+							project.lng = geoData.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
 
+							//save to backend static map image that is centered on the lat & lng for an individual project sub;
+							//map and custom icon will be displayed on project-view page
+							project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
 
-							//Redirect after save
+								//Redirect after save
 							project.$save(function(response) {
 								$location.path('projects/' + response._id);
 
@@ -52,7 +80,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 							}, function(errorResponse) {
 								$scope.error = errorResponse.data.message;
 							});
-
+							console.log(data);
 							//var tempData = data;
 							//var geoData = tempData | json;
 							console.log('response: ' + data.Response.View[0]);
@@ -67,7 +95,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 					alert('Failed to load Here API key. Status: ' + status);
 				});
 
-		};
 
 		// Remove existing Project
 		$scope.remove = function(project) {
@@ -109,9 +136,15 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			});
 		};
 
-		$scope.editorOptions = {
-			language: 'en',
-			uiColor: '#000000'
+		$scope.completed = function() {
+			var formField;
+			for (formField in $scope.createProject) {
+				if ($scope.createProject === null) {
+					return $scope.completed = false;
+				} else {
+					$scope.completed = true;
+				}
+			}
 		};
 
 	}

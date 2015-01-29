@@ -17,8 +17,6 @@
     "font-awesome": "~4.2.0",
     "textAngular": "~1.2.2",
     "rangy": "~1.2.3",
-    "angular-mapbox": "*",
-    "angular-leaflet-directive": "~0.7.9",
     "ng-ckeditor": "~0.2.1",
     "jquery": "~1.9.1",
     "modernizr": "~2.8.3"

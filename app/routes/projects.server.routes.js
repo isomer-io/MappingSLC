@@ -36,19 +36,19 @@ module.exports = function(app) {
 
 // Maps Routes
 
-
-    var mapKeys = require('../../config/env/mapKeys.js');
-    app.route('/mapKeys')
-        .get(function(req, res) {
-            res.jsonp(mapKeys);
-        });
-
-
     var keys = require('../../config/env/keys.js');
     app.route('/keys')
           .get(function(req, res) {
               res.jsonp(keys);
           });
+    // This is the search route, make a GET request on this endpoitn to return search results
+    app.route('/search')
+        .post(function(req,res){
+            Project.search({query:req.body.q}, function(err, results){
+                res.send(results);
+            });
+    });
+
 
     //var projectData = require('../models/project.server.model.js');
     //app.route('/projectData')
