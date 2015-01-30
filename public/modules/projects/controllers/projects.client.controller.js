@@ -29,9 +29,8 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
                 project.$save(function(response) {
                     $location.path('projects/' + response._id);
                     // Clear form fields
-                    $scope.firstname = '';
-                    $scope.lastname = '';
-                    $scope.email = '';
+
+
                     $scope.street = '';
                     $scope.city = '';
                     $scope.state = '';

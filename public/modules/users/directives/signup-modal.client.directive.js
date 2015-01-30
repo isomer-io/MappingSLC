@@ -20,7 +20,7 @@ angular.module('users').directive('signupModal', ['$modal','$http','$location',
                      if (data !== 'null') {
                          params.isLoggedIn = true;
                      }
-                     if (!params.isLoggedIn && $location.path() === '/projects/create') {
+                     if (!params.isLoggedIn && $location.path() === '/projects/create/1') {
 
 
 
