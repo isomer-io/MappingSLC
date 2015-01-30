@@ -17,12 +17,12 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			var project = new Projects({
 				created: this.created,
 				createdBy: this.createdBy,
-				street: '123 Elm',
-				city: 'Salt Lake City',
-				state: 'UT',
-				zip: '84106',
-				title: 'Dumb Title',
-				story: ';alksjdf;lkasjdf;lkasj'
+				street: '',
+				city: '',
+				state: '',
+				zip: '',
+				title: '',
+				story: ''
 			});
 
             var saveProject = function() {
