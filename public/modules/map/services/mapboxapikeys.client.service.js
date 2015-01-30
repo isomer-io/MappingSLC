@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('map').service('Mapboxsecret', ['$http',
+angular.module('map').service('MapboxApiKeys', ['$http',
 	function($http) {
-		// Mapboxsecret service logic
+		// MapboxApiKeys service logic
 		// ...
         this.getApi = function(){
 
