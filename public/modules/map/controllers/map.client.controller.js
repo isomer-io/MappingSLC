@@ -1,17 +1,27 @@
 'use strict';
 
-angular.module('map').controller('MapController', ['$scope', 'Authentication', '$http',
-    function ($scope, Authentication, $http) {
+angular.module('map').controller('MapController', ['$scope', 'Authentication','MapboxApiKeys','$http',
+    function ($scope, Authentication,MapboxApiKeys,$http) {
 
         $scope.markers = true;
         $scope.filters = true;
 
         //get mapbox api key and access token, referred to as mapboxSecret
-        $http.get('/keys')
-            .success(function(data) {
+        //$http.get('/keys')
+        //    .success(function(data) {
+        //        mapFunction(data.mapboxKey, data.mapboxSecret);
+        //        console.log("This is the Map Key: " + data.mapboxKey);
+        //    })
+        //    .error(function (data, status) {
+        //        alert('Failed to load Mapbox API key. Status: ' + status);
+        //    });
+
+       MapboxApiKeys.getApi()
+            .success(function(data){
                 mapFunction(data.mapboxKey, data.mapboxSecret);
+                console.log("This is the Map Key: " + data.mapboxKey);
             })
-            .error(function (data, status) {
+            .error(function(data,status){
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
 
