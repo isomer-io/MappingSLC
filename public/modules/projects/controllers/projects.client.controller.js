@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http','MapboxApiKeys','Geocodeapi',
-	function($scope, $stateParams, $location, Authentication, Projects, $http,MapboxApiKeys,Geocodeapi) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http','MapboxApiKeys','Geocodeapi','$modal', '$rootScope',
+	function($scope, $stateParams, $location, Authentication, Projects, $http, MapboxApiKeys, Geocodeapi, $modal, $rootScope) {
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
 		var width = '800';
@@ -10,6 +10,35 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		var markerUrl = 'url-http%3A%2F%2Fwww.mappingslc.org%2Fimages%2Fsite_img%2Flogo_marker_150px.png';
 		$scope.mapImage = '';
 
+        //Give user warning if leaving form
+
+        var preventRunning = false;
+           $scope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
+               if (preventRunning) {
+                   return;
+               }
+               if(fromState.url === '/2') {
+                   event.preventDefault();
+
+                   $modal.open({
+                       templateUrl:"/modules/projects/directives/views/modal.html",
+                       controller:function($scope, $modalInstance){
+                           $scope.closeMe = function(){
+                               $modalInstance.dismiss(function(reason){
+                                   console.log(reason);
+                               });
+                           };
+                           $scope.leave = function(){
+                               preventRunning = true;
+                               $scope.closeMe();
+                               $location.path(toState);
+                           };
+                       },
+                       size:'sm'
+                   });
+               }
+
+                });
 		// Create new Project
 		$scope.create = function() {
 
