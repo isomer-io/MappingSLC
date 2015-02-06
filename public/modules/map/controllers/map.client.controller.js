@@ -1,82 +1,25 @@
 'use strict';
 
-angular.module('map').controller('MapController', ['$scope', 'Authentication', '$http',
-    function ($scope, Authentication, $http) {
+angular.module('map').controller('MapController', ['$scope', 'Authentication','MapboxApiKeys',
+    function ($scope, Authentication,MapboxApiKeys) {
 
         $scope.markers = true;
         $scope.filters = true;
 
-        .success(function(){
-
-        }) {
-
-        //get api keys, and also access token, referred to as 'mapboxSecret'
-        $http.get('/keys')
-            .success(function(api) {
-                censusData(api.censusKey);
-                mapFunction(api.mapboxKey, api.mapboxSecret);
+        MapboxApiKeys.getApi()
+            .success(function(data){
+                mapFunction(data.mapboxKey, data.mapboxSecret);
             })
-            .error(function (errorData, errorStatus) {
-                alert('Failed to load Mapbox API key. Status: ' + errorStatus);
+            .error(function(data,status){
+                alert('Failed to load Mapbox API key. Status: ' + status);
             });
 
+        var mapFunction = function (key, accessToken) {
 
-        //us census api call
-        var censusData = function(censusKey) {
-            $http.get('http://api.census.gov/data/2010/sf1?get=P0010001&for=tract:*&in=state:49+county:035&key=' + censusKey).
-                success(function (censusData) {
-                    var censusDataArray = [];
-                    for (var i = 0; i < censusData.length; i++) {
-                        censusDataArray.push(censusData[i]);
-                    }
-                    //console.log('censusDataArray: ', censusDataArray);
-                    //console.log('censusDataArray[1][1,2,0]: ', censusDataArray[1][1] + censusDataArray[1][2] + censusDataArray[1][0]);
-                    return censusDataArray
-                }).
-                error(function (errorData, errorStatus) {
-                    $scope.data = errorData || 'Request failed';
-                    $scope.status = errorStatus;
-                });
-        };
-
-
-        //get the geojson file with the polygon tract coordinates
-        $http.get('/utahTract')
-            .success(function (tractGeojson) {
-                //console.log('tractGeojson: ', tractGeojson);
-                mapFunction(tractGeojson);
-            })
-            .error(function (errorData, errorStatus) {
-                alert('Failed to load UTah Tract GeoJSON file. Status: ' + errorStatus);
-        });
-
-        //var censusGeo = function() {
-        //    console.log('censusDataArray in censusGeo: ', censusDataArray);
-        //    $http.get('http://census.ire.org/geo/1.0/boundary-set/tracts/490351529').
-        //    success(function(censusBoundaryData) {
-        //         console.log('censusBoundaryData', censusBoundaryData);
-        //    })
-        //};
-
-
-        //add geoson tract data as a feature layer to the map
-        //var featureLayer = L.mapbox.featureLayer(tractGeojson);
-            //.addTo(map);
-
-
-
-
-
-        //load the main map
-        var mapFunction = function (tractGeojson) {
-            //console.log('tractData: ', tractGeojson);
             //creates a Mapbox Map
-            L.mapbox.accessToken = 'pk.eyJ1IjoicG9ldHNyb2NrIiwiYSI6Imc1b245cjAifQ.vwb579x58Ma-CcnfQNamiw';
-
-            var map = L.mapbox.map('map', 'poetsrock.map-55znsh8b')
-                .setView([40.773, -111.902], 12)
-                //.featureLayer.setGeoJSON(tractGeojson)
-                ;
+            L.mapbox.accessToken = accessToken;
+            var map = L.mapbox.map('map', key)
+                .setView([40.773, -111.902], 12);
 
             //var filters = document.getElementById('filters');
             //var checkboxes = document.getElementsByClassName('filter');
@@ -96,7 +39,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             //    });
             //    return false;
             //}
-
+            //
             //// When the form is touched, re-filter markers
             //filters.onchange = change;
             //// Initially filter the markers
@@ -106,44 +49,36 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
                 attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
                 maxZoom: 18,
-                id: 'poetsrock.map-55znsh8b'
-            });
+                id: key
+            })
+                //;
 
-            //todo complete project schema with the following properties and call on them to populate what is currently hard-coded
-            L.mapbox.featureLayer(
-
-                {
-                //// this feature is in the GeoJSON format: see geojson.org
-                //// for the full specification
-                //type: 'Feature',
-                //geometry: {
-                //    type: 'Point',
-                //    // coordinates here are in longitude, latitude order because
-                //    // x, y is the standard for GeoJSON and many formats
-                //    coordinates: [
-                //        -111.902,
-                //        40.773
-                //    ]
-                //},
-                //properties: {
-                //    title: 'title',
-                //    description: 'description',
-                //    // one can customize markers by adding simplestyle properties
-                //    // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
-                //    //see also: https://www.mapbox.com/maki/
-                //    'marker-size': 'large',
-                //    'marker-color': '#BE9A6B',
-                //    'marker-symbol': 'cross'
-                //}
-            }
-            );
-            //create an empty GeoJSON layer and assign it to a variable so that we can add more features to it later.
-            var geoJsonUtCensusTract = L.geoJson()
-
-            .addTo(map);
-
-            //add GeoJSON layer into var geoJsonLayer
-            geoJsonUtCensusTract.addData(tractGeojson);
+                ////todo complete project schema with the following properties and call on them to populate what is currently hard-coded
+                //L.mapbox.featureLayer({
+                //    // this feature is in the GeoJSON format: see geojson.org
+                //    // for the full specification
+                //    type: 'Feature',
+                //    geometry: {
+                //        type: 'Point',
+                //        // coordinates here are in longitude, latitude order because
+                //        // x, y is the standard for GeoJSON and many formats
+                //        coordinates: [
+                //            -111.902,
+                //            40.773
+                //        ]
+                //    },
+                //    properties: {
+                //        title: 'title',
+                //        description: 'description',
+                //        // one can customize markers by adding simplestyle properties
+                //        // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
+                //        //see also: https://www.mapbox.com/maki/
+                //        'marker-size': 'large',
+                //        'marker-color': '#BE9A6B',
+                //        'marker-symbol': 'cross'
+                //    }
+                //})
+                .addTo(map);
 
 
             /**
@@ -155,25 +90,5 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
         };
 
-
-// per css-tricks restarting css animations
-// http://css-tricks.com/restart-css-animation/
-//            $('label').click(function() {
-//
-//                  // find the first span which is our circle/bubble
-//                  var el = $(this).children('span:first-child');
-//
-//                  // add the bubble class (we do this so it doesnt show on page load)
-//                  el.addClass('circle');
-//
-//                  // clone it
-//                  var newone = el.clone(true);
-//
-//                  // add the cloned version before our original
-//                  el.before(newone);
-//
-//                  // remove the original so that it is ready to run on next click
-//                  $("." + el.attr("class") + ":last").remove();
-//            });
     }
 ]);

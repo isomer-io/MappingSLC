@@ -3,8 +3,8 @@
 module.exports = {
 	app: {
 		title: 'Mapping Salt Lake City',
-		description: 'MEANjs',
-		keywords: 'MongoDB, Express, AngularJS, Node.js'
+		description: 'Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multimedia projects. We invite people to engage with and evolve this site by submitting their own contributions.',
+		keywords: 'mapping, map, geojson, salt lake city, utah, art, humanities, digital humanities, isomer'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
@@ -17,7 +17,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/ng-ckeditor/ng-ckeditor.css',
-				'public/lib/angular-mapbox/lib/mapbox.css'
+                '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css'
+
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -32,12 +33,10 @@ module.exports = {
 				'public/lib/textAngular/dist/textAngular.min.js',
 				'public/lib/textAngular/dist/textAngular-sanitize.min.js',
 				'public/lib/rangy/rangy-core.js',
-				'public/lib/leaflet/dist/leaflet.js',
-				'public/lib/angular-mapbox/lib/mapbox.js',
-				'public/lib/angular-leaflet-directive/dist/angular-leaflet-directive.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
-				'public/lib/modernizr/modernizr.js'
+				'public/lib/modernizr/modernizr.js',
+                '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'
 			]
 		},
 		css: [
