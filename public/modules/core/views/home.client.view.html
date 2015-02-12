@@ -169,13 +169,12 @@
                 </div>
 
                 <div class="footer">
-                    <form action="http://enternewurihere" method="post" autocomplete="on">
+                    <form  method="post" autocomplete="on">
 
                         <div class="clearfix col-xs-offset-7">
 
-                            <div class="form-inline">
-                                <input name="subscribe-email" class="input-footer" placeholder="Newsletter: Enter your E-mail" required="" type="email" />
-                                <button class="btn btn-main btn-footer grow" type="submit">Subscribe</button>
+                            <div class="form-inline" data-ng-include="'modules/emails/views/email.signup.client.view.html'">
+
                             </div>
 
                         </div>
