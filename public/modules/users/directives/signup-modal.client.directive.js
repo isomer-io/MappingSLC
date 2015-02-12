@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('users').directive('signupModal', ['$modal','$http','$location',
-	function($modal,$http,$location) {
+angular.module('users').directive('signupModal', ['$modal','$http','$location','$rootScope',
+	function($modal,$http,$location, $rootScope) {
         return {
-            template: '<div>{{modalView}}</div>',
             restrict: 'E',
+
 
             link: function postLink(scope, element, attrs) {
 
@@ -22,25 +22,52 @@ angular.module('users').directive('signupModal', ['$modal','$http','$location',
                      }
                      if (!params.isLoggedIn && $location.path() === '/projects/create/1') {
 
+                         var isSignUpModal = false;
 
+                         var modalView = $modal.open({
 
-                         scope.modalView = $modal.open({
-                             templateUrl: '/modules/users/views/signin.client.view.html',
+                             templateUrl:function(){
+                                 if (!isSignUpModal){
+                                     isSignUpModal = !isSignUpModal;
+                                     return '/modules/users/views/signin.client.view.html';
+                                 }else{
+                                     //isSignUpModal = !isSignUpModal;
+                                     return '/modules/users/views/signup.client.view.html';
+                                 }
+                             },
                              size: 'lg',
                              backdropClass: 'sign-in-modal-background',
                              windowClass: 'sign-in-modal-background',
                              backdrop: false,
-                             controller: function($scope,$modalInstance){
+                             keyboard:false,
+                             controller: function($scope,$modalInstance,$modal){
                                  $scope.closeModal = function(){
 
                                      $modalInstance.close();
                                  };
+
+                                 $scope.$on('$stateChangeStart', function() {
+                                     $modalInstance.close();
+                                 } );
+
+
+
+
+
                              }
 
-                             }).result.then().opened.then();
+                             });
+
+                          modalView.result.then(function(){},function(){
 
 
-                         };
+
+
+                          })
+
+
+
+                         }
 
 
 
