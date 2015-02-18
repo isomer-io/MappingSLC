@@ -14,7 +14,7 @@
 }
 
 .core h2, .core h3, .core h4 {
-    color: #f5deb3;
+    color: #ffffff;
     text-shadow: #023a31;
 }
 
@@ -43,12 +43,12 @@ p:first-child::first-letter {
 }
 
 .core .navbar-brand, .core .navbar-nav, .core li a {
-    color: #f5deb3;
+    color: #ffffff;
     background: rgba(0, 0, 0, 0.0);
 }
 
 .core .nav .open a:focus, .core .nav li a:hover, .core .nav li a:focus {
-    color: #f5deb3;
+    color: #ffffff;
     background: rgba(0, 0, 0, 0.0);
 }
 
@@ -208,7 +208,7 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
 }
 
 .home-text {
-    color: #f5deb3;
+    color: #ffffff;
     font-size: 1.5rem;
 }
 
@@ -301,21 +301,21 @@ button > .grow {
     display:inline;
     width:300px;
     border:none;
-    border-bottom:1px solid #f5deb3;
+    border-bottom:1px solid #ffffff;
     background-color: transparent;
     color: lightgoldenrodyellow;
 }
 
 ::-webkit-input-placeholder {
-    color: #f5deb3;
+    color: #ffffff;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-    color: #f5deb3;
+    color: #ffffff;
 }
 
 :-ms-input-placeholder {
-    color: #f5deb3;
+    color: #ffffff;
 }
 
 .footer input:hover {
@@ -340,7 +340,7 @@ button > .grow {
 
 /* LABEL ======================================= */
 .footer label {
-    color:#f5deb3;
+    color:#ffffff;
     font-size:14px;
     font-weight:normal;
     position:absolute;

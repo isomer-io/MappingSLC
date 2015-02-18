@@ -21,7 +21,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
                    event.preventDefault();
 
                    $modal.open({
-                       templateUrl:"/modules/projects/directives/views/modal.html",
+                       templateUrl:'/modules/projects/directives/views/modal.html',
                        controller:function($scope, $modalInstance){
                            $scope.closeMe = function(){
                                $modalInstance.dismiss(function(reason){
@@ -81,7 +81,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
                     .success(function(data) {
                     project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
                     saveProject();
-                })
+                });
             });
 
 

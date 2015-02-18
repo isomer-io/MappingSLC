@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('map').controller('MapController', ['$scope', 'Authentication','MapboxApiKeys',
-    function ($scope, Authentication,MapboxApiKeys) {
+angular.module('map').controller('MapController', ['$scope', 'Authentication','MapboxApiKeys', '$http',
+    function ($scope, Authentication,MapboxApiKeys, $http) {
 
         $scope.markers = true;
         $scope.filters = true;
@@ -19,7 +19,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication','M
             //creates a Mapbox Map
             L.mapbox.accessToken = accessToken;
             var map = L.mapbox.map('map', key)
-                .setView([40.773, -111.902], 12);
+                .setView([40.773, -111.902], 12)
 
             //var filters = document.getElementById('filters');
             //var checkboxes = document.getElementsByClassName('filter');
@@ -46,12 +46,13 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication','M
             //change();
 
 
-            L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                maxZoom: 18,
-                id: key
-            })
-                //;
+            //L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+            //    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            //    maxZoom: 18,
+            //    id: key
+            //});
+            //
+            //L.geoJson()
 
                 ////todo complete project schema with the following properties and call on them to populate what is currently hard-coded
                 //L.mapbox.featureLayer({
