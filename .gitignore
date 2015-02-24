@@ -20,3 +20,4 @@ app/controllers/pfakes.server.controller.js
 app/models/pfake.server.model.js
 test.txt
 config/env/test.json
+config/sslcerts

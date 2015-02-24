@@ -39,7 +39,7 @@ p:first-child::first-letter {
     -moz-filter: sepia(100%);
     -ms-filter: sepia(100%);
     -o-filter: sepia(100%);
-    -webkit-filter(1);
+-webkit-filter(1);
 }
 
 .core .navbar-brand, .core .navbar-nav, .core li a {
@@ -67,11 +67,11 @@ p:first-child::first-letter {
 }
 
 .undecorated-link:hover {
-	text-decoration: none;
+    text-decoration: none;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-	display: none !important;
+    display: none !important;
 }
 
 .ng-invalid.ng-dirty{
@@ -172,7 +172,7 @@ p:first-child::first-letter {
 
 .home{
     text-align: justify;
-  }
+}
 
 .home .page-header{
     margin: 20px 0 10px 0;
@@ -185,7 +185,7 @@ p:first-child::first-letter {
 
 
 /*.page-header .content {*/
-    /*margin-top: 0;*/
+/*margin-top: 0;*/
 /*}*/
 
 div.home div.col-lg-12 {

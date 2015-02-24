@@ -1,16 +1,17 @@
 'use strict';
 
-angular.module('map').controller('MapController', ['$scope', 'Authentication','MapboxApiKeys', '$http',
-    function ($scope, Authentication,MapboxApiKeys, $http) {
+angular.module('map').controller('MapController', ['$scope', 'Authentication', 'MapboxApiKeys', '$http',
+    function ($scope, Authentication, MapboxApiKeys, $http) {
 
         $scope.markers = true;
         $scope.filters = true;
 
         MapboxApiKeys.getApi()
-            .success(function(data){
+            .success(function (data) {
                 mapFunction(data.mapboxKey, data.mapboxSecret);
+
             })
-            .error(function(data,status){
+            .error(function (data, status) {
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
 
@@ -18,78 +19,62 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication','M
 
             //creates a Mapbox Map
             L.mapbox.accessToken = accessToken;
-            var map = L.mapbox.map('map', key)
-                .setView([40.773, -111.902], 12)
+            var map = L.mapbox.map('map')
+                .setView([40.773, -111.902], 12);
 
-            //var filters = document.getElementById('filters');
-            //var checkboxes = document.getElementsByClassName('filter');
-            //
-            //function change() {
-            //    // Find all checkboxes that are checked and build a list of their values
-            //    var on = [];
-            //    for (var i = 0; i < checkboxes.length; i++) {
-            //        if (checkboxes[i].checked) on.push(checkboxes[i].value);
-            //    }
-            //    // The filter function takes a GeoJSON feature object
-            //    // and returns true to show it or false to hide it.
-            //    map.featureLayer.setFilter(function (f) {
-            //        // check each marker's symbol to see if its value is in the list
-            //        // of symbols that should be on, stored in the 'on' array
-            //        return on.indexOf(f.properties['marker-symbol']) !== -1;
-            //    });
-            //    return false;
-            //}
-            //
-            //// When the form is touched, re-filter markers
-            //filters.onchange = change;
-            //// Initially filter the markers
-            //change();
+            L.control.layers({
+                'Main Map, Ma\'am': L.mapbox.tileLayer('poetsrock.map-55znsh8b').addTo(map),
+                'Eat Yer Greens': L.mapbox.tileLayer('poetsrock.jdgpalp2')
+            }, {
+                'Tract Boundaries': L.mapbox.tileLayer('poetsrock.7c0b2f7a'),
+                'Other': L.mapbox.tileLayer('poetsrock.control-room')
+            }).addTo(map);
+
+
 
 
             //L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
             //    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
             //    maxZoom: 18,
             //    id: key
-            //});
-            //
-            //L.geoJson()
+            //})
+            //    .addTo(map);
 
-                ////todo complete project schema with the following properties and call on them to populate what is currently hard-coded
-                //L.mapbox.featureLayer({
-                //    // this feature is in the GeoJSON format: see geojson.org
-                //    // for the full specification
-                //    type: 'Feature',
-                //    geometry: {
-                //        type: 'Point',
-                //        // coordinates here are in longitude, latitude order because
-                //        // x, y is the standard for GeoJSON and many formats
-                //        coordinates: [
-                //            -111.902,
-                //            40.773
-                //        ]
-                //    },
-                //    properties: {
-                //        title: 'title',
-                //        description: 'description',
-                //        // one can customize markers by adding simplestyle properties
-                //        // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
-                //        //see also: https://www.mapbox.com/maki/
-                //        'marker-size': 'large',
-                //        'marker-color': '#BE9A6B',
-                //        'marker-symbol': 'cross'
-                //    }
-                //})
-                .addTo(map);
+            $http.get('/places').success(function (mapData) {
+                console.log('mapData', mapData);
+                var placeLength = mapData.results.length;
+                for (var place = 0; place < placeLength; place++) {
 
+                    var mapLat = mapData.results[place].geometry.location.lat;
+                    var mapLng = mapData.results[place].geometry.location.lng;
+                    var mapTitle = mapData.results[place].name;
+                    console.log('mapTitle: ', mapTitle);
+                    //mapSmbol is blah blah
+                    var mapSymbol = function() {
+                        if(mapData.results[place].types[0] !== 'neighborhood' && mapData.results[place].types[0] !== 'stadium' && mapData.results[place].types[0] !== 'store' && mapData.results[place].types[0] !== 'church' && mapData.results[place].types[0] !== 'clothing_store' && mapData.results[place].types[0] !== 'university' && mapData.results[place].types[0] !== 'establishment'){
+                            return mapData.results[place].types[0];
+                        //}else if(statusError === 400){
+                        //    var typesLength = mapData.results[place].types.length;
+                        //    for (var markerType = 0; markerType < typesLength; markerType++)
+                        //        return mapData.results[place].types[markerType];
+                        }else{
+                            return 'marker';
+                        }
 
-            /**
-             *
-             * Add ability to toggle markers based on categories, where categories is a variable
-             *
-             */
+                    };
+                    console.log('mapSymbol(): ', mapSymbol());
 
-
+                    L.marker([mapLat, mapLng], {
+                        icon: L.mapbox.marker.icon({
+                            'title': mapTitle,
+                            'marker-size': 'large',
+                            'marker-symbol': mapSymbol(),
+                            'marker-color': '#00295A'
+                        })
+                    })
+                    .addTo(map);
+                }
+            });
         };
-
     }
 ]);
