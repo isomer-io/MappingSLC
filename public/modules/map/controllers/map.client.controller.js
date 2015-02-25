@@ -29,8 +29,8 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             //});
 
             L.control.layers({
-                'Main Map, Ma\'am': L.mapbox.tileLayer('poetsrock.map-55znsh8b').addTo(map),
-                'Eat Yer Greens': L.mapbox.tileLayer('poetsrock.jdgpalp2')
+                'Main Map': L.mapbox.tileLayer('poetsrock.map-55znsh8b').addTo(map),
+                '2nd Map': L.mapbox.tileLayer('poetsrock.map-55znsh8b')
             }, {
                 'Tract Boundaries': L.mapbox.tileLayer('poetsrock.7c0b2f7a'),
                 'Other': L.mapbox.tileLayer('poetsrock.control-room')
