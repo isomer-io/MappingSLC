@@ -10,10 +10,9 @@
     <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
     <span data-ng-show="toggle">
 
-        <!--create main logo-->
-        <div class="small-main-logo img-responsive" ng-class="{false: 'hide-overlay-yes'}[count === 0]">
+         <!--<div class="small-main-logo img-responsive" ng-class="{false: 'hide-overlay-yes'}[count === 0]">-->
             <!--logo goes here -- from core.css-->
-        </div>
+        <!--</div>-->
 
         <div class="containerOn core" ng-class="{false: 'hide-overlay-yes'}[count === 0]">
             <span class="switch-on" data-ng-click="toggle=!toggle; count = count + 1">X</span>
@@ -21,7 +20,6 @@
                 <div class="col-md-12">
 
                     <div>  <!-- signin  signout functionality -->
-
                         <ul class="pull-right" data-ng-show="!authentication.user">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -62,6 +60,7 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="medium-main-logo img-responsive"></div>
                     <div class="col-lg-12">
                         <div class="main-text">
                             <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
@@ -251,6 +250,8 @@
     <!-- End OF SIDEBAR MENU -->
 
     <div class="container">
+        <div class="small-main-logo2 img-responsive" ng-hide="toggle"></div>
+            </div>
         <h1>
             <strong>
                 <i class="menu-open-icon glyphicon glyphicon-align-justify" data-ng-click="showDetails = ! showDetails; count = count + 1" ng-init="count=0">

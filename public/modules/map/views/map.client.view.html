@@ -1,12 +1,14 @@
 <section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
 
     <span data-ng-show="categoryFilters">
-        <div id="filters" class="ui-select" data-ng-show="'fa fa-chevron-right'" ng-class="{true: 'ui-select-on', false:
-        'ui-select-off'}[filters]">
+        <div id="filters" class="ui-select" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:
+        'ui-select-off'}">
+            <span class="fa fa-chevron-right pull-right"></span>
+
 
             <!--beginning of input fields-->
 
-                <div id="check-awesome" class="form-group filter">
+                <div id="check-awesome" class="form-group filter first-filter">
                     <input type="checkbox" checked=checked name="filters" id="interviews" value="interviews">
                     <label for="interviews">
                             <span class="check"></span>
@@ -33,15 +35,16 @@
                 </label>
             </div>
         <!-- end of form input fields-->
-
         </div>
-    </span>
+        </span>
 
     <span data-ng-hide="categoryFilters">
         <div id="filters" class="ui-select">
-            <span class="fa fa-chevron-left" data-ng-click="categoryFilters=!categoryFilters"></span>
+            <span class="fa fa-chevron-left" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:
+        'ui-select-off'}"></span>
         </div>
     </span>
+
 
     <!--to call MapBox map-->
 
