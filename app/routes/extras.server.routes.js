@@ -2,12 +2,19 @@
 
 module.exports = function (app) {
     var keys = require('../../config/env/keys.js'),
+        tractData = require ('../../config/env/utahTract.json'),
         request = require('request');
 
     // Maps Routes
     app.route('/keys')
         .get(function (req, res) {
             res.jsonp(keys);
+        });
+
+    // Maps Routes
+    app.route('/tractData')
+        .get(function (req, res) {
+            res.jsonp(tractData);
         });
 
     app.route('/places')
