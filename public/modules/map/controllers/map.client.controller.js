@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('map').controller('MapController', ['$scope', 'Authentication', 'ApiKeys', '$http', 'GeoCodeApi',
-    function ($scope, Authentication, ApiKeys, $http) {
+angular.module('map').controller('MapController', ['$scope', 'Authentication', 'ApiKeys', '$http', 'CensusDataService',
+    function ($scope, Authentication, ApiKeys, $http, CensusDataService) {
 
         $scope.markers = true;
         $scope.filters = true;
@@ -11,6 +11,16 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
         //console.log(CensusDataService.callCensusApi());
 
+        CensusDataService.callCensusApi()
+        //console.log(CensusDataService.callCensusApi());
+            .success(function(censusData){
+               censusPopulationData(censusData);
+                console.log(censusData);
+            });
+
+        var censusPopulationData = function(){
+            //write code to overlay tract data with correct tract polygon
+        };
 
         ApiKeys.getApiKeys()
             .success(function (data) {
