@@ -6,6 +6,10 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.markers = true;
         $scope.filters = true;
 
+        $scope.censusDataTractLayer = true;
+        $scope.googlePlacesLayer = true;
+
+
         MapboxApiKeys.getApi()
             .success(function (data) {
                 mapFunction(data.mapboxKey, data.mapboxSecret);
@@ -19,143 +23,179 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
             //creates a Mapbox Map
             L.mapbox.accessToken = accessToken;
+
             var map = L.mapbox.map('map')
                 .setView([40.773, -111.902], 12);
 
-            ////centers on marker when popup icon is clicked
-            //// source: https://www.mapbox.com/mapbox.js/example/v1.0.0/centering-markers/
-            //map.featureLayer.on('click', function(e) {
-            //    map.panTo(e.layer.getLatLng());
-            //});
-
             L.control.layers({
-                'Main Map': L.mapbox.tileLayer('poetsrock.map-55znsh8b').addTo(map),
-                '2nd Map': L.mapbox.tileLayer('poetsrock.map-55znsh8b')
+                'Main Map': L.mapbox.tileLayer('poetsrock.la999il2').addTo(map),
+                'Topo Map': L.mapbox.tileLayer('poetsrock.la97f747')
             }, {
-                'Tract Boundaries': L.mapbox.tileLayer('poetsrock.7c0b2f7a'),
-                'Other': L.mapbox.tileLayer('poetsrock.control-room')
+                //'Tract Boundaries': L.mapbox.tileLayer('examples.bike-lanes'),
             }).addTo(map);
 
-
+            //get the json file on the backend (/config/env/) for the Census Tract Data
             var tractData = $http.get('/tractData')
                 .success(function (tractGeoJson) {
                     tractDataLayer(tractGeoJson);
-                    console.log(tractGeoJson);
                 })
                 .error(function (tractErrorData) {
-                    console.log(tractErrorData);
                 }
             );
 
-            //var tractDataLayer = function(tractGeoJson){
-            //    L.mapbox.featureLayer(tractGeoJson)
-            //        .addTo(map);
-            //};
+            //style the polygon tracts
+            var style = {
+                'stroke': true,
+                'clickable': true,
+                'color': "#00D",
+                'fillColor': "#00D",
+                'weight': 1.0,
+                'opacity': 0.2,
+                'fillOpacity': 0.0,
+                'className': ''  //String that sets custom class name on an element
+            };
+            var hoverStyle = {
+                'color': "#00D",
+                "fillOpacity": 0.5,
+                'weight': 1.0,
+                'opacity': 0.2,
+                'className': ''  //String that sets custom class name on an element
+            };
+            var hoverOffset = new L.Point(30, -16);
+
+
+            var censusTractData = null;
 
             var tractDataLayer = function (tractGeoJson) {
-                L.geoJson(tractGeoJson, {
-                        style: function (feature) {
-                            return {
-                                //properties can be found here: http://leafletjs.com/reference.html#path
-                                stroke: true,
-                                weight: 1,  //stroke in pixels
-                                color: '#010101',
-                                fill: false,
-                                clickable: true,
-                                className: ''  //String that sets custom class name on an element
-                            };
-                        },
+                censusTractData = L.geoJson(tractGeoJson, {
+                        style: style,
                         onEachFeature: function (feature, layer) {
-                            layer.bindPopup(feature.properties.description);
-                        }
+                            if (feature.properties) {
+                                var popupString = '<div class="popup">';
+                                for (var k in feature.properties) {
+                                    var v = feature.properties[k];
+                                    popupString += k + ': ' + v + '<br />';
+                                }
+                                popupString += '</div>';
+                                layer.bindPopup(popupString);
+                            }
+                            if (!(layer instanceof L.Point)) {
+                                layer.on('mouseover', function () {
+                                    layer.setStyle(hoverStyle);
+                                    //layer.setStyle(hoverOffset);
+                                });
+                                layer.on('mouseout', function () {
+                                    layer.setStyle(style);
+                                    //layer.setStyle(hoverOffset);
+                                });
+                            }
 
+                        }
                     }
-                )
-                    .addTo(map);
+                );
+
+                censusTractData.addTo(map);
 
             };
 
-            //L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-            //    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            //    maxZoom: 18,
-            //    id: key
-            //})
-            //    .addTo(map);
+            //create toggle/filter functionality for Census Tract Data
+            $scope.toggleCensusData = function () {
+                if ($scope.censusDataTractLayer) {
+                    map.removeLayer(censusTractData);
+                } else {
+                    map.addLayer(censusTractData);
+                }
+            };
 
-            $http.get('/places').success(function (mapData) {
-                console.log('mapData', mapData);
-                var placeLength = mapData.results.length;
+            //Google Places API
+            var googlePlacesMarker = null;
+            var googlePlacesMarkerSet = null;
+
+            var googlePlacesData = function() {
+            $http.get('/places').success(function (poiData) {
+
+                var placeLength = poiData.results.length;
+
                 for (var place = 0; place < placeLength; place++) {
 
-                    var mapLat = mapData.results[place].geometry.location.lat;
-                    var mapLng = mapData.results[place].geometry.location.lng;
-                    var mapTitle = mapData.results[place].name;
-                    //console.log('mapTitle: ', mapTitle);
-                    //mapSmbol is blah blah
+                    var mapLat = poiData.results[place].geometry.location.lat;
+                    var mapLng = poiData.results[place].geometry.location.lng;
+                    var mapTitle = poiData.results[place].name;
+
                     var mapSymbol = function () {
-                        if (mapData.results[place].types[0] !== 'neighborhood' && mapData.results[place].types[0] !== 'stadium' && mapData.results[place].types[0] !== 'store' && mapData.results[place].types[0] !== 'church' && mapData.results[place].types[0] !== 'clothing_store' && mapData.results[place].types[0] !== 'university' && mapData.results[place].types[0] !== 'establishment') {
-                            return mapData.results[place].types[0];
-                            //}else if(statusError === 400){
-                            //    var typesLength = mapData.results[place].types.length;
-                            //    for (var markerType = 0; markerType < typesLength; markerType++)
-                            //        return mapData.results[place].types[markerType];
+                        if (poiData.results[place].types[0] !== 'neighborhood' && poiData.results[place].types[0] !== 'stadium' && poiData.results[place].types[0] !== 'store' && poiData.results[place].types[0] !== 'church' && poiData.results[place].types[0] !== 'clothing_store' && poiData.results[place].types[0] !== 'university' && poiData.results[place].types[0] !== 'establishment') {
+                            return poiData.results[place].types[0];
                         } else {
                             return 'marker';
                         }
 
                     };
-                    //console.log('mapSymbol(): ', mapSymbol());
 
                     //properties for markers are gathered from the api docs of both Mapbox and Leaflet.
                     //Mapbox:
                     //Leafleft: http://leafletjs.com/reference.html#marker,
                     //http://leafletjs.com/reference.html#icon
-                    var styledIcon = L.mapbox.marker.icon({
-                        'title': mapTitle,
-                        'marker-size': 'large',
-                        'marker-symbol': mapSymbol(),
-                        'marker-color': '#00295A',
-                        'riseOnHover': true,
-                        'riseOffset': 250,
-                        'opacity': 0.1,
-                        'clickable': true
-                    });
-                    L.marker([mapLat, mapLng], {icon: styledIcon})
-                        .addTo(map);
+                    //var styledIcon = L.mapbox.marker.icon({
+                    //    'title': mapTitle,
+                    //    'marker-size': 'large',
+                    //    'marker-symbol': mapSymbol(),
+                    //    'marker-color': '#00295A',
+                    //    'riseOnHover': true,
+                    //    'riseOffset': 250,
+                    //    'opacity': 0.1,
+                    //    'clickable': true
+                    //});
+
+                    googlePlacesMarker = L.marker([mapLat, mapLng]).toGeoJSON();
+                    //console.log('googlePlacesMarker Inside: ', googlePlacesMarker);
+                    var googlePlacesMarkerArray = [];
+                    googlePlacesMarkerArray.push(googlePlacesMarker);
+                    //console.log('googlePlacesMarkerArray: ', googlePlacesMarkerArray);
+
+                    //googlePlacesMarkerSet = L.geoJson(googlePlacesMarker, {
+                    //    style: function (feature) {
+                    //        return {
+                    //            'title': mapTitle,
+                    //            'marker-size': 'large',
+                    //            'marker-symbol': mapSymbol(),
+                    //            'marker-color': '#00295A',
+                    //            'riseOnHover': true,
+                    //            'riseOffset': 250,
+                    //            'opacity': 0.5,
+                    //            'clickable': true
+                    //        }
+                    //    }
+                    //})
+                    //.addTo(map);
                 }
 
-                //L.marker([mapLat, mapLng]).bindPopup(
-                //    {icon: styledIcon}
-                //)
-                //    .addTo(map);
-
+                googlePlacesMarkerSet = L.geoJson(googlePlacesMarkerArray, {
+                    style: function (feature) {
+                        return {
+                            'title': mapTitle,
+                            'marker-size': 'large',
+                            //'marker-symbol': mapSymbol(),
+                            'marker-symbol': 'marker',
+                            'marker-color': '#00295A',
+                            'riseOnHover': true,
+                            'riseOffset': 250,
+                            'opacity': 0.5,
+                            'clickable': true
+                        }
+                    }
+                })
+                    .addTo(map);
 
             });
+        };
 
-            //creates filter
-            var filters = document.getElementById('filters');
-            var checkboxes = document.getElementsByClassName('filter');
-
-            function change() {
-                // Find all checkboxes that are checked and build a list of their values
-                var on = [];
-                for (var i = 0; i < checkboxes.length; i++) {
-                    if (checkboxes[i].checked) on.push(checkboxes[i].value);
+            $scope.toggleGooglePlacesData = function () {
+                if ($scope.googlePlacesLayer) {
+                    map.removeLayer(googlePlacesMarkerSet);
+                } else {
+                    map.addLayer(googlePlacesMarkerSet);
                 }
-                // The filter function takes a GeoJSON feature object
-                // and returns true to show it or false to hide it.
-                map.featureLayer.setFilter(function (f) {
-                    // check each marker's symbol to see if its value is in the list
-                    // of symbols that should be on, stored in the 'on' array
-                    return on.indexOf(f.properties['marker-symbol']) !== -1;
-                });
-                return false;
-            }
-
-            // When the form is touched, re-filter markers
-            filters.onchange = change;
-            // Initially filter the markers
-            change();
+            };
 
         };
     }
