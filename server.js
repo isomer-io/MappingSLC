@@ -28,8 +28,8 @@ require('./config/passport')();
 
 // This line is from the Node.js HTTPS documentation.
 var options = {
-    key: fs.readFileSync('config/sslcerts/server.key'),
-    cert: fs.readFileSync('config/sslcerts/server.crt')
+    key: fs.readFileSync('config/certs/server.key'),
+    cert: fs.readFileSync('config/certs/server.crt')
 };
 
 var secureServer = https.createServer(options, app);
