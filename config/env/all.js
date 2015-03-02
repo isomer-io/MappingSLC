@@ -19,7 +19,6 @@ module.exports = {
 				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/ng-ckeditor/ng-ckeditor.css',
                 '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css'
-
 			],
 			js: [
 				'public/lib/angular/angular.js',

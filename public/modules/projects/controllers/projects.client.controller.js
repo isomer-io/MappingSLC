@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http','MapboxApiKeys','Geocodeapi','$modal', '$rootScope',
-	function($scope, $stateParams, $location, Authentication, Projects, $http, MapboxApiKeys, Geocodeapi, $modal, $rootScope) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http','ApiKeys','GeoCodeApi','$modal', '$rootScope',
+	function($scope, $stateParams, $location, Authentication, Projects, $http, ApiKeys, GeoCodeApi, $modal) {
 		$scope.authentication = Authentication;
 		$scope.logo = '../../../modules/core/img/brand/mapping.png';
 		var width = '800';
@@ -72,12 +72,12 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
                 });
             };
 
-            MapboxApiKeys.getApi().success(function(data) {
+            ApiKeys.getApiKeys().success(function(data) {
                 var mapboxKey = data.mapboxKey;
                 var mapboxSecret = data.mapboxSecret;
                 var hereKey = data.hereKey;
                 var hereSecret = data.hereSecret;
-                Geocodeapi.callApi(project, hereKey, hereSecret, saveProject)
+                Geocodeapi.callGeoCodeApi(project, hereKey, hereSecret, saveProject)
                     .success(function(data) {
                     project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
                     saveProject();

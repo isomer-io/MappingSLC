@@ -1,17 +1,17 @@
-main   { font-size:16px; }
+.filter main   { font-size:16px; }
 .stuff { padding-top:60px; }
 
 /* basic css */
-input[type=checkbox]   { display:none; }
-label, p               { padding-left:50px; }
+.filter input[type=checkbox]   { display:none; }
+.filter label, p               { padding-left:50px; }
 #check-awesome         { position:relative; }
 
 /* checkbox css */
-label                  { cursor:pointer; }
-label span             { display:block; position:absolute; left:0;
+.filter label                  { cursor:pointer; }
+.filter label span             { display:block; position:absolute; left:0;
     -webkit-transition-duration:0.3s; -moz-transition-duration:0.3s; transition-duration:0.3s;
 }
-label .circle          {
+.filter label .circle          {
     background:#FFF;
     left:-30px;
     top:-30px;
@@ -20,14 +20,14 @@ label .circle          {
     z-index:-1;
     border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%;
 }
-label .box     {
+.filter label .box     {
     border:2px solid #000;
     height:20px;
     width:20px;
     z-index:888;
     -webkit-transition-delay:0.2s; -moz-transition-delay:0.2s; transition-delay:0.2s;
 }
-label .check         {
+.filter label .check {
     top: -7px;
     left: 6px;
     width: 12px;
@@ -44,18 +44,18 @@ label .check         {
 /* handling click events */
 
 /* when checkbox is checked */
-label .circle {
+.filter label .circle {
     -webkit-animation   :growCircle 0.3s ease;
     -moz-animation      :growCircle 0.3s ease;
     animation           :growCircle 0.3s ease;
 }
-input[type=checkbox]:checked ~ label .box {
+.filter input[type=checkbox]:checked ~ label .box {
     opacity:0;
     -webkit-transform   :scale(0) rotate(-180deg);
     -moz-transform 		:scale(0) rotate(-180deg);
     transform 				:scale(0) rotate(-180deg);
 }
-input[type=checkbox]:checked ~ label .check {
+.filter input[type=checkbox]:checked ~ label .check {
     opacity:1;
     -webkit-transform   :scale(1) rotate(45deg);
     -moz-transform      :scale(1) rotate(45deg);
