@@ -31,6 +31,8 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 'Main Map': L.mapbox.tileLayer('poetsrock.la999il2').addTo(map),
                 'Topo Map': L.mapbox.tileLayer('poetsrock.la97f747')
             }, {
+                //this is where you would add optional tilelayers. This sedction is required,
+                //even if no tileLayers are present.
                 //'Tract Boundaries': L.mapbox.tileLayer('examples.bike-lanes'),
             }).addTo(map);
 
@@ -93,9 +95,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                         }
                     }
                 );
-
                 censusTractData.addTo(map);
-
             };
 
             //create toggle/filter functionality for Census Tract Data
@@ -107,69 +107,43 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 }
             };
 
+
             //Google Places API
             var googlePlacesMarker = null;
-            var googlePlacesMarkerSet = null;
+            var googlePlacesMarkerLayer = null;
+            var mapSymbol = {};
+            var googlePlacesMarkerArray = [];
 
             var googlePlacesData = function() {
             $http.get('/places').success(function (poiData) {
+                console.log('poiData: ', poiData);
 
                 var placeLength = poiData.results.length;
-
                 for (var place = 0; place < placeLength; place++) {
 
                     var mapLat = poiData.results[place].geometry.location.lat;
                     var mapLng = poiData.results[place].geometry.location.lng;
                     var mapTitle = poiData.results[place].name;
+                    console.log('LatLng: ', mapLat, mapLng);
+                    console.log('Title: ', mapTitle);
 
-                    var mapSymbol = function () {
-                        if (poiData.results[place].types[0] !== 'neighborhood' && poiData.results[place].types[0] !== 'stadium' && poiData.results[place].types[0] !== 'store' && poiData.results[place].types[0] !== 'church' && poiData.results[place].types[0] !== 'clothing_store' && poiData.results[place].types[0] !== 'university' && poiData.results[place].types[0] !== 'establishment') {
-                            return poiData.results[place].types[0];
-                        } else {
-                            return 'marker';
-                        }
-
-                    };
-
-                    //properties for markers are gathered from the api docs of both Mapbox and Leaflet.
-                    //Mapbox:
-                    //Leafleft: http://leafletjs.com/reference.html#marker,
-                    //http://leafletjs.com/reference.html#icon
-                    //var styledIcon = L.mapbox.marker.icon({
-                    //    'title': mapTitle,
-                    //    'marker-size': 'large',
-                    //    'marker-symbol': mapSymbol(),
-                    //    'marker-color': '#00295A',
-                    //    'riseOnHover': true,
-                    //    'riseOffset': 250,
-                    //    'opacity': 0.1,
-                    //    'clickable': true
-                    //});
+                    //mapSymbol = function () {
+                    //    if (poiData.results[place].types[0] !== 'neighborhood' && poiData.results[place].types[0] !== 'stadium' && poiData.results[place].types[0] !== 'store' && poiData.results[place].types[0] !== 'church' && poiData.results[place].types[0] !== 'clothing_store' && poiData.results[place].types[0] !== 'university' && poiData.results[place].types[0] !== 'establishment') {
+                    //        return poiData.results[place].types[0];
+                    //    } else {
+                    //        return 'marker';
+                    //    }
+                    //
+                    //};
 
                     googlePlacesMarker = L.marker([mapLat, mapLng]).toGeoJSON();
-                    //console.log('googlePlacesMarker Inside: ', googlePlacesMarker);
-                    var googlePlacesMarkerArray = [];
+                    console.log('googlePlacesMarker: ', googlePlacesMarker);
+
                     googlePlacesMarkerArray.push(googlePlacesMarker);
-                    //console.log('googlePlacesMarkerArray: ', googlePlacesMarkerArray);
+                    console.log('googlePlacesMarkerArray: ', googlePlacesMarkerArray);
+                } //end of FOR loop
 
-                    //googlePlacesMarkerSet = L.geoJson(googlePlacesMarker, {
-                    //    style: function (feature) {
-                    //        return {
-                    //            'title': mapTitle,
-                    //            'marker-size': 'large',
-                    //            'marker-symbol': mapSymbol(),
-                    //            'marker-color': '#00295A',
-                    //            'riseOnHover': true,
-                    //            'riseOffset': 250,
-                    //            'opacity': 0.5,
-                    //            'clickable': true
-                    //        }
-                    //    }
-                    //})
-                    //.addTo(map);
-                }
-
-                googlePlacesMarkerSet = L.geoJson(googlePlacesMarkerArray, {
+                googlePlacesMarkerLayer = L.geoJson(googlePlacesMarkerArray, {
                     style: function (feature) {
                         return {
                             'title': mapTitle,
@@ -184,16 +158,16 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                         }
                     }
                 })
-                    .addTo(map);
-
+                .addTo(map);
+                console.log('googlePlacesMarkerLayer: ', googlePlacesMarkerLayer);
             });
         };
-
+        console.log('googlePlacesData(): ', googlePlacesData());
             $scope.toggleGooglePlacesData = function () {
                 if ($scope.googlePlacesLayer) {
-                    map.removeLayer(googlePlacesMarkerSet);
+                    map.removeLayer(googlePlacesMarkerLayer);
                 } else {
-                    map.addLayer(googlePlacesMarkerSet);
+                    map.addLayer(googlePlacesMarkerLayer);
                 }
             };
 
