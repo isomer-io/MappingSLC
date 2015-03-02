@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('map').service('Geocodeapi', ['$http',
+angular.module('map').service('GeoCodeApi', ['$http',
 	function($http) {
 		// Geocodeapi service logic
 		// ...
-        this.callApi = function(project, key, secret, projectSaveCallback){
+        this.callGeoCodeApi = function(project, key, secret, projectSaveCallback){
 
             if (!project || !project.state || !project.city || !project.zip || !project.street || !key || !secret) {
                 projectSaveCallback();
