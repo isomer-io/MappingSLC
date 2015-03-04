@@ -7,6 +7,7 @@ module.exports = {
 		keywords: 'mapping, map, geojson, salt lake city, utah, art, humanities, digital humanities, isomer'
 	},
 	port: process.env.PORT || 3000,
+    httpsPort: process.env.PORT || 3001,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',
@@ -18,7 +19,6 @@ module.exports = {
 				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/ng-ckeditor/ng-ckeditor.css',
                 '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css'
-
 			],
 			js: [
 				'public/lib/angular/angular.js',

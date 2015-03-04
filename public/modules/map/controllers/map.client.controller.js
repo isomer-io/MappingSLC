@@ -1,17 +1,33 @@
 'use strict';
 
-angular.module('map').controller('MapController', ['$scope', 'Authentication','MapboxApiKeys',
-    function ($scope, Authentication,MapboxApiKeys) {
+angular.module('map').controller('MapController', ['$scope', 'Authentication', 'ApiKeys', '$http', 'CensusDataService',
+    function ($scope, Authentication, ApiKeys, $http, CensusDataService) {
 
         $scope.markers = true;
         $scope.filters = true;
 
-        MapboxApiKeys.getApi()
-            .success(function(data){
+        $scope.censusDataTractLayer = true;
+        $scope.googlePlacesLayer = true;
+
+        //console.log(CensusDataService.callCensusApi());
+
+        CensusDataService.callCensusApi()
+        //console.log(CensusDataService.callCensusApi());
+            .success(function(censusData){
+               censusPopulationData(censusData);
+                console.log(censusData);
+            });
+
+        var censusPopulationData = function(){
+            //write code to overlay tract data with correct tract polygon
+        };
+
+        ApiKeys.getApiKeys()
+            .success(function (data) {
                 mapFunction(data.mapboxKey, data.mapboxSecret);
-                console.log("This is the Map Key: " + data.mapboxKey);
+
             })
-            .error(function(data,status){
+            .error(function (data, status) {
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
 
@@ -19,77 +35,138 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication','M
 
             //creates a Mapbox Map
             L.mapbox.accessToken = accessToken;
-            var map = L.mapbox.map('map', key)
+
+            var map = L.mapbox.map('map')
                 .setView([40.773, -111.902], 12);
 
-            //var filters = document.getElementById('filters');
-            //var checkboxes = document.getElementsByClassName('filter');
-            //
-            //function change() {
-            //    // Find all checkboxes that are checked and build a list of their values
-            //    var on = [];
-            //    for (var i = 0; i < checkboxes.length; i++) {
-            //        if (checkboxes[i].checked) on.push(checkboxes[i].value);
-            //    }
-            //    // The filter function takes a GeoJSON feature object
-            //    // and returns true to show it or false to hide it.
-            //    map.featureLayer.setFilter(function (f) {
-            //        // check each marker's symbol to see if its value is in the list
-            //        // of symbols that should be on, stored in the 'on' array
-            //        return on.indexOf(f.properties['marker-symbol']) !== -1;
-            //    });
-            //    return false;
-            //}
-            //
-            //// When the form is touched, re-filter markers
-            //filters.onchange = change;
-            //// Initially filter the markers
-            //change();
+            L.control.layers({
+                'Main Map': L.mapbox.tileLayer('poetsrock.la999il2').addTo(map),
+                'Topo Map': L.mapbox.tileLayer('poetsrock.la97f747')
+            }, {
+                //this is where you would add optional tilelayers. This sedction is required,
+                //even if no tileLayers are present.
+                //'Tract Boundaries': L.mapbox.tileLayer('examples.bike-lanes'),
+            }).addTo(map);
+
+            //get the json file on the backend (/config/env/) for the Census Tract Data
+            var tractData = $http.get('/tractData')
+                .success(function (tractGeoJson) {
+                    tractDataLayer(tractGeoJson);
+                })
+                .error(function (tractErrorData) {
+                }
+            );
+
+            //style the polygon tracts
+            var style = {
+                'stroke': true,
+                'clickable': true,
+                'color': "#00D",
+                'fillColor': "#00D",
+                'weight': 1.0,
+                'opacity': 0.2,
+                'fillOpacity': 0.0,
+                'className': ''  //String that sets custom class name on an element
+            };
+            var hoverStyle = {
+                'color': "#00D",
+                "fillOpacity": 0.5,
+                'weight': 1.0,
+                'opacity': 0.2,
+                'className': ''  //String that sets custom class name on an element
+            };
+            var hoverOffset = new L.Point(30, -16);
 
 
-            L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                maxZoom: 18,
-                id: key
-            })
-                //;
+            var censusTractData = null;
 
-                ////todo complete project schema with the following properties and call on them to populate what is currently hard-coded
-                //L.mapbox.featureLayer({
-                //    // this feature is in the GeoJSON format: see geojson.org
-                //    // for the full specification
-                //    type: 'Feature',
-                //    geometry: {
-                //        type: 'Point',
-                //        // coordinates here are in longitude, latitude order because
-                //        // x, y is the standard for GeoJSON and many formats
-                //        coordinates: [
-                //            -111.902,
-                //            40.773
-                //        ]
-                //    },
-                //    properties: {
-                //        title: 'title',
-                //        description: 'description',
-                //        // one can customize markers by adding simplestyle properties
-                //        // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
-                //        //see also: https://www.mapbox.com/maki/
-                //        'marker-size': 'large',
-                //        'marker-color': '#BE9A6B',
-                //        'marker-symbol': 'cross'
-                //    }
-                //})
+            var tractDataLayer = function (tractGeoJson) {
+                censusTractData = L.geoJson(tractGeoJson, {
+                        style: style,
+                        onEachFeature: function (feature, layer) {
+                            if (feature.properties) {
+                                var popupString = '<div class="popup">';
+                                for (var k in feature.properties) {
+                                    var v = feature.properties[k];
+                                    popupString += k + ': ' + v + '<br />';
+                                }
+                                popupString += '</div>';
+                                layer.bindPopup(popupString);
+                            }
+                            if (!(layer instanceof L.Point)) {
+                                layer.on('mouseover', function () {
+                                    layer.setStyle(hoverStyle);
+                                    //layer.setStyle(hoverOffset);
+                                });
+                                layer.on('mouseout', function () {
+                                    layer.setStyle(style);
+                                    //layer.setStyle(hoverOffset);
+                                });
+                            }
+
+                        }
+                    }
+                );
+                censusTractData.addTo(map);
+            };
+
+            //create toggle/filter functionality for Census Tract Data
+            $scope.toggleCensusData = function () {
+                if ($scope.censusDataTractLayer) {
+                    map.removeLayer(censusTractData);
+                } else {
+                    map.addLayer(censusTractData);
+                }
+            };
+
+
+            //Google Places API
+            var googlePlacesMarker = null;
+            var googlePlacesMarkerLayer = null;
+            var googlePlacesMarkerArray = [];
+
+            var googlePlacesData = function() {
+            $http.get('/places').success(function (poiData) {
+
+                var placeLength = poiData.results.length;
+                for (var place = 0; place < placeLength; place++) {
+
+                    var mapLat = poiData.results[place].geometry.location.lat;
+                    var mapLng = poiData.results[place].geometry.location.lng;
+                    var mapTitle = poiData.results[place].name;
+
+                    googlePlacesMarker = L.marker([mapLat, mapLng]).toGeoJSON();
+
+                    googlePlacesMarkerArray.push(googlePlacesMarker);
+                } //end of FOR loop
+
+                googlePlacesMarkerLayer = L.geoJson(googlePlacesMarkerArray, {
+                    style: function (feature) {
+                        return {
+                            'title': mapTitle,
+                            'marker-size': 'large',
+                            //'marker-symbol': mapSymbol(),
+                            'marker-symbol': 'marker',
+                            'marker-color': '#00295A',
+                            'riseOnHover': true,
+                            'riseOffset': 250,
+                            'opacity': 0.5,
+                            'clickable': true
+                        }
+                    }
+                })
                 .addTo(map);
-
-
-            /**
-             *
-             * Add ability to toggle markers based on categories, where categories is a variable
-             *
-             */
-
-
+            });
         };
 
+            $scope.toggleGooglePlacesData = function () {
+                if ($scope.googlePlacesLayer) {
+                    map.removeLayer(googlePlacesMarkerLayer);
+                } else {
+                    map.addLayer(googlePlacesMarkerLayer);
+                }
+            };
+
+        };
     }
 ]);

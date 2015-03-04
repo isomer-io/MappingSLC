@@ -131,6 +131,16 @@ var ProjectSchema = new Schema({
         type: String,
         default: '',
         trim: true
+    },
+    videoId: {
+        type: Array,
+        default: '',
+        trim: true
+    },
+    soundId: {
+    type: Array,
+    default: '',
+    trim: true
     }
 });
 
@@ -142,9 +152,9 @@ ProjectSchema.plugin(mongoosastic);
 
 // Add model
 
-var Project = mongoose.model('Project', ProjectSchema)
-    , stream = Project.synchronize()
-    , count = 0;
+var Project = mongoose.model('Project', ProjectSchema),
+    stream = Project.synchronize(),
+    count = 0;
 
 stream.on('data', function (err, doc) {
     count++;
