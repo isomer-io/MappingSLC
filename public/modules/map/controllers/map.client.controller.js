@@ -7,18 +7,41 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.filters = true;
 
         $scope.censusDataTractLayer = true;
-        $scope.googlePlacesLayer = true;
+        $scope.googlePlacesLayer = false;
+
+        //style the polygon tracts
+        var style = {
+            'stroke': true,
+            'clickable': true,
+            'color': "#00D",
+            'fillColor': "#00D",
+            'weight': 1.0,
+            'opacity': 0.2,
+            'fillOpacity': 0.0,
+            'className': ''  //String that sets custom class name on an element
+        };
+        var hoverStyle = {
+            'color': "#00D",
+            "fillOpacity": 0.5,
+            'weight': 1.0,
+            'opacity': 0.2,
+            'className': ''  //String that sets custom class name on an element
+        };
+        var hoverOffset = new L.Point(30, -16);
+
+
+        var censusTractData = null;
 
         //console.log(CensusDataService.callCensusApi());
 
         CensusDataService.callCensusApi()
-        //console.log(CensusDataService.callCensusApi());
-            .success(function(censusData){
-               censusPopulationData(censusData);
-                console.log(censusData);
+            //console.log(CensusDataService.callCensusApi());
+            .success(function (censusData) {
+                censusPopulationData(censusData);
+                //console.log(censusData);
             });
 
-        var censusPopulationData = function(){
+        var censusPopulationData = function () {
             //write code to overlay tract data with correct tract polygon
         };
 
@@ -35,6 +58,9 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
             //creates a Mapbox Map
             L.mapbox.accessToken = accessToken;
+
+            //'info' id is part of creating tooltip with absolute position
+            var info = document.getElementById('info');
 
             var map = L.mapbox.map('map')
                 .setView([40.773, -111.902], 12);
@@ -57,34 +83,12 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 }
             );
 
-            //style the polygon tracts
-            var style = {
-                'stroke': true,
-                'clickable': true,
-                'color': "#00D",
-                'fillColor': "#00D",
-                'weight': 1.0,
-                'opacity': 0.2,
-                'fillOpacity': 0.0,
-                'className': ''  //String that sets custom class name on an element
-            };
-            var hoverStyle = {
-                'color': "#00D",
-                "fillOpacity": 0.5,
-                'weight': 1.0,
-                'opacity': 0.2,
-                'className': ''  //String that sets custom class name on an element
-            };
-            var hoverOffset = new L.Point(30, -16);
-
-
-            var censusTractData = null;
-
             var tractDataLayer = function (tractGeoJson) {
                 censusTractData = L.geoJson(tractGeoJson, {
                         style: style,
                         onEachFeature: function (feature, layer) {
                             if (feature.properties) {
+                                //console.log('feature.properties: ', feature.properties);
                                 var popupString = '<div class="popup">';
                                 for (var k in feature.properties) {
                                     var v = feature.properties[k];
@@ -110,6 +114,65 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 censusTractData.addTo(map);
             };
 
+            var dataBoxStaticPopup = L.mapbox.featureLayer().addTo(map);
+
+            var geoJson = [
+                {
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [-111.902, 40.783]
+                    },
+                    properties: {
+                        title: 'Marker one',
+                        description: '<em>Wow</em>, this tooltip is breaking all the rules.',
+                        'marker-color': '#548cba'
+                    }
+                },
+                {
+                    type: 'Feature',
+                    geometry: {
+                        type: 'Point',
+                        coordinates: [-111.922, 40.773]
+                    },
+                    properties: {
+                        title: 'Marker two',
+                        description: 'Another marker, including <a href="http://mapbox.com">a link</a>.',
+                        'marker-color': '#548cba'
+                    }
+                }
+            ];
+
+            dataBoxStaticPopup.setGeoJSON(geoJson);
+
+            // Listen for individual marker clicks.
+            dataBoxStaticPopup.on('mouseover', function (e) {
+                // Force the popup closed.
+                //e.layer.closePopup();
+
+                var feature = e.layer.feature;
+                var content = '<div><strong>' + feature.properties.title + '</strong>' +
+                    '<p>' + feature.properties.description + '</p></div>';
+
+                info.innerHTML = content;
+
+                ////the below line of code centers the map when the marker is clicked
+                ////source: https://www.mapbox.com/mapbox.js/example/v1.0.0/centering-markers/
+                //map.panTo(e.layer.getLatLng());
+            });
+
+            // Clear the tooltip when map is clicked.
+            map.on('move', empty);
+
+            // Trigger empty contents when the script
+            // has loaded on the page.
+            empty();
+
+            function empty() {
+                info.innerHTML = '<div><strong>Click a marker</strong></div>';
+            }
+
+
             //create toggle/filter functionality for Census Tract Data
             $scope.toggleCensusData = function () {
                 if ($scope.censusDataTractLayer) {
@@ -125,45 +188,50 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             var googlePlacesMarkerLayer = null;
             var googlePlacesMarkerArray = [];
 
-            var googlePlacesData = function() {
-            $http.get('/places').success(function (poiData) {
+            var googlePlacesData = function () {
+                $http.get('/places').success(function (poiData) {
 
-                var placeLength = poiData.results.length;
-                for (var place = 0; place < placeLength; place++) {
+                    var placeLength = poiData.results.length;
+                    for (var place = 0; place < placeLength; place++) {
 
-                    var mapLat = poiData.results[place].geometry.location.lat;
-                    var mapLng = poiData.results[place].geometry.location.lng;
-                    var mapTitle = poiData.results[place].name;
+                        var mapLat = poiData.results[place].geometry.location.lat;
+                        var mapLng = poiData.results[place].geometry.location.lng;
+                        var mapTitle = poiData.results[place].name;
 
-                    googlePlacesMarker = L.marker([mapLat, mapLng]).toGeoJSON();
+                        googlePlacesMarker = L.marker([mapLat, mapLng]).toGeoJSON();
 
-                    googlePlacesMarkerArray.push(googlePlacesMarker);
-                } //end of FOR loop
+                        googlePlacesMarkerArray.push(googlePlacesMarker);
+                    } //end of FOR loop
 
-                googlePlacesMarkerLayer = L.geoJson(googlePlacesMarkerArray, {
-                    style: function (feature) {
-                        return {
-                            'title': mapTitle,
-                            'marker-size': 'large',
-                            //'marker-symbol': mapSymbol(),
-                            'marker-symbol': 'marker',
-                            'marker-color': '#00295A',
-                            'riseOnHover': true,
-                            'riseOffset': 250,
-                            'opacity': 0.5,
-                            'clickable': true
+                    googlePlacesMarkerLayer = L.geoJson(googlePlacesMarkerArray, {
+                        style: function (feature) {
+                            return {
+                                'title': mapTitle,
+                                'marker-size': 'large',
+                                //'marker-symbol': mapSymbol(),
+                                'marker-symbol': 'marker',
+                                'marker-color': '#00295A',
+                                'riseOnHover': true,
+                                'riseOffset': 250,
+                                'opacity': 0.5,
+                                'clickable': true
+                            }
                         }
-                    }
-                })
-                .addTo(map);
-            });
-        };
+                    })
+                        .addTo(map);
+
+                });
+
+            };
 
             $scope.toggleGooglePlacesData = function () {
                 if ($scope.googlePlacesLayer) {
-                    map.removeLayer(googlePlacesMarkerLayer);
+                    map.addLayer(googlePlacesData());
+                    //map.removeLayer(googlePlacesData());
                 } else {
-                    map.addLayer(googlePlacesMarkerLayer);
+                    //map.addLayer(googlePlacesMarkerLayer);
+                    map.removeLayer(googlePlacesMarkerLayer);
+
                 }
             };
 
