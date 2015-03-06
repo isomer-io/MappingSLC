@@ -18,7 +18,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/ng-ckeditor/ng-ckeditor.css',
-                '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css'
+                '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css',
+                'public/lib/leaflet-sidebar/src/L.Control.Sidebar.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -36,7 +37,8 @@ module.exports = {
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
 				'public/lib/modernizr/modernizr.js',
-                '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'
+                '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js',
+                'public/lib/leaflet-sidebar/src/L.Control.Sidebar.js'
 			]
 		},
 		css: [

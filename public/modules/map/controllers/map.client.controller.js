@@ -9,16 +9,18 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.censusDataTractLayer = true;
         $scope.googlePlacesLayer = true;
 
+        var toggleProjectDetails = true;
+
         //console.log(CensusDataService.callCensusApi());
 
         CensusDataService.callCensusApi()
-        //console.log(CensusDataService.callCensusApi());
-            .success(function(censusData){
-               censusPopulationData(censusData);
-                console.log(censusData);
+            //console.log(CensusDataService.callCensusApi());
+            .success(function (censusData) {
+                censusPopulationData(censusData);
+                //console.log(censusData);
             });
 
-        var censusPopulationData = function(){
+        var censusPopulationData = function () {
             //write code to overlay tract data with correct tract polygon
         };
 
@@ -30,13 +32,16 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             .error(function (data, status) {
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
+        var map = null;
 
         var mapFunction = function (key, accessToken) {
+
+
 
             //creates a Mapbox Map
             L.mapbox.accessToken = accessToken;
 
-            var map = L.mapbox.map('map')
+            map = L.mapbox.map('map')
                 .setView([40.773, -111.902], 12);
 
             L.control.layers({
@@ -71,10 +76,24 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                     'marker-symbol': 'cafe'
                 }
             })
-            .on('click', function() {
-                setStyle({});
-            })
-            .addTo(map);
+                .on('click', function () {
+                    if (toggleProjectDetails === true) {
+                        document.getElementById('map').style.width='80%';
+                        document.getElementById('map').style.transition = 'all 0.7s ease';
+                        document.getElementById('filters').style.right='384px';
+                        document.getElementById('filters').style.transition = 'all 0.7s ease';
+                        document.getElementById('sidebar-view').style.display='block';
+                        document.getElementById('sidebar-view').style.transition = 'all 0.7s ease';
+                        toggleProjectDetails = false;
+                    } else {
+                        document.getElementById('map').style.width='100%';
+                        document.getElementById('filters').style.right='0';
+                        document.getElementById('sidebar-view').style.display='block inline';
+                        document.getElementById('sidebar-view').style.transition = 'all 0.7s ease';
+                        toggleProjectDetails = true;
+                    }
+                })
+                .addTo(map);
 
             //get the json file on the backend (/config/env/) for the Census Tract Data
             var tractData = $http.get('/tractData')
@@ -153,39 +172,39 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             var googlePlacesMarkerLayer = null;
             var googlePlacesMarkerArray = [];
 
-            var googlePlacesData = function() {
-            $http.get('/places').success(function (poiData) {
+            var googlePlacesData = function () {
+                $http.get('/places').success(function (poiData) {
 
-                var placeLength = poiData.results.length;
-                for (var place = 0; place < placeLength; place++) {
+                    var placeLength = poiData.results.length;
+                    for (var place = 0; place < placeLength; place++) {
 
-                    var mapLat = poiData.results[place].geometry.location.lat;
-                    var mapLng = poiData.results[place].geometry.location.lng;
-                    var mapTitle = poiData.results[place].name;
+                        var mapLat = poiData.results[place].geometry.location.lat;
+                        var mapLng = poiData.results[place].geometry.location.lng;
+                        var mapTitle = poiData.results[place].name;
 
-                    googlePlacesMarker = L.marker([mapLat, mapLng]).toGeoJSON();
+                        googlePlacesMarker = L.marker([mapLat, mapLng]).toGeoJSON();
 
-                    googlePlacesMarkerArray.push(googlePlacesMarker);
-                } //end of FOR loop
+                        googlePlacesMarkerArray.push(googlePlacesMarker);
+                    } //end of FOR loop
 
-                googlePlacesMarkerLayer = L.geoJson(googlePlacesMarkerArray, {
-                    style: function (feature) {
-                        return {
-                            'title': mapTitle,
-                            'marker-size': 'large',
-                            //'marker-symbol': mapSymbol(),
-                            'marker-symbol': 'marker',
-                            'marker-color': '#00295A',
-                            'riseOnHover': true,
-                            'riseOffset': 250,
-                            'opacity': 0.5,
-                            'clickable': true
+                    googlePlacesMarkerLayer = L.geoJson(googlePlacesMarkerArray, {
+                        style: function (feature) {
+                            return {
+                                'title': mapTitle,
+                                'marker-size': 'large',
+                                //'marker-symbol': mapSymbol(),
+                                'marker-symbol': 'marker',
+                                'marker-color': '#00295A',
+                                'riseOnHover': true,
+                                'riseOffset': 250,
+                                'opacity': 0.5,
+                                'clickable': true
+                            }
                         }
-                    }
-                })
-                .addTo(map);
-            });
-        };
+                    })
+                        .addTo(map);
+                });
+            };
 
             $scope.toggleGooglePlacesData = function () {
                 if ($scope.googlePlacesLayer) {
@@ -194,6 +213,11 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                     map.addLayer(googlePlacesMarkerLayer);
                 }
             };
+
+            var sidebar = L.control.sidebar('sidebar', {
+                position: 'right'
+            });
+            map.addControl(sidebar);
 
         };
     }

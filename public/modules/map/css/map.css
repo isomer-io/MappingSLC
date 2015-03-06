@@ -5,9 +5,10 @@
     bottom:0;
     left:0;
     box-sizing:border-box;
-    width:80%;
+    width:100%;
     height:100%;
     object-fit:contain;
+    /*z-index: -10!important;*/
 }
 .map-feature{
 
@@ -22,7 +23,7 @@
     background: rgba(0, 0, 0, 0.8);
     position:absolute;
     margin-top:150px;
-    right:384px;
+    right:0;
     z-index:100;
     padding:10px;
     border-radius: 10px 0 0 10px;
@@ -107,4 +108,20 @@ GeoJSON Styling
 .sidebar-view-text-content > p{
 
     font-size: 1.2em;
+}
+
+#sidebar{
+
+    /*z-index: 100;*/
+    /*float:right;*/
+    /*width:20%;*/
+    /*background-color: rgba(40, 40, 36, 1);*/
+    /*z-index: 1000;*/
+    /*color:#FFFFFF;*/
+    /*float:right;*/
+    /*padding-top:10em;*/
+    /*padding-right: 15px;*/
+    /*padding-left: 10px;*/
+    /*height: 100%;*/
+
 }
