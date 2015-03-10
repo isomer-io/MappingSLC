@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('map').service('GeoCodeApi', ['$http',
+angular.module('map').factory('GeoCodeApi', ['$http',
 	function($http) {
 		// Geocodeapi service logic
 		// ...
         this.callGeoCodeApi = function(project, key, secret, projectSaveCallback){
-
+            console.log('keys from geoCode service: ', key, secret);
+            console.log('err, there\'s an error, yo.');
             if (!project || !project.state || !project.city || !project.zip || !project.street || !key || !secret) {
                 projectSaveCallback();
                 return;
@@ -20,7 +21,6 @@ angular.module('map').service('GeoCodeApi', ['$http',
             '&app_id=' + key +
             '&app_code=' + secret)
              .success(function(geoData){
-                 console.log(geoData);
                  project.lat = geoData.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
                  project.lng = geoData.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
 

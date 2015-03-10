@@ -1,41 +1,57 @@
-<section class="create-project">
+<section data-ng-controller="ProjectsController">
+    <div class="container">
 
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <div id="form-container">
-
-                <div class="page-header text-center">
-                    <h2><a href="/#!/">Mapping Salt Lake City</a></h2>
-                    <p>Thanks for your dedication to the community.</p>
-                    </br>
-
-                    <!-- the links to our nested states using relative paths -->
-                    <!-- add the active class if the state matches our ui-sref -->
-                    <div id="status-buttons" class="text-center">
-                       <!-- <a ui-sref-active="active" ui-sref=".1"><span>1</span> The Basics</a> -->
-                        <a ui-sref-active="active" ui-sref=".1"><span>1</span> Some Details</a>
-                        <a ui-sref-active="active" ui-sref=".2"><span>2</span> Your Project</a>
-                    </div>
-
-                </div>
-
-                <form id="signup-form" data-ng-submit="create()">
-                    <!-- nested state views will be injected here -->
-                    <div id="form-views" ui-view></div>
-                </form>
-
-            </div>
+        <div class="page-header">
+            <h1>Project Submission Form</h1>
         </div>
+        <div class="col-md-12">
 
-    </div>
+            <form class="form-horizontal" data-ng-submit="create()" novalidate>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label">Street</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="street" id="street" class="form-control" placeholder="Street"
+                                   required>
+                        </div>
 
-                        <!--<label class="control-label">Story</label>-->
-                        <!--<div class="controls">-->
-                            <!--<textarea ckeditor="editorOptions" data-ng-model="story" id="story"></textarea>-->
-                        <!--</div>-->
+                        <label class="control-label">City</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="city" id="city" class="form-control" placeholder="City"
+                                   required>
+                        </div>
+
+                        <label class="control-label">State</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="state" id="state" class="form-control" placeholder="State"
+                                   required>
+                        </div>
+
+                        <label class="control-label">Zip Code</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="zip" id="zip" class="form-control" placeholder="Zip Code"
+                                   required>
+                        </div>
+
+                        <label class="control-label">Project Title</label>
+                        <div class="controls width">
+                            <input type="text" data-ng-model="title" id="title" class="form-control"
+                                   placeholder="Project Title"
+                                   required>
+                        </div>
+
+                        <label class="control-label">Story</label>
+                        <div class="controls width">
+                            <textarea name="story" id="story" rows="10" cols="80" data-ng-model="story" required></textarea>
+                            <!--<input type="text" data-ng-model="story" id="story" class="form-control" placeholder="Story"-->
+                                   <!--required>-->
+                        </div>
 
                     </div>
 
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-lg btn-main grow">
+                    </div>
                     <div data-ng-show="error" class="text-danger">
                         <strong data-ng-bind="error"></strong>
                     </div>
@@ -44,3 +60,54 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+<!--<section class="create-project">-->
+
+    <!--<div class="row">-->
+        <!--<div class="col-sm-8 col-sm-offset-2">-->
+            <!--<div id="form-container">-->
+
+                <!--<div class="page-header text-center">-->
+                    <!--<h2><a href="/#!/">Mapping Salt Lake City</a></h2>-->
+                    <!--<p>Thanks for your dedication to the community.</p>-->
+                    <!--</br>-->
+
+                    <!--&lt;!&ndash; the links to our nested states using relative paths &ndash;&gt;-->
+                    <!--&lt;!&ndash; add the active class if the state matches our ui-sref &ndash;&gt;-->
+                    <!--<div id="status-buttons" class="text-center">-->
+                       <!--&lt;!&ndash; <a ui-sref-active="active" ui-sref=".1"><span>1</span> The Basics</a> &ndash;&gt;-->
+                        <!--<a ui-sref-active="active" ui-sref=".1"><span>1</span> Project Details</a>-->
+                        <!--<a ui-sref-active="active" ui-sref=".2"><span>2</span>Project Panel</a>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
+                <!--<form id="signup-form" data-ng-submit="create()">-->
+                    <!--&lt;!&ndash; nested state views will be injected here &ndash;&gt;-->
+                    <!--<div id="form-views" ui-view></div>-->
+                <!--</form>-->
+
+            <!--</div>-->
+        <!--</div>-->
+
+    <!--</div>-->
+
+                        <!--&lt;!&ndash;<label class="control-label">Story</label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="controls">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<textarea ckeditor="editorOptions" data-ng-model="story" id="story"></textarea>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                    <!--</div>-->
+
+                    <!--<div data-ng-show="error" class="text-danger">-->
+                        <!--<strong data-ng-bind="error"></strong>-->
+                    <!--</div>-->
+                <!--</fieldset>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</section>-->

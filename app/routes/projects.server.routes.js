@@ -17,10 +17,17 @@ module.exports = function(app) {
     // Finish by binding the Project middleware
     app.param('projectId', projects.projectByID);
 
+    //app.route('/projects/:markers')
+    //    .get(projects.markerList);
+    //
+    //app.param('markers', projects.markersByGeo);
 
     //todo finish building out Admin Panel on backend
-//Admin Routes
-/*
+
+//*
+    /*
+    //Admin Routes
+    /*
     app.route('/admins')
         .get(admins.hasAuthorization, admins.list)
         .post(users.requiresLogin, admins.hasAuthorization, admins.create);

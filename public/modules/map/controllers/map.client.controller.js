@@ -9,6 +9,18 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.censusDataTractLayer = true;
         $scope.googlePlacesLayer = false;
 
+        //if (L.Browser.webkit3d) {
+        //    alert('Upgrade your browser, dude!');
+        //} else {
+        //    alert('Cool, yo.')
+        //}
+        //
+        //if (L.Browser.retina) {
+        //    alert('nice eyes, yos!');
+        //} else {
+        //    alert('Get them glasses, fool.')
+        //}
+
         //style the polygon tracts
         var style = {
             'stroke': true,
@@ -63,7 +75,11 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             var info = document.getElementById('info');
 
             var map = L.mapbox.map('map')
-                .setView([40.773, -111.902], 12);
+                .setView([40.773, -111.902], 12)
+                //allow users to share maps on social media
+                // source: https://www.mapbox.com/mapbox.js/api/v2.1.5/l-mapbox-sharecontrol/
+                .addControl(L.mapbox.shareControl())
+                .addControl(L.mapbox.geocoderControl('mapbox.places'));
 
             L.control.layers({
                 'Main Map': L.mapbox.tileLayer('poetsrock.la999il2').addTo(map),
@@ -73,6 +89,8 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 //even if no tileLayers are present.
                 //'Tract Boundaries': L.mapbox.tileLayer('examples.bike-lanes'),
             }).addTo(map);
+
+
 
             //get the json file on the backend (/config/env/) for the Census Tract Data
             var tractData = $http.get('/tractData')
@@ -143,6 +161,8 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 }
             ];
 
+            //onEachFeature-function: if(feature.properties.name=='Montana') {console.log(feature.id); }
+
             dataBoxStaticPopup.setGeoJSON(geoJson);
 
             // Listen for individual marker clicks.
@@ -182,7 +202,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 }
             };
 
-
             //Google Places API
             var googlePlacesMarker = null;
             var googlePlacesMarkerLayer = null;
@@ -219,6 +238,8 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                         }
                     })
                         .addTo(map);
+                    console.log('googlePlacesMarkerLayer: ', googlePlacesMarkerLayer);
+                    console.log('googlePlacesMarkerArray: ', googlePlacesMarkerArray);
 
                 });
 
