@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('map').factory('GeoCodeApi', ['$http',
+angular.module('projects').service('GeoCodeApi', ['$http',
 	function($http) {
 		// Geocodeapi service logic
 		// ...
@@ -12,7 +12,7 @@ angular.module('map').factory('GeoCodeApi', ['$http',
                 return;
             }
 
-         return   $http.get('http://geocoder.cit.api.here.com/6.2/geocode.json' +
+         return $http.get('http://geocoder.cit.api.here.com/6.2/geocode.json' +
             '?state=' + project.state +
             '&city=' + project.city +
             '&postalcode=' + project.zip +

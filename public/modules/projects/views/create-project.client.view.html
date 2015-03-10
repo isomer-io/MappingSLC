@@ -42,9 +42,9 @@
 
                         <label class="control-label">Story</label>
                         <div class="controls width">
-                            <textarea name="story" id="story" rows="10" cols="80" data-ng-model="story" required></textarea>
-                            <!--<input type="text" data-ng-model="story" id="story" class="form-control" placeholder="Story"-->
-                                   <!--required>-->
+                            <!--<textarea name="story" id="story" rows="10" cols="80" data-ng-model="story" required></textarea>-->
+                            <input type="text" data-ng-model="story" id="story" class="form-control" placeholder="Story"
+                                   required>
                         </div>
 
                     </div>
@@ -52,6 +52,7 @@
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-lg btn-main grow">
                     </div>
+
                     <div data-ng-show="error" class="text-danger">
                         <strong data-ng-bind="error"></strong>
                     </div>
