@@ -86,6 +86,10 @@ p:first-child::first-letter {
     display: none;
 }
 
+.hide-overlay-no {
+    display: block;
+}
+
 
 /* mapping slc small logo */
 .small-main-logo {
@@ -168,6 +172,7 @@ p:first-child::first-letter {
     height: 60rem;
     top: 15%;
     z-index: 2;
+    display: block;
 }
 
 .home{

@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$rootScope',
-    function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$rootScope', 'ApiKeys',
+    function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, ApiKeys) {
         $scope.authentication = Authentication;
         $scope.logo = '../../../modules/core/img/brand/mapping.png';
         var width = '800';
@@ -17,36 +17,34 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
         $scope.title = 'Title This, Again, Yo!';
         $scope.story = 'You still ready?';
 
-
         //Give user warning if leaving form
-        //var preventRunning = false;
-        //$scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-        //    if (preventRunning) {
-        //        return;
-        //    }
-        //    console.log('fromState: ', fromState);
-        //    if (fromState.url === '/projects/create') {
-        //        event.preventDefault();
-        //
-        //        $modal.open({
-        //            templateUrl: '/modules/projects/directives/views/modal.html',
-        //            controller: function ($scope, $modalInstance) {
-        //                $scope.closeMe = function () {
-        //                    $modalInstance.dismiss(function (reason) {
-        //                        console.log(reason);
-        //                    });
-        //                };
-        //                $scope.leave = function () {
-        //                    preventRunning = true;
-        //                    $scope.closeMe();
-        //                    $location.path(toState);
-        //                };
-        //            },
-        //            size: 'sm'
-        //        });
-        //    }
-        //
-        //});
+        var preventRunning = false;
+        $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+            if (preventRunning) {
+                return;
+            }
+            if (fromState.url === '/projects/create' && toState.url !== '/projects/:projectId') {
+                event.preventDefault();
+
+                $modal.open({
+                    templateUrl: '/modules/projects/directives/views/modal.html',
+                    controller: function ($scope, $modalInstance) {
+                        $scope.closeMe = function () {
+                            $modalInstance.dismiss(function (reason) {
+                                console.log(reason);
+                            });
+                        };
+                        $scope.leave = function () {
+                            preventRunning = true;
+                            $scope.closeMe();
+                            $location.path(toState);
+                        };
+                    },
+                    size: 'lg'
+                });
+            }
+
+        });
 
         // Create new Project
         $scope.create = function (GeoCodeApi) {
@@ -98,9 +96,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
             //back-end request to get mapbox and here api access
             $http.get('/keys')
+            //ApiKeys.getApiKeys()
                 .success(function(data){
                     var mapboxKey = data.mapboxKey;
                     var mapboxSecret = data.mapboxSecret;
+                    console.log('mapboxSecret', mapboxSecret);
 
                     //from submitted project's address fields, return lng. and lat. coordinates
                     $http.get('http://geocoder.cit.api.here.com/6.2/geocode.json' +
@@ -112,14 +112,12 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
                     '&app_id=' + data.hereKey +
                     '&app_code=' + data.hereSecret)
                         .success(function (geoData) {
-                            console.log('geocoded data: ', geoData);
                             //save lat & lng to backend
                             project.lat = geoData.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
                             project.lng = geoData.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
-                            console.log('lat & lng: ', project.lat, project.lng);
                             //save to backend static map image that is centered on the lat & lng for an individual project sub;
                             //map and custom icon will be displayed on project-view page
-                            project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
+                            project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',16/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
 
                             saveProject();
                         })
@@ -185,6 +183,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
         };
 
         //CKEDITOR.replace('story');
+        $scope.editorOptions = {
+            language: 'en',
+            uiColor: '#000000'
+        };
 
     }
 ]);

@@ -17,9 +17,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/font-awesome/css/font-awesome.min.css',
-                'public/lib/ckeditor-full/skins/moono/editor.css',
-                'public/lib/ckeditor-full/skins/moono/dialog.css',
-				'//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css'
+                'public/lib/ng-ckeditor/ng-ckeditor.css',
+                '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -31,12 +30,9 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/lib/textAngular/dist/textAngular.min.js',
-				'public/lib/textAngular/dist/textAngular-sanitize.min.js',
 				'public/lib/rangy/rangy-core.js',
-				'public/lib/ckeditor-full/ckeditor.js',
-                'public/lib/ckeditor-full/config.js',
-                'public/lib/ckeditor-full/styles.js',
+                '//cdn.ckeditor.com/4.4.7/full/ckeditor.js',
+                'public/lib/ng-ckeditor/ng-ckeditor.js',
 				'public/lib/modernizr/modernizr.js',
                 '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'
 			]
