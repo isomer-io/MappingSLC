@@ -219,3 +219,13 @@ div .leaflet-control-attribution.leaflet-control {
     background: rgba(0, 0, 0, 0.8);
 }
 
+div a .mapbox-share.mapbox-icon.mapbox-icon-share  {
+    top: 150px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/*.leaflet-control.mapbox-icon.mapbox-icon-share, .leaflet-control.mapbox-icon.mapbox-icon-share:before {*/
+div .leaflet-top.leaflet-left .mapbox-share {
+    bottom: 150px;
+    /*background: rgba(0, 0, 0, 0.8);*/
+}
