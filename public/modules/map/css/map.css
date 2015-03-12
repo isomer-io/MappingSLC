@@ -5,9 +5,13 @@
     bottom:0;
     left:0;
     box-sizing:border-box;
-    width:100%;
+    width:80%;
     height:100%;
     object-fit:contain;
+}
+
+.map-feature {
+    width: 80%;
 }
 
 .leaflet-control-zoom {
@@ -18,7 +22,7 @@
     background: rgba(0, 0, 0, 0.8);
     position:absolute;
     margin-top:150px;
-    right:0;
+    right:384px;
     z-index:100;
     padding:10px;
     border-radius: 10px 0 0 10px;
@@ -80,3 +84,138 @@ GeoJSON Styling
     font-weight: bold;
     margin-right: 5px;
 }
+
+.sidebar-view{
+    width:20%;
+    background-color: rgba(40, 40, 36, 1);
+    z-index: 1000;
+    color:#FFFFFF;
+    float:right;
+    padding-top:10em;
+    padding-right: 15px;
+    padding-left: 10px;
+    height: 100%;
+
+}
+
+.sidebar-view-date{
+
+
+    padding-left: 18em;
+
+}
+.sidebar-view-text-content > p{
+
+    font-size: 1.2em;
+}
+
+
+
+/*custom popups*/
+/* popup */
+.leaflet-popup {
+    position:absolute;
+    text-align:center;
+    pointer-events:none;
+}
+
+.leaflet-popup-content {
+    padding:10px 10px 15px;
+    margin:0;
+    line-height:inherit;
+    border: solid 5px #FFFFFF;
+    border-radius: 10px;
+}
+
+.leaflet-popup-close-button {
+    text-indent:-999em;
+    position:absolute;
+    top:8px;
+    right:8px;
+    pointer-events:all;
+    color: #ffffff;
+    /*background-image: url(images/icons-000000@2x.png);*/
+}
+
+.leaflet-popup-close-button:hover {
+    color:#f8f8f8;
+}
+
+.leaflet-popup-scrolled {
+    overflow:auto;
+    border-bottom:1px solid #ddd;
+    border-top:1px solid #ddd;
+}
+
+.leaflet-popup-content-wrapper {
+    /*defaults*/
+    padding:1px;
+    text-align:left;
+    pointer-events:all;
+    /*custom settings*/
+    background:#023A31;
+    color:#fff;
+    font-size:14px;
+    line-height:24px;
+    border-radius: 10px;
+    font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+}
+.leaflet-popup-content-wrapper a {
+    color:rgba(255,255,255,0.5);
+}
+.leaflet-popup-tip-container {
+    /*defaults*/
+    margin:0 auto;
+    position:relative;
+    /*custom settings*/
+    width:30px;
+    height:15px;
+}
+.leaflet-popup-tip {
+    /*defaults*/
+    width:0;
+    height:0;
+    margin:0;
+    box-shadow:none;
+    /*custom settings*/
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-top:15px solid #023A31;
+}
+
+/*end of custom popups*/
+
+
+/*create tooltip with absolute position*/
+/*source: https://www.mapbox.com/mapbox.js/example/v1.0.0/marker-tooltips-outside-map/ */
+
+.info {
+    position:absolute;
+    bottom: 25px;
+    right: 10px;
+}
+
+.info-project-details {
+    right:394px;
+}
+
+.info div {
+    background: rgba(0, 0, 0, 0.8);
+    padding:10px;
+    border-radius:3px;
+    color: #ffffff
+}
+
+.info-default-size {
+    width: 260px;
+    height: 75px;
+}
+
+/*end of create tooltip*/
+
+
+div .leaflet-control-attribution.leaflet-control {
+    background: rgba(0, 0, 0, 0.8);
+}
+
