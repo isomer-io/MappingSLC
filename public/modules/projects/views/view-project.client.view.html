@@ -27,13 +27,15 @@
 			<span data-ng-bind="project.lat"></span>
 			 & Lng:
 			<span data-ng-bind="project.lng"></span>
-			<hr>
-			<span data-ng-bind="project.story"></span>
-			<hr>
+            <hr>
 			Posted on
 			<span data-ng-bind="project.created | date:'mediumDate'"></span>
 			by
 			<span data-ng-bind="project.user.displayName"></span>
 		</em>
 	</small>
+    <hr>
+    <span data-ng-bind="project.story"></span>
+    <hr>
+    <span data-ng-bind-html="project.story"></span>
 </section>

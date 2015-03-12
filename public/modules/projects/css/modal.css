@@ -1,0 +1,11 @@
+.modal-content, div.modal-body.ng-scope, div.modal-content, div .modal-body.ng-scope  {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    width: 400px;
+}
+
+div .modal-dialog.modal-lg {
+    background-color: rgba(0,0,0,0.8);
+    color: red;
+    width: 400px;
+}

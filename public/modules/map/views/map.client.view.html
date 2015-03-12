@@ -1,7 +1,7 @@
 <section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
 
-    <span data-ng-show="categoryFilters" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:
-        'ui-select-off'}">
+    <span data-ng-show="categoryFilters" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', true: 'ui-select-details'[toggleDetails === false], false: 'ui-select-off'}">
+
         <div id="filters" class="ui-select">
             <!--<div id="filters" class="ui-select" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:-->
             <!--'ui-select-off'}">-->
@@ -71,13 +71,20 @@
 
     <!--to call MapBox map-->
 
-    <div id="map" class="custom-map map"></div>
+    <div id="map" class="map" data-ng-class="{true: 'map-details'}[toggleDetails === false]"></div>
 
-    <div id="info" class="info info-project-details"></div>
+    <div id="info" class="info" data-ng-class="{true: 'info-project-details'}[toggleDetails === false]"></div>
+
+
+    <button>
+        <div class="test-details-toggle" data-ng-click="toggleDetails=!toggleDetails">
+            Toggle Details: {{toggleDetails}}
+        </div>
+    </button>
 
 </section>
 
-<div class="sidebar-view">
+<div id="sidebar-view" class="sidebar-view">
     <div class="">
         <div class="sidebar-view-date "><small>June 22, 2014</small></div>
         <h3>Test Title: Read a great article that is bound to tickle your fancy!</h3>

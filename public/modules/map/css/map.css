@@ -5,12 +5,21 @@
     bottom:0;
     left:0;
     box-sizing:border-box;
-    width:80%;
+    width:100%;
     height:100%;
     object-fit:contain;
 }
 
-.map-feature {
+#map-overlay {
+    height: 100%;
+    left: 0;
+    position: fixed !important; /* Acts in pretty much the same way as background-attachment: fixed for an image background. Has to be !important only if you're using the Google Maps API. */
+    top: 0;
+    width: 100%;
+    z-index: 1; /* Has to be at least one increment smaller in value than the container's z-index */
+}
+
+.map-details {
     width: 80%;
 }
 
@@ -22,11 +31,15 @@
     background: rgba(0, 0, 0, 0.8);
     position:absolute;
     margin-top:150px;
-    right:384px;
+    right:0px;
     z-index:100;
     padding:10px;
     border-radius: 10px 0 0 10px;
     color: #f5deb3;
+}
+
+.ui-select-details {
+    right:384px;
 }
 
 .ui-select-off {
@@ -186,6 +199,62 @@ GeoJSON Styling
 
 /*end of custom popups*/
 
+.sidebar-view{
+    width:20%;
+    background-color: rgba(40, 40, 36, 1);
+    z-index: 1000;
+    color:#FFFFFF;
+    float:right;
+    padding-top:10em;
+    padding-right: 15px;
+    padding-left: 10px;
+    height: 100%;
+
+}
+
+.sidebar-view-date{
+
+
+    padding-left: 18em;
+
+}
+.sidebar-view-text-content > p{
+
+    font-size: 1.2em;
+}
+
+.test {
+    width: 80%;
+    transition: all 0.7s ease;
+    right: 384px;
+    display: block;
+    color: red;
+}
+
+.test {
+    width: 20%;
+    transition: all 0.7s ease;
+    right: 684px;
+    display: block;
+    color: #800080;
+}
+
+#sidebar{
+
+    /*z-index: 100;*/
+    /*float:right;*/
+    /*width:20%;*/
+    /*background-color: rgba(40, 40, 36, 1);*/
+    /*z-index: 1000;*/
+    /*color:#FFFFFF;*/
+    /*float:right;*/
+    /*padding-top:10em;*/
+    /*padding-right: 15px;*/
+    /*padding-left: 10px;*/
+    /*height: 100%;*/
+
+}
+
 
 /*create tooltip with absolute position*/
 /*source: https://www.mapbox.com/mapbox.js/example/v1.0.0/marker-tooltips-outside-map/ */
@@ -228,4 +297,24 @@ div a .mapbox-share.mapbox-icon.mapbox-icon-share  {
 div .leaflet-top.leaflet-left .mapbox-share {
     bottom: 150px;
     /*background: rgba(0, 0, 0, 0.8);*/
+}
+
+.leaflet-bar .leaflet-control-mapbox-geocoder-toggle .mapbox-icon .mapbox-icon-geocoder {
+    display: inline;
+    border-bottom: dashed;
+}
+
+.leaflet-bar {
+    top: 70px;
+}
+
+.test-details-toggle {
+    background: rgba(0, 0, 0, 0.8);
+    position:absolute;
+    margin-top:250px;
+    right:0px;
+    z-index:100;
+    padding:10px;
+    border-radius: 10px 0 0 10px;
+    color: #f5deb3;
 }

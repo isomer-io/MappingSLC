@@ -1,11 +1,8 @@
-<section ng-include="'/modules/map/views/map.client.view.html'" id="gmap"  frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="425" height="350"></section>
+<section ng-include="'/modules/map/views/map.client.view.html'" id="map-overlay"></section>
 
 <section data-ng-controller="HomeController">
 
     <div>
-
-
-
 
     <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
     <span data-ng-show="toggle">
@@ -19,48 +16,10 @@
             <div class="home">
                 <div class="col-md-12">
 
-                    <div>  <!-- signin  signout functionality -->
-                        <ul class="pull-right" data-ng-show="!authentication.user">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span>Sign In</span> <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li ui-route="/signup" ng-class="{active: $uiRoute}">
-                                        <a href="/#!/signup">Sign Up</a>
-                                    </li>
-                                    <!--<li class="divider-vertical"></li>-->
-                                    <li ui-route="/signin" ng-class="{active: $uiRoute}">
-                                        <a href="/#!/signin">Sign In</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                    <div sign-in-directive></div>
 
-                        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="/#!/settings/profile">Edit Profile</a>
-                                    </li>
-                                    <li>
-                                        <a href="/#!/settings/accounts">Manage Social Accounts</a>
-                                    </li>
-                                    <li data-ng-show="authentication.user.provider === 'local'">
-                                        <a href="/#!/settings/password">Change Password</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="/auth/signout">Signout</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
                     <div class="medium-main-logo img-responsive"></div>
+
                     <div class="col-lg-12">
                         <div class="main-text">
                             <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
@@ -76,120 +35,24 @@
                 <!-- two column div begin here -->
                 <div class="row-fluid">
                     <div class="col-lg-12 row-group">
+
                     <!--Submit your Project Panel -->
-
-                    <div class="col-md-5 pull-left">
-                        <div class="text-center page-header">
-                            <h2>Submit your project</h2>
-                        </div>
-                        <p class="home-text">Mapping Salt Lake City invites all interested visitors to add their voices to the mix. We are looking for all kinds of essays (written, audio, photo, video) on topics related to Salt Lake City.</p>
-                        <a href="/#!/projects/create" class="btn btn-primary btn-lg btn-main grow pull-right" role="button">Submit a
-                            story</a>
-                    </div>
-
+                        <div submit-project-directive></div>
+                        <!--<submit-project-directive></submit-project-directive>-->
 
                     <!--Featured Projects Panel -->
-
-                    <div class="col-md-7 pull-right">
-                        <div class="text-center page-header">
-                            <h2>Featured Projects</h2>
-                        </div>
-
-                        <ul class="grid cs-style-4">
-
-                            <figure class="col-md-4">
-                                <div><img ng-src="modules/core/img/{{photo1}}" class="desaturate"></div>
-                                <figcaption>
-                                    <a href="/#!/shaw"><span>Andrew Shaw</span></a>
-                                    <!--<h5>The Artist Interview Series</h5>-->
-                                </figcaption>
-                            </figure>
-
-                        </ul>
-
-                        <ul class="grid cs-style-4">
-
-                            <figure class="col-md-4">
-                                <div><img ng-src="modules/core/img/{{photo2}}" class="desaturate"></div>
-                                <figcaption>
-                                    <a href="/#!/westside-leadership-institute"><span>Westside Leadership</span></a>
-                                </figcaption>
-                            </figure>
-
-                        </ul>
-
-                        <ul class="grid cs-style-4">
-
-                            <figure class="col-md-4">
-                                <div><img ng-src="modules/core/img/{{photo3}}" class="desaturate"></div>
-                                <figcaption>
-                                    <a href="/#!/westside-leadership-institute"><span>Westside Leadership</span></a>
-                                </figcaption>
-                            </figure>
-
-                        </ul>
-
-                    </div>  <!--End of Featured Projects Panel -->
-                </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- BEGINNING OF THE FOOTER -->
-
-
-        <div class="container-footer" ng-class="{false: 'hide-overlay-yes'}[count <= 0]">
-
-            <div class="row">
-
-                <div class="col-md-4">
-                    <div class="row">
-
-
-                        <div class="col-md-4">
-                            <a href="http://www.utahhumanities.org/" target="_blank">
-                                <img src="/modules/core/img/brand/uhc.png" class="img-responsive" alt="Responsive image" />
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="http://www.utah.edu/" target="_blank">
-                                <img src="/modules/core/img/brand/uofu.png" class="img-responsive" alt="Responsive image" />
-                            </a>
-                        </div>
-                        <div class="col-md-4">
-                            <a href="http://www.westminstercollege.edu/" target="_blank">
-                                <img src="/modules/core/img/brand/westminster.png" class="img-responsive" alt="Responsive image" />
-                            </a>
-                        </div>
-
+                        <div featured-projects></div>
+                        <!--<featured-projects></featured-projects>-->
 
                     </div>
                 </div>
 
-                <div class="footer">
-                    <form action="http://enternewurihere" method="post" autocomplete="on">
-
-                        <div class="clearfix col-xs-offset-7">
-
-                            <div class="form-inline">
-                                <input name="subscribe-email" class="input-footer" placeholder="Newsletter: Enter your E-mail" required="" type="email" />
-                                <button class="btn btn-main btn-footer grow" type="submit">Subscribe</button>
-                            </div>
-
-                        </div>
-
-
-                    </form>
-                </div>
-
             </div>
-
         </div>
 
 
+        <div footer-directive></div>
 
-        <!-- END OF THE FOOTER -->
 
     </span>
 </div>

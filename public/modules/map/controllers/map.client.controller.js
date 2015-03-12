@@ -9,17 +9,8 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.censusDataTractLayer = true;
         $scope.googlePlacesLayer = false;
 
-        //if (L.Browser.webkit3d) {
-        //    alert('Upgrade your browser, dude!');
-        //} else {
-        //    alert('Cool, yo.')
-        //}
-        //
-        //if (L.Browser.retina) {
-        //    alert('nice eyes, yos!');
-        //} else {
-        //    alert('Get them glasses, fool.')
-        //}
+        var toggleProjectDetails = true;
+        $scope.toggleDetails = true;
 
         //style the polygon tracts
         var style = {
@@ -83,7 +74,8 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
             L.control.layers({
                 'Main Map': L.mapbox.tileLayer('poetsrock.la999il2').addTo(map),
-                'Topo Map': L.mapbox.tileLayer('poetsrock.la97f747')
+                'Topo Map': L.mapbox.tileLayer('poetsrock.la97f747'),
+                'Green Map': L.mapbox.tileLayer('poetsrock.jdgpalp2')
             }, {
                 //this is where you would add optional tilelayers. This sedction is required,
                 //even if no tileLayers are present.
@@ -131,6 +123,62 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 );
                 censusTractData.addTo(map);
             };
+
+
+
+            L.mapbox.featureLayer({
+                // this feature is in the GeoJSON format: see geojson.org
+                // for the full specification
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    // coordinates here are in longitude, latitude order because
+                    // x, y is the standard for GeoJSON and many formats
+                    coordinates: [
+                        -111.902,
+                        40.773
+                    ]
+                },
+                properties: {
+                    title: 'Peregrine Espresso',
+                    description: '1718 14th St NW, Washington, DC',
+                    // one can customize markers by adding simplestyle properties
+                    // https://www.mapbox.com/guides/an-open-platform/#simplestyle
+                    'marker-size': 'large',
+                    'marker-color': '#BE9A6B',
+                    'marker-symbol': 'cafe'
+                }
+            })
+                .on('click', function () {
+                    if (toggleProjectDetails === true) {
+                        setStyle({
+                            className: 'test'
+                        });
+                    }else{
+                        layer.setStyle({
+                            className: 'test-2'
+                        });
+                    }
+                    //if (toggleProjectDetails === true) {
+                    //    document.getElementById('map').style.width='80%';
+                    //    document.getElementById('map').style.transition = 'all 0.7s ease';
+                    //    document.getElementById('filters').style.right='384px';
+                    //    document.getElementById('filters').style.transition = 'all 0.7s ease';
+                    //    document.getElementById('sidebar-view').style.display='block';
+                    //    document.getElementById('sidebar-view').style.transition = 'all 0.7s ease';
+                    //    toggleProjectDetails = false;
+                    //} else {
+                    //    document.getElementById('map').style.width='100%';
+                    //    document.getElementById('filters').style.right='0';
+                    //    document.getElementById('sidebar-view').style.display='block inline';
+                    //    document.getElementById('sidebar-view').style.transition = 'all 0.7s ease';
+                    //    toggleProjectDetails = true;
+                    //}
+                })
+                .addTo(map);
+
+
+
 
             var dataBoxStaticPopup = L.mapbox.featureLayer().addTo(map);
 

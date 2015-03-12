@@ -1,3 +1,6 @@
+angular.module("NoteWrangler", ['ngRoutes']);
+angular.module('NoteWrangler').config(function($routeProvider){});
+
 'use strict';
 
 angular.module('users').directive('signupModal', ['$modal', '$http', '$location', '$rootScope',
@@ -11,19 +14,11 @@ angular.module('users').directive('signupModal', ['$modal', '$http', '$location'
                 // Fires every time url changes to test for conditions
                 scope.$on('$locationChangeStart', function () {
 
-                    var params = {};
-                    params.isLoggedIn = false;
-
                     $http.get('http://localhost:3000/users/me').success(function (data) {
-                        //var projectPath = $location.path();
 
-                        if (data !== 'null') {
-                            params.isLoggedIn = true;
-                        }
-                        if (!params.isLoggedIn && $location.path() === '/projects/create/1') {
+                        if (data === 'null'&& $location.path() === '/projects/create') {
 
                             var isSignUpModal = false;
-
                             var modalView = $modal.open({
 
                                 templateUrl: function () {
