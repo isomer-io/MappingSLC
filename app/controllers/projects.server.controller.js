@@ -83,6 +83,21 @@ exports.list = function(req, res) {
 		}
 	});
 };
+//
+///**
+// * List of GeoCoordinates for Projects
+// */
+//exports.markerList = function(req, res) {
+//    Project.find().sort('-created').populate('status', 'lat', 'lng').exec(function(err, projects) {
+//        if (err) {
+//            return res.status(400).send({
+//                message: errorHandler.getErrorMessage(err)
+//            });
+//        } else {
+//            res.jsonp(projects);
+//        }
+//    });
+//};
 
 /**
  * Project middleware
@@ -95,6 +110,19 @@ exports.projectByID = function(req, res, next, id) {
 		next();
 	});
 };
+
+
+/**
+ * Project middleware
+ */
+//exports.markersByGeo = function(req, res, next, id) {
+//    Project.findById(id).populate('status', 'lat', 'lng').exec(function(err, project) {
+//        if (err) return next(err);
+//        if (! project) return next(new Error('Failed to load Project ' + id));
+//        req.project = project ;
+//        next();
+//    });
+//};
 
 /**
  * Project authorization middleware

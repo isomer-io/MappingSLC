@@ -1,63 +1,98 @@
-<section class="create-project">
+<section>
+    <div class="text-center">
+        <h3>Story</h3>
 
+        <div class="controls">
+            <text-angular data-ng-model="project.story" ta-toolbar="[['h1','h2','h3','ol'],['bold','italics','underline'],['insertLink','insertVideo']]">
 
-        <div class="row">
-
-
-                <div class="form-group">
-                    <input type="text" data-ng-model="project.title" id="title" class="form-control"
-                           placeholder="The Title of Your Project" required>
-                </div>
-            <!-- Street -->
-                <div class="form-group">
-                    <input type="text" class="form-control"  data-ng-model="project.street" id="street"
-                           placeholder="Your Project's Street Location*">
-                </div>
-            <!-- City -->
-            <div class="form-group">
-                <input type="text" class="form-control"  data-ng-model="project.city" id="city"
-                       placeholder="City">
-            </div>
-
-            <!-- State -->
-                <div class="form-group">
-                    <input type="text" class="form-control"  data-ng-model="project.state" id="state"
-                           placeholder="State">
-                </div>
-            <!-- Zip -->
-                <div class="form-group">
-                    <input type="number" class="form-control" data-ng-model="project.zip" id="zip" placeholder="Zip Code*">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default"></button>
                 </div>
 
-                <p>This adddress and zip code information will be used to place a link to your project on the home page map. We understand many projects either have more than one location or do not have a precise location. In these cases, please come up with an address and zip code that makes the most sense to you.</p>
 
 
-
+                </text-anngular>
         </div>
 
-        <div class="row">
-            <!-- Remove Back button
-            <div class="col-xs-3 col-xs-offset-1">
 
-                <a ui-sref="createProject.1" class="btn btn-block btn-info">
-                    <span class="glyphicon glyphicon-circle-arrow-left"></span> Back
-                </a>
 
-            </div> -->
+    </div>
 
-            <div class="col-xs-3 center-block">
-            <a ui-sref="createProject.2" class="btn btn-block btn-info">
-                Next <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    <div class="row">
+
+        <div class="col-xs-3 col-xs-offset-3">
+            <a ui-sref="createProject.1" class="btn btn-info">
+                <span class="glyphicon glyphicon-circle-arrow-left"></span>  Back
             </a>
-
-            </div>
-
         </div>
 
+        <div class="col-md-4 col-md-offset-1">
+            <button data-ng-show="completed" type="submit" class="btn btn-info btn-danger">Submit</button>
+        </div>
 
-
-
-
-
-
+    </div>
 </section>
+
+<!--<section class="create-project">-->
+
+
+        <!--<div class="row">-->
+
+
+                <!--<div class="form-group">-->
+                    <!--<input type="text" data-ng-model="project.title" id="title" class="form-control"-->
+                           <!--placeholder="The Title of Your Project" required>-->
+                <!--</div>-->
+            <!--&lt;!&ndash; Street &ndash;&gt;-->
+                <!--<div class="form-group">-->
+                    <!--<input type="text" class="form-control"  data-ng-model="project.street" id="street"-->
+                           <!--placeholder="Your Project's Street Location*">-->
+                <!--</div>-->
+            <!--&lt;!&ndash; City &ndash;&gt;-->
+            <!--<div class="form-group">-->
+                <!--<input type="text" class="form-control"  data-ng-model="project.city" id="city"-->
+                       <!--placeholder="City">-->
+            <!--</div>-->
+
+            <!--&lt;!&ndash; State &ndash;&gt;-->
+                <!--<div class="form-group">-->
+                    <!--<input type="text" class="form-control"  data-ng-model="project.state" id="state"-->
+                           <!--placeholder="State">-->
+                <!--</div>-->
+            <!--&lt;!&ndash; Zip &ndash;&gt;-->
+                <!--<div class="form-group">-->
+                    <!--<input type="number" class="form-control" data-ng-model="project.zip" id="zip" placeholder="Zip Code*">-->
+                <!--</div>-->
+
+                <!--<p>This adddress and zip code information will be used to place a link to your project on the home page map. We understand many projects either have more than one location or do not have a precise location. In these cases, please come up with an address and zip code that makes the most sense to you.</p>-->
+
+
+
+        <!--</div>-->
+
+        <!--<div class="row">-->
+            <!--&lt;!&ndash; Remove Back button-->
+            <!--<div class="col-xs-3 col-xs-offset-1">-->
+
+                <!--<a ui-sref="createProject.1" class="btn btn-block btn-info">-->
+                    <!--<span class="glyphicon glyphicon-circle-arrow-left"></span> Back-->
+                <!--</a>-->
+
+            <!--</div> &ndash;&gt;-->
+
+            <!--<div class="col-xs-3 center-block">-->
+            <!--<a ui-sref="createProject.2" class="btn btn-block btn-info">-->
+                <!--Next <span class="glyphicon glyphicon-circle-arrow-right"></span>-->
+            <!--</a>-->
+
+            <!--</div>-->
+
+        <!--</div>-->
+
+
+
+
+
+
+
+<!--</section>-->
