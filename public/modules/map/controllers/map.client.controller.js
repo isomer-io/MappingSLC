@@ -12,22 +12,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         var toggleProjectDetails = true;
         $scope.toggleDetails = true;
 
-        $scope.testDetails = function(){
-
-        };
-
-        //if (L.Browser.webkit3d) {
-        //    alert('Upgrade your browser, dude!');
-        //} else {
-        //    alert('Cool, yo.')
-        //}
-        //
-        //if (L.Browser.retina) {
-        //    alert('nice eyes, yos!');
-        //} else {
-        //    alert('Get them glasses, fool.')
-        //}
-
         //style the polygon tracts
         var style = {
             'stroke': true,
