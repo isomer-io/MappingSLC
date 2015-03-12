@@ -3,6 +3,7 @@
 module.exports = function(app) {
     var users = require('../../app/controllers/users.server.controller');
     var projects = require('../../app/controllers/projects.server.controller');
+    var admins = require('../../app/controllers/projects.server.controller');
 
 // Projects Routes
     app.route('/projects')
@@ -24,10 +25,9 @@ module.exports = function(app) {
 
     //todo finish building out Admin Panel on backend
 
-//*
     /*
     //Admin Routes
-    /*
+    */
     app.route('/admins')
         .get(admins.hasAuthorization, admins.list)
         .post(users.requiresLogin, admins.hasAuthorization, admins.create);
@@ -38,8 +38,7 @@ module.exports = function(app) {
         .delete(users.requiresLogin, admins.hasAuthorization, admins.delete);
 
     // Finish by binding the Admin middleware
-    app.param('adminId', admins.adminByID);
-*/
+    //app.param('adminId', admins.adminByID);
 
 // Maps Routes
 

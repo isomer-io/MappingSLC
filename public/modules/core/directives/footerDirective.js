@@ -6,6 +6,7 @@
 
 angular.module('core').directive('footerDirective', function() {
         return {
-            templateUrl: '/modules/core/views/directives/footer-directive.html'
+            restrict: 'E',
+            templateUrl: '/modules/core/directives/views/footer-directive.html'
         };
     });

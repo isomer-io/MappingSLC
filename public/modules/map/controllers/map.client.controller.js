@@ -216,7 +216,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             // Listen for individual marker clicks.
             dataBoxStaticPopup.on('mouseover', function (e) {
                 // Force the popup closed.
-                //e.layer.closePopup();
+                e.layer.closePopup();
 
                 var feature = e.layer.feature;
                 var content = '<div><strong>' + feature.properties.title + '</strong>' +
@@ -224,10 +224,12 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
                 info.innerHTML = content;
 
-                ////the below line of code centers the map when the marker is clicked
-                ////source: https://www.mapbox.com/mapbox.js/example/v1.0.0/centering-markers/
-                //map.panTo(e.layer.getLatLng());
             });
+
+            ////the below line of code centers the map when the marker is clicked
+            ////source: https://www.mapbox.com/mapbox.js/example/v1.0.0/centering-markers/
+            //map.panTo(e.layer.getLatLng());
+
 
             // Clear the tooltip when map is clicked.
             map.on('move', empty);
@@ -245,8 +247,12 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             $scope.toggleCensusData = function () {
                 if ($scope.censusDataTractLayer) {
                     map.removeLayer(censusTractData);
+                    map.removeLayer(dataBoxStaticPopup);
+                    //map.removeLayer(markers);
                 } else {
                     map.addLayer(censusTractData);
+                    map.addLayer(dataBoxStaticPopup);
+                    //map.addLayer(markers);
                 }
             };
 

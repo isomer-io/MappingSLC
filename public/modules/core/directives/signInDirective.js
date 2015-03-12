@@ -6,6 +6,7 @@
 
 angular.module('core').directive('signInDirective', function() {
         return {
-            templateUrl: '/modules/core/views/directives/sign-in-directive.html'
+            restrict: 'E',
+            templateUrl: '/modules/core/directives/views/sign-in-directive.html'
         };
     });

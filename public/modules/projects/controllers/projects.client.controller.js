@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$rootScope', 'ApiKeys',
-    function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, ApiKeys) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$rootScope', '$sce', 'ApiKeys',
+    function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys) {
         $scope.authentication = Authentication;
         $scope.logo = '../../../modules/core/img/brand/mapping.png';
         var width = '800';
@@ -16,6 +16,18 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
         $scope.zip = 84111;
         $scope.title = 'Title This, Again, Yo!';
         $scope.story = 'You still ready?';
+        console.log('sce', $sce);
+
+        //var ckEditorOutputText = '<p>default</p>';
+        //$scope.storyStyled = '';
+        //
+        //var styleHtml = function(storyText) {
+        //    $scope.storyStyled = $sce.trustAsHtml('<p>default</p>');
+        //}();
+        ////styleHtml(ckEditorOutputText);
+
+        //$scope.storyStyled = $sce.trustAsHtml('<p>default</p><code>text</code>');
+
 
         //Give user warning if leaving form
         var preventRunning = false;

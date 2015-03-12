@@ -2,7 +2,8 @@
 
     <span data-ng-show="categoryFilters" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', true: 'ui-select-details'[toggleDetails === false], false: 'ui-select-off'}">
 
-        <div id="filters" class="ui-select">
+
+            <div id="filters" class="ui-select">
             <!--<div id="filters" class="ui-select" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:-->
             <!--'ui-select-off'}">-->
             <span class="fa fa-chevron-right pull-right"></span>
@@ -59,6 +60,7 @@
 
         </div>
 
+
         </span>
 
     <span data-ng-hide="categoryFilters" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:
@@ -78,7 +80,7 @@
 
     <button>
         <div class="test-details-toggle" data-ng-click="toggleDetails=!toggleDetails">
-            Toggle Details: {{toggleDetails}}
+            Toggle:<br>{{toggleDetails}}
         </div>
     </button>
 
