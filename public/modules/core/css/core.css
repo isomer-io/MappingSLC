@@ -120,6 +120,7 @@ p:first-child::first-letter {
     text-align: center;
     top: -25px;
     width: 50px;
+    transition: all 0.7s ease;
 }
 
 .switch-on:hover{
@@ -150,15 +151,6 @@ p:first-child::first-letter {
     border: 5px solid rgba(255, 255, 255, 0.4);
 }
 
-#gmap {
-    height: 100%;
-    left: 0;
-    position: fixed !important; /* Acts in pretty much the same way as background-attachment: fixed for an image background. Has to be !important only if you're using the Google Maps API. */
-    top: 0;
-    width: 100%;
-    z-index: 1; /* Has to be at least one increment smaller in value than the container's z-index */
-}
-
 .containerOn{
     background: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
@@ -172,7 +164,8 @@ p:first-child::first-letter {
     height: 60rem;
     top: 15%;
     z-index: 2;
-    display: block;
+    /*display: block;*/
+    transition: all 0.7s ease;
 }
 
 .home{
@@ -199,7 +192,7 @@ div.home div.col-lg-12 {
 }
 
 div.col-lg-12.row-group {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 div.col-lg-12.row-group p {
@@ -220,7 +213,7 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
 .main-text .home-text{
     font-size: 2rem;
     margin-top: 35px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .photo {

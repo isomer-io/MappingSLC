@@ -10,6 +10,11 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.googlePlacesLayer = false;
 
         var toggleProjectDetails = true;
+        $scope.toggleDetails = true;
+
+        $scope.testDetails = function(){
+
+        };
 
         //if (L.Browser.webkit3d) {
         //    alert('Upgrade your browser, dude!');
