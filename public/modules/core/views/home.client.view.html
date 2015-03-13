@@ -5,9 +5,7 @@
     <div>
 
 
-
-
-    <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
+        <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
     <span data-ng-show="toggle">
 
          <!--<div class="small-main-logo img-responsive" ng-class="{false: 'hide-overlay-yes'}[count === 0]">-->
@@ -16,6 +14,7 @@
 
         <div class="containerOn core">
             <span class="switch-on" data-ng-click="toggle=!toggle;">X</span>
+
             <div class="home">
                 <div class="col-md-12">
 
@@ -24,24 +23,26 @@
                     <div class="medium-main-logo img-responsive"></div>
                     <div class="col-lg-12">
                         <div class="main-text">
-                            <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
+                            <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake
+                                City’s neighborhoods and people that documents the city’s changes through art, critical
+                                and creative literature, personal maps and multi-media projects.</p>
 
-                            <p class="home-text">We invite people to engage with and evolve this site by submitting their own contributions.</p>
+                            <p class="home-text">We invite people to engage with and evolve this site by submitting
+                                their own contributions.</p>
 
                         </div>
                     </div>
                 </div>
 
 
-
                 <!-- two column div begin here -->
                 <div class="row-fluid">
                     <div class="col-lg-12 row-group">
-                    <!--Submit your Project Panel -->
+                        <!--Submit your Project Panel -->
                         <!--<div submit-project-directive></div>-->
                         <submit-project-directive></submit-project-directive>
 
-                    <!--Featured Projects Panel -->
+                        <!--Featured Projects Panel -->
                         <!--<div featured-projects></div>-->
                         <featured-projects></featured-projects>
 
@@ -60,73 +61,8 @@
 
     </span>
 
-
-
-    <!-- BEGINNING OF SIDEBAR MENU -->
-
-    <div class="side-menu move-me core" data-ng-class="{'hidden': !showDetails, 'animate-menu': !showDetails}">
-
-        <hr class="hr-set"/>
-        <span><i class="menu-close-icon glyphicon glyphicon-align-justify" data-ng-click="showDetails = !showDetails"></i>
-        </span>
-        <hr class="hr-set-two" />
-
-        <ul>
-            <li>
-                <a data-ng-href="/#!/" data-ng-click="count=0; showDetails=!showDetails"><i
-                        class="glyphicon glyphicon-home"></i> Home</a>
-            </li>
-            <li>
-                <a href="/#!/projects">  <i class="glyphicon glyphicon-th"></i>
-                    Projects</a>
-            </li>
-            <li>
-                <a href="/#!/projects/create/1" > <i class="glyphicon glyphicon-time"></i>  Submit</a>
-            </li>
-            <li>
-                <a href="#" >  <i class="glyphicon glyphicon-user"></i>  About Us</a>
-            </li>
-            <li>
-                <a href="#" > <i class="glyphicon glyphicon-map-marker"></i> Contact</a>
-            </li>
-            <div class="social-media-button">
-            <li>
-                <a href="https://twitter.com/mappingslc">
-                    <i class="fa fa-twitter-square"></i> Twitter
-                </a>
-            </li>
-            <li>
-                <a href="https:www.facebook.com/MappingSaltLakeCity">
-                    <i class="fa fa-facebook-square"></i> Facebook
-                </a>
-            </li>
-            </div>
-        </ul>
-
-        <div>
-            <br />
-            <hr />
-            <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s
-                neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
-            <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
-
+        <div class="container">
+            <div class="small-main-logo2 img-responsive" ng-hide="toggle"></div>
         </div>
-
-
     </div>
-
-    <!-- End OF SIDEBAR MENU -->
-
-    <div class="container">
-        <div class="small-main-logo2 img-responsive" ng-hide="toggle"></div>
-            </div>
-        <h1>
-            <strong>
-                <i class="menu-open-icon glyphicon glyphicon-align-justify" data-ng-click="showDetails = ! showDetails; count = count + 1" ng-init="count=0">
-                </i>
-            </strong>
-        </h1>
-
-    </div>
-</div>
 </section>
