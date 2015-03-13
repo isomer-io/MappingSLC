@@ -10,6 +10,11 @@
     object-fit:contain;
 }
 
+.map-feature{
+
+    width:80%;
+}
+
 #map-overlay {
     height: 100%;
     left: 0;
@@ -31,15 +36,11 @@
     background: rgba(0, 0, 0, 0.8);
     position:absolute;
     margin-top:150px;
-    right:0px;
+    right:0;
     z-index:100;
     padding:10px;
     border-radius: 10px 0 0 10px;
     color: #f5deb3;
-}
-
-.ui-select-details {
-    right:384px;
 }
 
 .ui-select-off {

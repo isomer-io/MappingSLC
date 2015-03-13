@@ -1,12 +1,26 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-	function($scope, Authentication) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$rootScope',
+	function($scope, Authentication, $rootScope) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 		//toggles off/on for main overlay page and menu
 		$scope.toggle = true;
-		$scope.count = {};
+
+//        connects to the sidebar client controller to open the modal when 'home' is clicked on the sidebar
+
+        $rootScope.$on('SHOW_HOME', function() {
+            $scope.toggle = true;
+        });
+
+//        connects to the sidebar client controller to close the modal when the sidebar is opened
+
+        $rootScope.$on('CLOSE_HOME', function(){
+                $scope.toggle = false;
+            });
+
+        //if we see a menu event, turn toggle back to true
+
 		$scope.featuredProjects = {};
 
 		//placeholder for featured projects images
