@@ -45,6 +45,7 @@
 
 .ui-select-off {
     width: 15px;
+    cursor: crosshair;
 }
 
 .ui-select-on {
@@ -210,52 +211,15 @@ GeoJSON Styling
     padding-right: 15px;
     padding-left: 10px;
     height: 100%;
-
 }
 
 .sidebar-view-date{
-
-
     padding-left: 18em;
-
 }
-.sidebar-view-text-content > p{
 
+.sidebar-view-text-content > p{
     font-size: 1.2em;
 }
-
-.test {
-    width: 80%;
-    transition: all 0.7s ease;
-    right: 384px;
-    display: block;
-    color: red;
-}
-
-.test {
-    width: 20%;
-    transition: all 0.7s ease;
-    right: 684px;
-    display: block;
-    color: #800080;
-}
-
-#sidebar{
-
-    /*z-index: 100;*/
-    /*float:right;*/
-    /*width:20%;*/
-    /*background-color: rgba(40, 40, 36, 1);*/
-    /*z-index: 1000;*/
-    /*color:#FFFFFF;*/
-    /*float:right;*/
-    /*padding-top:10em;*/
-    /*padding-right: 15px;*/
-    /*padding-left: 10px;*/
-    /*height: 100%;*/
-
-}
-
 
 /*create tooltip with absolute position*/
 /*source: https://www.mapbox.com/mapbox.js/example/v1.0.0/marker-tooltips-outside-map/ */
@@ -312,10 +276,11 @@ div .leaflet-top.leaflet-left .mapbox-share {
 .test-details-toggle {
     background: rgba(0, 0, 0, 0.8);
     position:absolute;
-    margin-top:250px;
+    margin-top:65px;
     right:0px;
     z-index:100;
     padding:10px;
     border-radius: 10px 0 0 10px;
     color: #f5deb3;
+    text-align: left;
 }

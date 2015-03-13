@@ -6,6 +6,7 @@
 
 angular.module('core').directive('featuredProjects', function() {
         return {
-            templateUrl: '/modules/core/views/directives/featured-projects.html'
+            restrict: 'E',
+            templateUrl: '/modules/core/directives/views/featured-projects.html'
         };
     });
