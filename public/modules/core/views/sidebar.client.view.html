@@ -1,9 +1,5 @@
 <section data-ng-controller="SidebarController">
 
-
-
-
-
     <div class="col-md-5 side-menu move-me core" data-ng-show="showDetails">
         <span>
             <i class="menu-close-icon glyphicon glyphicon-align-justify" style="z-index: 100;" data-ng-click="showDetails=!showDetails"></i>
@@ -25,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="/#!/projects/create/1">
+                <a href="/#!/projects/create">
                     <i class="glyphicon glyphicon-time"></i>
                     Submit
                 </a>
@@ -70,12 +66,12 @@
     </div>
 
     <div class="container">
-        <div class="small-main-logo2 img-responsive" ng-hide="toggle"></div>
+        <div class="small-main-logo2 img-responsive" ng-hide="toggleSideBar" data-ng-click="showHomeView(); showDetails=!showDetails;"></div>
     </div>
 
         <strong>
             <span>
-            <i class="menu-open-icon glyphicon glyphicon-align-justify" data-ng-click="closeHomeView(); showDetails=!showDetails;">
+            <i class="menu-open-icon glyphicon glyphicon-align-justify" ng-show="toggleSideBar" data-ng-click="closeHomeView(); showDetails=!showDetails;">
             </i>
             </span>
         </strong>

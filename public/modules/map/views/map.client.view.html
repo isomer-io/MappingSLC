@@ -1,6 +1,6 @@
 <section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
 
-    <span data-ng-show="categoryFilters" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', true: 'ui-select-details'[toggleDetails === false], false: 'ui-select-off'}">
+    <span data-ng-show="categoryFilters" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false: 'ui-select-off'}">
 
 
             <div id="filters" class="ui-select">
@@ -54,6 +54,7 @@
                     <span class="box"></span>
                     Points of Interest
                 </label>
+                <h2 ng-bind="toggleDetails"></h2>
             </div>
 
             <!-- end of form input fields-->
@@ -72,9 +73,9 @@
 
     <!--to call MapBox map-->
 
-    <div id="map" class="map" data-ng-class="{true: 'map-details'}[toggleDetails === false]"></div>
+    <div id="map" class="map" data-ng-class="{'map-details': toggleDetails}"></div>
 
-    <div id="info" class="info" data-ng-class="{true: 'info-project-details'}[toggleDetails === false]"></div>
+    <div id="info" class="info" data-ng-class="{'info-project-details': toggleDetails}"></div>
 
 
 <div id="sidebar-view" class="sidebar-view">

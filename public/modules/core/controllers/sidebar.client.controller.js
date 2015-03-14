@@ -2,7 +2,8 @@
 
 angular.module('core').controller('SidebarController', ['$scope', '$rootScope',
     function($scope, $rootScope) {
-        $scope.toggle = true;
+        $scope.toggleSideBar = true;
+        $scope.toggleMainModal = true;
         $scope.showDetails = false;
 
 //        connects to the home client controller to open the modal when 'home' is clicked on the sidebar
@@ -16,8 +17,6 @@ angular.module('core').controller('SidebarController', ['$scope', '$rootScope',
         $scope.closeHomeView = function() {
             $rootScope.$broadcast('CLOSE_HOME');
         };
-
-//        $scope.$broadcast
 
     }
 ]);

@@ -9,31 +9,9 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.censusDataTractLayer = true;
         $scope.googlePlacesLayer = false;
 
-        var toggleProjectDetails = true;
-        $scope.toggleDetails = true;
+        $scope.toggleDetails = false;
 
-        //style the polygon tracts
-        var style = {
-            'stroke': true,
-            'clickable': true,
-            'color': "#00D",
-            'fillColor': "#00D",
-            'weight': 1.0,
-            'opacity': 0.2,
-            'fillOpacity': 0.0,
-            'className': ''  //String that sets custom class name on an element
-        };
-        var hoverStyle = {
-            'color': "#00D",
-            "fillOpacity": 0.5,
-            'weight': 1.0,
-            'opacity': 0.2,
-            'className': ''  //String that sets custom class name on an element
-        };
-        var hoverOffset = new L.Point(30, -16);
-
-
-        var censusTractData = null;
+        var fuckBounds = null;
 
         //console.log(CensusDataService.callCensusApi());
 
@@ -58,7 +36,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             });
 
         var mapFunction = function (key, accessToken) {
-
             //creates a Mapbox Map
             L.mapbox.accessToken = accessToken;
 
@@ -82,7 +59,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 //'Tract Boundaries': L.mapbox.tileLayer('examples.bike-lanes'),
             }).addTo(map);
 
-            L.mapbox.featureLayer({
+            var fuckIt = L.mapbox.featureLayer({
                 // this feature is in the GeoJSON format: see geojson.org
                 // for the full specification
                 type: 'Feature',
@@ -91,12 +68,12 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                     // coordinates here are in longitude, latitude order because
                     // x, y is the standard for GeoJSON and many formats
                     coordinates: [
-                        -111.902,
+                        -111.702,
                         40.773
                     ]
                 },
                 properties: {
-                    title: 'Peregrine Espresso',
+                    title: 'Peregrine The Espresso',
                     description: '1718 14th St NW, Washington, DC',
                     // one can customize markers by adding simplestyle properties
                     // https://www.mapbox.com/guides/an-open-platform/#simplestyle
@@ -105,24 +82,20 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                     'marker-symbol': 'cafe'
                 }
             })
-                .on('click', function () {
-                    if (toggleProjectDetails === true) {
-                        document.getElementById('map').style.width='80%';
-                        document.getElementById('map').style.transition = 'all 0.7s ease';
-                        document.getElementById('filters').style.right='384px';
-                        document.getElementById('filters').style.transition = 'all 0.7s ease';
-                        document.getElementById('sidebar-view').style.display='block';
-                        document.getElementById('sidebar-view').style.transition = 'all 0.7s ease';
-                        toggleProjectDetails = false;
-                    } else {
-                        document.getElementById('map').style.width='100%';
-                        document.getElementById('filters').style.right='0';
-                        document.getElementById('sidebar-view').style.display='block inline';
-                        document.getElementById('sidebar-view').style.transition = 'all 0.7s ease';
-                        toggleProjectDetails = true;
-                    }
+
+                .on('click', function (e) {
+                    //fuckBounds = getBounds();
+
+
+
+                    $scope.toggleDetails = !$scope.toggleDetails;
+                    $scope.$apply();
+
                 })
+
                 .addTo(map);
+
+            console.log(fuckBounds);
 
             //get the json file on the backend (/config/env/) for the Census Tract Data
             var tractData = $http.get('/tractData')
@@ -186,62 +159,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 censusTractData.addTo(map);
             };
 
-
-
-            L.mapbox.featureLayer({
-                // this feature is in the GeoJSON format: see geojson.org
-                // for the full specification
-                type: 'Feature',
-                geometry: {
-                    type: 'Point',
-                    // coordinates here are in longitude, latitude order because
-                    // x, y is the standard for GeoJSON and many formats
-                    coordinates: [
-                        -111.902,
-                        40.773
-                    ]
-                },
-                properties: {
-                    title: 'Peregrine Espresso',
-                    description: '1718 14th St NW, Washington, DC',
-                    // one can customize markers by adding simplestyle properties
-                    // https://www.mapbox.com/guides/an-open-platform/#simplestyle
-                    'marker-size': 'large',
-                    'marker-color': '#BE9A6B',
-                    'marker-symbol': 'cafe'
-                }
-            })
-                .on('click', function () {
-                    if (toggleProjectDetails === true) {
-                        setStyle({
-                            className: 'test'
-                        });
-                    }else{
-                        layer.setStyle({
-                            className: 'test-2'
-                        });
-                    }
-                    //if (toggleProjectDetails === true) {
-                    //    document.getElementById('map').style.width='80%';
-                    //    document.getElementById('map').style.transition = 'all 0.7s ease';
-                    //    document.getElementById('filters').style.right='384px';
-                    //    document.getElementById('filters').style.transition = 'all 0.7s ease';
-                    //    document.getElementById('sidebar-view').style.display='block';
-                    //    document.getElementById('sidebar-view').style.transition = 'all 0.7s ease';
-                    //    toggleProjectDetails = false;
-                    //} else {
-                    //    document.getElementById('map').style.width='100%';
-                    //    document.getElementById('filters').style.right='0';
-                    //    document.getElementById('sidebar-view').style.display='block inline';
-                    //    document.getElementById('sidebar-view').style.transition = 'all 0.7s ease';
-                    //    toggleProjectDetails = true;
-                    //}
-                })
-                .addTo(map);
-
-
-
-
             var dataBoxStaticPopup = L.mapbox.featureLayer().addTo(map);
 
             var geoJson = [
@@ -270,8 +187,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                     }
                 }
             ];
-
-            //onEachFeature-function: if(feature.properties.name=='Montana') {console.log(feature.id); }
 
             dataBoxStaticPopup.setGeoJSON(geoJson);
 
@@ -369,6 +284,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             var sidebar = L.control.sidebar('sidebar', {
                 position: 'right'
             });
+
             map.addControl(sidebar);
 
         };
