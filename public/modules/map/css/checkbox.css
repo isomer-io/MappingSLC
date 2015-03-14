@@ -3,7 +3,7 @@
 
 /* basic css */
 .filter input[type=checkbox]   { display:none; }
-.filter label, p               { padding-left:50px; }
+.filter label  { padding-left:50px; }
 #check-awesome         { position:relative; }
 
 /* checkbox css */

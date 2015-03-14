@@ -1,12 +1,4 @@
-.core body, .core html {
-    height: 100%;
-    width: 100%; /* If you don't do this, gremlins will eat your nose. */
-}
 
-.core body {
-    min-height: 100%;
-    height: 100%;
-}
 
 .core ul {
     margin-top: 20px;
@@ -19,9 +11,6 @@
 }
 
 
-p:first-child {
-    margin-bottom: 15px;
-}
 
 p:first-child::first-letter {
     font-size: 40px;
@@ -72,6 +61,9 @@ p:first-child::first-letter {
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
+}
+.clear{
+    clear:both;
 }
 
 .ng-invalid.ng-dirty{
@@ -201,8 +193,8 @@ div.col-lg-12.row-group p {
 }
 
 div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
-    margin-right: 0;
-    margin-top: 0;
+    margin:0px 0px 20px 0px;
+
 }
 
 .home-text {
@@ -212,7 +204,7 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
 
 .main-text .home-text{
     font-size: 2rem;
-    margin-top: 35px;
+    margin-top: 3.4%;
     margin-bottom: 0;
 }
 
@@ -259,34 +251,7 @@ button > .grow {
     display: inline-block;
 }
 
-.container-footer .col-md-4 {
-    padding: 0 0 0 15px;
-}
 
-.container-footer > div.row {
-    padding: 0;
-    margin-top: 5px;
-}
-
-.container-footer {
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    border: 3px solid #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    margin: 35px auto;
-    overflow: visible !important; /* Has to be !important only if you're using an on/off switch */
-    padding: 0 20px 20px 20px;
-    position: relative;
-    width: 100%;
-    height: 6.5em;
-    top: 10px;
-    z-index: 2;
-}
-
-.footer .form-inline {
-    padding-top: 15px;
-    margin-left: 50px;
-}
 
 /* form styling -------------- */
 .group {
@@ -294,17 +259,6 @@ button > .grow {
     margin-bottom:45px;
 }
 
-.footer input {
-    font-size:14px;
-    padding:10px 10px 10px 5px;
-    margin-right: 10px;
-    display:inline;
-    width:300px;
-    border:none;
-    border-bottom:1px solid #ffffff;
-    background-color: transparent;
-    color: lightgoldenrodyellow;
-}
 
 ::-webkit-input-placeholder {
     color: #ffffff;
@@ -318,44 +272,7 @@ button > .grow {
     color: #ffffff;
 }
 
-.footer input:hover {
 
-}
-
-.footer input:focus, .footer input:active {
-    outline:none;
-    background-color: rgba(0, 0, 0, 0.9);
-    border-radius: 10px;
-    border: none;
-    font-size: 10pt;
-}
-
-.btn-footer {
-    color: #fff;
-}
-
-.btn-footer:hover, .btn-footer:focus, .btn-footer.focus {
-    color: #ffffff;
-}
-
-/* LABEL ======================================= */
-.footer label {
-    color:#ffffff;
-    font-size:14px;
-    font-weight:normal;
-    position:absolute;
-    pointer-events:none;
-    left:5px;
-    top:10px;
-    transition:0.2s ease all;
-}
-
-/* active state */
-.footer input:focus ~ .footer label, .footer input:valid ~ .footer label {
-    top:-20px;
-    font-size:14px;
-    color:#5264AE;
-}
 
 /* BOTTOM BARS ================================= */
 
@@ -382,9 +299,7 @@ button > .grow {
 }
 
 /* active state */
-.footer input:focus ~ .bar:before, .footer input:focus ~ .bar:after {
-    width:50%;
-}
+
 
 /* HIGHLIGHTER ================================== */
 .highlight {
@@ -398,9 +313,7 @@ button > .grow {
 }
 
 /* active state */
-.footer input:focus ~ .highlight {
-    animation:inputHighlighter 0.3s ease;
-}
+
 
 /* ANIMATIONS ================ */
 @keyframes inputHighlighter {
@@ -408,29 +321,34 @@ button > .grow {
     to    { width:0; background:transparent; }
 }
 
-@media (min-width: 992px) {
-    .col-md-4 {
-        width: 31%;
-    }
-
-    .container-footer .col-md-4 {
-        width: 29%;
-        margin: 5px;
-    }
-
-    img .container-footer .col-md-4 {
-        width: 35%;
-        margin: 5px;
-    }
-}
 
 @media (max-width: 992px) {
-
+    ul figure{
+float:left;
+ width:33.333%;
+}
     .containerOn {
         margin-top: 15%;
         width: 80%;
-        height: 80em;
+        height: 64em;
     }
+   .col-md-7.pull-right{
+        float:none !important;
+    }
+    .col-md-7.pull-right a img{
+        /*working on tablet sized 'featured projects' section. The above gives the featured projects it's full length*/
+    }
+    .core ul{
+        position:relative;
+    }
+
+   .row a .img-responsive {
+        width:10%;
+        float:left;
+       padding-top:10px;
+
+    }
+
 }
 .social-media-button{
     display: block;
@@ -440,11 +358,11 @@ button > .grow {
     content: url(../../core/img/brand/logo-75.png);
     width: 225px;
     height: 71px;
-    position: absolute;
+    position: relative;
     display: block;
     z-index: 999;
-    left: 7%;
-    top: 7%;
+    left: 12px;
+    top: 20px;
     bottom: 5%;
 }
 
