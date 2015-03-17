@@ -11,10 +11,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
         $scope.toggleDetails = false;
 
-        var fuckBounds = null;
-
-        //console.log(CensusDataService.callCensusApi());
-
         CensusDataService.callCensusApi()
             //console.log(CensusDataService.callCensusApi());
             .success(function (censusData) {
@@ -59,7 +55,9 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 //'Tract Boundaries': L.mapbox.tileLayer('examples.bike-lanes'),
             }).addTo(map);
 
-            var fuckIt = L.mapbox.featureLayer({
+            var sidebar = null;
+
+            L.mapbox.featureLayer({
                 // this feature is in the GeoJSON format: see geojson.org
                 // for the full specification
                 type: 'Feature',
@@ -83,19 +81,32 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 }
             })
 
-                .on('click', function (e) {
-                    //fuckBounds = getBounds();
+                .on('click', function () {
 
+                    //$scope.$apply(
+                    //    function(){
+                    //        $scope.toggleDetails = !$scope.toggleDetails;
+                    //    }
+                    //);
+                    //sidebar.setContent('test <b>test</b> test');
 
+                    sidebar = L.control.sidebar('sidebar', {
+                        position: 'right'
+                    });
 
-                    $scope.toggleDetails = !$scope.toggleDetails;
-                    $scope.$apply();
+                    var sidebar = L.control.sidebar('sidebar', {
+                        closeButton: true,
+                        position: 'left'
+                    });
+                    map.addControl(sidebar);
+
+                    setTimeout(function () {
+                        sidebar.show();
+                    }, 500);
 
                 })
 
                 .addTo(map);
-
-            console.log(fuckBounds);
 
             //get the json file on the backend (/config/env/) for the Census Tract Data
             var tractData = $http.get('/tractData')
@@ -265,7 +276,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                                 'riseOnHover': true,
                                 'riseOffset': 250,
                                 'opacity': 0.5,
-                                'clickable': true
+                                'clickable': true,
                             }
                         }
                     })
@@ -280,12 +291,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                     map.addLayer(googlePlacesMarkerLayer);
                 }
             };
-
-            var sidebar = L.control.sidebar('sidebar', {
-                position: 'right'
-            });
-
-            map.addControl(sidebar);
 
         };
     }
