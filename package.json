@@ -31,10 +31,10 @@
     "leaflet-sidebar": "^0.1.6",
     "lodash": "~2.4.1",
     "mean-seo": "0.0.8",
+    "medium.js": "^1.0.1",
     "method-override": "~2.1.2",
     "mongoosastic": "~2.0.6",
     "mongoose": "~3.8.8",
-    "mongoose-troop": "0.0.8",
     "morgan": "~1.2.2",
     "ng-file-upload": "^3.2.4",
     "nodemailer": "~1.1.1",
@@ -49,8 +49,7 @@
     "require": "^2.4.17",
     "swig": "~1.4.1",
     "uglify-js": "~2.4.15",
-    "underscore": "~1.7.0",
-    "validator": "~3.22.1"
+    "underscore": "~1.7.0"
   },
   "devDependencies": {
     "supertest": "~0.13.0",

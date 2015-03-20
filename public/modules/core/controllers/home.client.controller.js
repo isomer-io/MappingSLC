@@ -6,18 +6,39 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.authentication = Authentication;
 		//toggles off/on for main overlay page and menu
 		$scope.toggle = true;
+        $scope.animateLogoCheck = false;
+        $scope.animateMainOverlayCheck = false;
+        $scope.animateFooterOverlayCheck = false;
+
+        $scope.animateSmallLogo = function(){
+            //animate into the small logo from round 'X' on main modal
+            if($scope.animateLogoCheck === false) {
+                $scope.animateLogoCheck = true;
+                $scope.animateMainOverlayCheck = true;
+                $scope.animateFooterOverlayCheck = true;
+            }else{
+                $scope.animateLogoCheck = false;
+                $scope.animateMainOverlayCheck = false;
+                $scope.animateFooterOverlayCheck = false;
+            }
+        };
 
 //        connects to the sidebar client controller to open the modal when 'home' is clicked on the sidebar
-
         $rootScope.$on('SHOW_HOME', function() {
-            $scope.toggleSideBar = true;
+            if (!$scope.toggle) {
+                //$scope.toggleSmallLogo = true;
+                $scope.toggleSideBar = false;
+            }
         });
 
 //        connects to the sidebar client controller to close the modal when the sidebar is opened
-
         $rootScope.$on('CLOSE_HOME', function(){
-                $scope.toggleSideBar = false;
-            });
+            $scope.toggleSideBar = false;
+        });
+
+        //$rootScope.$on('SHOW_SMALL_LOGO', function(){
+        //    $scope.toggleSmallLogo = true;
+        //});
 
         //if we see a menu event, turn toggle back to true
 

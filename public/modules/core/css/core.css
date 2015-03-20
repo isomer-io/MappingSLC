@@ -106,12 +106,12 @@ p:first-child::first-letter {
     cursor: pointer;
     font-size: 22pt;
     height: 50px;
+    width: 50px;
     left: -25px;
+    top: -25px;
     line-height: 50px;
     position: absolute;
     text-align: center;
-    top: -25px;
-    width: 50px;
     transition: all 0.7s ease;
 }
 
@@ -368,7 +368,7 @@ float:left;
 
 /* mapping slc small logo */
 .small-main-logo2 {
-    content: url(../../core/img/brand/mapping.png);
+    content: url(../../core/img/brand/mapping_150w.png);
     width: 150px;
     height: 47px;
     position: absolute;

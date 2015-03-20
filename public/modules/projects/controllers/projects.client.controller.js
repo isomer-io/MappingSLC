@@ -2,7 +2,7 @@
 
 // Projects controller
 angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi',
-    function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, ngSanitize) {
+    function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi) {
         $scope.authentication = Authentication;
         $scope.logo = '../../../modules/core/img/brand/mapping.png';
         var width = '800';
@@ -16,18 +16,8 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
         $scope.zip = 84111;
         $scope.title = 'Title This, Again, Yo!';
         $scope.story = 'You still ready?';
-        console.log('sce', $sce);
 
-        //var ckEditorOutputText = '<p>default</p>';
-        //$scope.storyStyled = '';
-
-        var styleHtml = function(storyText) {
-            $scope.storyStyled = $sce.trustAsHtml('<p>default</p>');
-        }();
-
-
-
-
+        $scope.trustAsHtml = $sce.trustAsHtml;
 
         //Give user warning if leaving form
         var preventRunning = false;

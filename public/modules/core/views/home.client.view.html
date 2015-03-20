@@ -4,11 +4,11 @@
 
     <div>
 
-        <!--todo set animation on click so it moves slower--and so the logo appears somewhere else when it disappears from the main box-->
     <span data-ng-show="toggle">
 
-        <div class="containerOn core">
-            <span class="switch-on" data-ng-click="toggle=!toggle;">X</span>
+        <span class="animate-small-logo" style="z-index: 999" ng-click="animateSmallLogo()" ng-class="{'animate-small-logo-active': animateLogoCheck}"></span>
+
+        <div class="main-overlay core" ng-class="{'main-overlay-active': animateMainOverlayCheck}">
 
             <div class="home">
                 <div class="col-md-12">
@@ -24,9 +24,9 @@
 
                             <p class="home-text">We invite people to engage with and evolve this site by submitting
                                 their own contributions.</p>
-
                         </div>
                     </div>
+
                 </div>
 
 
@@ -48,10 +48,6 @@
 
 
     </span>
-    </div>
-
-    <div class="container">
-        <div class="small-main-logo2 img-responsive" ng-hide="toggle"></div>
     </div>
 
 </section>
