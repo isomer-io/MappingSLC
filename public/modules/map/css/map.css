@@ -108,15 +108,12 @@ GeoJSON Styling
     padding-right: 15px;
     padding-left: 10px;
     height: 100%;
-
 }
 
 .sidebar-view-date{
-
-
     padding-left: 18em;
-
 }
+
 .sidebar-view-text-content > p{
 
     font-size: 1.2em;
@@ -285,7 +282,7 @@ GeoJSON Styling
 
 
 div .leaflet-control-attribution.leaflet-control {
-    background: rgba(0, 0, 0, 0.8);
+    background-color:#EEEEEE;
 }
 
 div a .mapbox-share.mapbox-icon.mapbox-icon-share  {

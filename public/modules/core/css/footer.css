@@ -37,6 +37,18 @@
     border: none;
     font-size: 10pt;
 }
+.image-footer-left{
+    float:left;
+    width:50%;
+    display:block;
+
+}
+
+.image-footer-right {
+    display:block;
+    width:50%;
+
+}
 
 .btn-footer {
     color: #fff;
