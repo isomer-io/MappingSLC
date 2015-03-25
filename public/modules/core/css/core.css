@@ -1,9 +1,6 @@
 
 
-.core ul {
-    margin-top: 20px;
-    list-style-type: none;
-}
+
 
 .core h2, .core h3, .core h4 {
     color: #ffffff;
@@ -321,12 +318,18 @@ button > .grow {
     to    { width:0; background:transparent; }
 }
 
+.core ul{
+    position:relative;
+    margin-top: 40px;
+    list-style-type: none;
+}
 
 @media (max-width: 992px) {
+
     ul figure{
-float:left;
- width:33.333%;
-}
+        float:left;
+        width:33.333%;
+    }
     .containerOn {
         margin-top: 15%;
         width: 80%;
@@ -350,6 +353,7 @@ float:left;
     }
 
 }
+
 .social-media-button{
     display: block;
 }

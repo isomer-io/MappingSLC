@@ -18,6 +18,11 @@
    SIDE MENU TWEAKS
  ============================================================ */
 
+.side-menu p {
+    line-height: 165%;
+    padding: 0 20px 5px 20px;
+}
+
 .side-menu {
     background: url('../img/brand/mapping.png') no-repeat top right;
     background-color: rgba(0, 0, 0, 0.8);
@@ -29,8 +34,10 @@
     overflow: auto;
     border-radius: 0 15px 15px 0;
     color: #ffffff;
-    text-align: justify;
+    text-align: left;
     font-size: 18px;
+    width:41.666667%; /*added width here and removed class on menu.*/
+
 }
 
 .side-menu ul {
@@ -41,7 +48,8 @@
 .side-menu ul li {
     border-bottom: 1px solid rgba(95, 87, 88, 0.2);
     padding:  20px 15px;
-    display: inline-block;
+    display: list-item;
+
 }
 
 .side-menu ul li a i {
@@ -58,14 +66,9 @@
     font-size: 2.1rem;
 }
 
-.side-menu p {
-    line-height: 165%;
-    padding: 0 20px 5px 20px;
-}
 
-img.logo.pull-right {
-    padding-right: 25px;
-}
+
+
 
 .logo-text {
     padding:  20px 30px;
