@@ -37,16 +37,13 @@ angular.module('users').directive('signupModal', ['$modal', '$http', '$location'
                                 keyboard: false,
                                 controller: function ($scope, $modalInstance, $modal) {
                                     $scope.closeModal = function () {
-
                                         $modalInstance.close();
                                     };
 
                                     $scope.$on('$stateChangeStart', function () {
                                         $modalInstance.close();
                                     });
-
                                 }
-
                             });
 
                             modalView.result.then(function () {

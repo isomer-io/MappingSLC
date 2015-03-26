@@ -5,8 +5,6 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    troop = require('mongoose-troop'),
-    validator = require('validator'),
     _ = require('underscore'),
     mongoosastic = require('mongoosastic');
 
@@ -144,14 +142,10 @@ var ProjectSchema = new Schema({
     }
 });
 
-// Adds a created and modified property to the schema, updating the timestamps as expected
-ProjectSchema.plugin(troop.timestamp);
-
 // Using Mongoosastic to watch what's going on with the MongoDB server and feeding into Elastic Search
 ProjectSchema.plugin(mongoosastic);
 
 // Add model
-
 var Project = mongoose.model('Project', ProjectSchema),
     stream = Project.synchronize(),
     count = 0;
@@ -165,4 +159,3 @@ stream.on('close', function () {
 stream.on('error', function (err) {
     //console.log(err);
 });
-

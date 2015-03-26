@@ -1,101 +1,56 @@
-<!--<section>-->
-    <!--<div class="container-footer" data-ng-show="toggle">-->
-
-        <!--<div class="row">-->
-
-            <!--<div class="col-md-4">-->
-                <!--<div class="row">-->
-
-
-                    <!--<div class="col-md-4">-->
-                        <!--<a href="http://www.utahhumanities.org/" target="_blank">-->
-                            <!--<img src="/modules/core/img/brand/uhc.png" class="img-responsive" alt="Responsive image" />-->
-                        <!--</a>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-4">-->
-                        <!--<a href="http://www.utah.edu/" target="_blank">-->
-                            <!--<img src="/modules/core/img/brand/uofu.png" class="img-responsive" alt="Responsive image" />-->
-                        <!--</a>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-4">-->
-                        <!--<a href="http://www.westminstercollege.edu/" target="_blank">-->
-                            <!--<img src="/modules/core/img/brand/westminster.png" class="img-responsive" alt="Responsive image" />-->
-                        <!--</a>-->
-                    <!--</div>-->
-
-
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="footer">-->
-                <!--<form action="http://enternewurihere" method="post" autocomplete="on">-->
-
-                    <!--<div class="clearfix col-xs-offset-7">-->
-
-                        <!--<div class="form-inline">-->
-                            <!--<input name="subscribe-email" class="input-footer" placeholder="Newsletter: Enter your E-mail" required="" type="email" />-->
-                            <!--<button class="btn btn-main btn-footer grow" type="submit">Subscribe</button>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-
-
-                <!--</form>-->
-            <!--</div>-->
-
-        <!--</div>-->
-
-    <!--</div>-->
-<!--</section>-->
-
 <section>
-    <div class="container-footer" data-ng-show="toggle">
 
-        <div class="row">
+    <div class="footer-overlay" ng-class="{'footer-overlay-active': animateFooterOverlayCheck}">
 
-            <div class="col-md-4">
-                <div class="row col-md-18">
+        <div class="container" data-ng-show="toggle">
 
-                    <div class="col-md-4">
-                        <a href="http://www.utahhumanities.org/" target="_blank">
-                            <img src="/modules/core/img/brand/uhc.png" class="img-responsive" alt="Responsive image" />
-                        </a>
+                <div class="row body">
+
+                    <div class="col-md-5">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="http://www.utahhumanities.org/" target="_blank">
+                                    <img src="/modules/core/img/brand/uhc.png" class="img-responsive"
+                                         alt="Responsive image"/>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="http://www.utah.edu/" target="_blank">
+                                    <img src="/modules/core/img/brand/uofu.png" class="img-responsive"
+                                         alt="Responsive image"/>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="http://www.westminstercollege.edu/" target="_blank">
+                                    <img src="/modules/core/img/brand/westminster.png" class="img-responsive"
+                                         alt="Responsive image"/>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="http://www.westminstercollege.edu/" target="_blank">
+                                    <img src="/modules/core/img/brand/isomer_sq_plus_name.png" class="img-responsive"
+                                         alt="Responsive image"/>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <a href="http://www.utah.edu/" target="_blank">
-                            <img src="/modules/core/img/brand/uofu.png" class="img-responsive" alt="Responsive image" />
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="http://www.westminstercollege.edu/" target="_blank">
-                            <img src="/modules/core/img/brand/westminster.png" class="img-responsive" alt="Responsive image" />
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a href="http://www.westminstercollege.edu/" target="_blank">
-                            <img src="/modules/core/img/brand/westminster.png" class="img-responsive" alt="Responsive image" />
-                        </a>
+
+                    <div class="col-md-7">
+
+                        <form action="http://enternewurihere" method="post" autocomplete="on">
+
+                            <div class="form">
+                                <input name="subscribe-email"
+                                       placeholder="{{animateFooterOverlayCheck}} | Newsletter: Enter your E-mail" required="" type="email"/>
+                                <button class="btn btn-main btn-footer-overlay grow" type="submit">Subscribe</button>
+                            </div>
+
+                        </form>
+
                     </div>
 
                 </div>
-            </div>
-
-            <div class="footer">
-                <form action="http://enternewurihere" method="post" autocomplete="on">
-
-                    <div class="clearfix col-xs-offset-7">
-
-                        <div class="form-inline">
-                            <input name="subscribe-email" class="input-footer" placeholder="Newsletter: Enter your E-mail" required="" type="email" />
-                            <button class="btn btn-main btn-footer grow" type="submit">Subscribe</button>
-                        </div>
-
-                    </div>
-
-                </form>
-            </div>
 
         </div>
-
     </div>
 </section>

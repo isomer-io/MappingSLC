@@ -1,66 +1,71 @@
-<section class="container" data-ng-controller="MapController" data-ng-init="mapFunction()">
+<section class="container map" data-ng-controller="MapController" data-ng-init="mapFunction()">
 
-    <span data-ng-show="categoryFilters" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', true: 'ui-select-details'[toggleDetails === false], false: 'ui-select-off'}">
+    <div data-ng-class="{'ui-select-details':toggleDetails}">
+    <span data-ng-show="categoryFilters" data-ng-click="categoryFilters=!categoryFilters"
+          ng-class="{true: 'ui-select-on', false: 'ui-select-off'}">
 
 
             <div id="filters" class="ui-select">
-            <!--<div id="filters" class="ui-select" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:-->
-            <!--'ui-select-off'}">-->
-            <span class="fa fa-chevron-right pull-right"></span>
+                <!--<div id="filters" class="ui-select" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:-->
+                <!--'ui-select-off'}">-->
+                <span class="fa fa-chevron-right pull-right"></span>
 
 
-            <!--beginning of input fields-->
+                <!--beginning of input fields-->
 
-            <div id="check-awesome" class="form-group filter first-filter">
-                <input type="checkbox" checked=checked name="filters" id="interviews" value="interviews">
-                <label for="interviews">
-                    <span class="check"></span>
-                    <span class="box"></span>
-                    Interviews
-                    <label/>
+                <div id="check-awesome" class="form-group filter first-filter">
+                    <input type="checkbox" checked=checked name="filters" id="interviews" value="interviews">
+                    <label for="interviews">
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Interviews
+                        <label/>
+                </div>
+
+                <div id="check-awesome" class="form-group filter">
+                    <input type="checkbox" checked=checked name="filters" id="essays" value="essays">
+                    <label for="essays">
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Essays
+                    </label>
+                </div>
+
+                <div id="check-awesome" class="form-group filter">
+                    <input type="checkbox" id="multimedia" checked="checked" name="filters" value="multimedia">
+                    <label for="multimedia">
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Multimedia
+                    </label>
+                </div>
+
+                <div id="check-awesome" class="form-group filter">
+                    <input type="checkbox" id="census-data" data-ng-model="censusDataTractLayer"
+                           ng-change="toggleCensusData()">
+                    <label for="census-data">
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Census Data
+                    </label>
+                </div>
+
+                <div id="check-awesome" class="form-group filter">
+                    <input type="checkbox" id="google-places-data" data-ng-model="googlePlacesLayer"
+                           ng-change="toggleGooglePlacesData()">
+                    <label for="google-places-data">
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Points of Interest
+                    </label>
+                </div>
+
+                <!-- end of form input fields-->
+
             </div>
-
-            <div id="check-awesome" class="form-group filter">
-                <input type="checkbox" checked=checked name="filters" id="essays" value="essays">
-                <label for="essays">
-                    <span class="check"></span>
-                    <span class="box"></span>
-                    Essays
-                </label>
-            </div>
-
-            <div id="check-awesome" class="form-group filter">
-                <input type="checkbox" id="multimedia" checked="checked" name="filters" value="multimedia">
-                <label for="multimedia">
-                    <span class="check"></span>
-                    <span class="box"></span>
-                    Multimedia
-                </label>
-            </div>
-
-            <div id="check-awesome" class="form-group filter">
-                <input type="checkbox" id="census-data" data-ng-model="censusDataTractLayer" ng-change="toggleCensusData()">
-                <label for="census-data">
-                    <span class="check"></span>
-                    <span class="box"></span>
-                    Census Data
-                </label>
-            </div>
-
-            <div id="check-awesome" class="form-group filter">
-                <input type="checkbox" id="google-places-data" data-ng-model="googlePlacesLayer" ng-change="toggleGooglePlacesData()">
-                <label for="google-places-data">
-                    <span class="check"></span>
-                    <span class="box"></span>
-                    Points of Interest
-                </label>
-            </div>
-
-            <!-- end of form input fields-->
-
-        </div>
 
         </span>
+    </div>
 
     <span data-ng-hide="categoryFilters" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:
         'ui-select-off'}">
@@ -72,25 +77,28 @@
 
     <!--to call MapBox map-->
 
-    <div id="map" class="map" data-ng-class="{true: 'map-details'}[toggleDetails === false]"></div>
+    <div id="map" class="map" data-ng-class="{'map-details': toggleDetails}"></div>
 
-    <div id="info" class="info" data-ng-class="{true: 'info-project-details'}[toggleDetails === false]"></div>
+    <div id="info" class="info" data-ng-class="{'info-project-details': toggleDetails}"></div>
 
 
-<div id="sidebar-view" class="sidebar-view">
-    <div class="">
-        <div class="sidebar-view-date "><small>June 22, 2014</small></div>
+    <div id="sidebar" class="sidebar-view">
+        <div class="sidebar-view-date ">
+            <small>June 22, 2014</small>
+        </div>
         <h3>Test Title: Read a great article that is bound to tickle your fancy!</h3>
         <img src="http://lorempixel.com/output/city-q-c-384-216-10.jpg">
+
         <div class="sidebar-view-text-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum error et hic minus vero? Cupiditate error, in nostrum perferendis reiciendis repellat sapiente voluptas voluptate. Dignissimos natus numquam obcaecati porro sequi!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum error et hic minus vero? Cupiditate
+                error, in nostrum perferendis reiciendis repellat sapiente voluptas voluptate. Dignissimos natus numquam
+                obcaecati porro sequi!</p>
         </div>
-        <p >
+        <p>
             <button type="button" class="btn btn-primary btn-lg">Read More</button>
             <button type="button" class="btn btn-default btn-lg">Share</button>
         </p>
 
 
-
     </div>
-</div>
+    </div>

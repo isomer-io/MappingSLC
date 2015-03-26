@@ -2,6 +2,11 @@
 
 angular.module('projects').service('GeoCodeApi', ['$http',
 	function($http) {
+
+        this.something = function () {
+            console.log('lololololololol');
+        };
+
 		// Geocodeapi service logic
 		// ...
         this.callGeoCodeApi = function(project, key, secret, projectSaveCallback){

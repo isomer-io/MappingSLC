@@ -31,23 +31,27 @@
     background: rgba(0, 0, 0, 0.8);
     position:absolute;
     margin-top:150px;
-    right:0px;
+    /*right:0;*/
     z-index:100;
     padding:10px;
     border-radius: 10px 0 0 10px;
     color: #f5deb3;
+    transition: all 0.7s ease;
 }
 
 .ui-select-details {
     right:384px;
+    transition: all 0.7s ease;
 }
 
 .ui-select-off {
     width: 15px;
+    transition: all 0.7s ease;
 }
 
 .ui-select-on {
     width: 150px;
+    transition: all 0.7s ease;
 }
 
 span div input:nth-child(2) {
@@ -318,4 +322,8 @@ div .leaflet-top.leaflet-left .mapbox-share {
     border-radius: 10px 0 0 10px;
     color: #f5deb3;
     display:block;
+}
+
+.leafleft-top .leaftlet-left {
+    margin-top: -50px !important;
 }

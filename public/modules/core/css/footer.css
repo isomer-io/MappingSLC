@@ -1,36 +1,25 @@
-.container-footer .col-md-4 {
+.container .footer-overlay .col-md-4 {
     padding: 0 0 0 15px;
 }
 
-.container-footer > div.row {
+.container .footer-overlay > div.row {
     padding: 0;
     margin-top: 5px;
 }
 
-.container-footer {
-    background: rgba(0, 0, 0, 0.8);
-    border-radius: 20px;
-    border: 3px solid #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    margin: 35px auto;
-    overflow: visible !important; /* Has to be !important only if you're using an on/off switch */
-    padding: 0 20px 20px 20px;
-    position: relative;
-    width: 100%;
-    height: 6.5em;
-    z-index: 2;
+/* The main '.footer-overlay' class is located in the core/css/animations.css file */
+
+.footer-overlay .body{
+    padding-top: 10px;
+    margin-left: 5px;
 }
 
-.footer .form-inline {
-    padding-top: 15px;
-    margin-left: 50px;
+.footer-overlay .form {
+    margin-top: 1%;
+    margin-left: 15%;
 }
 
-.footer input:hover {
-
-}
-
-.footer input:focus, .footer input:active {
+.footer-overlay input:focus, .footer-overlay input:active {
     outline:none;
     background-color: rgba(0, 0, 0, 0.9);
     border-radius: 10px;
@@ -38,16 +27,16 @@
     font-size: 10pt;
 }
 
-.btn-footer {
+.btn-footer-overlay {
     color: #fff;
 }
 
-.btn-footer:hover, .btn-footer:focus, .btn-footer.focus {
+.btn-footer-overlay:hover, .btn-footer-overlay:focus, .btn-footer-overlay.focus {
     color: #ffffff;
 }
 
 /* LABEL ======================================= */
-.footer input {
+.footer-overlay input {
     font-size:14px;
     padding:10px 10px 10px 5px;
     margin-right: 10px;
@@ -59,7 +48,7 @@
     color: lightgoldenrodyellow;
 }
 
-.footer label {
+.footer-overlay label {
     color:#ffffff;
     font-size:14px;
     font-weight:normal;
@@ -71,19 +60,19 @@
 }
 
 /* active state */
-.footer input:focus ~ .footer label, .footer input:valid ~ .footer label {
+.footer-overlay input:focus ~ .footer-overlay label, .footer-overlay input:valid ~ .footer-overlay label {
     top:-20px;
     font-size:14px;
     color:#5264AE;
 }
-.footer input:focus ~ .bar:before, .footer input:focus ~ .bar:after {
+.footer-overlay input:focus ~ .bar:before, .footer-overlay input:focus ~ .bar:after {
     width:50%;
 }
-.footer input:focus ~ .highlight {
+.footer-overlay input:focus ~ .highlight {
     animation:inputHighlighter 0.3s ease;
 }
 @media (max-width: 992px){
-    .footer .form-inline {
+    .footer-overlay .form-inline {
         padding-top: 10px;
         margin: 0;
         top: -50px;
