@@ -25,7 +25,6 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         ApiKeys.getApiKeys()
             .success(function (data) {
                 mapFunction(data.mapboxKey, data.mapboxSecret);
-
             })
             .error(function (data, status) {
                 alert('Failed to load Mapbox API key. Status: ' + status);
@@ -55,7 +54,12 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 //'Tract Boundaries': L.mapbox.tileLayer('examples.bike-lanes'),
             }).addTo(map);
 
-            var sidebar = null;
+            //var sidebar = null;
+            var sidebar = L.control.sidebar('sidebar', {
+                closeButton: true,
+                position: 'right'
+            });
+            map.addControl(sidebar);
 
             L.mapbox.featureLayer({
                 // this feature is in the GeoJSON format: see geojson.org
@@ -88,20 +92,10 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                     //        $scope.toggleDetails = !$scope.toggleDetails;
                     //    }
                     //);
-                    //sidebar.setContent('test <b>test</b> test');
-
-                    sidebar = L.control.sidebar('sidebar', {
-                        position: 'right'
-                    });
-
-                    var sidebar = L.control.sidebar('sidebar', {
-                        closeButton: true,
-                        position: 'left'
-                    });
-                    map.addControl(sidebar);
+                    sidebar.setContent('test <b>test</b> test');
 
                     setTimeout(function () {
-                        sidebar.show();
+                        sidebar.toggle();
                     }, 500);
 
                 })

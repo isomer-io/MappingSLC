@@ -10,13 +10,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
         var markerUrl = 'url-http%3A%2F%2Fwww.mappingslc.org%2Fimages%2Fsite_img%2Flogo_marker_150px.png';
         $scope.mapImage = '';
 
-        $scope.street = '217 E Broadway';
-        $scope.city = 'Salt Lake City';
-        $scope.state = 'UT';
-        $scope.zip = 84111;
-        $scope.title = 'Title This, Again, Yo!';
-        $scope.story = 'You still ready?';
-
         $scope.trustAsHtml = $sce.trustAsHtml;
 
         //Give user warning if leaving form
@@ -87,7 +80,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
                 GeoCodeApi.callGeoCodeApi(project, hereKey, hereSecret, saveProject)
                     .success(function (data) {
-                        console.log('geocoded data: ', data);
                         project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
                         saveProject();
                     });

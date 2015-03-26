@@ -19,6 +19,7 @@
     "ng-ckeditor": "~0.2.1",
     "jquery": "~1.9.1",
     "modernizr": "~2.8.3",
-    "leaflet-sidebar": "~0.1.6"
+    "leaflet-sidebar": "~0.1.6",
+    "sidebar-v2": "~0.2.1"
   }
 }

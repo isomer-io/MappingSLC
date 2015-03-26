@@ -32,6 +32,118 @@
     }
 }
 
+/*@-moz-keyframes animate-footer-overlay {*/
+     /*0% {*/
+         /*transform: scale(1, 1);*/
+     /*}*/
+     /*49% {*/
+         /*transform: scale(0.98, 0.05) translate(0, -2000%);*/
+         /*opacity: 1;*/
+     /*}*/
+     /*50% {*/
+         /*opacity: 0;*/
+     /*}*/
+     /*75% {*/
+         /*transform: scale(0.75, 0.03) translate(0, -4000%);*/
+     /*}*/
+
+     /*97% {*/
+         /*transform: scale(0.5, 0.02) translate(0, -6000%);*/
+
+     /*}*/
+     /*98% {*/
+         /*transform: scale(0.45, 0.01);*/
+     /*}*/
+     /*100% {*/
+         /*opacity: 0;*/
+         /*transform: scale(0.45, 0);*/
+     /*}*/
+ /*}*/
+
+/*@-ms-keyframes animate-footer-overlay {*/
+    /*0% {*/
+        /*transform: scale(1, 1);*/
+    /*}*/
+    /*49% {*/
+        /*transform: scale(0.98, 0.05) translate(0, -2000%);*/
+        /*opacity: 1;*/
+    /*}*/
+    /*50% {*/
+        /*opacity: 0;*/
+    /*}*/
+    /*75% {*/
+        /*transform: scale(0.75, 0.03) translate(0, -4000%);*/
+    /*}*/
+
+    /*97% {*/
+        /*transform: scale(0.5, 0.02) translate(0, -6000%);*/
+
+    /*}*/
+    /*98% {*/
+        /*transform: scale(0.45, 0.01);*/
+    /*}*/
+    /*100% {*/
+        /*opacity: 0;*/
+        /*transform: scale(0.45, 0);*/
+    /*}*/
+/*}*/
+
+@-o-keyframes animate-footer-overlay {
+    0% {
+        transform: scale(1, 1);
+    }
+    49% {
+        transform: scale(0.98, 0.05) translate(0, -2000%);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        transform: scale(0.75, 0.03) translate(0, -4000%);
+    }
+
+    97% {
+        transform: scale(0.5, 0.02) translate(0, -6000%);
+
+    }
+    98% {
+        transform: scale(0.45, 0.01);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.45, 0);
+    }
+}
+
+@keyframes animate-footer-overlay {
+0% {
+    transform: scale(1, 1);
+}
+49% {
+    transform: scale(0.98, 0.05) translate(0, -2000%);
+    opacity: 1;
+}
+50% {
+    opacity: 0;
+}
+75% {
+    transform: scale(0.75, 0.03) translate(0, -4000%);
+}
+
+97% {
+    transform: scale(0.5, 0.02) translate(0, -6000%);
+
+}
+98% {
+    transform: scale(0.45, 0.01);
+}
+100% {
+    opacity: 0;
+    transform: scale(0.45, 0);
+}
+}
+
 .footer-overlay {
     background: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
@@ -48,10 +160,10 @@
 
 .footer-overlay-active {
     /*creates animation (vs. transformation)*/
-    -webkit-animation: animate-footer-overlay 1s ease-out forwards;
-    -moz-animation: animate-footer-overlay 1s ease forwards;
-    -o-animation: animate-footer-overlay 1s ease forwards;
-    animation: animate-footer-overlay 1s ease forwards;
+    -webkit-animation: animate-footer-overlay 0.5s ease-out forwards;
+    /*-moz-animation: animate-footer-overlay 0.5s ease forwards;*/
+    -o-animation: animate-footer-overlay 0.5s ease forwards;
+    animation: animate-footer-overlay 0.5s ease forwards;
 }
 
 
@@ -62,6 +174,50 @@
 ***/
 
 @-webkit-keyframes animate-main-overlay {
+    0% {
+        transform: scale(1, 1);
+    }
+    99% {
+        transform: scale(0.035, 0.055) translate(-1420%, -900%);
+    }
+    100% {
+        transform: scale(0, 0);
+    }
+}
+/*@-moz-keyframes animate-main-overlay {*/
+    /*0% {*/
+        /*transform: scale(1, 1);*/
+    /*}*/
+    /*99% {*/
+        /*transform: scale(0.035, 0.055) translate(-1420%, -900%);*/
+    /*}*/
+    /*100% {*/
+        /*transform: scale(0, 0);*/
+    /*}*/
+/*}*/
+/*@-ms-keyframes animate-main-overlay {*/
+    /*0% {*/
+        /*transform: scale(1, 1);*/
+    /*}*/
+    /*99% {*/
+        /*transform: scale(0.035, 0.055) translate(-1420%, -900%);*/
+    /*}*/
+    /*100% {*/
+        /*transform: scale(0, 0);*/
+    /*}*/
+/*}*/
+@-o-keyframes animate-main-overlay {
+    0% {
+        transform: scale(1, 1);
+    }
+    99% {
+        transform: scale(0.035, 0.055) translate(-1420%, -900%);
+    }
+    100% {
+        transform: scale(0, 0);
+    }
+}
+@keyframes animate-main-overlay {
     0% {
         transform: scale(1, 1);
     }
@@ -90,12 +246,14 @@
 
 .main-overlay-active {
     /*creates animation (vs. transformation)*/
-    -webkit-animation: animate-main-overlay 2s ease forwards;
-    -webkit-animation-delay: 0.5s;
-    -moz-animation: animate-main-overlay 2s ease forwards;
-    -o-animation: animate-main-overlay 2s ease forwards;
-    animation: animate-main-overlay 2s ease forwards;
-    animation-delay: 0.5s;
+    -webkit-animation: animate-main-overlay 1s ease forwards;
+    -webkit-animation-delay: 0.15s;
+    /*-moz-animation: animate-main-overlay 1s ease forwards;*/
+    /*-moz-animation-delay: 0.15s;*/
+    -o-animation: animate-main-overlay 1s ease forwards;
+    -o-animation-delay: 0.15s;
+    animation: animate-main-overlay 1s ease forwards;
+    animation-delay: 0.15s;
 }
 
 
@@ -125,16 +283,84 @@
     }
 }
 
-@-moz-keyframes animate-logo {
-}
+/*@-moz-keyframes animate-logo {*/
+    /*0% {*/
+        /*border-radius: 50%;*/
+        /*width: 50px;*/
+        /*height: 50px;*/
+        /*background-image: url(../../core/img/circle_button.png);*/
+    /*}*/
+    /*give the cirle an image without the "X" so that the "X" won't be seen morphing*/
+    /*1% {*/
+        /*background-image: url(../../core/img/circle_button_blank.png);*/
+    /*}*/
+    /*100% {*/
+        /*transform: translate(-200%, -28%);*/
+        /*border-radius: 2%;*/
+        /*width: 150px;*/
+        /*height: 47px;*/
+        /*background-image: url(../../core/img/brand/mapping_150w.png);*/
+    /*}*/
+/*}*/
 
-@-ms-keyframes animate-logo {
-}
+/*@-ms-keyframes animate-logo {*/
+    /*0% {*/
+        /*border-radius: 50%;*/
+        /*width: 50px;*/
+        /*height: 50px;*/
+        /*background-image: url(../../core/img/circle_button.png);*/
+    /*}*/
+    /*give the cirle an image without the "X" so that the "X" won't be seen morphing*/
+    /*1% {*/
+        /*background-image: url(../../core/img/circle_button_blank.png);*/
+    /*}*/
+    /*100% {*/
+        /*transform: translate(-200%, -28%);*/
+        /*border-radius: 2%;*/
+        /*width: 150px;*/
+        /*height: 47px;*/
+        /*background-image: url(../../core/img/brand/mapping_150w.png);*/
+    /*}*/
+/*}*/
 
 @-o-keyframes animate-logo {
+    0% {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-image: url(../../core/img/circle_button.png);
+    }
+    /*give the cirle an image without the "X" so that the "X" won't be seen morphing*/
+    1% {
+        background-image: url(../../core/img/circle_button_blank.png);
+    }
+    100% {
+        transform: translate(-200%, -28%);
+        border-radius: 2%;
+        width: 150px;
+        height: 47px;
+        background-image: url(../../core/img/brand/mapping_150w.png);
+    }
 }
 
 @keyframes animate-logo {
+    0% {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-image: url(../../core/img/circle_button.png);
+    }
+    /*give the cirle an image without the "X" so that the "X" won't be seen morphing*/
+    1% {
+        background-image: url(../../core/img/circle_button_blank.png);
+    }
+    100% {
+        transform: translate(-200%, -28%);
+        border-radius: 2%;
+        width: 150px;
+        height: 47px;
+        background-image: url(../../core/img/brand/mapping_150w.png);
+    }
 }
 
 .animate-small-logo {
@@ -156,11 +382,13 @@
 .animate-small-logo-active {
     /*creates animation (vs. transformation)*/
     -webkit-animation: animate-logo 2s ease-out forwards;
-    -webkit-animation-delay: 2.6s;
-    -moz-animation: animate-logo 3s ease-out forwards;
-    -o-animation: animate-logo 3s ease forwards;
-    animation: animate-logo 3s ease-out forwards;
-    animation-delay: 2.6s;
+    -webkit-animation-delay: 1.16s;
+    /*-moz-animation: animate-logo 2s ease-out forwards;*/
+    /*-moz-animation-delay: 1.16s;*/
+    -o-animation: animate-logo 2s ease forwards;
+    -o-animation-delay: 1.16s;
+    animation: animate-logo 2s ease-out forwards;
+    animation-delay: 1.16s;
 }
 
 /*10% {*/
