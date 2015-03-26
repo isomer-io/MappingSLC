@@ -178,17 +178,17 @@ p:first-child::first-letter {
 /*margin-top: 0;*/
 /*}*/
 
-div.home div.col-lg-12 {
+div.home {
     padding-top: 15px;
     padding-bottom: 20px;
 }
 
-div.col-lg-12.row-group {
+div.row {
     margin-top: 0;
 }
 
-div.col-lg-12.row-group p {
-    line-height: 175%;
+div.row p {
+    line-height: 155%;
     font-size: 1.6rem;
 }
 
@@ -322,34 +322,34 @@ button > .grow {
 }
 
 
-@media (max-width: 992px) {
-    ul figure{
-float:left;
- width:33.333%;
-}
-    .containerOn {
-        margin-top: 15%;
-        width: 80%;
-        height: 64em;
-    }
-   .col-md-7.pull-right{
-        float:none !important;
-    }
-    .col-md-7.pull-right a img{
+/*@media (max-width: 992px) {*/
+    /*ul figure{*/
+/*float:left;*/
+ /*width:33.333%;*/
+/*}*/
+    /*.containerOn {*/
+        /*margin-top: 15%;*/
+        /*width: 80%;*/
+        /*height: 64em;*/
+    /*}*/
+   /*.col-md-7.pull-right{*/
+        /*float:none !important;*/
+    /*}*/
+    /*.col-md-7.pull-right a img{*/
         /*working on tablet sized 'featured projects' section. The above gives the featured projects it's full length*/
-    }
-    .core ul{
-        position:relative;
-    }
+    /*}*/
+    /*.core ul{*/
+        /*position:relative;*/
+    /*}*/
 
-   .row a .img-responsive {
-        width:10%;
-        float:left;
-       padding-top:10px;
+   /*.row a .img-responsive {*/
+        /*width:10%;*/
+        /*float:left;*/
+       /*padding-top:10px;*/
 
-    }
+    /*}*/
 
-}
+/*}*/
 .social-media-button{
     display: block;
 }
@@ -360,7 +360,7 @@ float:left;
     height: 71px;
     position: relative;
     display: block;
-    z-index: 999;
+    z-index: 2;
     left: 12px;
     top: 20px;
     bottom: 5%;
