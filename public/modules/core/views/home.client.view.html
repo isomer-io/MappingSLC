@@ -1,12 +1,13 @@
 <section ng-include="'/modules/map/views/map.client.view.html'" id="map-overlay"></section>
 
-<section data-ng-controller="HomeController">
+<section data-ng-controller="HomeController" class="home-view">
 
-    <div>
+    <div class="container">
 
-    <span data-ng-show="toggle">
+    <span data-ng-show="mainMenuModalToggle">
 
-        <span class="animate-small-logo" style="z-index: 999" ng-click="animateSmallLogo()" ng-class="{'animate-small-logo-active': animateLogoCheck}"></span>
+        <a href="javascript:void(0)" class="animate-small-logo btn btn-primary btn-fab btn-raised mdi-action-visibility" style="z-index: 100" ng-click="animateSmallLogo()" ng-class="{'animate-small-logo-active': animateLogoCheck}"></a>
+        <!--<span class="animate-small-logo" style="z-index: 999" ng-click="animateSmallLogo()" ng-class="{'animate-small-logo-active': animateLogoCheck}"></span>-->
 
         <div class="main-overlay core" ng-class="{'main-overlay-active': animateMainOverlayCheck}">
 
@@ -22,7 +23,6 @@
                             <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake
                                 City’s neighborhoods and people that documents the city’s changes through art, critical
                                 and creative literature, personal maps and multi-media projects.</p>
-
                             <p class="home-text">We invite people to engage with and evolve this site by submitting
                                 their own contributions.</p>
                         </div>

@@ -1,35 +1,60 @@
 'use strict';
 
-angular.module('map').controller('MapController', ['$scope', 'Authentication', 'ApiKeys', '$http', 'CensusDataService',
-    function ($scope, Authentication, ApiKeys, $http, CensusDataService) {
+angular.module('map').controller('MapController', ['$scope', 'Authentication', 'ApiKeys', '$http', '$rootScope', 'MarkerDataService',
+    function ($scope, Authentication, ApiKeys, $http, $rootScope, MarkerDataService) {
 
         $scope.markers = true;
         $scope.filters = true;
-
         $scope.censusDataTractLayer = true;
         $scope.googlePlacesLayer = false;
-
         $scope.toggleDetails = false;
+        var sidebarToggle = false;
 
-        CensusDataService.callCensusApi()
-            //console.log(CensusDataService.callCensusApi());
-            .success(function (censusData) {
-                censusPopulationData(censusData);
-                //console.log(censusData);
-            });
+        var mainMap = null;
+        var grayMap = null;
+        var map2 = null;
+        var map3 = null;
 
-        var censusPopulationData = function () {
-            //write code to overlay tract data with correct tract polygon
-        };
+        var censusTractData = null;
+        var dataBoxStaticPopup = null;
+        var dataBoxStaticPopupFn = null;
+        var setMarkerDataBox = null;
+        var tractData = {};
 
+        //$scope.getCensusData = [];
+        //
+        //service that returns api keys
         ApiKeys.getApiKeys()
             .success(function (data) {
                 mapFunction(data.mapboxKey, data.mapboxSecret);
+                //callCensusApi(data.censusKey);
             })
             .error(function (data, status) {
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
+        //
+        ////todo refactor into CensusData service
+        //var callCensusApi = function(censusKey) {
+        //    var censusDataKey = ['P0010001'];
+        //    var censusYear = [2000, 2010, 2011, 2012, 2013, 2014];
+        //
+        //    $http.get('http://api.census.gov/data/' + censusYear[1] + '/sf1?get=' + censusDataKey[0] + '&for=tract:*&in=state:49+county:035&key=' + censusKey)
+        //        .success(function (censusData) {
+        //        for (var i = 0; i < censusData.length; i++) {
+        //            //censusPopulationData(censusData);
+        //            $scope.getCensusData += $scope.getCensusData;
+        //            console.log('map censusData: ', censusData[i]);
+        //        }
+        //    })
+        //        .error(function (censusDataError, status) {
+        //            $scope.censusData = censusDataError || 'Request failed';
+        //            $scope.status = status;
+        //        });
+        //};
 
+        //
+        //call the map and add functionality
+        //
         var mapFunction = function (key, accessToken) {
             //creates a Mapbox Map
             L.mapbox.accessToken = accessToken;
@@ -44,23 +69,33 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 .addControl(L.mapbox.shareControl())
                 .addControl(L.mapbox.geocoderControl('mapbox.places'));
 
+            L.mapbox.tileLayer('poetsrock.b06189bb').addTo(map);
+            grayMap = L.mapbox.tileLayer('poetsrock.b06189bb');
+            mainMap = L.mapbox.tileLayer('poetsrock.la999il2');
+            map2 = L.mapbox.tileLayer('poetsrock.la97f747');
+            map3 = L.mapbox.tileLayer('poetsrock.jdgpalp2');
+
+
             L.control.layers({
-                'Main Map': L.mapbox.tileLayer('poetsrock.la999il2').addTo(map),
+                'Main Map': L.mapbox.tileLayer('poetsrock.la999il2'),
                 'Topo Map': L.mapbox.tileLayer('poetsrock.la97f747'),
                 'Green Map': L.mapbox.tileLayer('poetsrock.jdgpalp2')
             }, {
-                //this is where you would add optional tilelayers. This sedction is required,
+                //this is where you would add optional tilelayers. This section is required,
                 //even if no tileLayers are present.
                 //'Tract Boundaries': L.mapbox.tileLayer('examples.bike-lanes'),
             }).addTo(map);
 
-            //var sidebar = null;
+
             var sidebar = L.control.sidebar('sidebar', {
                 closeButton: true,
-                position: 'right'
-            });
-            map.addControl(sidebar);
+                position: 'left'
+            }).addTo(map);
+            //map.addControl(sidebar);
 
+
+            //add marker where sidebar will toggle from
+            //var sidePop = L.mapbox.featureLayer({
             L.mapbox.featureLayer({
                 // this feature is in the GeoJSON format: see geojson.org
                 // for the full specification
@@ -85,31 +120,35 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 }
             })
 
-                .on('click', function () {
+                .on('click', function (e) {
+
+
+                    ////the below line of code centers the map when the marker is clicked
+                    ////source: https://www.mapbox.com/mapbox.js/example/v1.0.0/centering-markers/
+                    map.panTo(e.layer.getLatLng());
 
                     //$scope.$apply(
                     //    function(){
                     //        $scope.toggleDetails = !$scope.toggleDetails;
                     //    }
                     //);
-                    sidebar.setContent('test <b>test</b> test');
-
-                    setTimeout(function () {
-                        sidebar.toggle();
-                    }, 500);
-
+                    sidebar.getContainer();
+                    //sidebar.setContent('test <b>test</b> test');
+                    if (sidebarToggle === false) {
+                        $rootScope.animateLogoCheck = true;
+                        setTimeout(function () {
+                            sidebar.open('settings');
+                        }, 500);
+                        sidebarToggle = true;
+                    }else{
+                        setTimeout(function () {
+                            sidebar.close();
+                        }, 500);
+                        sidebarToggle = false;
+                    }
                 })
 
                 .addTo(map);
-
-            //get the json file on the backend (/config/env/) for the Census Tract Data
-            var tractData = $http.get('/tractData')
-                .success(function (tractGeoJson) {
-                    tractDataLayer(tractGeoJson);
-                })
-                .error(function (tractErrorData) {
-                }
-            );
 
             //style the polygon tracts
             var style = {
@@ -131,11 +170,15 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             };
             var hoverOffset = new L.Point(30, -16);
 
-
-            var censusTractData = null;
-
-            var tractDataLayer = function (tractGeoJson) {
-                censusTractData = L.geoJson(tractGeoJson, {
+            ApiKeys.getTractData()
+                .success(function (tractData) {
+                    tractDataLayer(tractData);
+                })
+                .error(function (tractData) {
+                    alert('Failed to load tractData. Status: ' + status);
+                });
+            var tractDataLayer = function (tractData) {
+                censusTractData = L.geoJson(tractData, {
                         style: style,
                         onEachFeature: function (feature, layer) {
                             if (feature.properties) {
@@ -161,83 +204,47 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                         }
                     }
                 );
-                censusTractData.addTo(map);
             };
 
-            var dataBoxStaticPopup = L.mapbox.featureLayer().addTo(map);
+            //MarkerDataService.getMarkerData()
+            //    .success(function (projectMarkerData) {
+            //        //dataBoxStaticPopupFn(projectMarkerData);
+            //        setMarkerDataBox(projectMarkerData);
+            //    })
+            //    .error(function (data, status) {
+            //    });
+            //
+            //setMarkerDataBox = function(){
+            //    dataBoxStaticPopup = L.mapbox.featureLayer().setGeoJSON(projectMarkerData);
+            //}();
 
-            var geoJson = [
-                {
-                    type: 'Feature',
-                    geometry: {
-                        type: 'Point',
-                        coordinates: [-111.902, 40.783]
-                    },
-                    properties: {
-                        title: 'Marker one',
-                        description: '<em>Wow</em>, this tooltip is breaking all the rules.',
-                        'marker-color': '#548cba'
-                    }
-                },
-                {
-                    type: 'Feature',
-                    geometry: {
-                        type: 'Point',
-                        coordinates: [-111.922, 40.773]
-                    },
-                    properties: {
-                        title: 'Marker two',
-                        description: 'Another marker, including <a href="http://mapbox.com">a link</a>.',
-                        'marker-color': '#548cba'
-                    }
+            dataBoxStaticPopupFn = function (dataBoxStaticPopup) {
+                //dataBoxStaticPopup = L.mapbox.featureLayer().setGeoJSON(projectMarkerData);
+
+                // Listen for individual marker clicks.
+                dataBoxStaticPopup.on('mouseover', function (e) {
+                    // Force the popup closed.
+                    e.layer.closePopup();
+
+                    var feature = e.layer.feature;
+                    var content = '<div><strong>' + feature.properties.title + '</strong>' +
+                        '<p>' + feature.properties.description + '</p></div>';
+
+                    info.innerHTML = content;
+                });
+
+                function empty() {
+                    info.innerHTML = '<div><strong>Click a marker</strong></div>';
                 }
-            ];
 
-            dataBoxStaticPopup.setGeoJSON(geoJson);
+                // Clear the tooltip when map is clicked.
+                map.on('move', empty);
 
-            // Listen for individual marker clicks.
-            dataBoxStaticPopup.on('mouseover', function (e) {
-                // Force the popup closed.
-                e.layer.closePopup();
+                // Trigger empty contents when the script
+                // has loaded on the page.
+                empty();
 
-                var feature = e.layer.feature;
-                var content = '<div><strong>' + feature.properties.title + '</strong>' +
-                    '<p>' + feature.properties.description + '</p></div>';
-
-                info.innerHTML = content;
-
-            });
-
-            ////the below line of code centers the map when the marker is clicked
-            ////source: https://www.mapbox.com/mapbox.js/example/v1.0.0/centering-markers/
-            //map.panTo(e.layer.getLatLng());
-
-
-            // Clear the tooltip when map is clicked.
-            map.on('move', empty);
-
-            // Trigger empty contents when the script
-            // has loaded on the page.
-            empty();
-
-            function empty() {
-                info.innerHTML = '<div><strong>Click a marker</strong></div>';
-            }
-
-
-            //create toggle/filter functionality for Census Tract Data
-            $scope.toggleCensusData = function () {
-                if ($scope.censusDataTractLayer) {
-                    map.removeLayer(censusTractData);
-                    map.removeLayer(dataBoxStaticPopup);
-                    //map.removeLayer(markers);
-                } else {
-                    map.addLayer(censusTractData);
-                    map.addLayer(dataBoxStaticPopup);
-                    //map.addLayer(markers);
-                }
             };
-
 
             //Google Places API
             var googlePlacesMarker = null;
@@ -270,14 +277,30 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                                 'riseOnHover': true,
                                 'riseOffset': 250,
                                 'opacity': 0.5,
-                                'clickable': true,
+                                'clickable': true
                             }
                         }
                     })
-                        .addTo(map);
                 });
             };
 
+            //create toggle/filter functionality for Census Tract Data
+            $scope.toggleCensusData = function () {
+                if (!$scope.censusDataTractLayer) {
+                    map.removeLayer(censusTractData);
+                    map.removeLayer(dataBoxStaticPopup);
+                    //map.removeLayer(dataBoxStaticPopup.setGeoJSON(projectMarkerData));
+                    //map.removeLayer(markers);
+                } else {
+                    map.addLayer(censusTractData);
+                    map.addLayer(dataBoxStaticPopup);
+                    //map.addLayer(dataBoxStaticPopup.setGeoJSON(projectMarkerData));
+                    //map.addLayer(markers);
+
+                }
+            };
+
+            //create toggle/filter functionality for Census Tract Data
             $scope.toggleGooglePlacesData = function () {
                 if ($scope.googlePlacesLayer) {
                     map.removeLayer(googlePlacesMarkerLayer);
@@ -286,6 +309,18 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 }
             };
 
+            //connects to the sidebar client controller to open the modal when 'home' is clicked on the sidebar
+            $rootScope.$on('SHOW_MAP', function () {
+                map.removeLayer(grayMap);
+                mainMap.addTo(map);
+            });
+
+            //connects to the sidebar client controller to close the modal when the sidebar is opened
+            $rootScope.$on('HIDE_MAP', function () {
+                grayMap.addTo(map);
+                map.removeLayer(mainMap);
+            });
         };
+
     }
 ]);

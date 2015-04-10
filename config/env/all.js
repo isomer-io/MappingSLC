@@ -19,7 +19,11 @@ module.exports = {
 				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/ng-ckeditor/ng-ckeditor.css',
                 '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css',
-                'public/lib/leaflet-sidebar/src/L.Control.Sidebar.css'
+				'public/lib/sidebar-v2/css/leaflet-sidebar.min.css',
+				//'public/lib/bootstrap-material-design/dist/css/material-fullpalette.min.css'
+				//'public/lib/angular-material/modules/css/angular-material-layout.css',
+				'public/lib/angular-material/angular-material.min.css'
+
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -35,8 +39,12 @@ module.exports = {
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
 				'public/lib/modernizr/modernizr.js',
+				'public/lib/jquery/dist/jquery.js',
                 '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js',
-                'public/lib/leaflet-sidebar/src/L.Control.Sidebar.js'
+				//'public/lib/bootstrap-material-design/dist/js/material.min.js',
+				'public/lib/sidebar-v2/js/leaflet-sidebar.min.js',
+				'public/lib/ng-csv/src/ng-csv/ng-csv.js',
+				'public/lib/angular-material/angular-material.min.js'
 			]
 		},
 		css: [

@@ -9,38 +9,38 @@
             <form class="form-horizontal" data-ng-submit="create()" novalidate>
                 <fieldset>
                     <div class="form-group">
-                        <label class="control-label">Street</label>
+                        <label class="control-label"></label>
                         <div class="controls width">
                             <input type="text" data-ng-model="street" id="street" class="form-control" placeholder="Street"
                                    required>
                         </div>
 
-                        <label class="control-label">City</label>
+                        <label class="control-label"></label>
                         <div class="controls width">
                             <input type="text" data-ng-model="city" id="city" class="form-control" placeholder="City"
                                    required>
                         </div>
 
-                        <label class="control-label">State</label>
+                        <label class="control-label"></label>
                         <div class="controls width">
                             <input type="text" data-ng-model="state" id="state" class="form-control" placeholder="State"
                                    required>
                         </div>
 
-                        <label class="control-label">Zip Code</label>
+                        <label class="control-label"></label>
                         <div class="controls width">
                             <input type="text" data-ng-model="zip" id="zip" class="form-control" placeholder="Zip Code"
                                    required>
                         </div>
 
-                        <label class="control-label">Project Title</label>
+                        <label class="control-label"></label>
                         <div class="controls width">
                             <input type="text" data-ng-model="title" id="title" class="form-control"
                                    placeholder="Project Title"
                                    required>
                         </div>
 
-                        <label class="control-label">Story</label>
+                        <label class="control-label"></label>
                         <div class="controls width">
                             <textarea ckeditor="editorOptions" ng-model="story" id="story" required></textarea>
                         </div>
@@ -58,3 +58,28 @@
         </div>
     </div>
 </section>
+
+
+
+
+<div ng-app="autocompleteFloatingLabelDemo" ng-controller="DemoCtrl as ctrl" layout="column">
+    <md-content class="md-padding" layout="column">
+        <form ng-submit="$event.preventDefault()">
+            <p>The following example demonstrates floating labels being used as a normal form element.</p>
+            <div layout-gt-sm="row">
+                <md-input-container flex>
+                    <label>Name</label>
+                    <input type="text"/>
+                </md-input-container>
+                <md-autocomplete flex
+                                 ng-disabled="ctrl.isDisabled"
+                                 md-no-cache="ctrl.noCache"
+                                 md-selected-item="ctrl.selectedItem"
+                                 md-search-text="ctrl.searchText"
+                                 md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                 md-item-text="item.display"
+                                 md-floating-label="Favorite state">
+                    <span md-highlight-text="ctrl.searchText">{{item.display}}</span>
+                </md-autocomplete>
+            </div>
+        </form>

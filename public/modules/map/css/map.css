@@ -23,10 +23,6 @@
     width: 80%;
 }
 
-.leaflet-control-zoom {
-    top: 75px;
-}
-
 .ui-select {
     background: rgba(0, 0, 0, 0.8);
     position:absolute;
@@ -74,11 +70,6 @@ span div input:nth-child(2) {
     margin-top: 15px;
 }
 
-/*.leaflet-control-layers-expanded {*/
-    /*display: block;*/
-
-/*}*/
-
 /**
 GeoJSON Styling
 **/
@@ -102,29 +93,136 @@ GeoJSON Styling
     margin-right: 5px;
 }
 
-.sidebar-view{
-    width:20%;
-    background-color: rgba(40, 40, 36, 1);
-    z-index: 1000;
-    color:#FFFFFF;
-    float:right;
-    padding-top:10em;
-    padding-right: 15px;
-    padding-left: 10px;
+.sidebar-tabs {
+    background-color: transparent;
+}
+
+.sidebar-tabs.active {
     height: 100%;
+}
+
+.sidebar-tabs.collapsed {
+    height: 17%;
+    background-color: #fff;
+}
+
+ul.sidebar-tabs.collapsed {
+    background-color: #fff;
+}
+
+.sidebar.collapsed {
+    height: 17%;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.sidebar-content li a {
+    color: white;
+}
+
+.sidebar-content.active {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar-pane ul {
+    margin-top: 10%;
+    font-size: 2rem;
+    padding: 5%;
+}
+
+.sidebar-pane.active {
+    margin: 55px 20px 0 20px;
+}
+
+.sidebar-content.active {
 
 }
 
-.sidebar-view-date{
 
+#settings > img {
+    width: 95%;
+}
 
-    padding-left: 18em;
+#settings > h3, div.sidebar-view-text-content{
+    padding: 20px 20px 20px 0;
+    text-align: justify;
+}
+
+.sidebar .social-media-button {
+    font-size: 4rem;
+}
+
+.sidebar .social-media-button li {
+    display: inline-block;
+}
+
+.sidebar ul li {
+    list-style: none;
+    padding: 3%;
+}
+
+.sidebar-content ul li {
+    display: inline-block;
+}
+
+.sidebar-content.active ul li a i {
+    padding-right: 10px;
+}
+
+.sidebar ul li a:hover, .sidebar ul li a:focus {
+    font-size: 2.1rem;
+    text-decoration: none;
+    transition: all 0.4s ease-out;
+}
+
+.side-menu ul li a {
+    text-decoration: none;
+    font-size: 20px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+
+.sidebar {
+    border-radius: 0 15px 15px 0;
+    transition: all 0.7s ease-out;
+    list-style: none;
 
 }
-.sidebar-view-text-content > p{
 
-    font-size: 1.2em;
+.sidebar.active {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 15px 15px 0;
 }
+
+.sidebar {
+    border-radius: 0 15px 15px 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar.collapsed {
+    left: 15px;
+    top: 25px;
+    border-radius: 15px;
+}
+
+/*.sidebar-tabs>li.active:nth-last-child {*/
+    /*background-color: transparent;*/
+/*}*/
+
+/*.sidebar-tabs>li.collapsed:nth-last-child {*/
+    /*background-color: transparent;*/
+/*}*/
+
 
 
 
@@ -151,7 +249,6 @@ GeoJSON Styling
     right:8px;
     pointer-events:all;
     color: #ffffff;
-    /*background-image: url(images/icons-000000@2x.png);*/
 }
 
 .leaflet-popup-close-button:hover {
@@ -203,64 +300,7 @@ GeoJSON Styling
 
 /*end of custom popups*/
 
-.sidebar-view{
-    width:20%;
-    background-color: rgba(40, 40, 36, 1);
-    z-index: 1000;
-    color:#FFFFFF;
-    float:right;
-    padding-top:10em;
-    padding-right: 15px;
-    padding-left: 10px;
-    height: 100%;
-
-}
-
-.sidebar-view-date{
-
-
-    padding-left: 18em;
-
-}
-.sidebar-view-text-content > p{
-
-    font-size: 1.2em;
-}
-
-.test {
-    width: 80%;
-    transition: all 0.7s ease;
-    right: 384px;
-    display: block;
-    color: red;
-}
-
-.test {
-    width: 20%;
-    transition: all 0.7s ease;
-    right: 684px;
-    display: block;
-    color: #800080;
-}
-
-#sidebar{
-
-    /*z-index: 100;*/
-    /*float:right;*/
-    /*width:20%;*/
-    /*background-color: rgba(40, 40, 36, 1);*/
-    /*z-index: 1000;*/
-    /*color:#FFFFFF;*/
-    /*float:right;*/
-    /*padding-top:10em;*/
-    /*padding-right: 15px;*/
-    /*padding-left: 10px;*/
-    /*height: 100%;*/
-
-}
-
-
-/*create tooltip with absolute position*/
+/* CSS for creating tooltip with absolute position*/
 /*source: https://www.mapbox.com/mapbox.js/example/v1.0.0/marker-tooltips-outside-map/ */
 
 .info {
@@ -297,10 +337,8 @@ div a .mapbox-share.mapbox-icon.mapbox-icon-share  {
     background: rgba(0, 0, 0, 0.8);
 }
 
-/*.leaflet-control.mapbox-icon.mapbox-icon-share, .leaflet-control.mapbox-icon.mapbox-icon-share:before {*/
 div .leaflet-top.leaflet-left .mapbox-share {
     bottom: 150px;
-    /*background: rgba(0, 0, 0, 0.8);*/
 }
 
 .leaflet-bar .leaflet-control-mapbox-geocoder-toggle .mapbox-icon .mapbox-icon-geocoder {
@@ -312,18 +350,26 @@ div .leaflet-top.leaflet-left .mapbox-share {
     top: 70px;
 }
 
-.test-details-toggle {
-    background: rgba(0, 0, 0, 0.8);
-    position:absolute;
-    margin-top:250px;
-    right:0px;
-    z-index:100;
-    padding:10px;
-    border-radius: 10px 0 0 10px;
-    color: #f5deb3;
-    display:block;
+.leaflet-control-layers .leaflet-control {
+    margin-top: 455%;
 }
 
-.leafleft-top .leaftlet-left {
-    margin-top: -50px !important;
+.leaflet-left .leaflet-control {
+    left: 3849%;
+}
+.leaflet-top .leaflet-control {
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.leaflet-right .leaflet-control {
+    margin-right: 25px;
+}
+
+.leaflet-control-zoom {
+    top: 75px;
+}
+
+.leaflet-bar a, .leaflet-bar a:hover {
+    border: none;
 }

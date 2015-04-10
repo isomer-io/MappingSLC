@@ -275,7 +275,7 @@
         background-image: url(../../core/img/circle_button_blank.png);
     }
     100% {
-        transform: translate(-200%, -28%);
+        transform: translate(-200%, 20%);
         border-radius: 2%;
         width: 150px;
         height: 47px;
@@ -355,7 +355,7 @@
         background-image: url(../../core/img/circle_button_blank.png);
     }
     100% {
-        transform: translate(-200%, -28%);
+        transform: translate(-200%, -1350%);
         border-radius: 2%;
         width: 150px;
         height: 47px;
@@ -373,10 +373,10 @@
     position: absolute;
     text-align: center;
     top: 1.5%;
-    left: 19%;
+    left: 20%;
     height: 50px;
     width: 50px;
-    background-image: url(../../core/img/circle_button.png);
+    /*background-image: url(../../core/img/circle_button.png);*/
 }
 
 .animate-small-logo-active {

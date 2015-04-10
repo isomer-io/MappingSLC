@@ -1,17 +1,86 @@
 <section class="container map" data-ng-controller="MapController" data-ng-init="mapFunction()">
 
-    <div data-ng-class="{'ui-select-details':toggleDetails}">
-    <span data-ng-show="categoryFilters" data-ng-click="categoryFilters=!categoryFilters"
-          ng-class="{true: 'ui-select-on', false: 'ui-select-off'}">
+    <!--to call MapBox map-->
+
+    <div id="map" class="map" data-ng-class="{'map-details': toggleDetails}"></div>
+    <div id="info" class="info" data-ng-class="{'info-project-details': toggleDetails}"></div>
+    <!--<input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
 
 
-            <div id="filters" class="ui-select">
-                <!--<div id="filters" class="ui-select" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:-->
-                <!--'ui-select-off'}">-->
-                <span class="fa fa-chevron-right pull-right"></span>
+    <div id="sidebar" class="sidebar collapsed">
 
 
-                <!--beginning of input fields-->
+        <!--<span data-ng-show="mainMenuModalToggle">-->
+        <!--<span class="animate-small-logo" style="z-index: 999" ng-click="animateSmallLogo()" ng-class="{'animate-small-logo-active': animateLogoCheck}"></span>-->
+        <!--</span>-->
+        <!-- Tab panes -->
+        <div class="sidebar-content active">
+            <div class="sidebar-pane" id="home">
+                <div class="row">
+
+                    <ul class="col-md-5">
+                        <li>
+                            <a data-ng-click="showHomeView(); showDetails=!showDetails">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!/projects">
+                                <i class="glyphicon glyphicon-th"></i>
+                                Projects
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/#!/projects/create">
+                                <i class="glyphicon glyphicon-time"></i>
+                                Submit
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="col-md-6">
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-user"></i>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-map-marker"></i>
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+                <hr/>
+                <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s
+                    neighborhoods and people that documents the city’s changes through art, critical and creative
+                    literature, personal maps and multi-media projects.</p>
+
+                <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
+
+                <div class="social-media-button">
+                    <li>
+                        <a href="https://twitter.com/mappingslc">
+                            <i class="fa fa-twitter-square"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/MappingSaltLakeCity">
+                            <i class="fa fa-facebook-square"></i>
+                        </a>
+                    </li>
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-pane" id="profile">
+
+            </div>
+            <div class="sidebar-pane" id="messages"><h1>Messages</h1>
 
                 <div id="check-awesome" class="form-group filter first-filter">
                     <input type="checkbox" checked=checked name="filters" id="interviews" value="interviews">
@@ -52,54 +121,52 @@
 
                 <div id="check-awesome" class="form-group filter">
                     <input type="checkbox" id="google-places-data" data-ng-model="googlePlacesLayer"
-                           ng-change="leGooglePlacesData()">
+                           ng-change="GooglePlacesData()">
                     <label for="google-places-data">
                         <span class="check"></span>
                         <span class="box"></span>
-                        Points of Interest
+                        Points of Interest<br/>
                     </label>
                 </div>
 
-                <!-- end of form input fields-->
+            </div>
+            <div class="sidebar-pane" id="settings">
+                <h1>Project Overview</h1>
+
+                <div class="sidebar-view-date ">
+                    <small>June 22, 2014</small>
+                </div>
+                <h3>Test Title: Read a great article that is bound to tickle your fancy!</h3>
+                <img src="http://lorempixel.com/g/400/200/">
+
+                <div class="sidebar-view-text-content">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum error et hic minus vero?
+                        Cupiditate
+                        error, in nostrum perferendis reiciendis repellat sapiente voluptas voluptate. Dignissimos natus
+                        numquam obcaecati porro sequi!
+                    </p>
+                </div>
+                <p>
+                    <button type="button" class="btn btn-primary btn-lg">Read More</button>
+                    <button type="button" class="btn btn-default btn-lg">Share</button>
+                </p>
 
             </div>
 
-        </span>
-    </div>
-
-    <span data-ng-hide="categoryFilters" data-ng-click="categoryFilters=!categoryFilters" ng-class="{true: 'ui-select-on', false:
-        'ui-select-off'}">
-        <div id="filters" class="ui-select">
-            <span class="fa fa-chevron-left"></span>
+            <div class="sidebar-pane" id="details"><h1>Details</h1>
+            </div>
         </div>
-    </span>
 
 
-    <!--to call MapBox map-->
+        <!-- Nav tabs -->
+        <ul class="sidebar-tabs" role="tablist">
+            <li data-ng-click="showDetails=!showDetails"><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+            <li><a href="#profile" role="tab" ng-click="animateSmallLogo()" ng-class="{'animate-small-logo-active': animateLogoCheck}"><i class="fa fa-user"></i></a></li>
+            <li><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+            <li><a href="#details" role="tab"></a></li>
+        </ul>
 
-    <div id="map" class="map" data-ng-class="{'map-details': toggleDetails}"></div>
-
-    <div id="info" class="info" data-ng-class="{'info-project-details': toggleDetails}"></div>
-
-
-    <div id="sidebar" class="sidebar-view">
-        <div class="sidebar-view-date ">
-            <small>June 22, 2014</small>
-        </div>
-        <h3>Test Title: Read a great article that is bound to tickle your fancy!</h3>
-        <img src="http://lorempixel.com/output/city-q-c-384-216-10.jpg">
-
-        <div class="sidebar-view-text-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum error et hic minus vero? Cupiditate
-                error, in nostrum perferendis reiciendis repellat sapiente voluptas voluptate. Dignissimos natus numquam
-                obcaecati porro sequi!</p>
-        </div>
-        <p>
-            <button type="button" class="btn btn-primary btn-lg">Read More</button>
-            <button type="button" class="btn btn-default btn-lg">Share</button>
-        </p>
-
-
-    </div>
     </div>
 </section>

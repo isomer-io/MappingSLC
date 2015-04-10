@@ -1,46 +1,63 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$rootScope',
-	function($scope, Authentication, $rootScope) {
-		// This provides Authentication context.
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$rootScope', '$location',
+	function($scope, Authentication, $rootScope, $location) {
+
+
+        //returns true if view is home page/core.client.view.html
+        var homePageCheck = function (){
+
+            if($location.path() === '/'){
+                return true;
+            }
+        };
+        console.log('homePageCheck', homePageCheck());
+
+
+        // This provides Authentication context.
 		$scope.authentication = Authentication;
 		//toggles off/on for main overlay page and menu
-		$scope.toggle = true;
-        $scope.animateLogoCheck = false;
+		$scope.mainMenuModalToggle = true;
+        $rootScope.animateLogoCheck = false;
         $scope.animateMainOverlayCheck = false;
         $scope.animateFooterOverlayCheck = false;
 
         $scope.animateSmallLogo = function(){
             //animate into the small logo from round 'X' on main modal
-            if($scope.animateLogoCheck === false) {
-                $scope.animateLogoCheck = true;
+            if($rootScope.animateLogoCheck === false) {
+                $rootScope.animateLogoCheck = true;
                 $scope.animateMainOverlayCheck = true;
                 $scope.animateFooterOverlayCheck = true;
+                //connects to the home client controller to close the map when the main menu modal is closed
+                $scope.showMapView = function() {
+                    $rootScope.$broadcast('SHOW_MAP');
+                    console.log('click button to show map, & here\'s the $rootScope.$broadcast: ', $rootScope.$broadcast())
+                }();
             }else{
-                $scope.animateLogoCheck = false;
+                $rootScope.animateLogoCheck = false;
                 $scope.animateMainOverlayCheck = false;
                 $scope.animateFooterOverlayCheck = false;
+                //connects to the home client controller to close the map when the main menu modal is closed
+                $scope.hideMapView = function() {
+                    $rootScope.$broadcast('HIDE_MAP');
+                }();
+                console.log('click button to hide map, & here\'s the $rootScope.$broadcast: ', $rootScope.$broadcast())
             }
         };
 
-//        connects to the sidebar client controller to open the modal when 'home' is clicked on the sidebar
+        //connects to the sidebar client controller to open the modal when 'home' is clicked on the sidebar
         $rootScope.$on('SHOW_HOME', function() {
-            if (!$scope.toggle) {
-                //$scope.toggleSmallLogo = true;
-                $scope.toggleSideBar = false;
+            if (!$scope.mainMenuModalToggle) {
+                //$scope.mainMenuModalToggleSmallLogo = true;
+                $scope.mainMenuModalToggleSideBar = false;
+
             }
         });
 
-//        connects to the sidebar client controller to close the modal when the sidebar is opened
+        //connects to the sidebar client controller to close the modal when the sidebar is opened
         $rootScope.$on('CLOSE_HOME', function(){
-            $scope.toggleSideBar = false;
+            $scope.mainMenuModalToggleSideBar = false;
         });
-
-        //$rootScope.$on('SHOW_SMALL_LOGO', function(){
-        //    $scope.toggleSmallLogo = true;
-        //});
-
-        //if we see a menu event, turn toggle back to true
 
 		$scope.featuredProjects = {};
 

@@ -5,8 +5,9 @@
 'use strict';
 
 angular.module('core').directive('footerDirective', function() {
-        return {
-            restrict: 'E',
-            templateUrl: '/modules/core/directives/views/footer-directive.html'
-        };
-    });
+    return {
+        restrict: 'AE',
+        replace: true,
+        templateUrl:'/modules/core/directives/views/footer-directive.html'
+    };
+});

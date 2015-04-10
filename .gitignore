@@ -7,17 +7,7 @@ public/lib
 app/tests/coverage/
 .bower-*/
 .idea/
-*/env/keys.js
-config/env/keys.js
-config/env/mapKeys.js
-public/modules/admins/To Dos.txt
+
 email_template.html
-public/modules/pfakes
-app/tests/pfake.server.routes.test.js
-app/routes/pfakes.server.routes.js
-app/tests/pfake.server.model.test.js
-app/controllers/pfakes.server.controller.js
-app/models/pfake.server.model.js
-test.txt
-config/env/test.json
-config/sslcerts
+app/models/data/private
+config/certs

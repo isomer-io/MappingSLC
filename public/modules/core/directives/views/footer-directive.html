@@ -2,7 +2,7 @@
 
     <div class="footer-overlay" ng-class="{'footer-overlay-active': animateFooterOverlayCheck}">
 
-        <div class="container" data-ng-show="toggle">
+        <div class="container" data-ng-show="mainMenuModalToggle">
 
                 <div class="row body">
 
@@ -40,9 +40,10 @@
                         <form action="http://enternewurihere" method="post" autocomplete="on">
 
                             <div class="form">
-                                <input name="subscribe-email"
-                                       placeholder="{{animateFooterOverlayCheck}} | Newsletter: Enter your E-mail" required="" type="email"/>
+                                <input name="subscribe-email"placeholder="Newsletter: Enter your E-mail" required="" type="email" ng-model="text" style="color:{{text}}" Hi/>
+                                <!--<input name="subscribe-email"placeholder="Newsletter: Enter your E-mail" required="" type="email" ng-model="red" style="color:{{color}}"/>-->
                                 <button class="btn btn-main btn-footer-overlay grow" type="submit">Subscribe</button>
+                                <!--<input type="text" ng-model="yes" placeholder="Enter a color" />-->
                             </div>
 
                         </form>

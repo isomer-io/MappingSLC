@@ -21,10 +21,12 @@ var ProjectSchema = new Schema({
         default: 'Pending'
     },
     createdOn: {
-        type: Date
+        type: Date,
+        default:Date.now
     },
     modifiedOn: {
-        type: Date
+        type: Date,
+        default:Date.now
     },
     createdBy: {
         type: String,

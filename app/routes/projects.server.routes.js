@@ -40,13 +40,8 @@ module.exports = function(app) {
     // Finish by binding the Admin middleware
     //app.param('adminId', admins.adminByID);
 
-// Maps Routes
 
-    var keys = require('../../config/env/keys.js');
-    app.route('/keys')
-          .get(function(req, res) {
-              res.jsonp(keys);
-          });
+
     // This is the search route, make a GET request on this endpoitn to return search results
     app.route('/search')
         .post(function(req,res){

@@ -1,0 +1,13 @@
+@media screen and (max-width:1100px)
+{
+    .container {
+        /*margin-top: 3%;*/
+    }
+}
+
+@media screen and (max-width:480px)
+{
+    div.main-overlay.core, .footer-overlay.core {
+        /*display: none;*/
+    }
+}

@@ -1,0 +1,52 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.902,
+          40.783
+        ]
+      },
+      "properties": {
+        "title": "Marker one",
+        "description": "<em>Wow</em>, this tooltip is breaking all the rules.",
+        "marker-color": "#548cba"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.922,
+          40.773
+        ]
+      },
+      "properties": {
+        "title": "Marker two",
+        "description": "Another marker, including <a href='http://mapbox.com'>a link</a>.",
+        "marker-color": "#548cba"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.712,
+          40.773
+        ]
+      },
+      "properties": {
+        "title": "Peregrine The Espresso",
+        "description": "1718 14th St NW, Washington, DC",
+        "marker-size": "large",
+        "marker-color": "#BE9A6B",
+        "marker-symbol": "cafe"
+      }
+    }
+  ]
+}

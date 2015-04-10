@@ -7,5 +7,8 @@ angular.module('map').service('ApiKeys', ['$http',
         this.getApiKeys = function(){
             return  $http.get('/keys');
         };
+        this.getTractData = function(){
+            return  $http.get('/tractData');
+        };
     }
 ]);

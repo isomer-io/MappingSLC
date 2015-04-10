@@ -1,24 +1,28 @@
 'use strict';
 
-angular.module('map').service('CensusDataService', ['$http',
-    function ($http) {
+angular.module('map').service('CensusDataService', ['$http', 'ApiKeys',
+    function ($http, ApiKeys) {
 
         //Census Data for Population Stats service logic
 
-        this.callCensusApi = function () {
+        var censusData = null;
+        var censusDataKey = 'P0010001';
+        var censusYear = [2000, 2010, 2011, 2012, 2013, 2014];
 
-            return $http.get('http://api.census.gov/data/2010/sf1?get=P0010001&for=tract:*&in=state:49+county:035&key=4d396163ae90829a66916a08b3af462608c87316').
-                success(function (censusData) {
-                    var i;
-                    for (i = 0; i < censusData.length; i++) {
-                        //console.log('census data: ', censusData[i]);
-                    }
-                }).
-                error(function (censusDataError, status) {
-                    $scope.censusData = censusDataError || 'Request failed';
-                    $scope.status = status;
+        this.callCensusApi = function () {
+            ApiKeys.getApiKeys()
+                .success(function (data) {
+                    censusData(data.censusKey);
+                })
+                .error(function (data, status) {
+                    alert('Failed to load Mapbox API key. Status: ' + status);
                 });
+
+            censusData = function (censusKey){
+                return $http.get('http://api.census.gov/data/' + censusYear[1] + '/sf1?get=' + population + '&for=tract:*&in=state:49+county:035&key=' + censusKey);
+            }
         };
+
 
     }
 ]);
