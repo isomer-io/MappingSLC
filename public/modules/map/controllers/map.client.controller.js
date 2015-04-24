@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('map').controller('MapController', ['$scope', 'Authentication', 'ApiKeys', '$http', '$rootScope', 'MarkerDataService',
-    function ($scope, Authentication, ApiKeys, $http, $rootScope, MarkerDataService) {
+angular.module('map').controller('MapController', ['$scope', 'Authentication', 'ApiKeys', '$http', '$rootScope',
+    function ($scope, Authentication, ApiKeys, $http, $rootScope) {
 
         $scope.markers = true;
         $scope.filters = true;
@@ -10,51 +10,23 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
         $scope.toggleDetails = false;
         var sidebarToggle = false;
 
-        var mainMap = null;
-        var grayMap = null;
-        var map2 = null;
-        var map3 = null;
+        var dataBoxStaticPopup = null,
+            dataBoxStaticPopupFn = null,
+            tractData = {},
+            censusTractData = null;
 
-        var censusTractData = null;
-        var dataBoxStaticPopup = null;
-        var dataBoxStaticPopupFn = null;
-        var setMarkerDataBox = null;
-        var tractData = {};
-
-        //$scope.getCensusData = [];
-        //
         //service that returns api keys
         ApiKeys.getApiKeys()
             .success(function (data) {
                 mapFunction(data.mapboxKey, data.mapboxSecret);
-                //callCensusApi(data.censusKey);
             })
             .error(function (data, status) {
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
-        //
-        ////todo refactor into CensusData service
-        //var callCensusApi = function(censusKey) {
-        //    var censusDataKey = ['P0010001'];
-        //    var censusYear = [2000, 2010, 2011, 2012, 2013, 2014];
-        //
-        //    $http.get('http://api.census.gov/data/' + censusYear[1] + '/sf1?get=' + censusDataKey[0] + '&for=tract:*&in=state:49+county:035&key=' + censusKey)
-        //        .success(function (censusData) {
-        //        for (var i = 0; i < censusData.length; i++) {
-        //            //censusPopulationData(censusData);
-        //            $scope.getCensusData += $scope.getCensusData;
-        //            console.log('map censusData: ', censusData[i]);
-        //        }
-        //    })
-        //        .error(function (censusDataError, status) {
-        //            $scope.censusData = censusDataError || 'Request failed';
-        //            $scope.status = status;
-        //        });
-        //};
 
-        //
-        //call the map and add functionality
-        //
+//
+//call the map and add functionality
+//
         var mapFunction = function (key, accessToken) {
             //creates a Mapbox Map
             L.mapbox.accessToken = accessToken;
@@ -62,30 +34,30 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
             //'info' id is part of creating tooltip with absolute position
             var info = document.getElementById('info');
 
-            var map = L.mapbox.map('map')
+            var map = L.mapbox.map('map', null, {})
                 .setView([40.773, -111.902], 12)
                 //allow users to share maps on social media
                 // source: https://www.mapbox.com/mapbox.js/api/v2.1.5/l-mapbox-sharecontrol/
                 .addControl(L.mapbox.shareControl())
                 .addControl(L.mapbox.geocoderControl('mapbox.places'));
 
-            L.mapbox.tileLayer('poetsrock.b06189bb').addTo(map);
-            grayMap = L.mapbox.tileLayer('poetsrock.b06189bb');
-            mainMap = L.mapbox.tileLayer('poetsrock.la999il2');
-            map2 = L.mapbox.tileLayer('poetsrock.la97f747');
-            map3 = L.mapbox.tileLayer('poetsrock.jdgpalp2');
+            var grayMap = L.mapbox.tileLayer('poetsrock.b06189bb'),
+                mainMap = L.mapbox.tileLayer('poetsrock.la999il2'),
+                topoMap = L.mapbox.tileLayer('poetsrock.la97f747'),
+                greenMap = L.mapbox.tileLayer('poetsrock.jdgpalp2'),
+                landscape = L.tileLayer('http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png'),
+                watercolor = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png');
 
+            var layers = {
+                'Main Map': mainMap,
+                'Topo Map': topoMap,
+                'Green Map': greenMap,
+                'Landscape': landscape,
+                'Watercolor': watercolor
+            };
 
-            L.control.layers({
-                'Main Map': L.mapbox.tileLayer('poetsrock.la999il2'),
-                'Topo Map': L.mapbox.tileLayer('poetsrock.la97f747'),
-                'Green Map': L.mapbox.tileLayer('poetsrock.jdgpalp2')
-            }, {
-                //this is where you would add optional tilelayers. This section is required,
-                //even if no tileLayers are present.
-                //'Tract Boundaries': L.mapbox.tileLayer('examples.bike-lanes'),
-            }).addTo(map);
-
+            grayMap.addTo(map);
+            L.control.layers(layers).addTo(map);
 
             var sidebar = L.control.sidebar('sidebar', {
                 closeButton: true,
@@ -96,6 +68,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
             //add marker where sidebar will toggle from
             //var sidePop = L.mapbox.featureLayer({
+            //L.mapbox.layerGroup({
             L.mapbox.featureLayer({
                 // this feature is in the GeoJSON format: see geojson.org
                 // for the full specification
@@ -140,7 +113,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                             sidebar.open('settings');
                         }, 500);
                         sidebarToggle = true;
-                    }else{
+                    } else {
                         setTimeout(function () {
                             sidebar.close();
                         }, 500);
@@ -206,20 +179,7 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 );
             };
 
-            //MarkerDataService.getMarkerData()
-            //    .success(function (projectMarkerData) {
-            //        //dataBoxStaticPopupFn(projectMarkerData);
-            //        setMarkerDataBox(projectMarkerData);
-            //    })
-            //    .error(function (data, status) {
-            //    });
-            //
-            //setMarkerDataBox = function(){
-            //    dataBoxStaticPopup = L.mapbox.featureLayer().setGeoJSON(projectMarkerData);
-            //}();
-
             dataBoxStaticPopupFn = function (dataBoxStaticPopup) {
-                //dataBoxStaticPopup = L.mapbox.featureLayer().setGeoJSON(projectMarkerData);
 
                 // Listen for individual marker clicks.
                 dataBoxStaticPopup.on('mouseover', function (e) {
@@ -289,13 +249,9 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
                 if (!$scope.censusDataTractLayer) {
                     map.removeLayer(censusTractData);
                     map.removeLayer(dataBoxStaticPopup);
-                    //map.removeLayer(dataBoxStaticPopup.setGeoJSON(projectMarkerData));
-                    //map.removeLayer(markers);
                 } else {
                     map.addLayer(censusTractData);
                     map.addLayer(dataBoxStaticPopup);
-                    //map.addLayer(dataBoxStaticPopup.setGeoJSON(projectMarkerData));
-                    //map.addLayer(markers);
 
                 }
             };
@@ -311,8 +267,8 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
             //connects to the sidebar client controller to open the modal when 'home' is clicked on the sidebar
             $rootScope.$on('SHOW_MAP', function () {
-                map.removeLayer(grayMap);
                 mainMap.addTo(map);
+                map.removeLayer(grayMap);
             });
 
             //connects to the sidebar client controller to close the modal when the sidebar is opened

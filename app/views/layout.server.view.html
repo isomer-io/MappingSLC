@@ -45,21 +45,14 @@
 
 <body class="ng-cloak">
 	<!--<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>-->
-    <!--<div ng-if="!homePageCheck()">-->
-		<div ng-include="'/modules/core/views/menu.client.view.html'"></div>
-	<!--</div>-->
 
-	<!-- Add Modal ng-include -->
+	<!--<section class="content">-->
 
-	<section class="content">
+				<!-- Add Modal ng-include -->
+				<div ng-include="'/modules/core/views/modal.client.view.html'"></div>
+				{% block content %}{% endblock %}
 
-		<section class="container">
-			<div ng-include="'/modules/core/views/modal.client.view.html'"></div>
-			{% block content %}{% endblock %}
-		</section>
-
-
-	</section>
+	<!--</section>-->
 	<!--</div>-->
 	<!--Embedding The User Object-->
 	<script type="text/javascript">

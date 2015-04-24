@@ -1,5 +1,7 @@
 'use strict';
 
+//MongoDb Sessions stored with connect-mongo. Source: https://github.com/kcbanner/connect-mongo
+
 /**
  * Module dependencies.
  */
@@ -108,6 +110,7 @@ module.exports = function(db) {
 
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));
+	app.use(express.static(path.resolve('./data')));
 
 	// Globbing routing files
 	config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {

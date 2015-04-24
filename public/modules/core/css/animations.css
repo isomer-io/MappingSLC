@@ -32,61 +32,6 @@
     }
 }
 
-/*@-moz-keyframes animate-footer-overlay {*/
-     /*0% {*/
-         /*transform: scale(1, 1);*/
-     /*}*/
-     /*49% {*/
-         /*transform: scale(0.98, 0.05) translate(0, -2000%);*/
-         /*opacity: 1;*/
-     /*}*/
-     /*50% {*/
-         /*opacity: 0;*/
-     /*}*/
-     /*75% {*/
-         /*transform: scale(0.75, 0.03) translate(0, -4000%);*/
-     /*}*/
-
-     /*97% {*/
-         /*transform: scale(0.5, 0.02) translate(0, -6000%);*/
-
-     /*}*/
-     /*98% {*/
-         /*transform: scale(0.45, 0.01);*/
-     /*}*/
-     /*100% {*/
-         /*opacity: 0;*/
-         /*transform: scale(0.45, 0);*/
-     /*}*/
- /*}*/
-
-/*@-ms-keyframes animate-footer-overlay {*/
-    /*0% {*/
-        /*transform: scale(1, 1);*/
-    /*}*/
-    /*49% {*/
-        /*transform: scale(0.98, 0.05) translate(0, -2000%);*/
-        /*opacity: 1;*/
-    /*}*/
-    /*50% {*/
-        /*opacity: 0;*/
-    /*}*/
-    /*75% {*/
-        /*transform: scale(0.75, 0.03) translate(0, -4000%);*/
-    /*}*/
-
-    /*97% {*/
-        /*transform: scale(0.5, 0.02) translate(0, -6000%);*/
-
-    /*}*/
-    /*98% {*/
-        /*transform: scale(0.45, 0.01);*/
-    /*}*/
-    /*100% {*/
-        /*opacity: 0;*/
-        /*transform: scale(0.45, 0);*/
-    /*}*/
-/*}*/
 
 @-o-keyframes animate-footer-overlay {
     0% {
@@ -184,28 +129,6 @@
         transform: scale(0, 0);
     }
 }
-/*@-moz-keyframes animate-main-overlay {*/
-    /*0% {*/
-        /*transform: scale(1, 1);*/
-    /*}*/
-    /*99% {*/
-        /*transform: scale(0.035, 0.055) translate(-1420%, -900%);*/
-    /*}*/
-    /*100% {*/
-        /*transform: scale(0, 0);*/
-    /*}*/
-/*}*/
-/*@-ms-keyframes animate-main-overlay {*/
-    /*0% {*/
-        /*transform: scale(1, 1);*/
-    /*}*/
-    /*99% {*/
-        /*transform: scale(0.035, 0.055) translate(-1420%, -900%);*/
-    /*}*/
-    /*100% {*/
-        /*transform: scale(0, 0);*/
-    /*}*/
-/*}*/
 @-o-keyframes animate-main-overlay {
     0% {
         transform: scale(1, 1);
@@ -220,6 +143,7 @@
 @keyframes animate-main-overlay {
     0% {
         transform: scale(1, 1);
+
     }
     99% {
         transform: scale(0.035, 0.055) translate(-1420%, -900%);
@@ -230,13 +154,14 @@
 }
 
 .main-overlay {
+    /*background: rgba(245, 245, 245, 0.8);*/
     background: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
     border: 3px solid #fff;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    margin: 35px auto;
+    margin: 5% auto;
     overflow: visible !important; /* Has to be !important only if you're using an on/off switch */
-    padding: 0 20px 20px 20px;
+    padding: 20px;
     position: relative;
     width: 100%;
     height: 60rem;
@@ -283,45 +208,6 @@
     }
 }
 
-/*@-moz-keyframes animate-logo {*/
-    /*0% {*/
-        /*border-radius: 50%;*/
-        /*width: 50px;*/
-        /*height: 50px;*/
-        /*background-image: url(../../core/img/circle_button.png);*/
-    /*}*/
-    /*give the cirle an image without the "X" so that the "X" won't be seen morphing*/
-    /*1% {*/
-        /*background-image: url(../../core/img/circle_button_blank.png);*/
-    /*}*/
-    /*100% {*/
-        /*transform: translate(-200%, -28%);*/
-        /*border-radius: 2%;*/
-        /*width: 150px;*/
-        /*height: 47px;*/
-        /*background-image: url(../../core/img/brand/mapping_150w.png);*/
-    /*}*/
-/*}*/
-
-/*@-ms-keyframes animate-logo {*/
-    /*0% {*/
-        /*border-radius: 50%;*/
-        /*width: 50px;*/
-        /*height: 50px;*/
-        /*background-image: url(../../core/img/circle_button.png);*/
-    /*}*/
-    /*give the cirle an image without the "X" so that the "X" won't be seen morphing*/
-    /*1% {*/
-        /*background-image: url(../../core/img/circle_button_blank.png);*/
-    /*}*/
-    /*100% {*/
-        /*transform: translate(-200%, -28%);*/
-        /*border-radius: 2%;*/
-        /*width: 150px;*/
-        /*height: 47px;*/
-        /*background-image: url(../../core/img/brand/mapping_150w.png);*/
-    /*}*/
-/*}*/
 
 @-o-keyframes animate-logo {
     0% {
@@ -364,6 +250,7 @@
 }
 
 .animate-small-logo {
+    z-index: 999;
     background: #023a31;
     border: 2px solid #fff;
     border-radius: 50%;
@@ -372,11 +259,11 @@
     font-size: 22pt;
     position: absolute;
     text-align: center;
-    top: 1.5%;
+    top: 3.5%;
     left: 20%;
     height: 50px;
     width: 50px;
-    /*background-image: url(../../core/img/circle_button.png);*/
+    background-image: url(../../core/img/circle_button.png);
 }
 
 .animate-small-logo-active {
@@ -390,64 +277,3 @@
     animation: animate-logo 2s ease-out forwards;
     animation-delay: 1.16s;
 }
-
-/*10% {*/
-/*transform: rotateZ(10deg);*/
-/*}*/
-/*20% {*/
-/*transform: rotateZ(-10deg);*/
-/*}*/
-
-/*70% {*/
-/*transform:*/
-/*scale(1, 0.55)*/
-/*translate(0, 0);*/
-/*}*/
-/*81%{*/
-/*-moz-transform: scaleY(-1);*/
-/*-o-transform: scaleY(-1);*/
-/*-webkit-transform: scaleY(-1);*/
-/*transform: scaleY(-1);*/
-/*filter: FlipV;*/
-/*-ms-filter: "FlipV";*/
-/*}*/
-
-/*83%{*/
-/*-moz-transform: scaleY(-1);*/
-/*-o-transform: scaleY(-1);*/
-/*-webkit-transform: scaleY(-1);*/
-/*transform:*/
-/*scaleY(-1)*/
-/*translate(0, 75%);*/
-/*filter: FlipV;*/
-/*-ms-filter: "FlipV";*/
-/*}*/
-
-/*85%{*/
-/*-moz-transform: scaleY(-1);*/
-/*-o-transform: scaleY(-1);*/
-/*-webkit-transform: scaleY(-1);*/
-/*transform:*/
-/*scaleY(-1)*/
-/*translate(-15%, 115%);*/
-/*filter: FlipV;*/
-/*-ms-filter: "FlipV";*/
-/*}*/
-/*87%{*/
-/*-moz-transform: scaleY(-1);*/
-/*-o-transform: scaleY(-1);*/
-/*-webkit-transform: scale(1, -1);*/
-/*transform:*/
-/*scale(1, -1)*/
-/*translate(15%, 155%);*/
-/*filter: FlipV;*/
-/*-ms-filter: "FlipV";*/
-/*}*/
-/*88%{*/
-/*-webkit-transform: scale(0.5, 0.8);*/
-/*transform: scale(0.5, 0.8);*/
-/*}*/
-/*90%{*/
-/*-webkit-transform: scale(1, 0.9);*/
-/*transform: scale(1, 0.9);*/
-/*}*/

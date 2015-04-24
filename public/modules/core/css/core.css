@@ -1,3 +1,41 @@
+/*applies to all pages that have a static map as background image, so most views other than home page*/
+.main-content {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 5% 2%;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.content, .content.img {
+}
+
+.background {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+    .background {
+        left: 50%;
+        margin-left: -512px;   /* 50% */
+    }
+}
+
 .core ul {
     margin-top: 20px;
     list-style-type: none;
@@ -8,23 +46,23 @@
     text-shadow: #023a31;
 }
 
-.core p:first-child::first-letter {
+div:nth-child(1) > div.row > div > div > p:nth-child(1)::first-letter {
     font-size: 40px;
 }
 
-.core img.desaturate {
+.core img.desaturate:hover, .core img.desaturate:active {
     -webkit-filter: grayscale(75%);
     -moz-filter: grayscale(75%);
     filter: grayscale(75%);
 }
 
-.core img.sepia {
+.core img.sepia:hover, .core img.sepia:active {
     filter: sepia(100%);
     -webkit-filter: sepia(100%);
     -moz-filter: sepia(100%);
     -ms-filter: sepia(100%);
     -o-filter: sepia(100%);
--webkit-filter(1);
+/*-webkit-filter(1);*/
 }
 
 .core .navbar-brand, .core .navbar-nav, .core li a {
@@ -37,7 +75,7 @@
     background: rgba(0, 0, 0, 0.0);
 }
 
-.nav .open a {
+.core .nav .open a {
     color: #ffffff;
 }
 
@@ -134,64 +172,56 @@
     width: 60px;
 }
 
-.switch-off:hover {
+.core .switch-off:hover {
     background: rgba(0, 0, 0, 0.8);
     border: 5px solid rgba(255, 255, 255, 0.4);
 }
 
-.home{
+.core .home{
     text-align: justify;
 }
 
-.home .page-header{
+.core .home .core .page-header{
     margin: 20px 0 10px 0;
 }
 
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+.core .dropdown-menu > li > a:hover, .core .dropdown-menu > li > a:focus {
     background: rgba(0, 0, 0, 0);
     color: #f5f5f5;
 }
 
-
-/*.page-header .content {*/
-/*margin-top: 0;*/
-/*}*/
-
-div.home {
-    padding-top: 15px;
-    padding-bottom: 20px;
+div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
+    margin:0 0 20px 0;
 }
 
-div.row {
+.core div.row {
     margin-top: 0;
 }
 
-div.row p {
+.core div.row p {
+    /*line-height: 155%;*/
+    /*font-size: 2rem;*/
+}
+
+.core p {
+    font-size: 1.75rem;
     line-height: 155%;
-    font-size: 1.6rem;
-}
-
-div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
-    margin:0px 0px 20px 0px;
-}
-
-.home-text {
     color: #ffffff;
-    font-size: 1.5rem;
+    margin: 0 3.4% 0 3%;
+    text-align: justify;
 }
 
-.main-text .home-text{
-    font-size: 2rem;
+.core .main-text p:nth-child(1){
     margin-top: 3.4%;
-    margin-bottom: 0;
 }
 
-.photo {
+.core .main-text p {
+    font-size: 2rem;
+}
+
+.core .photo {
     padding: 15px;
 }
-
-
-
 
 /* form styling -------------- */
 .group {
@@ -274,8 +304,7 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
     display: block;
     z-index: 2;
     left: 12px;
-    top: 20px;
-    bottom: 5%;
+    margin-top: 2%;
 }
 
 /* mapping slc small logo */
@@ -289,3 +318,45 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
     left: 3.5%;
     top: 0.75%;
 }
+
+
+.btn-main {
+    color: #ffffff;
+    cursor:pointer;
+    border:2px solid #fff;
+    background: #023a31;
+}
+
+.btn-main:focus, .btn-main:hover {
+    background: #023a31;
+    border: 2px solid #fff;
+}
+
+/*button animation*/
+/* Grow */
+
+.grow {
+    display: inline-block;
+    -webkit-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition: all 0.3s ease 0s;
+}
+
+.grow:hover {
+    -webkit-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    transform: scale(1.01);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+button > .grow {
+    display: inline-block;
+}
+

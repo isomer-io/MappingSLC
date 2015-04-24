@@ -111,7 +111,7 @@ ul.sidebar-tabs.collapsed {
 }
 
 .sidebar.collapsed {
-    height: 17%;
+    height: 16rem;
     overflow: hidden;
     background-color: #fff;
 }

@@ -18,11 +18,10 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/ng-ckeditor/ng-ckeditor.css',
-                '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css',
-				'public/lib/sidebar-v2/css/leaflet-sidebar.min.css',
-				//'public/lib/bootstrap-material-design/dist/css/material-fullpalette.min.css'
+                '//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css',
+				'public/lib/sidebar-v2/css/leaflet-sidebar.min.css'
 				//'public/lib/angular-material/modules/css/angular-material-layout.css',
-				'public/lib/angular-material/angular-material.min.css'
+				//'public/lib/angular-material/angular-material.min.css'
 
 			],
 			js: [
@@ -40,11 +39,14 @@ module.exports = {
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
 				'public/lib/modernizr/modernizr.js',
 				'public/lib/jquery/dist/jquery.js',
-                '//api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js',
-				//'public/lib/bootstrap-material-design/dist/js/material.min.js',
+                '//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js',
 				'public/lib/sidebar-v2/js/leaflet-sidebar.min.js',
-				'public/lib/ng-csv/src/ng-csv/ng-csv.js',
-				'public/lib/angular-material/angular-material.min.js'
+				'//maps.stamen.com/js/tile.stamen.js?v1.3.0',
+				'public/lib/api-check/dist/api-check.min.js',
+				'public/lib/angular-formly/dist/formly.min.js',
+				'public/lib/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js'
+				//'public/lib/bootstrap-material-design/dist/js/material.min.js',
+				//'public/lib/angular-material/angular-material.min.js'
 			]
 		},
 		css: [

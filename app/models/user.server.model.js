@@ -71,7 +71,7 @@ var UserSchema = new Schema({
 		default: '',
         required: '',
 		validate: [validateLocalStrategyProperty, 'Please enter your email, and make sure you have not already signed up with this email.'],
-		match: [/.+\@.+\..+/, 'Please fill a valid email address']
+		match: [/.+\@.+\..+/, 'That doesn\'t look like an emmail address to us. Please make sure you\'re using a valid email address.']
 	},
 	password: {
 		type: String,

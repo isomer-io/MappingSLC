@@ -17,16 +17,19 @@ var mongoose = require('mongoose'),
 
 var ProjectSchema = new Schema({
     status: {
-        type: Array,
-        default: 'Pending'
+        type: [{
+            type: String,
+            enum: ['pending', 'rejected', 'revise and resubmit', 'accepted', 'published']
+        }],
+        default: 'pending'
     },
     createdOn: {
         type: Date,
-        default:Date.now
+        default: Date.now
     },
     modifiedOn: {
         type: Date,
-        default:Date.now
+        default: Date.now
     },
     createdBy: {
         type: String,
@@ -70,6 +73,7 @@ var ProjectSchema = new Schema({
         required: '',
         trim: true
     },
+
     title: {
         type: String,
         es_indexed: true,
@@ -86,16 +90,37 @@ var ProjectSchema = new Schema({
     },
     url: {
         type: String,
-        default: '',
+        set: function (url) {
+            if (!url) {
+                return null;
+            } else {
+                if (url.indexOf('http://') !== 0 && url.indexOf('https://') !== 0) {
+                    url = 'http://' + url;
+                }
+
+                return url;
+            }
+        }
+    },
+    vimeo_id: {
+        type: String,
+        es_indexed: true,
+        trim: true
+    },
+    soundCloud_id: {
+        type: String,
+        es_indexed: true,
         trim: true
     },
     lat: {
         type: Number,
+        es_indexed: true,
         default: '',
         trim: true
     },
     lng: {
         type: Number,
+        es_indexed: true,
         default: '',
         trim: true
     },
@@ -109,9 +134,18 @@ var ProjectSchema = new Schema({
         trim: true
     },
     category: {
-        type: Array,
-        default: '',
+        type: [{
+            type: String,
+            enum: ['multimedia', 'essay', 'literature', 'interview', 'map']
+        }],
         trim: true
+    },
+    keywords: {
+        type: Array,
+        default: []
+    },
+    tags: {
+        type: Array
     },
     featured: {
         type: Boolean,
@@ -131,21 +165,39 @@ var ProjectSchema = new Schema({
         type: String,
         default: '',
         trim: true
-    },
-    videoId: {
-        type: Array,
-        default: '',
-        trim: true
-    },
-    soundId: {
-    type: Array,
-    default: '',
-    trim: true
     }
 });
 
+
+//create virtual attribute for full address
+ProjectSchema.virtual('address').get(function () {
+    return this.street + ' ' + this.city + ' ' + this.state + ' ' + this.zip;
+});
+
+//create virtual attribute setter for to spilt coordinates into lat and lng
+ProjectSchema.virtual('geoCoordinates').get(function () {
+    return this.lat + ' ' + this.lng;
+}).set(function (geoCoordinates) {
+    var splitCoordinates = geoCoordinates.split(', ');
+    this.lat = splitCoordinates[0] || '';
+    this.lng = splitCoordinates[1] || '';
+});
+
+//see mongoose-function library in node modules
+//source: https://github.com/aheckmann/mongoose-function
+var defaultKeywords = [];
+ProjectSchema.methods.setDefaultKeywords = function(){
+    defaultKeywords.push(project.user, project.title);
+};
+console.log('defaultKeywords: ', defaultKeywords);
+
 // Using Mongoosastic to watch what's going on with the MongoDB server and feeding into Elastic Search
 ProjectSchema.plugin(mongoosastic);
+
+ProjectSchema.set('toJSON', {
+    getters: true,
+    virtuals: true
+});
 
 // Add model
 var Project = mongoose.model('Project', ProjectSchema),

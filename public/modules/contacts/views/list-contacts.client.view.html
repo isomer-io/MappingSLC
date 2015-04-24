@@ -1,0 +1,19 @@
+<section data-ng-controller="ContactsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Contacts</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="contact in contacts" data-ng-href="#!/contacts/{{contact._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="contact.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="contact.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="contact.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!contacts.$resolved || contacts.length">
+    	No Contacts yet, why don't you <a href="/#!/contacts/create">create one</a>?
+    </div>
+</section>

@@ -1,0 +1,140 @@
+<section class="content background" data-ng-controller="RandomMapController" ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
+    <section class="container">
+        <section data-ng-controller="ContactsController" class="main-content">
+
+            <div class="contact-form">
+                <div class="page-header">
+                    <h1>Contact Us</h1>
+                </div>
+
+                <!--formly form begin-->
+
+                <form name="vm.form" ng-submit="vm.onSubmit()" novalidate>
+                    <formly-form model="vm.model" fields="vm.fields"></formly-form>
+                    <button type="submit" class="btn btn-primary submit-button">Submit</button>
+                </form>
+
+                <!--formly form end-->
+
+                <h2>Model</h2>
+                <pre>{{vm.model | json}}</pre>
+                <h2>Fields <small>(note, functions are not shown)</small></h2>
+                <pre>{{vm.originalFields | json}}</pre>
+                <h2>Form</h2>
+                <pre>{{vm.form | json}}</pre>
+
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <p>Thank you for your interest in Mapping Salt Lake City.</p>
+
+                        <p>If you have a general question or would like to get involved, please contact us with the form
+                            below.</p>
+
+                        <p>If you are interested in learning more about participating in our Heartbreak Around the Lake
+                            interview
+                            series, please go here.</p>
+
+                        <p>If you would like to submit a project, please review the guidelines and submit your
+                            information on our
+                            "Submit Your Project" page.</p>
+
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-8">-->
+
+                                <div id="form-main">
+                                    <div id="form-div">
+                                        <form class="form" id="form1" data-ng-submit="create()" novalidate>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p>
+
+                                                    <div class="name">
+                                                        <input name="firstName" type="text" data-ng-model="contact.firstName"
+                                                               class="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
+                                                               placeholder="First Name" id="firstName"/>
+                                                    </div>
+                                                    </p>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <p>
+                                                        <input name="LastName" type="text" data-ng-model="lastName"
+                                                               class="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
+                                                               placeholder="Last Name" id="LastName"/>
+
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="inline">
+
+                                                    <div class="col-md-3"><p class="inline-text">Newsletter?</p></div>
+
+                                                    <div class="col-md-2">
+
+                                                        <p>
+
+                                                        <div class="controls width">
+                                                            <input type="radio" data-ng-model="newsletter-yes"
+                                                                   id="newsletter-yes"
+                                                                   class="form-control">
+                                                        </div>
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="col-md-2">
+
+                                                        <p>
+
+                                                        <div class="controls width">
+                                                            <input type="radio" data-ng-model="newsletter-no"
+                                                                   id="newsletter-no"
+                                                                   class="form-control">
+                                                        </div>
+                                                        </p></div>
+                                                </div>
+                                            </div>
+
+                                            <p class="email">
+                                                <input name="email" type="email" data-ng-model="email"
+                                                       class="validate[required,custom[email]] feedback-input"
+                                                       id="email" placeholder="Email"/>
+                                            </p>
+
+                                            <p class="text">
+                            <textarea name="text" data-ng-model="message"
+                                      class="validate[required,length[6,300]] feedback-input" id="comment"
+                                      placeholder="Comment"></textarea>
+                                            </p>
+
+
+                                            <div class="submit">
+                                                <input type="submit" value="SEND" id="button-blue"/>
+
+                                                <div class="ease"></div>
+
+                                                <div data-ng-show="error" class="text-danger">
+                                                    <strong data-ng-bind="error"></strong>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            <!--</div>-->
+                        <!--</div>-->
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+    </section>
+</section>

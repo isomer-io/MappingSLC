@@ -107,7 +107,7 @@
     -webkit-transform: rotateY(-90deg);
     -moz-transform: rotateY(-90deg);
     transform: rotateY(-90deg);
-    -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+    -webkit-transition: -webkit-transform 0.8s, opacity 0.1s 0.3s;
     -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
     transition: transform 0.4s, opacity 0.1s 0.3s;
 }
@@ -118,7 +118,7 @@
     -webkit-transform: rotateY(0deg);
     -moz-transform: rotateY(0deg);
     transform: rotateY(0deg);
-    -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+    -webkit-transition: -webkit-transform 0.8s, opacity 0.1s;
     -moz-transition: -moz-transform 0.4s, opacity 0.1s;
     transition: transform 0.4s, opacity 0.1s;
 }
@@ -140,12 +140,6 @@ figure {
 
 .grid .cs-style-4 {
     width: 150px;
-    /*margin-left: 0px;*/
-    /*margin-right: 0px;*/
-    /*padding-left: 0px;*/
-    /*padding-right: 0px;*/
-    /*padding-bottom: 0px;*/
-    /*padding-top: 0px;*/
 }
 
 @media screen and (max-width: 31.5em) {

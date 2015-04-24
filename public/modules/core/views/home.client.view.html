@@ -1,51 +1,51 @@
-<section ng-include="'/modules/map/views/map.client.view.html'" id="map-overlay"></section>
+<section class="content">
+    <section class="container">
+        <section ng-include="'/modules/map/views/map.client.view.html'" id="map-overlay"></section>
 
-<section data-ng-controller="HomeController" class="home-view">
+        <section data-ng-controller="HomeController" class="home-view">
 
-    <div class="container">
+            <div class="container">
 
     <span data-ng-show="mainMenuModalToggle">
 
-        <a href="javascript:void(0)" class="animate-small-logo btn btn-primary btn-fab btn-raised mdi-action-visibility" style="z-index: 100" ng-click="animateSmallLogo()" ng-class="{'animate-small-logo-active': animateLogoCheck}"></a>
-        <!--<span class="animate-small-logo" style="z-index: 999" ng-click="animateSmallLogo()" ng-class="{'animate-small-logo-active': animateLogoCheck}"></span>-->
+        <span class="animate-small-logo" ng-click="animateSmallLogo()"
+              ng-class="{'animate-small-logo-active': animateLogoCheck}"></span>
 
         <div class="main-overlay core" ng-class="{'main-overlay-active': animateMainOverlayCheck}">
 
-            <div class="home">
                 <div class="row">
-                <div class="col-md-12">
+                    <div class="col-md-10 logo">
+                        <div class="medium-main-logo img-responsive"></div>
+                    </div>
+                    <div class="col-md-2">
+                        <sign-in-directive></sign-in-directive>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-text">
+                                <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multi-media projects.</p>
 
-                    <sign-in-directive></sign-in-directive>
-
-                    <div class="medium-main-logo img-responsive"></div>
-                    <div class="col-lg-12">
-                        <div class="main-text">
-                            <p class="home-text">Mapping Salt Lake City is a community-created archive of Salt Lake
-                                City’s neighborhoods and people that documents the city’s changes through art, critical
-                                and creative literature, personal maps and multi-media projects.</p>
-                            <p class="home-text">We invite people to engage with and evolve this site by submitting
-                                their own contributions.</p>
+                                <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
+                            </div>
                         </div>
                     </div>
-
-                </div>
                 </div>
 
+            <!-- two column div begin here -->
+            <div class="row">
+                <submit-project-directive></submit-project-directive>
 
-                <!-- two column div begin here -->
-                <div class="row">
-                        <submit-project-directive></submit-project-directive>
-
-                        <featured-projects></featured-projects>
-                </div>
-
+                <featured-projects></featured-projects>
             </div>
+
         </div>
 
-        <footer-directive></footer-directive>
+            <footer-directive></footer-directive>
 
 
-    </span>
-    </div>
+            </span>
+            </div>
 
+        </section>
+    </section>
 </section>

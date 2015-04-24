@@ -8,31 +8,26 @@ var mongoose = require('mongoose'),
     _ = require('underscore'),
     mongoosastic = require('mongoosastic');
 
+
 /**
  *
- * Census Data 2010 Schema
+ * Census Data Child Schema
  *
  **/
 
-var CensusDataSchema = new Schema({
-    modifiedOn: {
-        type: Date
-    },
-    totalPopulation: {
-        type: String,
-        es_indexed: true,
-        required: '',
-        trim: true
-    },
+var CensusDataChildSchema = new Schema ({
+
     state: {
         type: String,
         es_indexed: true,
+        default: '49',
         required: '',
         trim: true
     },
     county: {
         type: String,
         es_indexed: true,
+        default: '035',
         required: '',
         trim: true
     },
@@ -41,6 +36,60 @@ var CensusDataSchema = new Schema({
         es_indexed: true,
         required: '',
         trim: true
+    },
+    reportType: {
+        type: [{
+            type: String,
+            enum: ['sf1', 'acs1', 'acs3', 'acs5']
+        }],
+        es_indexed: true,
+        trim: true
+    },
+    roles: {
+        type: [{
+            type: String,
+            enum: ['user', 'contributor', 'admin', 'superUser']
+        }],
+        default: ['user']
+    },
+    reportYear: {
+        type: Number,
+        es_indexed: true,
+        trim: true
+    }
+});
+
+
+/**
+ *
+ * Census Data Parent Schema
+ *
+ **/
+
+var CensusDataSchema = new Schema({
+    createdOn: {
+        type: Date,
+        default: Date.now
+    },
+    modifiedOn: {
+        type: Date,
+        default: Date.now
+    },
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
+    censusDataVariable: {
+        type: String,
+        es_indexed: true,
+        required: '',
+        unique: true,
+        trim: true
+    },
+    other: {
+        type: String,
+        es_indexed: true,
+        trim: true
     }
 });
 
@@ -48,7 +97,7 @@ var CensusDataSchema = new Schema({
 CensusDataSchema.plugin(mongoosastic);
 
 // Add model
-var CensusData = mongoose.model('CensusData', CensusDataSchema),
+var CensusData = mongoose.model('CensusDataSchema', CensusDataSchema),
     stream = CensusData.synchronize(),
     count = 0;
 
