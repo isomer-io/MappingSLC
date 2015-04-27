@@ -1,117 +1,22 @@
 'use strict';
 
 // Contacts controller
-angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Contacts', 'formlyVersion',
-	function($scope, $stateParams, $location, Authentication, Contacts, formlyVersion) {
+angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Contacts', '$http',
+	function($scope, $stateParams, $location, Authentication, Contacts, $http) {
 		$scope.authentication = Authentication;
 
-		var vm = this;
-		// funcation assignment
-		vm.onSubmit = onSubmit;
+		//$scope.mappy = $http.get('http://api.tiles.mapbox.com/v4/poetsrock.55znsh8b/-111.9004,40.8149,13/1280…token=pk.eyJ1IjoicG9ldHNyb2NrIiwiYSI6Imc1b245cjAifQ.vwb579x58Ma-CcnfQNamiw');
 
-		// variable assignment
-		vm.author = {
-			name: 'Chris',
-			url: 'https://twitter.com/tanzmainia'
-		};
-		vm.exampleTitle = 'ngModelAttrs';
-		vm.env = {
-			angularVersion: angular.version.full,
-			formlyVersion: formlyVersion
-		};
+		//window.onerror=function(msg, url, linenumber){
+		//	console.log('Error message: ', msg, 'URL: ', url, 'Line Number: ', linenumber);
+		//	return true
+		//};
 
-		vm.model = {};
-
-		vm.fields = [
-				{
-					"type": "multiField",
-					"templateOptions": {
-						"fields": [
-							{
-								"type": "input",
-								"key": "firstName",
-								"templateOptions": {
-									"label": "First Name"
-								}
-							},
-							{
-								"type": "input",
-								"key": "lastName",
-								"templateOptions": {
-									"label": "Last Name"
-								},
-								"expressionProperties": {
-									"templateOptions.disabled": "!model.firstName"
-								}
-							}
-						]
-					}
-				},
-				{
-					"template": "<hr /><div><strong>Address:</strong></div>"
-				},
-				{
-					"type": "multiField",
-					"templateOptions": {
-						"fields": [
-							{
-								"type": "input",
-								"key": "street",
-								"templateOptions": {
-									"label": "Street",
-									"width": 6
-								}
-							},
-							{
-								"type": "input",
-								"key": "cityName",
-								"templateOptions": {
-									"label": "City",
-									"width": 3
-								}
-							},
-							{
-								"type": "input",
-								"key": "zip",
-								"templateOptions": {
-									"type": "number",
-									"label": "Zip",
-									"max": 99999,
-									"min": 0,
-									"pattern": "\\d{5}",
-									"width": 3
-								}
-							}
-						]
-					}
-				},
-				{
-					"template": "<hr />"
-				},
-				{
-					"type": "input",
-					"key": "otherInput",
-					"templateOptions": {
-						"label": "Other Input"
-					}
-				},
-				{
-					"type": "checkbox",
-					"key": "otherToo",
-					"templateOptions": {
-						"label": "Other Checkbox"
-					}
-				}
-
-		];
-
-		vm.originalFields = angular.copy(vm.fields);
-
-		// function definition
-		function onSubmit() {
-			alert(JSON.stringify(vm.model), null, 2);
-		}
-
+		//if (console.error()){
+		//	console.log('yep, error!')
+		//}else{
+		//	console.log('nope, nothings yet!')
+		//}
 
 		// Create new Contact
 		$scope.create = function() {
@@ -170,36 +75,32 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 				contactId: $stateParams.contactId
 			});
 		};
+
+
+		var cssLayout = function(){
+			[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+				// in case the input is already filled..
+				if( inputEl.value.trim() !== '' ) {
+					classie.add( inputEl.parentNode, 'input--filled' );
+				}
+
+				// events:
+				inputEl.addEventListener( 'focus', onInputFocus );
+				inputEl.addEventListener( 'blur', onInputBlur );
+			} );
+
+			function onInputFocus( ev ) {
+				classie.add( ev.target.parentNode, 'input--filled' );
+			}
+
+			function onInputBlur( ev ) {
+				if( ev.target.value.trim() === '' ) {
+					classie.remove( ev.target.parentNode, 'input--filled' );
+				}
+			}
+		};
+		cssLayout();
 	}
 ]);
 
-angular.module('contacts').directive('customAttr', function() {
-	return function(scope, el, attrs) {
-		attrs.$observe('customAttr', function() {
-			console.log('customAttr: ' + attrs.customAttr);
-		});
-	}
-});
 
-angular.module('contacts').directive('customBoundAttr', function() {
-	return function(scope, el, attrs) {
-		scope.$watch(attrs.customBoundAttr, function() {
-			console.log('customBoundAttr: ' + scope.$eval(attrs.customBoundAttr));
-		});
-	}
-});
-
-angular.module('contacts').directive('customExpression', function() {
-	return {
-		restrict: 'A',
-		scope: {
-			customExpression: '&'
-		},
-		link: function(scope, el) {
-			el.on('click', function() {
-				scope.customExpression();
-				scope.$apply();
-			});
-		}
-	};
-});

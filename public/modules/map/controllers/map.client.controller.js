@@ -267,14 +267,15 @@ angular.module('map').controller('MapController', ['$scope', 'Authentication', '
 
             //connects to the sidebar client controller to open the modal when 'home' is clicked on the sidebar
             $rootScope.$on('SHOW_MAP', function () {
-                mainMap.addTo(map);
+                //mainMap.addTo(map);
+                map.addLayer(mainMap);
                 map.removeLayer(grayMap);
             });
 
             //connects to the sidebar client controller to close the modal when the sidebar is opened
             $rootScope.$on('HIDE_MAP', function () {
                 grayMap.addTo(map);
-                map.removeLayer(mainMap);
+                mainMap.removeLayer(map);
             });
         };
 

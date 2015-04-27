@@ -42,9 +42,8 @@ module.exports = {
                 '//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js',
 				'public/lib/sidebar-v2/js/leaflet-sidebar.min.js',
 				'//maps.stamen.com/js/tile.stamen.js?v1.3.0',
-				'public/lib/api-check/dist/api-check.min.js',
-				'public/lib/angular-formly/dist/formly.min.js',
-				'public/lib/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js'
+				'node_modules/bonzo/bonzo.min.js',
+				'public/lib/classie/classie.js'
 				//'public/lib/bootstrap-material-design/dist/js/material.min.js',
 				//'public/lib/angular-material/angular-material.min.js'
 			]

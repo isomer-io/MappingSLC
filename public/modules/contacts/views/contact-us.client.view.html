@@ -1,140 +1,106 @@
-<section class="content background" data-ng-controller="RandomMapController" ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
     <section class="container">
         <section data-ng-controller="ContactsController" class="main-content">
-
             <div class="contact-form">
                 <div class="page-header">
                     <h1>Contact Us</h1>
                 </div>
-
-                <!--formly form begin-->
-
-                <form name="vm.form" ng-submit="vm.onSubmit()" novalidate>
-                    <formly-form model="vm.model" fields="vm.fields"></formly-form>
-                    <button type="submit" class="btn btn-primary submit-button">Submit</button>
-                </form>
-
-                <!--formly form end-->
-
-                <h2>Model</h2>
-                <pre>{{vm.model | json}}</pre>
-                <h2>Fields <small>(note, functions are not shown)</small></h2>
-                <pre>{{vm.originalFields | json}}</pre>
-                <h2>Form</h2>
-                <pre>{{vm.form | json}}</pre>
-
-
                 <div class="row">
                     <div class="col-md-10">
-                        <p>Thank you for your interest in Mapping Salt Lake City.</p>
-
-                        <p>If you have a general question or would like to get involved, please contact us with the form
+                        <p>Thank you for your interest in Mapping Salt Lake City. If you have a general question or
+                            would like to get involved, please contact us with the form
                             below.</p>
 
-                        <p>If you are interested in learning more about participating in our Heartbreak Around the Lake
-                            interview
-                            series, please go here.</p>
+                        <p>If you would like to submit a project, please review the guidelines and <a
+                                href="/#!/project/create">submit your information</a>.</p>
 
-                        <p>If you would like to submit a project, please review the guidelines and submit your
-                            information on our
-                            "Submit Your Project" page.</p>
+                        <div class="row">
+                            <div class="col-md-8">
 
-                        <!--<div class="row">-->
-                            <!--<div class="col-md-8">-->
+                                <form class="form-horizontal" data-ng-submit="create()" novalidate>
+                                    <fieldset>
+                                        <div class="form-group">
 
-                                <div id="form-main">
-                                    <div id="form-div">
-                                        <form class="form" id="form1" data-ng-submit="create()" novalidate>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <p>
-
-                                                    <div class="name">
-                                                        <input name="firstName" type="text" data-ng-model="contact.firstName"
-                                                               class="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
-                                                               placeholder="First Name" id="firstName"/>
+                                            <section class="content bgcolor-4">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <span class="input input--ruri">
+                                                            <input class="input__field input__field--ruri" type="text"
+                                                                   id="input-26" data-ng-model="firstName"
+                                                                   required/>
+                                                            <label class="input__label input__label--ruri"
+                                                                   for="input-26">
+                                                                <span class="input__label-content input__label-content--ruri">First Name</span>
+                                                            </label>
+                                                        </span>
                                                     </div>
-                                                    </p>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <p>
-                                                        <input name="LastName" type="text" data-ng-model="lastName"
-                                                               class="validate[required,custom[onlyLetter],length[0,100]] feedback-input"
-                                                               placeholder="Last Name" id="LastName"/>
-
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="inline">
-
-                                                    <div class="col-md-3"><p class="inline-text">Newsletter?</p></div>
-
-                                                    <div class="col-md-2">
-
-                                                        <p>
-
-                                                        <div class="controls width">
-                                                            <input type="radio" data-ng-model="newsletter-yes"
-                                                                   id="newsletter-yes"
-                                                                   class="form-control">
-                                                        </div>
-                                                        </p>
+                                                    <div class="col-md-6">
+                                                        <span class="input input--ruri">
+                                                            <input class="input__field input__field--ruri" type="text"
+                                                                   id="input-27" data-ng-model="lastName"
+                                                                   required>
+                                                            <label class="input__label input__label--ruri"
+                                                                   for="input-27">
+                                                                <span class="input__label-content input__label-content--ruri">Last Name</span>
+                                                            </label>
+                                                        </span>
                                                     </div>
-
-                                                    <div class="col-md-2">
-
-                                                        <p>
-
-                                                        <div class="controls width">
-                                                            <input type="radio" data-ng-model="newsletter-no"
-                                                                   id="newsletter-no"
-                                                                   class="form-control">
-                                                        </div>
-                                                        </p></div>
-                                                </div>
-                                            </div>
-
-                                            <p class="email">
-                                                <input name="email" type="email" data-ng-model="email"
-                                                       class="validate[required,custom[email]] feedback-input"
-                                                       id="email" placeholder="Email"/>
-                                            </p>
-
-                                            <p class="text">
-                            <textarea name="text" data-ng-model="message"
-                                      class="validate[required,length[6,300]] feedback-input" id="comment"
-                                      placeholder="Comment"></textarea>
-                                            </p>
-
-
-                                            <div class="submit">
-                                                <input type="submit" value="SEND" id="button-blue"/>
-
-                                                <div class="ease"></div>
-
-                                                <div data-ng-show="error" class="text-danger">
-                                                    <strong data-ng-bind="error"></strong>
                                                 </div>
 
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                <span class="input input--ruri">
+                                                    <input class="input__field input__field--ruri" type="email"
+                                                           id="input-28" data-ng-model="email"
+                                                           required>
+                                                    <label class="input__label input__label--ruri" for="input-28">
+                                                        <span class="input__label-content input__label-content--ruri">E-Mail</span>
+                                                    </label>
+                                                </span>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                <span class="input input--ruri">
+                                                    <input class="input__field input__field--ruri" type="number"
+                                                           id="input-28" data-ng-model="zip" required>
+                                                    <label class="input__label input__label--ruri" for="input-28">
+                                                        <span class="input__label-content input__label-content--ruri">Zip Code</span>
+                                                    </label>
+                                                </span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <!--<span class="input input&#45;&#45;ruri">-->
+                                                            <textarea class="input__field input__field--ruri" id="input-28"
+                                                                      data-ng-model="message" required>
+                                                            <!--<label class="input__label input__label&#45;&#45;ruri" for="input-28">-->
+                                                                <!--<span class="input__label-content input__label-content&#45;&#45;ruri">Message</span>-->
+                                                            <!--</label>-->
+                                                                </textarea>
+                                                        <!--</span>-->
+                                                    </div>
+                                                </div>
 
-                            <!--</div>-->
-                        <!--</div>-->
+                                            </section>
 
+                                        </div>
 
+                                        <div class="form-group">
+                                            <button class="btn btn-main btn-footer-overlay grow" type="submit">Send
+                                            </button>
+                                        </div>
+                                        <div data-ng-show="error" class="text-danger">
+                                            <strong data-ng-bind="error"></strong>
+                                        </div>
+                                    </fieldset>
+                                </form>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-
         </section>
     </section>
 </section>

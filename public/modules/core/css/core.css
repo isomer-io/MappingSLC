@@ -1,15 +1,20 @@
-/*applies to all pages that have a static map as background image, so most views other than home page*/
-.main-content {
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
-    margin: 5% 2%;
-    padding: 5%;
-    border-radius: 10px;
+html, body {
+    font-family: Lato, "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
 }
 
 body {
     overflow-x: hidden;
 }
+
+/*applies to all pages that have a static map as background image, so most views other than home page*/
+.main-content {
+    height: 100%;
+    background-color: rgba(223, 255, 252, 0.8);
+    margin: 5% 2%;
+    padding: 5%;
+    border-radius: 10px;
+}
+
 
 .content, .content.img {
 }
@@ -37,7 +42,7 @@ body {
 }
 
 .core ul {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     list-style-type: none;
 }
 
@@ -360,3 +365,9 @@ button > .grow {
     display: inline-block;
 }
 
+
+/*/!** for scrollbar *!/*/
+/*#container {*/
+    /*position: relative;*/
+    /*height: 100%;*/
+/*}*/
