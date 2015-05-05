@@ -48,9 +48,9 @@
 
 	<!--<section class="content">-->
 
-				<!-- Add Modal ng-include -->
-				<div ng-include="'/modules/core/views/modal.client.view.html'"></div>
-				{% block content %}{% endblock %}
+        <!-- Add Modal ng-include -->
+        <div ng-include="'/modules/core/views/modal.client.view.html'"></div>
+        {% block content %}{% endblock %}
 
 	<!--</section>-->
 	<!--</div>-->
@@ -61,7 +61,7 @@
 
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
-	{% endfor %} 
+	{% endfor %}
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--<script>$.material.init()</script>-->

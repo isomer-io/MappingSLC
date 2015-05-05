@@ -4,7 +4,7 @@
 angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi',
     function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi) {
         $scope.authentication = Authentication;
-        $scope.logo = '../../../modules/core/img/brand/mapping.png';
+        $scope.logo = '../../../modules/core/img/brand/mapping_150w.png';
         var width = '800';
         var height = '350';
         var markerUrl = 'url-http%3A%2F%2Fwww.mappingslc.org%2Fimages%2Fsite_img%2Flogo_marker_150px.png';

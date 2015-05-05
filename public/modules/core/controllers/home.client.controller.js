@@ -16,18 +16,20 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
         // This provides Authentication context.
 		$scope.authentication = Authentication;
-		//toggles off/on for main overlay page and menu
-		$scope.mainMenuModalToggle = true;
+		////toggles off/on for main overlay page and menu
+		//$scope.mainMenuModalToggle = true;
         $rootScope.animateLogoCheck = false;
         $scope.animateMainOverlayCheck = false;
         $scope.animateFooterOverlayCheck = false;
 
-        $scope.animateSmallLogo = function(){
+        $rootScope.animateSmallLogo = function(){
             //animate into the small logo from round 'X' on main modal
             if($rootScope.animateLogoCheck === false) {
                 $rootScope.animateLogoCheck = true;
                 $scope.animateMainOverlayCheck = true;
                 $scope.animateFooterOverlayCheck = true;
+                $rootScope.triggerMenuCount = 0;
+                console.log('$rootScope.triggerMenuCount (on core ctrl): ', $rootScope.triggerMenuCount);
                 //connects to the home client controller to close the map when the main menu modal is closed
                 $scope.showMapView = function() {
                     $rootScope.$broadcast('SHOW_MAP');

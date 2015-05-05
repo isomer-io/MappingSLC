@@ -34,15 +34,15 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/lib/jquery/dist/jquery.js',
 				'public/lib/rangy/rangy-core.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
 				'public/lib/modernizr/modernizr.js',
-				'public/lib/jquery/dist/jquery.js',
                 '//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js',
 				'public/lib/sidebar-v2/js/leaflet-sidebar.min.js',
 				'//maps.stamen.com/js/tile.stamen.js?v1.3.0',
-				'node_modules/bonzo/bonzo.min.js',
+				'public/modules/core/controllers/menu-uiMorphingButton.js',
 				'public/lib/classie/classie.js'
 				//'public/lib/bootstrap-material-design/dist/js/material.min.js',
 				//'public/lib/angular-material/angular-material.min.js'

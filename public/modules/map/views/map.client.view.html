@@ -1,61 +1,84 @@
 <section class="container map" data-ng-controller="MapController" data-ng-init="mapFunction()">
 
     <!--to call MapBox map-->
-
     <div id="map" class="map" data-ng-class="{'map-details': toggleDetails}"></div>
     <div id="info" class="info" data-ng-class="{'info-project-details': toggleDetails}"></div>
-    <!--<input id='range' class='range' type='range' min='0' max='1.0' step='any' />-->
-
 
     <div id="sidebar" class="sidebar collapsed">
 
         <!-- Tab panes -->
         <div class="sidebar-content active">
             <div class="sidebar-pane" id="home">
-                <div class="row">
 
-                    <ul class="col-md-5">
-                        <li>
-                            <a data-ng-click="showHomeView(); showDetails=!showDetails">
-                                <i class="glyphicon glyphicon-home"></i>
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/#!/projects">
-                                <i class="glyphicon glyphicon-user"></i>
-                                Projects
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/#!/projects/create">
-                                <i class="glyphicon glyphicon-time"></i>
-                                Submit
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="col-md-6">
-                        <li>
-                            <a href="/#!/about">
-                                <i class="glyphicon glyphicon-user"></i>
-                                About Us
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/#!/contact-us">
-                                <i class="glyphicon glyphicon-map-marker"></i>
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
+                <div class="morph-content">
+                    <div class="content-style-sidebar">
+                        <ul>
+                            <div class="row">
+                                <li class="col-sm-12">
+                                    <a href="/#!/">
+                                        <i class="fa fa-home"></i>
+                                        Home
+                                    </a>
+                                </li>
+                            </div>
+
+                            <div class="row">
+                                <li class="col-sm-12">
+                                    <a href="/#!/projects">
+                                        <i class="fa fa-map-marker"></i>
+                                        Stories
+                                    </a>
+                                </li>
+                            </div>
+
+                            <div class="row">
+                                <li class="col-sm-12">
+                                    <a href="#">
+                                        <i class="fa fa-heart"></i>
+                                        Favorites
+                                    </a>
+                                </li>
+                            </div>
+
+                            <div class="row">
+                                <li class="col-sm-12">
+                                    <a href="/#!/projects/create">
+                                        <i class="fa fa-file"></i>
+                                        Get Involved
+                                    </a>
+                                </li>
+                            </div>
+
+                            <div class="row">
+                                <li class="col-sm-12">
+                                    <a href="/#!/about">
+                                        <i class="fa fa-users"></i>
+                                        About Us
+                                    </a>
+                                </li>
+                            </div>
+
+                            <div class="row">
+                                <li class="col-sm-12">
+                                    <a href="/#!/contact-us">
+                                        <i class="fa fa-envelope"></i>
+                                        Contact
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-                <br/>
-                <hr/>
-                <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s
-                    neighborhoods and people that documents the city’s changes through art, critical and creative
-                    literature, personal maps and multi-media projects.</p>
 
-                <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
+
+                <hr/>
+                <div class="menu-text">
+                    <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s
+                        neighborhoods and people that documents the city’s changes through art, critical and creative
+                        literature, personal maps and multi-media projects.</p>
+
+                    <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
+                </div>
 
                 <div class="social-media-button">
                     <li>
@@ -131,7 +154,7 @@
                 <div class="sidebar-view-date ">
                     <small>June 22, 2014</small>
                 </div>
-                <h3>Test Title: Read a great article that is bound to tickle your fancy!</h3>
+                <h3>Sample Title: The Legend of the Espresso at the Little Dell Reservoir!</h3>
                 <img src="http://lorempixel.com/g/400/200/">
 
                 <div class="sidebar-view-text-content">
@@ -156,11 +179,11 @@
 
         <!-- Nav tabs -->
         <ul class="sidebar-tabs" role="tablist">
-            <li data-ng-click="showDetails=!showDetails"><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
-            <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
-            <li><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
-            <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-            <li><a href="#details" role="tab"></a></li>
+            <li data-ng-click="triggerMenu()"><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+            <li data-ng-click="triggerMenu()"><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+            <li data-ng-click="triggerMenu()"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+            <li data-ng-click="triggerMenu()"><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+            <li data-ng-click="triggerMenu()"><a href="#details" role="tab"></a></li>
         </ul>
 
     </div>

@@ -1,4 +1,8 @@
-<section data-ng-controller="ProjectsController" data-ng-init="findOne()">
+<section class="content background" data-ng-controller="RandomMapController"
+		 ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
+	<div ng-include="'/modules/core/views/menu.client.view.html'"></div>
+	<section class="container">
+		<section data-ng-controller="ProjectsController" data-ng-init="findOne()">
 	<div class="img-responsive">
 		<a ng-href="/"><img ng-src="{{logo}}"></a>
 	</div>
@@ -38,4 +42,6 @@
     <div>
         <p data-ng-bind-html="trustAsHtml(project.story)"></p>
     </div>
+</section>
+</section>
 </section>

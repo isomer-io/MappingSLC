@@ -6,10 +6,21 @@ body {
     overflow-x: hidden;
 }
 
+
+
 /*applies to all pages that have a static map as background image, so most views other than home page*/
-.main-content {
+.main-content-outer {
     height: 100%;
-    background-color: rgba(223, 255, 252, 0.8);
+    background-color: rgba(221, 215, 200, 0.6);
+    margin: 5%;
+    padding: 1% 2%;
+    border-radius: 10px;
+    border: solid 2px #090909;
+}
+/*applies to all pages that have a static map as background image, so most views other than home page*/
+.main-content-inner {
+    height: 100%;
+    background-color: rgba(255, 248, 231, 0.9);
     margin: 5% 2%;
     padding: 5%;
     border-radius: 10px;
@@ -26,12 +37,14 @@ body {
 
     /* Set up proportionate scaling */
     width: 100%;
-    height: auto;
+    height: 100%;
 
     /* Set up positioning */
     position: fixed;
     top: 0;
     left: 0;
+
+    overflow-y: auto;
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
@@ -73,6 +86,25 @@ div:nth-child(1) > div.row > div > div > p:nth-child(1)::first-letter {
 .core .navbar-brand, .core .navbar-nav, .core li a {
     color: #ffffff;
     background: rgba(0, 0, 0, 0.0);
+    text-align: right;
+}
+
+/*body > section > section > section > section.home-view.ng-scope > div > span > div > div:nth-child(1) > div.col-md-2 > sign-in-directive > section > */
+div > ul.pull-right > li > ul > li > a {
+    padding: 5% 20%;
+    /*width: 30%;*/
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/*.core .dropdown-menu > li > a:hover, .core .dropdown-menu > li > a:focus {*/
+    /*color: #033a31;*/
+/*}*/
+
+.dropdown-menu {
+    min-width: 200%;
+    /*width: 100%;*/
 }
 
 .core .nav .open a:focus, .core .nav li a:hover, .core .nav li a:focus {
@@ -90,8 +122,11 @@ div:nth-child(1) > div.row > div > div > p:nth-child(1)::first-letter {
 
 .open > .dropdown-menu {
     background: rgba(0, 0, 0, 0.8);
-    border: solid 3px #101010;
-    border-radius: 15px;
+    border: solid 3px #2c2c2c;
+    border-radius: 5px;
+    left: -75%;
+    margin: 10%;
+    width: 100%;
 }
 
 .undecorated-link:hover {
@@ -192,7 +227,7 @@ div:nth-child(1) > div.row > div > div > p:nth-child(1)::first-letter {
 
 .core .dropdown-menu > li > a:hover, .core .dropdown-menu > li > a:focus {
     background: rgba(0, 0, 0, 0);
-    color: #f5f5f5;
+    color: #f5deb3;
 }
 
 div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
@@ -201,6 +236,10 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
 
 .core div.row {
     margin-top: 0;
+}
+
+.core div.row li:hover {
+    background-color: rgba(45, 45, 45, 0.7);
 }
 
 .core div.row p {

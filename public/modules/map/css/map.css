@@ -93,141 +93,6 @@ GeoJSON Styling
     margin-right: 5px;
 }
 
-.sidebar-tabs {
-    background-color: transparent;
-}
-
-.sidebar-tabs.active {
-    height: 100%;
-}
-
-.sidebar-tabs.collapsed {
-    height: 17%;
-    background-color: #fff;
-}
-
-ul.sidebar-tabs.collapsed {
-    background-color: #fff;
-}
-
-.sidebar.collapsed {
-    height: 16rem;
-    overflow: hidden;
-    background-color: #fff;
-}
-
-.sidebar-content li a {
-    color: white;
-}
-
-.sidebar-content.active {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #ffffff;
-    font-size: 18px;
-}
-
-.sidebar ul {
-    list-style: none;
-}
-
-.sidebar-pane ul {
-    margin-top: 10%;
-    font-size: 2rem;
-    padding: 5%;
-}
-
-.sidebar-pane.active {
-    margin: 55px 20px 0 20px;
-}
-
-.sidebar-content.active {
-    overflow-y: hidden;
-}
-
-
-#settings > img {
-    width: 95%;
-}
-
-#settings > h3, div.sidebar-view-text-content{
-    padding: 20px 20px 20px 0;
-    text-align: justify;
-}
-
-.sidebar .social-media-button {
-    font-size: 4rem;
-}
-
-.sidebar .social-media-button li {
-    display: inline-block;
-}
-
-.sidebar ul li {
-    list-style: none;
-    padding: 3%;
-}
-
-.sidebar-content ul li {
-    display: inline-block;
-}
-
-.sidebar-content.active ul li a i {
-    padding-right: 10px;
-}
-
-.sidebar ul li a:hover, .sidebar ul li a:focus {
-    font-size: 2.1rem;
-    text-decoration: none;
-    transition: all 0.4s ease-out;
-}
-
-#sidebar > ul:active {
-    background-color: rgba(100, 100, 100, 0.8);
-}
-
-.side-menu ul li a {
-    text-decoration: none;
-    font-size: 20px;
-    transition: all 0.2s linear;
-    cursor: pointer;
-}
-
-.sidebar {
-    border-radius: 0 15px 15px 0;
-    transition: all 0.7s ease-out;
-    list-style: none;
-
-}
-
-.sidebar.active {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: 0 15px 15px 0;
-}
-
-.sidebar {
-    border-radius: 0 15px 15px 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-}
-
-.sidebar.collapsed {
-    left: 15px;
-    top: 25px;
-    border-radius: 15px;
-}
-
-/*.sidebar-tabs>li.active:nth-last-child {*/
-    /*background-color: transparent;*/
-/*}*/
-
-/*.sidebar-tabs>li.collapsed:nth-last-child {*/
-    /*background-color: transparent;*/
-/*}*/
-
-
 
 
 /*custom popups*/
@@ -376,4 +241,27 @@ div .leaflet-top.leaflet-left .mapbox-share {
 
 .leaflet-bar a, .leaflet-bar a:hover {
     border: none;
+}
+
+div.leaflet-control-mapbox-geocoder.leaflet-bar.leaflet-control.active > div.leaflet-control-mapbox-geocoder-wrap {
+    left: -18rem;
+    height: 3.8rem;
+}
+
+div.leaflet-control-mapbox-geocoder.leaflet-bar.leaflet-control.active > div.leaflet-control-mapbox-geocoder-results {
+    left: -18rem;
+    height: 3.8rem;
+}
+
+.leaflet-control-mapbox-geocoder .leaflet-control-mapbox-geocoder-form input {
+    height: 3.8rem;
+    font-size: 2rem;
+}
+
+div.leaflet-control-mapbox-geocoder.leaflet-bar.leaflet-control.active > div.leaflet-control-mapbox-geocoder-results {
+
+}
+
+.leaflet-bar a, .leaflet-bar a:hover {
+
 }

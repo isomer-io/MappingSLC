@@ -1,28 +1,30 @@
-<section class="content" data-ng-controller="RandomMapController" style="background-image:url({{staticMap}})">
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
+    <div ng-include="'/modules/core/views/menu.client.view.html'"></div>
     <section class="container">
         <section data-ng-controller="AuthenticationController">
 
-    <div id="slides_control" class="home">
+            <div id="slides_control" class="home">
 
-        <div style="height: 305px">
-            <carousel interval="myInterval">
-                <slide ng-repeat="slide in slides" active="slide.active">
-                    <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div style="height: 305px">
+                    <carousel interval="myInterval">
+                        <slide ng-repeat="slide in slides" active="slide.active">
+                            <img ng-src="{{slide.image}}" style="margin:auto;">
 
-                    <div class="carousel-caption">
-                        <h4>Slide {{$index}}</h4>
+                            <div class="carousel-caption">
+                                <h4>Slide {{$index}}</h4>
 
-                        <p>{{slide.text}}</p>
-                    </div>
-                </slide>
-            </carousel>
-        </div>
+                                <p>{{slide.text}}</p>
+                            </div>
+                        </slide>
+                    </carousel>
+                </div>
 
-    </div>
-    <div>
-        <button class="btn btn-default btn-primary" ng-click="changeView('/maps')">Go To Map</button>
-    </div>
+            </div>
+            <div>
+                <button class="btn btn-default btn-primary" ng-click="changeView('/maps')">Go To Map</button>
+            </div>
 
-</section>
-</section>
+        </section>
+    </section>
 </section>

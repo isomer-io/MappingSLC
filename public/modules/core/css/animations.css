@@ -89,7 +89,7 @@
 }
 }
 
-.footer-overlay {
+    .footer-overlay {
     background: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
     border: 3px solid #fff;
@@ -160,7 +160,7 @@
     border: 3px solid #fff;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     margin: 5% auto;
-    overflow: visible !important; /* Has to be !important only if you're using an on/off switch */
+    overflow: visible !important; /* Has to be !important only since we're using a toggle button */
     padding: 20px;
     position: relative;
     width: 100%;

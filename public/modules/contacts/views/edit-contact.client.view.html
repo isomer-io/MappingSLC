@@ -1,4 +1,9 @@
-<section data-ng-controller="ContactsController" data-ng-init="findOne()">
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
+    <div ng-include="'/modules/core/views/menu.client.view.html'"></div>
+    <section class="container">
+
+        <section data-ng-controller="ContactsController" data-ng-init="findOne()">
     <div class="page-header">
         <h1>Edit Contact</h1>
     </div>
@@ -20,4 +25,6 @@
             </fieldset>
         </form>
     </div>
+</section>
+</section>
 </section>

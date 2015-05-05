@@ -18,10 +18,10 @@ var express = require('express'),
 
 
 ////make call to census api
-//var censusDataVariable = ['P0010001'],
-//    censusYear = [2000, 2010, 2011, 2012, 2013, 2014],
-//    censusType = ['sf1', 'acs'],
-//    censusApiResultData = null;
+var censusDataVariable = ['P0010001'],
+    censusYear = [2000, 2010, 2011, 2012, 2013, 2014],
+    censusType = ['sf1', 'acs'],
+    censusApiResultData = null;
 
 
 //need to add logic to first look up local instance of Census Data Model to determine whether data is already available

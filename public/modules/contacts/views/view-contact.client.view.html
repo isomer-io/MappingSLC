@@ -1,4 +1,8 @@
-<section data-ng-controller="ContactsController" data-ng-init="findOne()">
+<section class="content background" data-ng-controller="RandomMapController"
+		 ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
+	<div ng-include="'/modules/core/views/menu.client.view.html'"></div>
+	<section class="container">
+		<section data-ng-controller="ContactsController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="contact.name"></h1>
 	</div>
@@ -18,4 +22,6 @@
 			<span data-ng-bind="contact.user.displayName"></span>
 		</em>
 	</small>
+</section>
+</section>
 </section>

@@ -1,7 +1,29 @@
 .contact {
-    overflow-y: auto;
+
 }
 
+.contact p a {
+    color: green;
+    border-bottom: .08em solid #023a31;
+    padding-bottom: .08em;
+}
+
+.contact p a:hover {
+    color: green;
+    border-bottom: .08em solid #023a31;
+    padding-bottom: .08em;
+    text-decoration: none;
+}
+
+.contact a:visited {
+    color: #023a31;
+    border-bottom: .08em solid lightgreen;
+    padding-bottom: .08em;
+}
+
+.contact a:link {
+    /*-webkit-tap-highlight-color: rgba(75, 15, 215, 0.4);*/
+}
 .inline div {
     font-size: 2rem;
 }

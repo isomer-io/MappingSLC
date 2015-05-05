@@ -1,89 +1,78 @@
-<section class="content" data-ng-controller="RandomMapController" style="background-image:url({{staticMap}})">
-    <section class="container">
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
+    <div ng-include="'/modules/core/views/menu.client.view.html'"></div>
+    <div class="main-content-outer">
+    <section class="container main-content-inner">
         <section data-ng-controller="ProjectsController">
-    <div class="container">
+            <div class="container">
 
-        <div class="page-header">
-            <h1>Project Submission Form</h1>
-        </div>
-        <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Project Submission Form</h1>
+                </div>
+                <div class="col-md-12">
 
-            <form class="form-horizontal" data-ng-submit="create()" novalidate>
-                <fieldset>
-                    <div class="form-group">
-                        <label class="control-label"></label>
-                        <div class="controls width">
-                            <input type="text" data-ng-model="street" id="street" class="form-control" placeholder="Street"
-                                   required>
-                        </div>
+                    <form class="form-horizontal" data-ng-submit="create()" novalidate>
+                        <fieldset>
+                            <div class="form-group">
+                                <label class="control-label"></label>
 
-                        <label class="control-label"></label>
-                        <div class="controls width">
-                            <input type="text" data-ng-model="city" id="city" class="form-control" placeholder="City"
-                                   required>
-                        </div>
+                                <div class="controls width">
+                                    <input type="text" data-ng-model="street" id="street" class="form-control"
+                                           placeholder="Street"
+                                           required>
+                                </div>
 
-                        <label class="control-label"></label>
-                        <div class="controls width">
-                            <input type="text" data-ng-model="state" id="state" class="form-control" placeholder="State"
-                                   required>
-                        </div>
+                                <label class="control-label"></label>
 
-                        <label class="control-label"></label>
-                        <div class="controls width">
-                            <input type="text" data-ng-model="zip" id="zip" class="form-control" placeholder="Zip Code"
-                                   required>
-                        </div>
+                                <div class="controls width">
+                                    <input type="text" data-ng-model="city" id="city" class="form-control"
+                                           placeholder="City"
+                                           required>
+                                </div>
 
-                        <label class="control-label"></label>
-                        <div class="controls width">
-                            <input type="text" data-ng-model="title" id="title" class="form-control"
-                                   placeholder="Project Title"
-                                   required>
-                        </div>
+                                <label class="control-label"></label>
 
-                        <label class="control-label"></label>
-                        <div class="controls width">
-                            <textarea ckeditor="editorOptions" ng-model="story" id="story" required></textarea>
-                        </div>
-                    </div>
+                                <div class="controls width">
+                                    <input type="text" data-ng-model="state" id="state" class="form-control"
+                                           placeholder="State"
+                                           required>
+                                </div>
 
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary btn-lg btn-main grow">
-                    </div>
+                                <label class="control-label"></label>
 
-                    <div data-ng-show="error" class="text-danger">
-                        <strong data-ng-bind="error"></strong>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-</section>
-</section>
-</section>
+                                <div class="controls width">
+                                    <input type="text" data-ng-model="zip" id="zip" class="form-control"
+                                           placeholder="Zip Code"
+                                           required>
+                                </div>
 
+                                <label class="control-label"></label>
 
+                                <div class="controls width">
+                                    <input type="text" data-ng-model="title" id="title" class="form-control"
+                                           placeholder="Project Title"
+                                           required>
+                                </div>
 
+                                <label class="control-label"></label>
 
-<div ng-app="autocompleteFloatingLabelDemo" ng-controller="DemoCtrl as ctrl" layout="column">
-    <md-content class="md-padding" layout="column">
-        <form ng-submit="$event.preventDefault()">
-            <p>The following example demonstrates floating labels being used as a normal form element.</p>
-            <div layout-gt-sm="row">
-                <md-input-container flex>
-                    <label>Name</label>
-                    <input type="text"/>
-                </md-input-container>
-                <md-autocomplete flex
-                                 ng-disabled="ctrl.isDisabled"
-                                 md-no-cache="ctrl.noCache"
-                                 md-selected-item="ctrl.selectedItem"
-                                 md-search-text="ctrl.searchText"
-                                 md-items="item in ctrl.querySearch(ctrl.searchText)"
-                                 md-item-text="item.display"
-                                 md-floating-label="Favorite state">
-                    <span md-highlight-text="ctrl.searchText">{{item.display}}</span>
-                </md-autocomplete>
+                                <div class="controls width">
+                                    <textarea ckeditor="editorOptions" ng-model="story" id="story" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-lg btn-main grow">
+                            </div>
+
+                            <div data-ng-show="error" class="text-danger">
+                                <strong data-ng-bind="error"></strong>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div>
-        </form>
+        </section>
+    </section>
+        </div>
+</section>

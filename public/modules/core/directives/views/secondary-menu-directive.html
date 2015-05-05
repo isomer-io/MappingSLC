@@ -1,0 +1,104 @@
+<!--
+***
+***  THIS IS THE MENU SIDEBAR FOR ALL PAGES EXCEPT THE HOME PAGE
+***
+-->
+
+<!--this icon will be displayed when the menu is closed-->
+<strong data-ng-hide="toggleSecondMenu" data-ng-click="toggleSecondMenu=!toggleSecondMenu">
+    <span>
+        <i class="menu-icon menu-closed-icon glyphicon glyphicon-align-justify"></i>
+    </span>
+</strong>
+
+
+<!--this is the icon that will be displayed in the menu is open-->
+<section data-ng-show="toggleSecondMenu" data-ng-click="toggleSecondMenu=!toggleSecondMenu"
+         data-ng-class="{'menu-top-level ': toggleSecondMenu}">
+
+    <div> <!--toggle icon for secondary menu, BEGIN-->
+        <strong>
+            <span>
+                <i class="menu-icon menu-open-icon glyphicon glyphicon-align-justify"></i>
+            </span>
+        </strong>
+    </div>
+    <!--toggle icon for secondary menu, END-->
+
+
+    <div class="menu-body">
+
+        <a href="/#!/home">
+            <div class="row">
+                <li class="col-md-12">
+                    <i class="glyphicon glyphicon-home"></i>
+                    Home
+                </li>
+            </div>
+        </a>
+        <a href="/#!/projects">
+            <div class="row">
+                <li class="col-md-12">
+                    <i class="glyphicon glyphicon-th"></i>
+                    Projects
+                </li>
+            </div>
+        </a>
+        <div class="row">
+            <li class="col-md-12">
+                <a href="/#!/projects/create">
+                    <i class="glyphicon glyphicon-time"></i>
+                    Submit
+                </a>
+            </li>
+        </div>
+
+        <div class="row">
+            <li class="col-md-12">
+                <a href="#">
+                    <i class="glyphicon glyphicon-user"></i>
+                    About Us
+                </a>
+            </li>
+        </div>
+
+        <div class="row">
+            <li class="col-md-12">
+                <a href="#">
+                    <i class="glyphicon glyphicon-map-marker"></i>
+                    Contact
+                </a>
+            </li>
+        </div>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s
+                    neighborhoods and people that documents the city’s changes through art, critical and creative
+                    literature, personal maps and multi-media projects.</p>
+
+                <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
+            </div>
+        </div>
+        <ul>
+            <div class="row">
+                <div class="social-media-button">
+                    <li class="col-md-6">
+                        <a href="https://twitter.com/mappingslc">
+                            <i class="fa fa-twitter-square"></i>
+                            Twitter
+                        </a>
+                    </li>
+                    <li class="col-md-6">
+                        <a href="https://www.facebook.com/MappingSaltLakeCity">
+                            <i class="fa fa-facebook-square"></i>
+                            Facebook
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </ul>
+    </div>
+</section>

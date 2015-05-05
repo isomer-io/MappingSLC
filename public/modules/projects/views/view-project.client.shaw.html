@@ -1,9 +1,16 @@
-<section data-ng-controller="ProjectsController">
-	<div class="page-header">
-		<h1 data-ng-bind="project.name"></h1>
-	</div>
-	<div>
-		<iframe src="//player.vimeo.com/video/88932543" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-	</div>
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
+    <div ng-include="'/modules/core/views/menu.client.view.html'"></div>
+    <section class="container">
+        <section data-ng-controller="ProjectsController">
+            <div class="page-header">
+                <h1 data-ng-bind="project.name"></h1>
+            </div>
+            <div>
+                <iframe src="//player.vimeo.com/video/88932543" width="500" height="281" frameborder="0"
+                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
 
+        </section>
+    </section>
 </section>

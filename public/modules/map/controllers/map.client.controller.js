@@ -1,19 +1,36 @@
 'use strict';
 
-angular.module('map').controller('MapController', ['$scope', 'Authentication', 'ApiKeys', '$http', '$rootScope',
-    function ($scope, Authentication, ApiKeys, $http, $rootScope) {
+angular.module('map').controller('MapController', ['$scope', 'Authentication', 'ApiKeys', '$http', '$rootScope', '$timeout',
+    function ($scope, Authentication, ApiKeys, $http, $rootScope, $timeout) {
 
         $scope.markers = true;
         $scope.filters = true;
         $scope.censusDataTractLayer = true;
         $scope.googlePlacesLayer = false;
         $scope.toggleDetails = false;
+        $scope.triggerMenu = true;
+        $rootScope.triggerMenuCount = 0;
         var sidebarToggle = false;
 
         var dataBoxStaticPopup = null,
             dataBoxStaticPopupFn = null,
             tractData = {},
             censusTractData = null;
+
+        $scope.toggleMainMenu = function(){};
+        ////function that hides the core overlay main view and shows a logo in the upper left corner of the window
+        $scope.triggerMenu = function(){
+            console.log('$rootScope.triggerMenuCount (on map ctrl): ', $rootScope.triggerMenuCount);
+            if($rootScope.triggerMenuCount === 0) {
+                $rootScope.animateSmallLogo();
+                $timeout(function () {
+                    $scope.toggleMainMenu();
+                }, 3000);
+                $rootScope.triggerMenuCount++;
+            }else{
+
+            }
+        };
 
         //service that returns api keys
         ApiKeys.getApiKeys()

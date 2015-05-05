@@ -80,7 +80,7 @@ h1 #form-container, h2 #form-container, h3 #form-container, h4 #form-container, 
 #signup-form {
     position:relative;
     min-height:300px;
-    overflow:hidden;
+    /*overflow:hidden;*/
     padding:30px;
 }
 
