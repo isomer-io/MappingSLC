@@ -7,7 +7,8 @@
 angular.module('core').directive('footerDirective', function() {
     return {
         restrict: 'AE',
-        replace: true,
+        //replace: true,
+        priority: 0,
         templateUrl:'/modules/core/directives/views/footer-directive.html'
     };
 });

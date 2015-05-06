@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('map').service('MarkerDataService', ['$http',
+angular.module('core').service('MarkerDataService', ['$http',
     function($http) {
         // ApiKeys service logic
         // ...

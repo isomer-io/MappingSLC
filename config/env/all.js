@@ -4,7 +4,7 @@ module.exports = {
 	app: {
 		title: 'Mapping Salt Lake City',
 		description: 'Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multimedia projects. We invite people to engage with and evolve this site by submitting their own contributions.',
-		keywords: 'mapping, map, geojson, salt lake city, utah, art, humanities, digital humanities, isomer'
+		keywords: 'mapping, .map, geojson, salt lake city, utah, art, humanities, digital humanities, isomer'
 	},
 	port: process.env.PORT || 3000,
     httpsPort: process.env.PORT || 3001,

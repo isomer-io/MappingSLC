@@ -169,6 +169,10 @@
     transition: all 1s ease-out;
 }
 
+.main-overlay-hidden {
+    visibility: hidden;
+}
+
 .main-overlay-active {
     /*creates animation (vs. transformation)*/
     -webkit-animation: animate-main-overlay 1s ease forwards;
@@ -193,18 +197,18 @@
         border-radius: 50%;
         width: 50px;
         height: 50px;
-        background-image: url(../../core/img/circle_button.png);
+        background-image: url(../../img/circle_button.png);
     }
     /*give the cirle an image without the "X" so that the "X" won't be seen morphing*/
     1% {
-        background-image: url(../../core/img/circle_button_blank.png);
+        background-image: url(../../img/circle_button_blank.png);
     }
     100% {
         transform: translate(-200%, 20%);
         border-radius: 2%;
         width: 150px;
         height: 47px;
-        background-image: url(../../core/img/brand/mapping_150w.png);
+        background-image: url(../../img/brand/mapping_150w.png);
     }
 }
 
@@ -214,18 +218,18 @@
         border-radius: 50%;
         width: 50px;
         height: 50px;
-        background-image: url(../../core/img/circle_button.png);
+        background-image: url(../../img/circle_button.png);
     }
     /*give the cirle an image without the "X" so that the "X" won't be seen morphing*/
     1% {
-        background-image: url(../../core/img/circle_button_blank.png);
+        background-image: url(../../img/circle_button_blank.png);
     }
     100% {
         transform: translate(-200%, -28%);
         border-radius: 2%;
         width: 150px;
         height: 47px;
-        background-image: url(../../core/img/brand/mapping_150w.png);
+        background-image: url(../../img/brand/mapping_150w.png);
     }
 }
 
@@ -234,18 +238,18 @@
         border-radius: 50%;
         width: 50px;
         height: 50px;
-        background-image: url(../../core/img/circle_button.png);
+        background-image: url(../../img/circle_button.png);
     }
     /*give the cirle an image without the "X" so that the "X" won't be seen morphing*/
     1% {
-        background-image: url(../../core/img/circle_button_blank.png);
+        background-image: url(../../img/circle_button_blank.png);
     }
     100% {
         transform: translate(-200%, -1350%);
         border-radius: 2%;
         width: 150px;
         height: 47px;
-        background-image: url(../../core/img/brand/mapping_150w.png);
+        background-image: url(../../img/brand/mapping_150w.png);
     }
 }
 
@@ -263,7 +267,7 @@
     left: 20%;
     height: 50px;
     width: 50px;
-    background-image: url(../../core/img/circle_button.png);
+    background-image: url(../../img/circle_button.png);
 }
 
 .animate-small-logo-active {
@@ -277,3 +281,5 @@
     animation: animate-logo 2s ease-out forwards;
     animation-delay: 1.16s;
 }
+
+

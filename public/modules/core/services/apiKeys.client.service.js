@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('map').service('ApiKeys', ['$http',
+angular.module('core').service('ApiKeys', ['$http',
 	function($http) {
 		// ApiKeys service logic
 		// ...

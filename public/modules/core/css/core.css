@@ -159,7 +159,7 @@ div > ul.pull-right > li > ul > li > a {
 
 /* mapping slc small logo */
 .small-main-logo {
-    content: url(../../core/img/brand/mapping.png);
+    content: url(../../img/brand/mapping.png);
     width: 150px;
     height: 47px;
     position: absolute;
@@ -267,6 +267,10 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
     padding: 15px;
 }
 
+.sign-in-modal-background {
+    background-color: rgba(0,0,0,0.8);
+}
+
 /* form styling -------------- */
 .group {
     position:relative;
@@ -341,7 +345,7 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
 }
 
 .medium-main-logo {
-    content: url(../../core/img/brand/logo-75.png);
+    content: url(../../img/brand/logo-75.png);
     width: 225px;
     height: 71px;
     position: relative;
@@ -353,7 +357,7 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
 
 /* mapping slc small logo */
 .small-main-logo2 {
-    content: url(../../core/img/brand/mapping_150w.png);
+    content: url(../../img/brand/mapping_150w.png);
     width: 150px;
     height: 47px;
     position: absolute;

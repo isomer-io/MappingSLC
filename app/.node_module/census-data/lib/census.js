@@ -98,7 +98,7 @@ $http.get('http://api.census.gov/data/' + censusYear[1] + '/sf1?get=' + censusDa
         for (var i = 0; i < censusData.length; i++) {
             //censusPopulationData(censusData);
             $scope.getCensusData += $scope.getCensusData;
-            console.log('map censusData: ', censusData[i]);
+            console.log('.map censusData: ', censusData[i]);
         }
     })
     .error(function (censusDataError, status) {

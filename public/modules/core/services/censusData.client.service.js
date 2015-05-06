@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('map').service('CensusDataService', ['$http', 'ApiKeys',
+angular.module('core').service('CensusDataService', ['$http', 'ApiKeys',
     function ($http, ApiKeys) {
 
         //Census Data for Population Stats service logic
