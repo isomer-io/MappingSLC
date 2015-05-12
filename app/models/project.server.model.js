@@ -151,6 +151,11 @@ var ProjectSchema = new Schema({
         type: Boolean,
         default: 'false'
     },
+    mainImage: {
+        type: String,
+        default: '',
+        trim: true
+    },
     thumbnail: {
         type: String,
         default: '',
@@ -172,6 +177,11 @@ var ProjectSchema = new Schema({
 //create virtual attribute for full address
 ProjectSchema.virtual('address').get(function () {
     return this.street + ' ' + this.city + ' ' + this.state + ' ' + this.zip;
+});
+
+//create virtual attribute for full name
+ProjectSchema.virtual('fullName').get(function () {
+    return this.firstName + ' ' + this.lastName;
 });
 
 //create virtual attribute setter for to spilt coordinates into lat and lng

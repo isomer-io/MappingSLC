@@ -4,9 +4,10 @@
 
         <ul class="pull-right" data-ng-hide="authentication.user">
             <li class="dropdown" dropdown>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
-                    <span>Sign In</span><b class="caret"></b>
-                </a>
+                <button class="btn btn-dark">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
+                    <span>Sign In</span></a>
+                </button>
 
                 <ul class="dropdown-menu">
                     <li ui-route="/signup" ng-class="{active: $uiRoute}">
@@ -17,6 +18,7 @@
                         <a href="/#!/signin">Sign In</a>
                     </li>
                 </ul>
+
             </li>
         </ul>
 

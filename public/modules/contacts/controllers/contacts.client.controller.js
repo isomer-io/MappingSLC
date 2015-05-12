@@ -1,22 +1,9 @@
 'use strict';
 
 // Contacts controller
-angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Contacts', '$http',
-	function($scope, $stateParams, $location, Authentication, Contacts, $http) {
-		$scope.authentication = Authentication;
-
-		//$scope.mappy = $http.get('http://api.tiles.mapbox.com/v4/poetsrock.55znsh8b/-111.9004,40.8149,13/1280…token=pk.eyJ1IjoicG9ldHNyb2NrIiwiYSI6Imc1b245cjAifQ.vwb579x58Ma-CcnfQNamiw');
-
-		//window.onerror=function(msg, url, linenumber){
-		//	console.log('Error message: ', msg, 'URL: ', url, 'Line Number: ', linenumber);
-		//	return true
-		//};
-
-		//if (console.error()){
-		//	console.log('yep, error!')
-		//}else{
-		//	console.log('nope, nothings yet!')
-		//}
+angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Contacts', '$http',
+	function($scope, $stateParams, $location, AuthenticationService, Contacts, $http) {
+		$scope.authentication = AuthenticationService;
 
 		// Create new Contact
 		$scope.create = function() {

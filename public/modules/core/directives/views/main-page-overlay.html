@@ -1,59 +1,64 @@
+<section class="content">
+    <section class="container">
+        <section class="home-view">
+
+            <div class="container">
+
+                    <span data-ng-show="overlayActive">
+
+                        <div class="group-overlays">
+                            <!--<span class="animate-small-logo" data-ng-click="toggleOverlayFunction('overlay')" ng-class="{'main-overlay-hidden': !overlayActive}"></span>-->
 
 
-    <!--<section class="content">-->
-        <!--<section class="container">-->
-            <!--&lt;!&ndash;<section ng-include="'/modules/.map/views/.map.client.view.html'" id=".map-overlay"></section>&ndash;&gt;-->
+                            <!--<div class="group-overlays">-->
+                            <!--<div class="main-overlay core" ng-class="{'main-overlay-active': animateMainOverlayCheck}">-->
+                            <div class="main-overlay core" ng-class="{'main-overlay-hidden': !overlayActive}">
+                                <span class="animate-small-logo" data-ng-click="toggleOverlayFunction('overlay')"
+                                      ng-class="{'main-overlay-hidden': !overlayActive}"></span>
 
-            <!--&lt;!&ndash;<section data-ng-controller="HomeController" class="home-view">&ndash;&gt;-->
-            <!--<section class="home-view">-->
+                                <div>
+                                    <div class="row">
+                                        <div class="col-md-7 col-sm-6 logo">
+                                            <div class="medium-main-logo img-responsive"></div>
+                                        </div>
+                                        <div class="col-md-5 col-sm-6">
+                                            <sign-in-directive></sign-in-directive>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="main-text">
+                                                <p>Mapping Salt Lake City is a community-created archive of Salt Lake
+                                                    City’s neighborhoods
+                                                    and people that documents the city’s changes through art, critical
+                                                    and creative
+                                                    literature, personal maps and multi-media projects.</p>
 
-                <!--<div class="container">-->
+                                                <p>We invite people to engage with and evolve this site by submitting
+                                                    their own
+                                                    contributions.</p>
 
-        <!--<span data-ng-show="overlayActive">-->
-
-            <!--&lt;!&ndash;<span class="animate-small-logo" data-ng-click="toggleOverlayFunction()" ng-class="{'animate-small-logo-active': animateLogoCheck}"></span>&ndash;&gt;-->
-            <!--<span class="animate-small-logo" data-ng-click="toggleOverlayFunction('overlay')" ng-class="{'main-overlay-hidden': !overlayActive}"></span>-->
-
-            <!--&lt;!&ndash;<div class="main-overlay core" ng-class="{'main-overlay-active': animateMainOverlayCheck}">&ndash;&gt;-->
-            <!--<div class="main-overlay core" data-ng-class="{'main-overlay-hidden': !overlayActive}">-->
-
-                <!--<div class="row">-->
-                    <!--<div class="col-md-10 logo">-->
-                        <!--<div class="medium-main-logo img-responsive"></div>-->
-                    <!--</div>-->
-                    <!--<div class="col-md-2">-->
-                        <!--<sign-in-directive></sign-in-directive>-->
-                    <!--</div>-->
-                    <!--<div class="row">-->
-                        <!--<div class="col-md-12">-->
-                            <!--<div class="main-text">-->
-                                <!--<p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods-->
-                                    <!--and people that documents the city’s changes through art, critical and creative-->
-                                    <!--literature, personal maps and multi-media projects.</p>-->
-
-                                <!--<p>We invite people to engage with and evolve this site by submitting their own-->
-                                    <!--contributions.</p>-->
-                                <!--<p>{{overlayActive}}</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--&lt;!&ndash; two column div begin here &ndash;&gt;-->
-                <!--<div class="row">-->
-                    <!--<submit-project-directive></submit-project-directive>-->
-
-                    <!--<featured-projects></featured-projects>-->
-                <!--</div>-->
-
-            <!--</div>-->
-
-                <!--<footer-directive></footer-directive>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
-                <!--</span>-->
-                <!--</div>-->
+                                <!-- two column div begin here -->
+                                <div class="row">
+                                    <submit-project-directive class="col-md-5 hidden-sm"></submit-project-directive>
 
-            <!--</section>-->
-        <!--</section>-->
-    <!--</section>-->
+                                    <featured-projects class="col-md-7"></featured-projects>
+                                </div>
+
+                            </div>
+
+                            <footer-directive class="hidden-sm"></footer-directive>
+
+                        </div>
+                    </span>
+            </div>
+
+        </section>
+    </section>
+</section>

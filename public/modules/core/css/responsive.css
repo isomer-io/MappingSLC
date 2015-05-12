@@ -1,0 +1,31 @@
+@media (max-width: 972px) {
+    .featured {
+
+    }
+
+    .animate-small-logo {
+        top: -2%;
+        left: -3%
+    }
+
+    .main-overlay {
+        overflow: visible;
+    }
+
+    .footer-overlay form {
+        margin: 0.5% 0;
+    }
+    .small-main-logo{
+        left: 8%;
+    }
+
+    .footer-overlay {
+        padding: 2%;
+
+    }
+
+    .footer-overlay .body {
+        padding-top: 0;
+        margin-left: 0;
+    }
+}

@@ -5,7 +5,7 @@
 -->
 
 <!--this icon will be displayed when the menu is closed-->
-<strong data-ng-hide="toggleSecondMenu" data-ng-click="toggleSecondMenu=!toggleSecondMenu">
+<strong data-ng-show="!toggleSecondMenu" data-ng-click="toggleSecondMenu=!toggleSecondMenu">
     <span>
         <i class="menu-icon menu-closed-icon glyphicon glyphicon-align-justify"></i>
     </span>
@@ -13,10 +13,10 @@
 
 
 <!--this is the icon that will be displayed in the menu is open-->
-<section data-ng-show="toggleSecondMenu" data-ng-click="toggleSecondMenu=!toggleSecondMenu"
-         data-ng-class="{'menu-top-level ': toggleSecondMenu}">
+<section data-ng-show="toggleSecondMenu"
+         data-ng-class="{'menu-top-level': toggleSecondMenu, 'menu-top-level-closed': !toggleSecondMenu}">
 
-    <div> <!--toggle icon for secondary menu, BEGIN-->
+    <div data-ng-click="toggleSecondMenu=!toggleSecondMenu"> <!--toggle icon for secondary menu, BEGIN-->
         <strong>
             <span>
                 <i class="menu-icon menu-open-icon glyphicon glyphicon-align-justify"></i>
@@ -27,49 +27,88 @@
 
 
     <div class="menu-body">
+        <ul>
+            <a href="/#!/home">
+                <div class="row">
+                    <li class="col-md-12">
+                        <i class="glyphicon glyphicon-home"></i>
+                        Home
+                    </li>
+                </div>
+            </a>
 
-        <a href="/#!/home">
-            <div class="row">
-                <li class="col-md-12">
-                    <i class="glyphicon glyphicon-home"></i>
-                    Home
-                </li>
-            </div>
-        </a>
-        <a href="/#!/projects">
-            <div class="row">
-                <li class="col-md-12">
-                    <i class="glyphicon glyphicon-th"></i>
-                    Projects
-                </li>
-            </div>
-        </a>
-        <div class="row">
-            <li class="col-md-12">
-                <a href="/#!/projects/create">
-                    <i class="glyphicon glyphicon-time"></i>
-                    Submit
-                </a>
-            </li>
-        </div>
+            <a href="/#!/projects">
+                <div class="row">
+                    <li class="col-md-12">
+                        <i class="glyphicon glyphicon-th"></i>
+                        Projects
+                    </li>
+                </div>
+            </a>
 
-        <div class="row">
-            <li class="col-md-12">
-                <a href="#">
-                    <i class="glyphicon glyphicon-user"></i>
-                    About Us
-                </a>
-            </li>
-        </div>
+            <a href="/#!/projects/create">
+                <div class="row">
+                    <li class="col-md-12">
+                        <i class="glyphicon glyphicon-time"></i>
+                        Submit
+                    </li>
+                </div>
+            </a>
 
-        <div class="row">
-            <li class="col-md-12">
-                <a href="#">
-                    <i class="glyphicon glyphicon-map-marker"></i>
-                    Contact
-                </a>
-            </li>
-        </div>
+            <a href="#">
+                <div class="row">
+                    <li class="col-md-12">
+                        <i class="glyphicon glyphicon-user"></i>
+                        About Us
+                    </li>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="row">
+                    <li class="col-md-12">
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                        Contact
+                    </li>
+                </div>
+            </a>
+
+            <a href="/#!/projects" data-ng-show="authentication.user">
+                <div class="row">
+                    <li class="col-md-12">
+                        <i class="fa fa-heart"></i>
+                        Favorites
+                    </li>
+                </div>
+            </a>
+
+
+            <ul class="row" data-ng-show="authentication.user">
+                <div class="col-md-12">
+                    <li class="dropdown" dropdown>
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
+
+                            <i class="fa fa-user"></i>
+                            Account
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li ui-route="/signup">
+                                <a href="/#!/signup">Sign Up</a>
+                            </li>
+                            <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                                <a href="/#!/signin">Sign In</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                </div>
+            </ul>
+
+
+        </ul>
+
 
         <hr/>
 

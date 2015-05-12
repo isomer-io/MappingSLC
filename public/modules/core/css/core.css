@@ -1,12 +1,24 @@
+* {
+    font-family: "pragmatica-web", "jaf-facitweb", Verdana, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 html, body {
-    font-family: Lato, "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+    /*font-family: "pragmatica-web", "jaf-facitweb", Verdana, Helvetica, sans-serif;*/
+    /*-webkit-font-smoothing: antialiased;*/
+    /*-moz-osx-font-smoothing: grayscale;*/
 }
 
 body {
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
-
+.center {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 /*applies to all pages that have a static map as background image, so most views other than home page*/
 .main-content-outer {
@@ -24,6 +36,26 @@ body {
     margin: 5% 2%;
     padding: 5%;
     border-radius: 10px;
+}
+
+.sidebar-content-below {
+    height: 100%;
+    background-color: rgba(255, 248, 231, 0.9);
+    margin: 0.5% 2% 5% 2%;
+    padding: 2% 5%;
+    border-radius: 10px;
+}
+
+.sidebar-content-right {
+    height: 100%;
+    background-color: rgba(255, 248, 231, 0.9);
+    margin: 5% 2% 5% 1%;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+.content-wide {
+    width: 125%;
 }
 
 
@@ -54,9 +86,14 @@ body {
     }
 }
 
+div.main-overlay.core > div > div.row:first-child {
+    margin: 0 2.5%;
+}
+
 .core ul {
     /*margin-top: 20px;*/
     list-style-type: none;
+    left: 3%;
 }
 
 .core h2, .core h3, .core h4 {
@@ -74,13 +111,20 @@ div:nth-child(1) > div.row > div > div > p:nth-child(1)::first-letter {
     filter: grayscale(75%);
 }
 
+.core img.saturate:hover, .core img.saturate:active {
+    -webkit-filter: saturate(50%);
+    -moz-filter: saturate(50%);
+    -o-filter: saturate(50%);
+    -ms-filter: ;
+    filter: saturate(50%);
+
+}
+
 .core img.sepia:hover, .core img.sepia:active {
-    filter: sepia(100%);
     -webkit-filter: sepia(100%);
     -moz-filter: sepia(100%);
-    -ms-filter: sepia(100%);
     -o-filter: sepia(100%);
-/*-webkit-filter(1);*/
+    filter: sepia(100%);
 }
 
 .core .navbar-brand, .core .navbar-nav, .core li a {
@@ -156,10 +200,18 @@ div > ul.pull-right > li > ul > li > a {
     display: block;
 }
 
+/*submit-project-directive > section > div > div.pull-right*/
+submit-project-directive > section > div > div {
+
+}
+
+.col-equal {
+    margin-top: 6%;
+}
 
 /* mapping slc small logo */
 .small-main-logo {
-    content: url(../../img/brand/mapping.png);
+    content: url(../img/brand/mapping.png);
     width: 150px;
     height: 47px;
     position: absolute;
@@ -169,6 +221,22 @@ div > ul.pull-right > li > ul > li > a {
     top: 0.75%;
 }
 
+.logo-on-page {
+    top: 2.5%;
+    left: 5%;
+}
+
+.logo-in-menu {
+    top: 3%;
+    left: 15%;
+    width: 18.5rem;
+    height: auto;
+}
+
+
+.group-overlays {
+    position: relative;
+}
 /*
 / creates On/Off Toggle switch
 */
@@ -345,7 +413,7 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
 }
 
 .medium-main-logo {
-    content: url(../../img/brand/logo-75.png);
+    content: url(../img/brand/logo-75.png);
     width: 225px;
     height: 71px;
     position: relative;
@@ -357,7 +425,7 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
 
 /* mapping slc small logo */
 .small-main-logo2 {
-    content: url(../../img/brand/mapping_150w.png);
+    content: url(../img/brand/mapping_150w.png);
     width: 150px;
     height: 47px;
     position: absolute;
@@ -380,7 +448,27 @@ div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
     border: 2px solid #fff;
 }
 
-/*button animation*/
+.btn-dark {
+    background-color: rgba(50, 50, 50, 0.8);
+    font-size: 1.75rem;
+    /*text-decoration: none;*/
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.btn-dark:hover {
+    background-color: rgba(75, 75, 75, 0.4);
+    border: solid 1px #8a887a;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition: all 0.2s ease-in-out 0.2s;
+}
+
+.dropdown-toggle:hover {
+    text-decoration: none;
+}
+
+
+   /*button animation*/
 /* Grow */
 
 .grow {

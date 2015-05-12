@@ -74,6 +74,30 @@ h1 #form-container, h2 #form-container, h3 #form-container, h4 #form-container, 
     background:#00BC8C;
 }
 
+fieldset > div > div {
+    margin-top: 3%;
+    padding: 1%;
+}
+
+
+/* Thumbnail STYLINGS
+============================================================================= */
+
+.list-group-item {
+    width: 15.5rem;
+    height: 15.5rem;
+    border: solid 2px #000000;
+    /*margin: 1%;*/
+}
+
+.essay {
+    background-color: rgba(0, 185, 0, 0.4);
+}
+
+div.list-group > a > div {
+
+}
+
 
 /* ANIMATION STYLINGS
 ============================================================================= */

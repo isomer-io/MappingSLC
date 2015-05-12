@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('users').controller('ContribController', ['$scope', '$animate', '$location',
+angular.module('users').controller('ContribController', ['$scope', '$animate', '$location', 'AuthenticationService',
     function ($scope, $animate, $location) {
 
         //fix for carousel

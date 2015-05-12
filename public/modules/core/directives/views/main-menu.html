@@ -1,16 +1,24 @@
-<div id="sidebar" class="sidebar collapsed">
+<div id="sidebar" class="sidebar" ng-class="{'collapsed': !menuOpen}">
 
     <!-- Tab panes -->
-    <div class="sidebar-content active">
+    <div class="sidebar-content active" data-ng-show="menuOpen">
+
+        <!--logo-->
+        <!--<div data-ng-show="!overlayActive && !menuOpen">-->
+        <div>
+            <div class="small-main-logo logo-in-menu img-responsive"></div>
+        </div>
+
+    <!--home-->
         <!--<div class="sidebar-pane" id="home" data-ng-click="toggleOverlayFunction('menu-active')">-->
-        <div class="sidebar-pane" id="home">
+        <div class="sidebar-pane" id="home" data-ng-click="toggleOverlayFunction('menu-open')">
 
             <div class="morph-content">
                 <div class="content-style-sidebar">
                     <ul>
                         <div class="row">
                             <li class="col-sm-12">
-                                <a href="#" data-ng-click="toggleOverlayFunction('home')" ng-class="{'': !menuActive}">
+                                <a href="#" data-ng-click="toggleOverlayFunction('home')">
                                     <i class="fa fa-home"></i>
                                     Home
                                 </a>
@@ -65,7 +73,6 @@
                 </div>
             </div>
 
-
             <hr/>
             <div class="menu-text">
                 <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s
@@ -92,13 +99,14 @@
 
         </div>
 
-        <!--profile menu-->
-        <!--<div class="sidebar-pane" id="profile" data-ng-click="toggleOverlayFunction('menu-active')">-->
-        <div class="sidebar-pane" id="profile">
+
+    <!--profile menu-->
+
+        <div class="sidebar-pane" id="profile" data-ng-click="toggleOverlayFunction('menu-open')">
         </div>
 
-        <!--<div class="sidebar-pane" id="messages" data-ng-click="toggleOverlayFunction('menu-active')">-->
-        <div class="sidebar-pane" id="messages">
+    <!--messages menu-->
+        <div class="sidebar-pane" id="messages" data-ng-click="toggleOverlayFunction('menu-open')">
             <h1>Messages</h1>
 
             <div id="check-awesome" class="form-group filter first-filter">
@@ -150,9 +158,8 @@
 
         </div>
 
-        <!--settings menu-->
-        <!--<div class="sidebar-pane" id="settings" data-ng-click="toggleOverlayFunction('menu-active')">-->
-        <div class="sidebar-pane" id="settings">
+    <!--settings menu-->
+        <div class="sidebar-pane" id="settings" data-ng-click="toggleOverlayFunction('menu-open')">
             <h1>Project Overview</h1>
 
             <div class="sidebar-view-date ">
@@ -181,14 +188,13 @@
     </div>
 
 
-    <!-- Nav tabs -->
+    <!-- Main Menu Closed -->
     <ul class="sidebar-tabs" role="tablist">
-        <li data-ng-click="triggerMenu(); toggleOverlayFunction('menu-closed')"><a href="#home" role="tab"><i
-                class="fa fa-bars"></i></a></li>
-        <li data-ng-click="triggerMenu()"><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
-        <li data-ng-click="triggerMenu()"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
-        <li data-ng-click="triggerMenu()"><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-        <li data-ng-click="triggerMenu()"><a href="#details" role="tab"></a></li>
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#details" role="tab"></a></li>
     </ul>
 
 </div>

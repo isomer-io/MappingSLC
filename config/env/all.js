@@ -18,7 +18,7 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/ng-ckeditor/ng-ckeditor.css',
-                '//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css',
+                '//api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css',
 				'public/lib/sidebar-v2/css/leaflet-sidebar.min.css'
 				//'public/lib/angular-material/modules/css/angular-material-layout.css',
 				//'public/lib/angular-material/angular-material.min.css'
@@ -39,11 +39,14 @@ module.exports = {
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
 				'public/lib/modernizr/modernizr.js',
-                '//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js',
+                '//api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js',
 				'public/lib/sidebar-v2/js/leaflet-sidebar.min.js',
 				'//maps.stamen.com/js/tile.stamen.js?v1.3.0',
-				'public/modules/core/controllers/menu-uiMorphingButton.js',
-				'public/lib/classie/classie.js'
+				'public/lib/classie/classie.js',
+				'public/lib/masonry/dist/masonry.pkgd.min.js',
+				'public/lib/imagesloaded/imagesloaded.pkgd.js',
+				'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-rc.1/angular.min.js'
+
 				//'public/lib/bootstrap-material-design/dist/js/material.min.js',
 				//'public/lib/angular-material/angular-material.min.js'
 			]

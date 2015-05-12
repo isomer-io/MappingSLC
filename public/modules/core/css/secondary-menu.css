@@ -5,121 +5,6 @@
 ***/
 
 
-
-
-/*/!* =============================================================*/
-   /*SIDE MENU BASIC STYLING*/
- /*============================================================ *!/*/
-
-.hr-set {
-    border-top: 1px solid rgba(0, 0, 0, 0)!important;
-    margin-bottom: 20px;
-}
-
-.hr-set-two {
-    border-top: 1px solid rgba(0, 0, 0, 0.05)!important;
-    margin-bottom: 5px;
-}
-
-
-/*/!* =============================================================*/
-   /*SIDE MENU TWEAKS*/
- /*============================================================ *!/*/
-
-/*.side-menu {*/
-    /*/!*background: url('../img/brand/logo-75.png') no-repeat top right;*!/*/
-    /*background-color: rgba(0, 0, 0, 0.8);*/
-    /*position: fixed;*/
-    /*height: 100%;*/
-    /*width: 23%;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*z-index: 999;*/
-    /*overflow: hidden;*/
-    /*border-radius: 0 15px 15px 0;*/
-    /*color: #ffffff;*/
-    /*text-align: justify;*/
-    /*font-size: 18px;*/
-    /*/!*-webkit-transform: scaleX(2);*!/*/
-    /*/!*transform: scaleX(2);*!/*/
-    /*/!*-webkit-transition: all 0.25s ease-out;*!/*/
-    /*/!*transition: all 0.25s ease-out;*!/*/
-/*}*/
-
-/*.side-menu ul {*/
-    /*list-style: none;*/
-    /*padding: 0;*/
-/*}*/
-
-/*.side-menu ul li {*/
-    /*border-bottom: 1px solid rgba(95, 87, 88, 0.2);*/
-    /*padding:  20px 15px;*/
-    /*display: inline-block;*/
-/*}*/
-
-/*.side-menu ul li a i {*/
-    /*padding-right: 10px;*/
-/*}*/
-
-/*.side-menu ul li a {*/
-    /*text-decoration: none;*/
-    /*font-size: 20px;*/
-    /*/!*transition: all 0.2s linear;*!/*/
-    /*cursor: pointer;*/
-/*}*/
-
-/*.side-menu ul li a:hover, .side-menu ul li a:focus {*/
-    /*/!*font-size: 2.1rem;*!/*/
-    /*transition: all 0.2s ease;*/
-/*}*/
-
-/*.side-menu p {*/
-    /*line-height: 165%;*/
-    /*padding: 0 20px 5px 20px;*/
-/*}*/
-
-/*img.logo.pull-right {*/
-    /*padding-right: 25px;*/
-/*}*/
-
-/*.logo-text {*/
-    /*padding:  20px 30px;*/
-    /*cursor:  pointer;*/
-    /*font-size: 20px;*/
-    /*font-weight: 900;*/
-/*}*/
-
-/*.menu-close-icon {*/
-    /*cursor:  pointer;*/
-    /*color: #fff;*/
-    /*font-size: 35px;*/
-    /*z-index: 10;*/
-    /*margin-top: 2.5%;*/
-    /*margin-left: 0.25%;*/
-/*}*/
-/*.menu-open-icon {*/
-    /*cursor: pointer;*/
-    /*color: rgba(0, 0, 0, 0.6);*/
-    /*position: fixed;*/
-    /*font-size: 35px;*/
-    /*left: .75%;*/
-    /*top: 1.25%;*/
-    /*z-index:  500;*/
-/*}*/
-
-
-
-
-
-
-
-
-/* =============================================================
-   SLIDER MENU FUNCTIONALITY
- ============================================================ */
-
-
-
 /*menu icon in all states*/
 .menu-icon {
     position: fixed;
@@ -138,6 +23,12 @@
 .menu-open-icon {
 }
 
+.menu-top-level-closed {
+    width: 0;
+    display: none;
+    -webkit-transition: all 1.7s ease-in-out;
+    transition: all 1.7s ease-in-out;
+}
 
 /*styling for the secondary menu when open*/
 .menu-top-level {
@@ -145,24 +36,44 @@
     width: 20%;
     height: 100%;
     position: fixed;
+    z-index: 999;
     top: 0;
     left: 0;
     list-style: none;
-    background-color: rgba(200, 200, 200, 0.8);
-    -webkit-transition: all 0.7s ease-in-out;
-    transition: all 0.7s ease-in-out;
-}
-
-.menu-top-level a {
-    /*background-color: green;*/
-}
-
-.menu-top-level a:hover {
-    color: green;
+    background-color: rgba(255, 248, 231, 0.9);
+    -webkit-transition: all 1.7s ease-in-out;
+    transition: all 1.7s ease-in-out;
 }
 
 .menu-body {
     margin: 15% 5%;
+}
+
+.menu-body ul {
+    list-style: none;
+    padding: 3% 0;
+    color: #023a31;
+
+}
+
+.menu-body ul a {
+    font-size: 2rem;
+    padding: 3% 0;
+}
+
+.menu-body ul a:hover {
+
+}
+
+.menu-body ul li {
+    padding: 2%;
+    border: solid 1px #fff;
+}
+
+.menu-body ul li:hover {
+    background-color: #023a31;
+    color: #fff;
+
 }
 
 p.menu-body, .menu-body p {
@@ -176,16 +87,16 @@ p.menu-body, .menu-body p {
 /*styling for the page when secondary menu is closed*/
 .page-view-menu-closed {
     width: 100%;
-    -webkit-transition: all 0.7s ease-in-out;
-    transition: all 0.7s ease-in-out;
+    /*-webkit-transition: all 0.7s ease-in-out;*/
+    /*transition: all 0.7s ease-in-out;*/
 }
 
 /*styling for the page when secondary menu is open*/
 .page-view-menu-open {
     width: 80%;
     left: 20%;
-    -webkit-transition: all 0.7s ease-out;
-    transition: all 0.7s ease-in-out;
+    /*-webkit-transition: left 0.7s ease-out;*/
+    /*transition: width 0.7s ease-in-out;*/
 }
 
 

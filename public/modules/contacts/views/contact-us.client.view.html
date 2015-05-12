@@ -1,109 +1,102 @@
+<secondary-menu-directive></secondary-menu-directive>
+
 <section class="content background" data-ng-controller="RandomMapController"
-         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
-    <div ng-include="'/modules/core/views/menu.client.view.html'"></div>
-    <div class="container">
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
+    <section class="container">
+
         <div class="main-content-outer">
-        <section data-ng-controller="ContactsController" class="main-content-inner">
-            <div class="contact-form">
-                <div class="page-header">
-                    <h1>Contact Us</h1>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">
-                        <p>Thank you for your interest in Mapping Salt Lake City. If you have a general question or
-                            would like to get involved, please contact us with the form
-                            below.</p>
+            <section data-ng-controller="ContactsController" class="main-content-inner">
 
-                        <p>If you would like to submit a project, please review the guidelines and <a
-                                href="/#!/project/create">submit your information</a>.</p>
+                <div class="contact-form">
 
-                        <div class="row">
-                            <div class="col-md-8">
-
-                                <form class="form-horizontal" data-ng-submit="create()" novalidate>
-                                    <fieldset>
-                                        <div class="form-group">
-
-                                            <section class="content bgcolor-4">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <span class="input input--ruri">
-                                                            <input class="input__field input__field--ruri" type="text"
-                                                                   id="input-26" data-ng-model="firstName"
-                                                                   required/>
-                                                            <label class="input__label input__label--ruri"
-                                                                   for="input-26">
-                                                                <span class="input__label-content input__label-content--ruri">First Name</span>
-                                                            </label>
-                                                        </span>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <span class="input input--ruri">
-                                                            <input class="input__field input__field--ruri" type="text"
-                                                                   id="input-27" data-ng-model="lastName"
-                                                                   required>
-                                                            <label class="input__label input__label--ruri"
-                                                                   for="input-27">
-                                                                <span class="input__label-content input__label-content--ruri">Last Name</span>
-                                                            </label>
-                                                        </span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-8">
-                                                <span class="input input--ruri">
-                                                    <input class="input__field input__field--ruri" type="email"
-                                                           id="input-28" data-ng-model="email"
-                                                           required>
-                                                    <label class="input__label input__label--ruri" for="input-28">
-                                                        <span class="input__label-content input__label-content--ruri">E-Mail</span>
-                                                    </label>
-                                                </span>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                <span class="input input--ruri">
-                                                    <input class="input__field input__field--ruri" type="number"
-                                                           id="input-28" data-ng-model="zip" required>
-                                                    <label class="input__label input__label--ruri" for="input-28">
-                                                        <span class="input__label-content input__label-content--ruri">Zip Code</span>
-                                                    </label>
-                                                </span>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <!--<span class="input input&#45;&#45;ruri">-->
-                                                            <textarea class="input__field input__field--ruri" id="input-28"
-                                                                      data-ng-model="message" required>
-                                                            <!--<label class="input__label input__label&#45;&#45;ruri" for="input-28">-->
-                                                                <!--<span class="input__label-content input__label-content&#45;&#45;ruri">Message</span>-->
-                                                            <!--</label>-->
-                                                                </textarea>
-                                                        <!--</span>-->
-                                                    </div>
-                                                </div>
-
-                                            </section>
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <button class="btn btn-main btn-footer-overlay grow" type="submit">Send
-                                            </button>
-                                        </div>
-                                        <div data-ng-show="error" class="text-danger">
-                                            <strong data-ng-bind="error"></strong>
-                                        </div>
-                                    </fieldset>
-                                </form>
-
-                            </div>
-                        </div>
+                    <div class="page-header">
+                        <h1>Contact Us</h1>
                     </div>
-                </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>Thank you for your interest in Mapping Salt Lake City. If you have a general question or would like to get involved, please contact us with the form below.</p>
+
+        <p>If you would like to submit a project, please review the guidelines and <a href="/#!/project/create"> submit your information</a>.</p>
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <form class="form-horizontal" data-ng-submit="create()" novalidate>
+                    <fieldset>
+                        <div class="form-group">
+
+                            <section class="content bgcolor-4">
+                                <div class="row">
+
+
+                                    <!--<input type="text" data-ng-model="state" id="state" class="form-control" placeholder="State" required>-->
+                                    <div class="col-md-6">
+                                    <span class="input input-secondary">
+                                        <input class="input_field input_field-secondary" type="text" id="firstName" data-ng-model="firstName" required/>
+                                        <label class="input_label input_label-secondary" for="firstName">
+                                            <span class="input_label-content input_label-content-secondary">First Name</span>
+                                        </label>
+                                    </span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                    <span class="input input-secondary">
+                                        <input class="input_field input_field-secondary" type="text" id="lasttName" data-ng-model="lasttName" required>
+                                        <label class="input_label input_label-secondary" for="lasttName">
+                                            <span class="input_label-content input_label-content-secondary">Last Name</span>
+                                        </label>
+                                    </span>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <span class="input input-secondary">
+                                            <input class="input_field input_field-secondary" type="email" id="email" data-ng-model="email" required>
+                                            <label class="input_label input_label-secondary" for="email">
+                                                <span class="input_label-content input_label-content-secondary">E-Mail</span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span class="input input-secondary">
+                                            <input class="input_field input_field-secondary" type="number" id="zip" data-ng-model="zip" required>
+                                            <label class="input_label input_label-secondary" for="zip">
+                                                <span class="input_label-content input_label-content-secondary">Zip Code</span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea id="message" data-ng-model="message" name="styled-textarea" onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')" required>Let us know what you think</textarea>
+                                    </div>
+                                </div>
+
+                            </section>
+
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-main btn-footer-overlay grow" type="submit">Send</button>
+                        </div>
+
+                        <div data-ng-show="error" class="text-danger">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+
+                    </fieldset>
+                </form>
+
             </div>
-        </section>
+        </div>
+    </div>
+</div>
+                </div>
+            </section>
         </div>
     </section>
 </section>

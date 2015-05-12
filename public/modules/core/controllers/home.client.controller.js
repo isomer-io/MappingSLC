@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'ApiKeys', '$http',
-    function ($scope, Authentication, ApiKeys, $http) {
+angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http',
+    function ($scope, AuthenticationService, ApiKeys, $http) {
 
         //for overlay
         $scope.featuredProjects = {};
@@ -21,56 +21,86 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
          **/
 
         $scope.overlayActive = true;
-        $scope.menuActive = false;
+        $scope.menuOpen = false;
+        var changeMapFrom = null;
 
-        $scope.toggleOverlayFunction = function(source) {
+        $scope.toggleOverlayFunction = function (source) {
             if ($scope.overlayActive === true && source === 'overlay') {
-                //.map.removeLayer(grayMap);
-                //.map.addLayer(mainMap);
+                console.log('current if is \'overlay\'');
                 $scope.overlayActive = false;
-                console.log($scope.overlayActive);
-            }else if ($scope.overlayActive === false && source === 'home') {
-                console.log('before: ', $scope.overlayActive);
-                console.log('source: ', source);
-                $scope.menuActive = false;
+                //$scope.menuOpen = true;
+                changeMapFrom('gray-map');
+            } else if ($scope.overlayActive === true && source === 'menu-closed') {
+                console.log('current if is \'overlay \'true\' and \'menu-closed\'');
+                $scope.overlayActive = false;
+                $scope.triggerMenu = !$scope.triggerMenu;
+                $scope.menuOpen = true;
+                changeMapFrom('gray-map');
+            } else if ($scope.overlayActive === false && source === 'menu-open') {
+                console.log('current if is \'overlay \'false\' and \'menu-open\'');
+                console.log('$scope.menuOpen: ', $scope.menuOpen);
+                if (getAttribute('active')) {
+                    console.log('in it!');
+                    $scope.menuOpen = false;
+                }
+            } else if ($scope.overlayActive === false && source === 'menu-closed') {
+                console.log('current if is \'overlay \'false\' and \'menu-closed\'');
+                $scope.triggerMenu = !$scope.triggerMenu;
+                if ($scope.menuOpen) {
+                    $scope.menuOpen = false;
+                } else {
+                    $scope.menuOpen = true;
+                }
+            } else if ($scope.overlayActive === false && source === 'home') {
+                console.log('current if is \'home\'');
+                $scope.menuOpen = false;
                 $scope.overlayActive = true;
-                console.log('after: ', $scope.overlayActive);
-            }else if ($scope.overlayActive === true && source === 'menu-closed') {
-                //
-                $scope.overlayActive = false;
-                console.log($scope.overlayActive);
+             }
+        };
+
+
+        //var attribution = null;
+        var attributionFull = false;
+        //var attributionText = '';
+
+        //console.log('outside: ', attributionFull);
+
+        //$scope.toggleAttribution = function(){
+        //        console.log('before: ', attributionFull);
+        //    attributionFull = !attributionFull;
+        //        console.log('after: ', attributionFull);
+                // Add customized attribution, not repeating "Mapbox" (we already have a logo on there).
+            //attributionText = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> & <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, <a href="http://openstreetmap.org/copyright">with map data by OpenStreetMap ©</a> | <a href="http://mapbox.com/map-feedback/" class="mapbox-improve-map">Improve this map</a>';
+        //};
+
+        var toggleAttribution = null;
+
+
+        //subscribe form animations
+        var cssLayout = function(){
+            [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+                // in case the input is already filled..
+                if( inputEl.value.trim() !== '' ) {
+                    classie.add( inputEl.parentNode, 'input--filled' );
+                }
+
+                // events:
+                inputEl.addEventListener( 'focus', onInputFocus );
+                inputEl.addEventListener( 'blur', onInputBlur );
+            } );
+
+            function onInputFocus( ev ) {
+                classie.add( ev.target.parentNode, 'input--filled' );
             }
 
-            //}else if ($scope.overlayActive === true && source === 'menu-active') {
-            //    //
-            //    $scope.overlayActive = false;
-            //    console.log($scope.overlayActive);
-            //}else if ($scope.overlayActive === true && source === 'home') {
-            //    //
-            //    $scope.overlayActive = false;
-            //    console.log($scope.overlayActive);
-
-                
-            //}else if ($scope.overlayActive === false && source === 'overlay') {
-            //    //
-            //    $scope.overlayActive = true;
-            //    console.log($scope.overlayActive);
-            //}else if ($scope.overlayActive === false && source === 'menu-active') {
-            //    //
-            //    $scope.overlayActive = false;
-            //    console.log($scope.overlayActive);
-            //}else if ($scope.overlayActive === false && source === 'menu-closed') {
-            //    //
-            //    $scope.overlayActive = false;
-            //    console.log($scope.overlayActive);
-            //}
-            //else {
-                //.map.addLayer(grayMap);
-                //.map.removeLayer(mainMap);
-            //    $scope.overlayActive = true;
-            //    console.log($scope.overlayActive);
-            //}
+            function onInputBlur( ev ) {
+                if( ev.target.value.trim() === '' ) {
+                    classie.remove( ev.target.parentNode, 'input--filled' );
+                }
+            }
         };
+        cssLayout();
+
 
         /**
          *
@@ -79,36 +109,17 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
          **/
 
 
-
         $scope.markers = true;
         $scope.filters = true;
         $scope.censusDataTractLayer = true;
         $scope.googlePlacesLayer = false;
         //$scope.toggleDetails = false;
-        //$scope.triggerMenu = true;
-        //$rootScope.triggerMenuCount = 0;
-        //var sidebarToggle = false;
 
         var dataBoxStaticPopup = null,
             dataBoxStaticPopupFn = null,
             tractData = {},
             censusTractData = null;
 
-        //$scope.toggleMainMenu = function () {
-        //};
-        //////function that hides the core overlay main view and shows a logo in the upper left corner of the window
-        //$scope.triggerMenu = function () {
-        //    console.log('$rootScope.triggerMenuCount (on .map ctrl): ', $rootScope.triggerMenuCount);
-        //    if ($rootScope.triggerMenuCount === 0) {
-        //        $rootScope.animateSmallLogo();
-        //        $timeout(function () {
-        //            $scope.toggleMainMenu();
-        //        }, 3000);
-        //        $rootScope.triggerMenuCount++;
-        //    } else {
-        //
-        //    }
-        //};
 
         //service that returns api keys
         ApiKeys.getApiKeys()
@@ -118,6 +129,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             .error(function (data, status) {
                 alert('Failed to load Mapbox API key. Status: ' + status);
             });
+
 
 //
 //call the .map and add functionality
@@ -129,12 +141,29 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             //'info' id is part of creating tooltip with absolute position
             var info = document.getElementById('info');
 
-            var map = L.mapbox.map('map', null, {})
+            var map = L.mapbox.map('map', null, {
+                    infoControl: false, attributionControl: false
+                })
                 .setView([40.773, -111.902], 12)
-                //allow users to share maps on social media
+            //allow users to share maps on social media
                 // source: https://www.mapbox.com/mapbox.js/api/v2.1.5/l-mapbox-sharecontrol/
                 .addControl(L.mapbox.shareControl())
                 .addControl(L.mapbox.geocoderControl('mapbox.places'));
+
+            //$scope.$apply(
+                toggleAttribution = function() {
+                    var attribution = L.control.attribution();
+                    attribution.setPrefix('');
+                    var attributionText = '<a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> & <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, <a href="http://openstreetmap.org/copyright">with map data by OpenStreetMap ©</a> | <a href="http://mapbox.com/map-feedback/" class="mapbox-improve-map">Improve this map</a>';
+                    attribution.addAttribution(attributionText);
+                    if(attributionFull) {
+                        attribution.addTo(map);
+                    }else {
+                        attribution.removeLayer(map);
+                    }
+                    attributionFull = !attributionFull;
+            };
+            //);
 
             var grayMap = L.mapbox.tileLayer('poetsrock.b06189bb'),
                 mainMap = L.mapbox.tileLayer('poetsrock.la999il2'),
@@ -156,6 +185,16 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
             grayMap.addTo(map);
             L.control.layers(layers).addTo(map);
+
+            changeMapFrom = function (currentMap) {
+                if (currentMap === 'gray-map') {
+                    map.addLayer(mainMap);
+                    map.removeLayer(grayMap);
+                } else {
+                    map.addLayer(grayMap);
+                    map.removeLayer(mainMap);
+                }
+            };
 
             var sidebar = L.control.sidebar('sidebar', {
                 closeButton: true,

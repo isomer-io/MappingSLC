@@ -85,8 +85,12 @@ var UserSchema = new Schema({
 		type: String,
 		required: 'Provider is required'
 	},
-	providerData: {},
-	additionalProvidersData: {},
+	providerData: {
+
+	},
+	additionalProvidersData: {
+
+	},
 	roles: {
 		type: [{
 			type: String,
@@ -95,19 +99,30 @@ var UserSchema = new Schema({
 		default: ['user']
 	},
 	updated: {
-		type: Date
+		type: Date,
+		default: Date.now
 	},
 	created: {
 		type: Date,
 		default: Date.now
 	},
     lastVisit: {
-        type: Date
+        type: Date,
+		default: Date.now
     },
     //this field will store info about users browsing history and preferences
     browseHistory: {
         type: Object
-    }
+    },
+	favorites: {
+		type: String
+	}
+});
+
+
+//create virtual attribute for full name
+UserSchema.virtual('fullName').get(function () {
+	return this.firstName + ' ' + this.lastName;
 });
 
 /**

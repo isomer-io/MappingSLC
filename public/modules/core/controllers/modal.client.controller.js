@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('core').controller('ModalController', ['$scope', 'Authentication','$modal','$location','$http',
-    function($scope, Authentication,$modal,$location,$http) {
-        $scope.authentication = Authentication;
+angular.module('core').controller('ModalController', ['$scope', 'AuthenticationService','$modal','$location','$http',
+    function($scope, AuthenticationService,$modal,$location,$http) {
+        $scope.authentication = AuthenticationService;
 
 
 

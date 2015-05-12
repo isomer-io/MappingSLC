@@ -4,14 +4,14 @@
 angular.module('users').config(['$httpProvider',
 	function($httpProvider) {
 		// Set the httpProvider "not authorized" interceptor
-		$httpProvider.interceptors.push(['$q', '$location', 'Authentication',
-			function($q, $location, Authentication) {
+		$httpProvider.interceptors.push(['$q', '$location', 'AuthenticationService',
+			function($q, $location, AuthenticationService) {
 				return {
 					responseError: function(rejection) {
 						switch (rejection.status) {
 							case 401:
 								// Deauthenticate the global user
-								Authentication.user = null;
+								AuthenticationService.user = null;
 
 								// Redirect to signin page
 								$location.path('signin');

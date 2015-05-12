@@ -1,45 +1,49 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi',
-    function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi) {
-        $scope.authentication = Authentication;
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi',
+    function ($scope, $stateParams, $location, AuthenticationService, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi) {
+        $scope.AuthenticationService = AuthenticationService;
         $scope.logo = '../../../modules/core/img/brand/mapping_150w.png';
         var width = '800';
-        var height = '350';
+        var height = '250';
         var markerUrl = 'url-http%3A%2F%2Fwww.mappingslc.org%2Fimages%2Fsite_img%2Flogo_marker_150px.png';
         $scope.mapImage = '';
 
         $scope.trustAsHtml = $sce.trustAsHtml;
 
-        //Give user warning if leaving form
-        var preventRunning = false;
-        $scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-            if (preventRunning) {
-                return;
-            }
-            if (fromState.url === '/projects/create' && toState.url !== '/projects/:projectId') {
-                event.preventDefault();
+        $scope.slides = [
 
-                $modal.open({
-                    templateUrl: '/modules/projects/directives/views/modal.html',
-                    controller: function ($scope, $modalInstance) {
-                        $scope.closeMe = function () {
-                            $modalInstance.dismiss(function (reason) {
-                                console.log(reason);
-                            });
-                        };
-                        $scope.leave = function () {
-                            preventRunning = true;
-                            $scope.closeMe();
-                            $location.path(toState);
-                        };
-                    },
-                    size: 'lg'
-                });
+            {
+                image: 'http://lorempixel.com/600/400/sports',
+                text: 'I am some words, a story even. Play Ball!'
+            },
+            {
+                image: 'http://lorempixel.com/600/400/people',
+                text: 'A story even. Peoples'
+            },
+            {
+                image: 'http://lorempixel.com/600/400/',
+                text: 'Story time! Anything!'
+            },
+            {
+                image: 'http://lorempixel.com/600/400/food',
+                text: 'Talk to me! Foodie'
             }
 
-        });
+        ];
+
+
+        $scope.thumbs = [
+            {
+                image: 'http://lorempixel.com/100/100/sports',
+                text: 'I am some words, a story even. Play Ball!'
+            },
+            {
+                image: 'http://lorempixel.com/100/100/people',
+                text: 'A story even. Peoples'
+            }
+        ];
 
         // Create new Project
         $scope.create = function () {
@@ -80,7 +84,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
                 GeoCodeApi.callGeoCodeApi(project, hereKey, hereSecret, saveProject)
                     .success(function (data) {
-                        project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',13/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
+                        project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',15/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
                         saveProject();
                     });
             });
@@ -143,6 +147,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
             language: 'en',
             uiColor: '#000000'
         };
+
+
+
+
 
     }
 ]);

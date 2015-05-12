@@ -8,7 +8,7 @@
     vertical-align: top;
 }
 
-.input__field {
+.input_field {
     position: relative;
     display: block;
     float: right;
@@ -19,15 +19,14 @@
     background: #f0f0f0;
     color: #aaa;
     font-weight: bold;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-appearance: none; /* for box shadows to show on iOS */
 }
 
-.input__field:focus {
+.input_field:focus {
     outline: none;
 }
 
-.input__label {
+.input_label {
     display: inline-block;
     float: right;
     padding: 0 1em;
@@ -45,7 +44,7 @@
     user-select: none;
 }
 
-.input__label-content {
+.input_label-content {
     position: relative;
     display: block;
     padding: 1.6em 0;
@@ -64,12 +63,11 @@
     font-size: 150%;
 }
 
-/* Ruri */
-.input--ruri {
-    margin: 1% 0 0 5%;
+.input-secondary {
+    margin: 1% 0 0 1.4rem;
 }
 
-.input__field--ruri {
+.input_field-secondary {
     width: 100%;
     background: transparent;
     padding: 1.3em 0 0 0.3rem;
@@ -77,21 +75,21 @@
     color: #023A31;
 }
 
-textarea.input__field--ruri  {
+textarea.input_field-secondary  {
     left: 2%;
     height: 50px;
     background: transparent;
     padding: 0.3em 0 0 0.3rem;
     margin-bottom: 2em;
-    border: #85c0b5 solid 3px;
+    border: #023A31 solid 3px;
 }
 
-textarea.input__field--ruri::before {
+textarea.input_field-secondary::before {
     content: 'Talk to us!';
     position: absolute;
 }
 
-textarea.input__field--ruri::after {
+textarea.input_field-secondary::after {
     width: 100%;
     height: 7px;
     content: 'Talk to us!';
@@ -100,11 +98,34 @@ textarea.input__field--ruri::after {
     top: 100%;
 }
 
-textarea.input__field--ruri:active {
+textarea.input_field-secondary:active {
 
 }
 
-.input__label--ruri {
+.contact-form textarea {
+    width: 96%;
+    height: 120px;
+    /*border: 3px solid #cccccc;*/
+    padding: 5px;
+    background-color: transparent;
+    margin: 1% 0 0 1.4rem;
+    border: 0.1rem solid #023A31;
+    /*border-top: 0.1rem solid #023A31;*/
+    /*border-right: 0.1rem solid #023A31;*/
+    /*border-bottom: 1rem solid #023A31;*/
+    /*border-left: 0.1rem solid #023A31;*/
+}
+
+.contact-form textarea:focus {
+    border-bottom: none;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transition: -webkit-transform 0.3s, color 0.3s;
+    transition: transform 0.3s, color 0.3s;
+}
+
+
+.input_label-secondary {
     width: 100%;
     position: absolute;
     text-align: left;
@@ -113,12 +134,12 @@ textarea.input__field--ruri:active {
     pointer-events: none;
 }
 
-.input__label--ruri::after {
+.input_label-secondary::after {
     content: '';
     position: absolute;
     width: 100%;
     height: 7px;
-    background: #85c0b5;
+    background: #023A31;
     left: 0;
     top: 100%;
     -webkit-transform-origin: 50% 100%;
@@ -127,7 +148,7 @@ textarea.input__field--ruri:active {
     transition: transform 0.3s, background-color 0.3s;
 }
 
-.input__label-content--ruri {
+.input_label-content-secondary {
     padding: 0;
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
@@ -135,16 +156,16 @@ textarea.input__field--ruri:active {
     transition: transform 0.3s, color 0.3s;
 }
 
-.input__field--ruri:focus + .input__label--ruri::after,
-.input--filled .input__label--ruri::after {
-    background: #023A31;
-    -webkit-transform: scale3d(1, 0.25, 1);
-    transform: scale3d(1, 0.25, 1);
+.input_field-secondary:focus + .input_label-secondary::after,
+.input--filled .input_label-secondary::after {
+    background: #85c0b5;
+    -webkit-transform: scale3d(1.25, 0.25, 1);
+    transform: scale3d(1.25, 0.25, 1);
 }
 
-.input__field--ruri:focus + .input__label--ruri .input__label-content--ruri,
-.input--filled .input__label--ruri .input__label-content--ruri {
-    color: #023A31;
-    -webkit-transform: translateY(2em) scale3d(0.955, 0.955, 1);
-    transform: translateY(2em) scale3d(0.955, 0.955, 1);
+.input_field-secondary:focus + .input_label-secondary .input_label-content-secondary,
+.input--filled .input_label-secondary .input_label-content-secondary {
+    color: #85c0b5;
+    -webkit-transform: translateY(3.0em) scale3d(0.955, 0.955, 1.5);
+    transform: translateY(3.0em) scale3d(0.955, 0.955, 1.5);
 }

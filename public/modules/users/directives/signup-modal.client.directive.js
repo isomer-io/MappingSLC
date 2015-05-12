@@ -1,5 +1,5 @@
-angular.module("NoteWrangler", ['ngRoutes']);
-angular.module('NoteWrangler').config(function($routeProvider){});
+//angular.module('NoteWrangler', ['ngRoutes']);
+//angular.module('NoteWrangler').config(function($routeProvider){});
 
 'use strict';
 

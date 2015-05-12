@@ -1,9 +1,9 @@
 'use strict';
 
 // Admins controller
-angular.module('admins').controller('AdminsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Admins',
-    function($scope, $stateParams, $location, Authentication, Admins) {
-        $scope.authentication = Authentication;
+angular.module('admins').controller('AdminsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Admins',
+    function($scope, $stateParams, $location, AuthenticationService, Admins) {
+        $scope.authentication = AuthenticationService;
 
         // Create new Admin
         $scope.create = function() {
