@@ -25,17 +25,38 @@
     background-size: 65px 20px;
 }
 
-#map .fa {
-    z-index: 999;
+#map .fa, #map .attrib {
+    z-index: 995;
     font-size: 200%;
     position: absolute;
     display: block;
-    left: 98.5%;
-    bottom: 0.5%;
+    left: 97%;
+    bottom: 1.5%;
     background-repeat: no-repeat;
     background-position: 50% 0;
     overflow: hidden;
     cursor: pointer;
+}
+
+#map .attrib {
+    /*width: 55%;*/
+    z-index: 994;
+    left: 69.5%;
+    border-radius: 0 15px 15px 0;
+    bottom: 1.5%;
+    color: green;
+    padding-right: 2%;
+    text-align: right;
+    font-size: 1.5rem;
+    background: rgba(25, 25, 25, 0.7);
+}
+
+#map .attrib a {
+    font-size: 1.35rem;
+}
+
+#map .attrib a:hover {
+    color: #000;
 }
 
 #map-overlay {
@@ -253,8 +274,17 @@ div .leaflet-top.leaflet-left .mapbox-share {
 }
 
 .leaflet-left .leaflet-control {
-    left: 3849%;
+    left: 3500%;
 }
+
+.leaflet-top.leaflet-right {
+    top: 20%;
+}
+
+.leaflet-top.leaflet-left {
+    top: -7%;
+}
+
 .leaflet-top .leaflet-control {
     border-radius: 20px;
     padding: 5px;

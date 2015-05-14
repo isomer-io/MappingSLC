@@ -5,9 +5,7 @@
 var init = require('./config/init')(),
 	config = require('./config/config'),
 	mongoose = require('mongoose'),
-    http = require('http'),
-    https = require('https'),
-    fs = require('fs');
+	chalk = require('chalk');
 
 /**
  * Main application entry file.
@@ -15,7 +13,17 @@ var init = require('./config/init')(),
  */
 
 // Bootstrap db connection
-var db = mongoose.connect(config.db);
+var db = mongoose.connect(config.db.uri, config.db.options, function(err) {
+	if (err) {
+		console.error(chalk.red('Could not connect to MongoDB!'));
+		console.log(chalk.red(err));
+	}
+});
+mongoose.connection.on('error', function(err) {
+	console.error(chalk.red('MongoDB connection error: ' + err));
+	process.exit(-1);
+	}
+);
 
 // Init the express application
 var app = require('./config/express')(db);
@@ -23,27 +31,19 @@ var app = require('./config/express')(db);
 // Bootstrap passport config
 require('./config/passport')();
 
-//// Start the app by listening on <port>
-//app.listen(config.port);
-
-// This line is from the Node.js HTTPS documentation.
-var options = {
-    key: fs.readFileSync('config/certs/server.key'),
-    cert: fs.readFileSync('config/certs/server.crt')
-};
-
-var secureServer = https.createServer(options, app);
-var regularServer = http.createServer(app);
-
-// Listen on httpsPort
-secureServer.listen(config.httpsPort);
-
-// Listen on regular port
-regularServer.listen(config.port);
+// Start the app by listening on <port>
+app.listen(config.port);
 
 // Expose app
 exports = module.exports = app;
 
 // Logging initialization
-console.log('MEAN.JS application started on port ' + config.port);
-console.log('Listening securely on port ' + config.httpsPort);
+console.log('--');
+console.log(chalk.green(config.app.title + ' application started'));
+console.log(chalk.green('Environment:\t\t\t' + process.env.NODE_ENV));
+console.log(chalk.green('Port:\t\t\t\t' + config.port));
+console.log(chalk.green('Database:\t\t\t' + config.db.uri));
+if (process.env.NODE_ENV === 'secure') {
+	console.log(chalk.green('HTTPs:\t\t\t\ton'));
+}
+console.log('--');

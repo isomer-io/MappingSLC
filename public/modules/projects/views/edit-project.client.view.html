@@ -1,8 +1,14 @@
+<secondary-menu-directive></secondary-menu-directive>
+
 <section class="content background" data-ng-controller="RandomMapController"
-         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
-    <div ng-include="'/modules/core/views/menu.client.view.html'"></div>
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
     <section class="container">
-        <section data-ng-controller="ProjectsController" data-ng-init="findOne()">
+
+        <div class="main-content-outer">
+
+
+            <section data-ng-controller="ProjectsController" data-ng-init="findOne()" class="main-content-inner">
             <div class="page-header">
                 <h1>Edit Project</h1>
             </div>
@@ -70,5 +76,6 @@
                 </form>
             </div>
         </section>
+            </div>
     </section>
 </section>

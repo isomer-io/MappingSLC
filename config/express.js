@@ -5,11 +5,15 @@
 /**
  * Module dependencies.
  */
-var express = require('express'),
+var fs = require('fs'),
+	http = require('http'),
+	https = require('https'),
+	express = require('express'),
 	morgan = require('morgan'),
+	logger = require('./logger'),
 	bodyParser = require('body-parser'),
 	session = require('express-session'),
-	compress = require('compression'),
+	compression = require('compression'),
 	methodOverride = require('method-override'),
 	cookieParser = require('cookie-parser'),
 	helmet = require('helmet'),
@@ -41,16 +45,18 @@ module.exports = function(db) {
 
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {
-		res.locals.url = req.protocol + ':// ' + req.headers.host + req.url;
+		res.locals.url = req.protocol + '://' + req.headers.host + req.url;
 		next();
 	});
 
 	// Should be placed before express.static
-	app.use(compress({
+	app.use(compression({
+		// only compress files for the following content types
 		filter: function(req, res) {
 			return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
 		},
-		level: 9
+		// zlib option for compression level
+		level: 3
 	}));
 
 	// Showing stack errors
@@ -63,11 +69,11 @@ module.exports = function(db) {
 	app.set('view engine', 'server.view.html');
 	app.set('views', './app/views');
 
+	// Enable logger (morgan)
+	app.use(morgan(logger.getLogFormat(), logger.getLogOptions()));
+
 	// Environment dependent middleware
 	if (process.env.NODE_ENV === 'development') {
-		// Enable logger (morgan)
-		app.use(morgan('dev'));
-
 		// Disable views cache
 		app.set('view cache', false);
 	} else if (process.env.NODE_ENV === 'production') {
@@ -75,31 +81,11 @@ module.exports = function(db) {
 	}
 
 	// Request body parsing middleware should be above methodOverride
-	app.use(bodyParser.urlencoded());
+	app.use(bodyParser.urlencoded({
+		extended: true
+	}));
 	app.use(bodyParser.json());
 	app.use(methodOverride());
-
-	// Enable jsonp
-	app.enable('jsonp callback');
-
-	// CookieParser should be above session
-	app.use(cookieParser());
-
-	// Express MongoDB session storage
-	app.use(session({
-		secret: config.sessionSecret,
-		store: new mongoStore({
-			db: db.connection.db,
-			collection: config.sessionCollection
-		})
-	}));
-
-	// use passport session
-	app.use(passport.initialize());
-	app.use(passport.session());
-
-	// connect flash for flash messages
-	app.use(flash());
 
 	// Use helmet to secure Express headers
 	app.use(helmet.xframe());
@@ -110,7 +96,29 @@ module.exports = function(db) {
 
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));
-	app.use(express.static(path.resolve('./data')));
+
+	// CookieParser should be above session
+	app.use(cookieParser());
+
+	// Express MongoDB session storage
+	app.use(session({
+		saveUninitialized: true,
+		resave: true,
+		secret: config.sessionSecret,
+		store: new mongoStore({
+			db: db.connection.db,
+			collection: config.sessionCollection
+		}),
+		cookie: config.sessionCookie,
+		name: config.sessionName
+	}));
+
+	// use passport session
+	app.use(passport.initialize());
+	app.use(passport.session());
+
+	// connect flash for flash messages
+	app.use(flash());
 
 	// Globbing routing files
 	config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {
@@ -139,5 +147,21 @@ module.exports = function(db) {
 		});
 	});
 
+	if (process.env.NODE_ENV === 'secure') {
+		// Load SSL key and certificate
+		var privateKey = fs.readFileSync('./config/sslcerts/key.pem', 'utf8');
+		var certificate = fs.readFileSync('./config/sslcerts/cert.pem', 'utf8');
+
+		// Create HTTPS Server
+		var httpsServer = https.createServer({
+			key: privateKey,
+			cert: certificate
+		}, app);
+
+		// Return HTTPS server instance
+		return httpsServer;
+	}
+
+	// Return Express server instance
 	return app;
 };

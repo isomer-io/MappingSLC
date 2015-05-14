@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'UsersService', 'AuthenticationService',
-	function($scope, $http, $location, UsersService, AuthenticationService) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'AuthenticationService',
+	function($scope, $http, $location, Users, AuthenticationService) {
 		$scope.user = AuthenticationService.user;
 
 		// If user is not signed in then redirect back home
@@ -39,16 +39,20 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		};
 
 		// Update a user profile
-		$scope.updateUserProfile = function() {
-			$scope.success = $scope.error = null;
-			var user = new UsersService($scope.user);
+		$scope.updateUserProfile = function(isValid) {
+			if (isValid) {
+				$scope.success = $scope.error = null;
+				var user = new Users($scope.user);
 
-			user.$update(function(response) {
-				$scope.success = true;
-				AuthenticationService.user = response;
-			}, function(response) {
-				$scope.error = response.data.message;
-			});
+				user.$update(function(response) {
+					$scope.success = true;
+					AuthenticationService.user = response;
+				}, function(response) {
+					$scope.error = response.data.message;
+				});
+			} else {
+				$scope.submitted = true;
+			}
 		};
 
 		// Change user password

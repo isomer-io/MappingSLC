@@ -51,12 +51,14 @@
 
 .menu-body ul {
     list-style: none;
-    padding: 3% 0;
     color: #023a31;
-
 }
 
-.menu-body ul a {
+.menu-body ul {
+    padding: 3% 7%;
+}
+
+.menu-body ul a, .social-media-button li a {
     font-size: 2rem;
     padding: 3% 0;
 }
@@ -70,9 +72,10 @@
     border: solid 1px #fff;
 }
 
-.menu-body ul li:hover {
+.menu-body ul li:hover, .social-media-button li a:hover, .social-media-button li:hover {
     background-color: #023a31;
     color: #fff;
+    text-decoration: none;
 
 }
 

@@ -1,19 +1,26 @@
 <div id="sidebar" class="sidebar" ng-class="{'collapsed': !menuOpen}">
 
-    <!-- Tab panes -->
+    <!-- Main Menu Closed -->
+    <ul class="sidebar-tabs" role="tablist">
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#details" role="tab"></a></li>
+    </ul>
+
+    <!-- Main Menu Open -->
+        <!-- Tab panes -->
     <div class="sidebar-content active" data-ng-show="menuOpen">
 
-        <!--logo-->
-        <!--<div data-ng-show="!overlayActive && !menuOpen">-->
         <div>
             <div class="small-main-logo logo-in-menu img-responsive"></div>
         </div>
 
-    <!--home-->
-        <!--<div class="sidebar-pane" id="home" data-ng-click="toggleOverlayFunction('menu-active')">-->
         <div class="sidebar-pane" id="home" data-ng-click="toggleOverlayFunction('menu-open')">
 
             <div class="morph-content">
+
                 <div class="content-style-sidebar">
                     <ul>
                         <div class="row">
@@ -54,6 +61,15 @@
 
                         <div class="row">
                             <li class="col-sm-12">
+                                <a href="/#!/contributors">
+                                    <i class="fa fa-file"></i>
+                                    Contributors
+                                </a>
+                            </li>
+                        </div>
+
+                        <div class="row">
+                            <li class="col-sm-12">
                                 <a href="/#!/about">
                                     <i class="fa fa-users"></i>
                                     About Us
@@ -69,6 +85,16 @@
                                 </a>
                             </li>
                         </div>
+
+                        <div class="row" data-ng-show="!authentication.admin">
+                            <li class="col-sm-12">
+                                <a href="/#!/admin">
+                                    <i class="fa fa-star"></i>
+                                    Admin Panel
+                                </a>
+                            </li>
+                        </div>
+
                     </ul>
                 </div>
             </div>
@@ -186,15 +212,5 @@
         <div class="sidebar-pane" id="details"><h1>Details</h1>
         </div>
     </div>
-
-
-    <!-- Main Menu Closed -->
-    <ul class="sidebar-tabs" role="tablist">
-        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
-        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
-        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
-        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-        <li data-ng-click="toggleOverlayFunction('menu-closed')"><a href="#details" role="tab"></a></li>
-    </ul>
 
 </div>

@@ -1,0 +1,44 @@
+.widget-box {
+    background: hsla(156, 48%, 8%, 0.2);
+    border: solid 1px #fff9e6;
+    /*width: 100px;*/
+    /*height: 100px;*/
+    display: inline-block;
+    visibility: visible;
+}
+
+a.widget-box {
+    display: block;
+    font-size: 2rem;
+    padding: 3%;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+}
+
+a.widget-box:hover {
+    background: hsla(156, 68%, 29%, 0.5);
+    border: solid 1px #fff9e6;
+}
+
+a.widget-box i {
+    font-size: 5rem;
+    display: flex;
+    padding: 3%;
+}
+
+a.widget-box span {
+    padding-left: 5%;
+    margin-top: 14%;
+}
+
+.main-content-inner > a > span > i {
+    font-size: 2rem;
+    color: green;
+}
+
+.main-content-inner > a > span > i:hover {
+    background: transparent;
+    color: darkgreen;
+    transform: scale(1.5);
+}

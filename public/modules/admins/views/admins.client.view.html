@@ -1,48 +1,94 @@
+<secondary-menu-directive></secondary-menu-directive>
+
 <section class="content background" data-ng-controller="RandomMapController"
-         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }">
-    <div ng-include="'/modules/core/views/menu.client.view.html'"></div>
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
     <section class="container">
-        <section data-ng-controller="ProjectsController" data-ng-init="find()">
-            <div class="page-header">
-                <h1>Admin Panel</h1>
-            </div>
-            <div class="list-group">
-                <a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}"
-                   class="list-group-item">
-                    <small class="list-group-item-text">
-                        Posted on
-                        <span data-ng-bind="project.created | date:'medium'"></span>
-                        by
-                        <span data-ng-bind="project.user.displayName"></span>
-                    </small>
-                    <h4 class="list-group-item-heading" data-ng-bind="project.name"></h4>
-                </a>
-            </div>
-            <div class="alert alert-warning text-center" data-ng-hide="!projects.$resolved || projects.length">
-                No Projects yet, why don't you <a href="/#!/projects/create">create one</a>?
-            </div>
+        <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
-            <div class="col-md-12">
-                <form class="form-horizontal" data-ng-submit="update()" novalidate>
-                    <fieldset>
-                        <div class="form-group">
-                            <label class="control-label" for="name">Name</label>
+        <div class="main-content-outer">
 
-                            <div class="controls">
-                                <input type="text" data-ng-model="project.name" id="name" class="form-control"
-                                       placeholder="Name" required>
+            <section data-ng-controller="ProjectsController" data-ng-init="find()" class="main-content-inner">
+                <div class="admin">
+                    <div class="page-header">
+                        <h1>Admin Panel</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <a href="/#!/admin/users" class="widget-box">
+                                <i class="fa fa-users"></i><br />
+                                <span>User Menu</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="/#!/admin/projects-queue" class="widget-box">
+                                <i class="fa fa-th"></i><br />
+                                <span>Projects</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="/#!/admin/messages" class="widget-box">
+                                <i class="fa fa-envelope"></i><br />
+                                <span>Messages</span>
+                            </a>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="widget-box">
+
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Update" class="btn btn-default">
-                        </div>
-                        <div data-ng-show="error" class="text-danger">
-                            <strong data-ng-bind="error"></strong>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
 
-        </section>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="widget-box">
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="widget-box">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="widget-box">
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="widget-box">
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="widget-box">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
     </section>
 </section>

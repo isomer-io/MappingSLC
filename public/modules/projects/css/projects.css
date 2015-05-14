@@ -80,6 +80,18 @@ fieldset > div > div {
 }
 
 
+/*ckEditor Styling*/
+.cke_wysiwyg, .cke_chrome, #story.cke_1 .cke_chrome, #cke_story {
+    /*border-color: #023A31;*/
+    border-color: rgb(2,58,49);
+
+}
+
+.ck-crazy {
+    border-color: blue;
+}
+
+
 /* Thumbnail STYLINGS
 ============================================================================= */
 

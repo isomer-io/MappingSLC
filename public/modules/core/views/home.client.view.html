@@ -9,9 +9,8 @@
 
     <!--call MapBox map-->
     <div id="map" class="map" data-ng-class="{'map-details': toggleDetails}">
-        <!--<div data-ng-click="attributionFull = !attributionFull" data-ng-show="attributionFull"><a href="#" class="mapbox-maplogo">MapBox</a></div>-->
-        <div data-ng-click="toggleAttribution()" data-ng-show="attributionFull"></div>
-        <i class="fa fa-info-circle" data-ng-click="toggleAttribution()" data-ng-hide="attributionFull"></i>
+        <i class="fa fa-info-circle" data-ng-click="attributionFull = !attributionFull"></i>
+        <div class="attrib" data-ng-show="attributionFull" data-ng-bind-html="attributionText"></div>
     </div>
 
     <div id="info" class="info" data-ng-class="{'info-project-details': toggleDetails}"></div>

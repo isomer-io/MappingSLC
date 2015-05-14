@@ -1,10 +1,10 @@
 'use strict';
 
 (function() {
-	// Authentication controller Spec
-	describe('AuthenticationController', function() {
+	// AuthenticationService controller Spec
+	describe('AuthenticationServiceController', function() {
 		// Initialize global variables
-		var AuthenticationController,
+		var AuthenticationServiceController,
 			scope,
 			$httpBackend,
 			$stateParams,
@@ -39,31 +39,35 @@
 			$httpBackend = _$httpBackend_;
 			$location = _$location_;
 
-			// Initialize the Authentication controller
-			AuthenticationController = $controller('AuthenticationController', {
+			// Initialize the AuthenticationService controller
+			AuthenticationServiceController = $controller('AuthenticationServiceController', {
 				$scope: scope
 			});
 		}));
 
 
 		it('$scope.signin() should login with a correct user and password', function() {
-
-			// test expected GET request
+			// Test expected GET request
 			$httpBackend.when('POST', '/auth/signin').respond(200, 'Fred');
+
 			scope.signin();
 			$httpBackend.flush();
-			// test scope value
+
+			// Test scope value
 			expect(scope.authentication.user).toEqual('Fred');
 			expect($location.url()).toEqual('/');
 		});
 
 		it('$scope.signin() should fail to log in with nothing', function() {
+			// Test expected POST request
 			$httpBackend.expectPOST('/auth/signin').respond(400, {
 				'message': 'Missing credentials'
 			});
+
 			scope.signin();
 			$httpBackend.flush();
-			// test scope value
+
+			// Test scope value
 			expect(scope.error).toEqual('Missing credentials');
 		});
 
@@ -71,22 +75,27 @@
 			// Foo/Bar combo assumed to not exist
 			scope.authentication.user = 'Foo';
 			scope.credentials = 'Bar';
+
+			// Test expected POST request
 			$httpBackend.expectPOST('/auth/signin').respond(400, {
 				'message': 'Unknown user'
 			});
+
 			scope.signin();
 			$httpBackend.flush();
-			// test scope value
+
+			// Test scope value
 			expect(scope.error).toEqual('Unknown user');
 		});
 
 		it('$scope.signup() should register with correct data', function() {
-
-			// test expected GET request
+			// Test expected GET request
 			scope.authentication.user = 'Fred';
 			$httpBackend.when('POST', '/auth/signup').respond(200, 'Fred');
+
 			scope.signup();
 			$httpBackend.flush();
+
 			// test scope value
 			expect(scope.authentication.user).toBe('Fred');
 			expect(scope.error).toEqual(undefined);
@@ -94,15 +103,16 @@
 		});
 
 		it('$scope.signup() should fail to register with duplicate Username', function() {
+			// Test expected POST request
 			$httpBackend.when('POST', '/auth/signup').respond(400, {
 				'message': 'Username already exists'
 			});
+
 			scope.signup();
 			$httpBackend.flush();
-			// test scope value
+
+			// Test scope value
 			expect(scope.error).toBe('Username already exists');
 		});
-
-
 	});
 }());

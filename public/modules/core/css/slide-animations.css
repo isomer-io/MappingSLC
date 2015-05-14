@@ -31,7 +31,7 @@
     transform-style: preserve-3d;
 }
 
-.cs-style-4 figure > div {
+.cs-style-4 figure > div, .cs-style-4 figure > a > div {
     overflow: hidden;
 }
 
@@ -66,4 +66,26 @@
 
 .grid .cs-style-4 {
     width: 150px;
+}
+
+featured-projects figure > figcaption > a {
+    display: inline-block;
+    -webkit-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition: all 0.3s ease 0s;
+}
+
+featured-projects figure > figcaption > a:hover, .grid .cs-style-4 figure figcaption a:hover {
+    text-decoration: none;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.2);
 }

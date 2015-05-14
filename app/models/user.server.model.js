@@ -25,10 +25,16 @@ var validateLocalStrategyPassword = function(password) {
  * User Schema
  */
 var UserSchema = new Schema({
+	namePrefix: {
+		type: String,
+		trim: true,
+		required: '',
+		default: ''
+	},
 	firstName: {
 		type: String,
 		trim: true,
-        required: '',
+		required: '',
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your first name']
 	},
@@ -38,38 +44,44 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
 	},
+	title: {
+		type: String,
+		trim: true,
+		default: '',
+		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
+	},
 	displayName: {
 		type: String,
 		trim: true
 	},
-    street: {
-        type: String,
-        default: '',
-        required: '',
-        trim: true
-    },
-    city: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    state: {
-        type: String,
-        default: '',
-        trim: true
-    },
-    zip: {
-        type: Number,
-        default: '',
-        required: '',
-        trim: true
-    },
+	street: {
+		type: String,
+		default: '',
+		required: '',
+		trim: true
+	},
+	city: {
+		type: String,
+		default: '',
+		trim: true
+	},
+	state: {
+		type: String,
+		default: '',
+		trim: true
+	},
+	zip: {
+		type: Number,
+		default: '',
+		required: '',
+		trim: true
+	},
 	email: {
 		type: String,
-        unique: true,
+		unique: true,
 		trim: true,
 		default: '',
-        required: '',
+		required: '',
 		validate: [validateLocalStrategyProperty, 'Please enter your email, and make sure you have not already signed up with this email.'],
 		match: [/.+\@.+\..+/, 'That doesn\'t look like an emmail address to us. Please make sure you\'re using a valid email address.']
 	},
@@ -106,14 +118,14 @@ var UserSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-    lastVisit: {
-        type: Date,
+	lastVisit: {
+		type: Date,
 		default: Date.now
-    },
-    //this field will store info about users browsing history and preferences
-    browseHistory: {
-        type: Object
-    },
+	},
+	//this field will store info about users browsing history and preferences
+	browseHistory: {
+		type: Object
+	},
 	favorites: {
 		type: String
 	}

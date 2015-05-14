@@ -5,18 +5,10 @@ angular.module('contacts').config(['$stateProvider',
     function ($stateProvider) {
         // Contacts state routing
         $stateProvider.
-            state('listContacts', {
-                url: '/contacts',
-                templateUrl: 'modules/contacts/views/list-contacts.client.view.html'
-            })
-            .state('createContact', {
+            state('createContact', {
                 //url: '/contacts/create',
                 url: '/contact-us',
                 templateUrl: 'modules/contacts/views/contact-us.client.view.html'
-            })
-            .state('viewContact', {
-                url: '/contacts/:contactId',
-                templateUrl: 'modules/contacts/views/view-contact.client.view.html'
             })
             .state('editContact', {
                 url: '/contacts/:contactId/edit',

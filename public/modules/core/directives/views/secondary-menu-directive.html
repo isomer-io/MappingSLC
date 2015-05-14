@@ -6,9 +6,11 @@
 
 <!--this icon will be displayed when the menu is closed-->
 <strong data-ng-show="!toggleSecondMenu" data-ng-click="toggleSecondMenu=!toggleSecondMenu">
-    <span>
-        <i class="menu-icon menu-closed-icon glyphicon glyphicon-align-justify"></i>
-    </span>
+    <div class="menu-toggle-backdrop">
+        <span>
+            <i class="menu-icon menu-closed-icon glyphicon glyphicon-align-justify"></i>
+        </span>
+    </div>
 </strong>
 
 
@@ -106,7 +108,6 @@
                 </div>
             </ul>
 
-
         </ul>
 
 
@@ -122,22 +123,26 @@
             </div>
         </div>
         <ul>
-            <div class="row">
-                <div class="social-media-button">
-                    <li class="col-md-6">
-                        <a href="https://twitter.com/mappingslc">
+
+            <div class="social-media-button">
+                <div class="row">
+                    <a href="https://twitter.com/mappingslc" target="_blank">
+                        <li class="col-md-6">
                             <i class="fa fa-twitter-square"></i>
                             Twitter
-                        </a>
-                    </li>
-                    <li class="col-md-6">
-                        <a href="https://www.facebook.com/MappingSaltLakeCity">
+                        </li>
+                    </a>
+
+                    <a href="https://www.facebook.com/MappingSaltLakeCity" target="_blank">
+                        <li class="col-md-6">
                             <i class="fa fa-facebook-square"></i>
                             Facebook
-                        </a>
-                    </li>
+                        </li>
+                    </a>
+
                 </div>
             </div>
+
         </ul>
     </div>
 </section>

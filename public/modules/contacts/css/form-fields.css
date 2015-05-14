@@ -70,9 +70,10 @@
 .input_field-secondary {
     width: 100%;
     background: transparent;
-    padding: 1.3em 0 0 0.3rem;
-    margin-bottom: 2em;
-    color: #023A31;
+    padding: 1.3rem 0 0 0;
+    /*margin-bottom: 2em;*/
+    color: #006400;
+    font-size: 1.5em;
 }
 
 textarea.input_field-secondary  {
@@ -157,15 +158,22 @@ textarea.input_field-secondary:active {
 }
 
 .input_field-secondary:focus + .input_label-secondary::after,
-.input--filled .input_label-secondary::after {
-    background: #85c0b5;
+.input-filled .input_label-secondary::after {
+    background: #006400;
     -webkit-transform: scale3d(1.25, 0.25, 1);
     transform: scale3d(1.25, 0.25, 1);
 }
 
 .input_field-secondary:focus + .input_label-secondary .input_label-content-secondary,
-.input--filled .input_label-secondary .input_label-content-secondary {
-    color: #85c0b5;
+.input-filled .input_label-secondary .input_label-content-secondary {
+    color: #023A31;
     -webkit-transform: translateY(3.0em) scale3d(0.955, 0.955, 1.5);
     transform: translateY(3.0em) scale3d(0.955, 0.955, 1.5);
+}
+
+.input_field-secondary:focus + .input_label-secondary .input_label-content-secondary,
+.input-filled .input_label-secondary .input_label-content-secondary,
+.input_field-secondary:focus + .input_label-secondary::after,
+.input-filled .input_label-secondary::after {
+    /*background: #85c0b5;*/
 }

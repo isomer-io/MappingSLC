@@ -13,26 +13,7 @@ angular.module('projects').config(['$stateProvider',
             url: '/projects/create',
             templateUrl: 'modules/projects/views/create-project.client.view.html'
         }).
-            //state('createProject', {
-        //
-		//	url: '/projects/create',
-		//	templateUrl: 'modules/projects/views/create-project.client.view.html',
-		//	controller: 'ProjectsController'
-		//}).
-		///*
-		//state('createProject.1', {
-		//	url: '/1',
-		//	templateUrl: 'modules/projects/views/create-project-page1.client.view.html'
-		//})*/
-		//state('createProject.1', {
-		//	url: '/1',
-		//	templateUrl: 'modules/projects/views/create-project-page1.client.view.html'
-		//}).
-		//state('createProject.2', {
-		//	url: '/2',
-		//	templateUrl: 'modules/projects/views/create-project-page2.client.view.html'
-		//}).
-		state('viewProject', {
+        state('viewProject', {
 			url: '/projects/:projectId',
 			templateUrl: 'modules/projects/views/view-project.client.view.html'
 		}).
@@ -47,10 +28,6 @@ angular.module('projects').config(['$stateProvider',
 		state('westsideLeadershipInstitute', {
 			url: '/westside-leadership-institute',
 			templateUrl: 'modules/projects/views/view-project.client.wli.html'
-		}).
-		state('birds', {
-			url: '/birds',
-			templateUrl: 'modules/projects/views/view-project.client.birds.html'
 		});
 	}
 ]);

@@ -30,7 +30,9 @@
 }
 
 .text-center.form-group {
-    width: 125%;
+    width: 205%;
+    margin-left: -55%;
+    margin-top: 5%;
 }
 
 .modal-content input[type=text], .modal-content input[type=password] {

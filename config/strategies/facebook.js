@@ -4,10 +4,9 @@
  * Module dependencies.
  */
 var passport = require('passport'),
-	url = require('url'),
 	FacebookStrategy = require('passport-facebook').Strategy,
 	config = require('../config'),
-	users = require('../../app/controllers/users');
+	users = require('../../app/controllers/users.server.controller');
 
 module.exports = function() {
 	// Use facebook strategy
@@ -15,6 +14,7 @@ module.exports = function() {
 			clientID: config.facebook.clientID,
 			clientSecret: config.facebook.clientSecret,
 			callbackURL: config.facebook.callbackURL,
+			profileFields: ['id', 'name', 'displayName', 'emails', 'photos'],
 			passReqToCallback: true
 		},
 		function(req, accessToken, refreshToken, profile, done) {
@@ -29,6 +29,7 @@ module.exports = function() {
 				lastName: profile.name.familyName,
 				displayName: profile.displayName,
 				email: profile.emails[0].value,
+				profileImageURL: (profile.id) ? '//graph.facebook.com/' + profile.id + '/picture?type=large' : undefined,
 				username: profile.username,
 				provider: 'facebook',
 				providerIdentifierField: 'id',

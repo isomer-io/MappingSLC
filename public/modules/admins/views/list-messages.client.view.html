@@ -9,8 +9,10 @@
         <div class="main-content-outer">
 
             <section class="main-content-inner" data-ng-controller="ContactsController" data-ng-init="find()">
+                <a href="/#!/admin"><span><i class="fa fa-chevron-left"></i></span></a>
+
                 <div class="page-header">
-                    <h1>Contacts</h1>
+                    <h1>Messages</h1>
                 </div>
                 <div class="list-group">
                     <a data-ng-repeat="contact in contacts" data-ng-href="#!/contacts/{{contact._id}}"
