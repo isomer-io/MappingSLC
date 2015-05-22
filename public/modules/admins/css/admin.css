@@ -42,3 +42,60 @@ a.widget-box span {
     color: darkgreen;
     transform: scale(1.5);
 }
+
+.admin-list {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: solid 1px #ffffff;
+    padding: 2% 5%;
+    color: #000;
+    font-size: 1.75rem;
+}
+
+.admin-list:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: solid 1px #023a31;
+    text-decoration: none;
+}
+
+
+thead tr {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-size: 1.85rem;
+    cursor: pointer;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td, .border-bottom-width {
+    border-bottom-width: 5px;
+}
+
+.table-bordered > thead > tr > th:hover, .table-bordered > thead > tr > td:hover, .border-bottom-width:hover {
+    background-color: rgba(3, 3, 3, 0.6);
+}
+
+tbody tr {
+    color: #262626;
+    font-size: 1.7rem;
+}
+
+tbody tr:hover {
+    cursor: pointer;
+}
+
+tbody tr:nth-child(odd) td {
+    background-color: rgba(2, 58, 49, 0.6);
+}
+
+tbody tr:nth-child(odd):hover {
+    background-color: rgba(3, 59, 50, 0.6);
+    color: #fffacd;
+}
+
+tbody tr:nth-child(even) td {
+    background-color: rgba(2, 58, 49, 0.3);
+}
+
+tbody tr:nth-child(even):hover {
+    background-color: rgba(2, 58, 49, 0.4);
+    color: #000000;
+}

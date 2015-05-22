@@ -9,7 +9,12 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 		$scope.create = function() {
 			// Create new Contact object
 			var contact = new Contacts ({
-				name: this.name
+				firstName: this.firstName,
+				lastName: this.lastName,
+				email: this.email,
+				zip: this.zip,
+				newsletter: this.newsletter,
+				message: this.message
 			});
 
 			// Redirect after save
@@ -17,7 +22,12 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 				$location.path('contacts/' + response._id);
 
 				// Clear form fields
-				$scope.name = '';
+				$scope.firstName = '';
+				$scope.lastName = '';
+				$scope.email = '';
+				$scope.zip = '';
+				$scope.newsletter = '';
+				$scope.message = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -87,6 +97,45 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 			}
 		};
 		cssLayout();
+
+		$scope.sentToday = null;
+		//get data from back end for display in table
+		$http.get('/contacts').
+			success(function(messageData){
+				console.log(messageData);
+				$scope.messageData = messageData;
+
+				$scope.sentToday = function(){
+					//if(messageData.created === moment()){
+					//	return moment().calendar(messageData.created);
+					//}else{
+						return moment().calendar(messageData.created);
+					//}
+				};
+
+			}).
+			error(function(data, status){
+
+			});
+
+		//table sort for contact messages
+
+
+		//for adming panel
+		//$scope.dateMoment = moment().format("MMM Do YYYY");
+		//$scope.dateMoment = ;
+		$scope.dateNow = Date.now();
+
+		$scope.toggleSort = true;
+		$scope.oneAtATime = true;
+
+
+
+
+
+
+
+
 	}
 ]);
 

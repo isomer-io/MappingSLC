@@ -18,7 +18,7 @@ var validateLocalStrategyProperty = function(property) {
  * A Validation function for local strategy password
  */
 var validateLocalStrategyPassword = function(password) {
-	return (this.provider !== 'local' || (password && password.length > 8));
+	return (this.provider !== 'local' || (password && password.length >= 8));
 };
 
 /**
@@ -28,7 +28,6 @@ var UserSchema = new Schema({
 	namePrefix: {
 		type: String,
 		trim: true,
-		required: '',
 		default: ''
 	},
 	firstName: {
@@ -40,37 +39,32 @@ var UserSchema = new Schema({
 	},
 	lastName: {
 		type: String,
-		trim: true,
-		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
+		trim: true
 	},
-	title: {
+	userTitle: {
 		type: String,
-		trim: true,
-		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
+		trim: true
 	},
 	displayName: {
 		type: String,
 		trim: true
 	},
-	street: {
-		type: String,
-		default: '',
-		required: '',
-		trim: true
-	},
-	city: {
+	userStreet: {
 		type: String,
 		default: '',
 		trim: true
 	},
-	state: {
+	userCity: {
 		type: String,
 		default: '',
 		trim: true
 	},
-	zip: {
+	userState: {
+		type: String,
+		default: '',
+		trim: true
+	},
+	userZip: {
 		type: Number,
 		default: '',
 		required: '',
@@ -82,8 +76,8 @@ var UserSchema = new Schema({
 		trim: true,
 		default: '',
 		required: '',
-		validate: [validateLocalStrategyProperty, 'Please enter your email, and make sure you have not already signed up with this email.'],
-		match: [/.+\@.+\..+/, 'That doesn\'t look like an emmail address to us. Please make sure you\'re using a valid email address.']
+		validate: [validateLocalStrategyProperty, 'Please enter your e-mail, and make sure you have not already signed up with this e-mail.'],
+		match: [/.+\@.+\..+/, 'That doesn\'t look like an e-mail address to us. Please make sure you\'re using a valid e-mail address.']
 	},
 	password: {
 		type: String,
@@ -106,9 +100,9 @@ var UserSchema = new Schema({
 	roles: {
 		type: [{
 			type: String,
-			enum: ['user', 'contributor', 'admin', 'superUser']
+			enum: ['blocked', 'unregistered', 'registered', 'contributor', 'admin', 'superUser']
 		}],
-		default: ['user']
+		default: ['admin']
 	},
 	updated: {
 		type: Date,
@@ -127,6 +121,16 @@ var UserSchema = new Schema({
 		type: Object
 	},
 	favorites: {
+		type: String
+	},
+	newsletter: {
+		type: Boolean,
+		default: false
+	},
+	profilePic: {
+		type: String
+	},
+	associatedProjects: {
 		type: String
 	}
 });

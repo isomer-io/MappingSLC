@@ -6,7 +6,7 @@ var nodemailer = require('nodemailer'),
 var transporter = nodemailer.createTransport({
     service: 'Hotmail',
     auth: {
-        user: 'christanseer@hotmail.com',
+        user: emailAddress,
         pass: emailKey
     }
 });

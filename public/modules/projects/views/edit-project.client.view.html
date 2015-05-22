@@ -58,16 +58,29 @@
                                            required>
                                 </div>
 
+                                <div class="controls">
+                                    <input type="text" data-ng-model="category" id="category" class="form-control"
+                                           placeholder="Category">
+                                </div>
+
+                                <div class="controls">
+                                    <input type="text" data-ng-model="vimeoId" id="vimeoId" class="form-control"
+                                           placeholder="Vimeo ID">
+                                </div>
+
 
                                 <label class="control-label">Story</label>
-
                                 <div class="controls">
                                     <textarea ckeditor="editorOptions" ng-model="story" id="story" required></textarea>
                                 </div>
+
+
                             </div>
+
                             <div class="form-group">
                                 <input type="submit" value="Update" class="btn btn-primary btn-lg btn-main grow">
                             </div>
+
                             <div data-ng-show="error" class="text-danger">
                                 <strong data-ng-bind="error"></strong>
                             </div>

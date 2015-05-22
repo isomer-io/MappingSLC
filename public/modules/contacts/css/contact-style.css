@@ -41,3 +41,12 @@
     float:left;
     padding-top:0;
 }
+
+.contact-form #check-awesome {
+    left: 6%;
+    margin-bottom: 4%;
+}
+
+.contact-form #check-awesome > label > span.box {
+    border: 2px solid #023a31;
+}

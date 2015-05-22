@@ -31,16 +31,6 @@ module.exports = function (app) {
                         console.log('final results: ', results);
                     });
 
-
-                    //request('https://www.google.com',
-                    //    function (error, response, body) {
-                    //    //body = JSON.parse(body);
-                    //    //res.jsonp(body);
-                    //    console.log(body);
-                    //});
-
-
-                    //return pageToken;
                 });
 
         });
@@ -63,6 +53,12 @@ module.exports = function (app) {
         .get(function (req, res) {
             res.jsonp(markerData);
         });
+
+    //// User Profile Data Routes
+    //app.route('/userData')
+    //    .get(function (req, res) {
+    //        res.jsonp(userData);
+    //    });
 
 
 }

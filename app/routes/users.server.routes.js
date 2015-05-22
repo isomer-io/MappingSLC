@@ -14,6 +14,18 @@ module.exports = function(app) {
 	app.route('/users').put(users.update);
 	app.route('/users/accounts').delete(users.removeOAuthProvider);
 
+
+	// Users Routes for Admin Panel
+	app.route('/admin/users')
+		.get(users.isAdmin, users.list)
+		.post(users.isAdmin, users.create);
+	app.route('/admin/users/schema')
+		.get(users.isAdmin, users.getSchema);
+	app.route('/admin/users/:userId')
+		.put(users.isAdmin, users.update)
+		.delete(users.isAdmin, users.delete);
+
+
 	// Setting up the users password api
 	app.route('/users/password').post(users.changePassword);
 	app.route('/auth/forgot').post(users.forgot);

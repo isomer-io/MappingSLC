@@ -24,7 +24,7 @@
             <div class="col-md-8">
 
                 <form class="form-horizontal" data-ng-submit="create()" novalidate>
-                    <fieldset>
+                    <fieldset class="contact">
                         <div class="form-group">
 
                             <section class="content">
@@ -42,8 +42,8 @@
 
                                     <div class="col-md-6">
                                     <span class="input input-secondary">
-                                        <input class="input_field input_field-secondary" type="text" id="lasttName" data-ng-model="lasttName" required>
-                                        <label class="input_label input_label-secondary" for="lasttName">
+                                        <input class="input_field input_field-secondary" type="text" id="lastName" data-ng-model="lastName">
+                                        <label class="input_label input_label-secondary" for="lastName">
                                             <span class="input_label-content input_label-content-secondary">Last Name</span>
                                         </label>
                                     </span>
@@ -62,16 +62,51 @@
                                     </div>
                                     <div class="col-md-4">
                                         <span class="input input-secondary">
-                                            <input class="input_field input_field-secondary" type="number" id="zip" data-ng-model="zip" required>
+                                            <input class="input_field input_field-secondary" type="text" id="zip" data-ng-model="zip" required>
                                             <label class="input_label input_label-secondary" for="zip">
                                                 <span class="input_label-content input_label-content-secondary">Zip Code</span>
                                             </label>
                                         </span>
                                     </div>
                                 </div>
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-12">-->
+                                        <!--<span class="input input-secondary">-->
+                                            <!--<input class="input_field input_field-secondary" type="checkbox" id="newsletter" data-ng-model="newsletter">-->
+                                            <!--<label class="input_label input_label-secondary" for="newsletter">-->
+                                                <!--<span class="input_label-content input_label-content-secondary">Subscribe to our Quarterly Newsletter?</span>-->
+                                            <!--</label>-->
+                                        <!--</span>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+
+                                <div class="row">
+                                <div class="col-md-12">
+
+                                <div id="check-awesome" class="form-group filter first-filter">
+                                    <input type="checkbox" name="filters" id="newsletter" value="newsletter">
+                                    <label for="newsletter">
+                                        <span class="check"></span>
+                                        <span class="box"></span>
+                                        Subscribe to our quarterly e-newsletter
+                                    </label>
+                                </div>
+                                </div>
+                                </div>
+
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-12">-->
+                                        <!--<label class="checkbox">-->
+                                            <!--<input type="checkbox" data-ng-model="newsletter">-->
+                                            <!--Subscribe to our quarterly e-newsletter.-->
+                                        <!--</label>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea id="message" data-ng-model="message" name="styled-textarea" onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')" required>Let us know what you think</textarea>
+                                        <textarea id="message" data-ng-model="message" name="styled-textarea" required>Let us know what you think</textarea>
                                     </div>
                                 </div>
 
@@ -80,7 +115,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-main btn-footer-overlay grow" type="submit">Send</button>
+                            <button class="btn btn-main btn-lg grow btn-contact" type="submit">Send</button>
                         </div>
 
                         <div data-ng-show="error" class="text-danger">

@@ -102,12 +102,12 @@ var ProjectSchema = new Schema({
             }
         }
     },
-    vimeo_id: {
+    vimeoId: {
         type: String,
         es_indexed: true,
         trim: true
     },
-    soundCloud_id: {
+    soundCloudId: {
         type: String,
         es_indexed: true,
         trim: true
@@ -136,7 +136,7 @@ var ProjectSchema = new Schema({
     category: {
         type: [{
             type: String,
-            enum: ['multimedia', 'essay', 'literature', 'interview', 'map']
+            enum: ['multimedia', 'essay', 'literature', 'interview', 'map', 'video', 'audio']
         }],
         trim: true
     },

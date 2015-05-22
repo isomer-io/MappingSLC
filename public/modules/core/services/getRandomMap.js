@@ -7,12 +7,14 @@ angular.module('core').service('RandomMapService', [
         
         var maps = {
             'mapbox': {
-                'originalMap': 'poetsrock.55znsh8b',
+                'originalMap': 'poetsrock.j5o1g9on',
                 'grayMap': 'poetsrock.b06189bb',
                 'mainMap': 'poetsrock.la999il2',
                 'topoMap': 'poetsrock.la97f747',
                 'greenMap': 'poetsrock.jdgpalp2',
-                'comic': 'poetsrock.23d30eb5'
+                'comic': 'poetsrock.23d30eb5',
+                'fancyYouMap': 'poetsrock.m6b73kk7',
+                'pencilMeInMap': 'poetsrock.m6b7f6mj'
             },
             'thunderforest': {
                 'landscape': 'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png'
@@ -26,7 +28,7 @@ angular.module('core').service('RandomMapService', [
         var url = {
             'mapbox': 'http://api.tiles.mapbox.com/v4',
             'thunderforest': 'http://{s}.tile.thunderforest.com',
-            'stamen': 'http://maps.stamen.com/m2i/',
+            'stamen': 'http://maps.stamen.com/m2i',
             'ngs': ''
         };
         
@@ -38,6 +40,8 @@ angular.module('core').service('RandomMapService', [
             ['mapbox', maps.mapbox.topoMap],
             ['mapbox', maps.mapbox.greenMap],
             ['mapbox', maps.mapbox.comic],
+            ['mapbox', maps.mapbox.fancyYouMap],
+            ['mapbox', maps.mapbox.pencilMeInMap],
             ['stamen', maps.stamen.watercolor],
             ['stamen', maps.stamen.toner],
             ['thunderforest', maps.thunderforest.landscape]
@@ -66,7 +70,7 @@ angular.module('core').service('RandomMapService', [
         };
         
         this.getRandomMap = function () {
-            var randomNum = Math.floor(getRandomArbitrary(0, 8));
+            var randomNum = Math.floor(getRandomArbitrary(0, 10));
             var mapVendor = randomMap[randomNum][0];
             var randomMapId = randomMap[randomNum][1];
 
@@ -75,7 +79,8 @@ angular.module('core').service('RandomMapService', [
             //}else if (mapVendor === 'thunderforest') {
             //    return return staticMap = {mapUrl: url.thunderforest + '/' + randomMapId + '/'};
             } else if (mapVendor === 'stamen') {
-                return staticMap = {mapUrl: url.stamen + '/#watercolor' + '1280x720/' + randomZoom() + '/' + randomLat() + '/' + randomLng()};
+                //return staticMap = {mapUrl: url.stamen + '/#watercolor' + '1280:720/' + randomZoom() + '/' + randomLat() + '/' + randomLng()};
+                return staticMap = {mapUrl: 'http://maps.stamen.com/m2i/#watercolor/1280:720/14/40.8905/-112.0204'};
             } else {
                 console.log('Error!\nrandomNum: ', randomNum, '\nmapVendor', mapVendor, '\nrandomMapId: ', randomMapId );
             }

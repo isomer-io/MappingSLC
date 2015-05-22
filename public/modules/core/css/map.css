@@ -27,7 +27,7 @@
 
 #map .fa, #map .attrib {
     z-index: 995;
-    font-size: 200%;
+    font-size: 220%;
     position: absolute;
     display: block;
     left: 97%;
@@ -36,27 +36,38 @@
     background-position: 50% 0;
     overflow: hidden;
     cursor: pointer;
+    /*background: -webkit-linear-gradient(#3A3836, #ffffff);*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+    /*transform: rotate(270deg);*/
 }
 
 #map .attrib {
-    /*width: 55%;*/
-    z-index: 994;
-    left: 69.5%;
-    border-radius: 0 15px 15px 0;
-    bottom: 1.5%;
-    color: green;
-    padding-right: 2%;
-    text-align: right;
-    font-size: 1.5rem;
+    width: 29%;
+    z-index: 800;
+    left: 69.15%;
+    border-radius: 15px;
+    bottom: 1.25%;
+    color: #f2f2f2;
+    padding: 0.25rem 3% 0.25rem 2%;
+    text-align: center;
+    font-size: 1.35rem;
     background: rgba(25, 25, 25, 0.7);
+    border: solid 2px #ffffff;
 }
 
 #map .attrib a {
     font-size: 1.35rem;
+    color: #f2f2f2;
+
 }
 
 #map .attrib a:hover {
-    color: #000;
+    border-bottom: solid 2px lime;
+}
+
+.atrrib-clicked {
+    color: #ffffff;
 }
 
 #map-overlay {
@@ -278,12 +289,50 @@ div .leaflet-top.leaflet-left .mapbox-share {
 }
 
 .leaflet-top.leaflet-right {
-    top: 20%;
+    top: 15%;
 }
 
 .leaflet-top.leaflet-left {
     top: -7%;
+    left: 8.75%;
 }
+
+.leaflet-control-layers label {
+    /*margin: 5%;*/
+    font-size: 1.25em;
+    font-family: "pragmatica-web", "jaf-facitweb", Verdana, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.leaflet-control-layers-expanded {
+    width: 125%;
+    transition: all 0.7s ease;
+    background-color: #494949;
+}
+
+.leaflet-control-layers-expanded label:hover {
+    background-color: #fff;
+    color: #454545;
+}
+
+/*.leaflet-control-layers-expanded input[type="radio"]:checked + label,*/
+/*input[type="radio"]:checked + label,*/
+/*.leaflet-control-layers-selector:checked + label,*/
+/*.leaflet-control input[type="radio"]:checked,*/
+/*input[type="radio"]:checked .leaflet-control-layers-selector + label,*/
+/*.map input[type="radio"]:checked,*/
+/*input[type="radio"]:checked + label,*/
+/*input[type="radio"]:checked ~ label,*/
+/*#map > div.leaflet-control-container > div.leaflet-top.leaflet-right > div.leaflet-control-layers.leaflet-control.leaflet-control-layers-expanded > form > div.leaflet-control-layers-base > label ~ input[type="radio"]:checked,*/
+.leaflet-control-layers label ~ input:checked
+{
+    background-color: #023a31!important;
+    color: #454545!important;
+    width: 50px;
+    margin: 50px;
+}
+
 
 .leaflet-top .leaflet-control {
     border-radius: 20px;

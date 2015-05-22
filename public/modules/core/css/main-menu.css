@@ -80,11 +80,6 @@ ul.sidebar-tabs.collapsed {
     padding: 0 5%;
 }
 
-.sidebar ul li {
-    list-style: none;
-    /*padding: 3%;*/
-}
-
 .sidebar-content ul li {
     display: inline-block;
 }
@@ -93,10 +88,17 @@ ul.sidebar-tabs.collapsed {
     padding-right: 10px;
 }
 
-.sidebar ul li a:hover, .sidebar ul li a:focus {
-    font-size: 2.4rem;
+.sidebar ul li {
+    list-style: none;
+}
+
+.sidebar ul li:hover, .sidebar ul li:focus {
+    margin-right: 20px;
+    border-radius: 5px;
+    border-top: solid 1px #fff;
+    border-bottom: solid 1px #fff;
+    transition: all 0.4s ease-out;
     text-decoration: none;
-    /*transition: all 0.4s ease-out;*/
 }
 
 #sidebar > ul:active {
@@ -104,10 +106,13 @@ ul.sidebar-tabs.collapsed {
 }
 
 .side-menu ul li a {
-    text-decoration: none;
     font-size: 20px;
     transition: all 0.2s linear;
     cursor: pointer;
+}
+
+.side-menu ul li a:hover {
+    text-decoration: none;
 }
 
 .sidebar {
@@ -163,13 +168,29 @@ ul.sidebar-tabs.collapsed {
     color: #faf1e0;
     font-weight: 400;
     font-size: 1.05em;
-    box-shadow: inset 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .content-style-sidebar ul li a:hover {
+    text-decoration: none;
+}
+
+.content-style-sidebar ul li:hover {
     background: #023A31;
     opacity: 0.75;
     transition: all 0.5s ease-out;
+}
+
+div.morph-content > div > ul > div > li a {
+    padding-left: 10%;
+}
+
+div.morph-content > div > ul > div > li {
+    border-top: solid 1px rgba(255, 255, 255, 0.1);
+    border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+#home > div.morph-content > div > ul {
+    padding-left: 0;
 }
 
 

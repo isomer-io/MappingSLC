@@ -12,7 +12,8 @@ var apiKeys = require('../../app/models/data/private/keys.js');
 module.exports = {
 	db: {
 		//uri: 'mongodb://localhost/mean-dev',
-		uri: 'mongodb://localhost/mapping-salt-lake-city-dev',
+		//uri: 'mongodb://localhost/mapping-salt-lake-city-dev',
+		uri: 'mongodb://localhost/mapping-slc-dev',
 		options: {
 			user: '',
 			pass: ''

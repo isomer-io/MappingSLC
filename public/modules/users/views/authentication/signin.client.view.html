@@ -13,22 +13,55 @@
 		<a href="/auth/linkedin" class="undecorated-link">
 			<img src="/modules/users/img/buttons/linkedin.png">
 		</a>
-		<a href="/auth/github" class="undecorated-link">
-			<img src="/modules/users/img/buttons/github.png">
-		</a>
+
 	</div>
 	<h3 class="col-md-12 text-center">Or with your account</h3>
 	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
 		<form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
 			<fieldset>
-				<div class="form-group">
-					<label for="username">Username</label>
-					<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
+
+				<div class="row"> <!-- Row #2 -->
+					<div class="col-md-12">
+                    <span class="input input-secondary">
+                        <input class="input_field input_field-secondary" type="text" id="email" data-ng-model="credentials.email"/>
+                        <label class="input_label input_label-secondary" for="email">
+							<span class="input_label-content input_label-content-secondary">E-mail</span>
+						</label>
+                    </span>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+
+				<div class="row"> <!-- Row #2 -->
+					<div class="col-md-12">
+                    <span class="input input-secondary">
+                        <input class="input_field input_field-secondary" type="text" id="username" data-ng-model="credentials.username"/>
+                        <label class="input_label input_label-secondary" for="username">
+							<span class="input_label-content input_label-content-secondary">Username</span>
+						</label>
+                    </span>
+					</div>
 				</div>
+
+				<!--<div class="form-group">-->
+					<!--<label for="username">Username</label>-->
+					<!--<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">-->
+				<!--</div>-->
+
+				<div class="row">  <!-- Row #4 -->
+					<div class="col-md-12">
+                        <span class="input input-secondary">
+                            <input class="input_field input_field-secondary" type="password" id="password" data-ng-model="credentials.password"/>
+                            <label class="input_label input_label-secondary" for="password">
+								<span class="input_label-content input_label-content-secondary">Password</span>
+							</label>
+                        </span>
+					</div>
+				</div>
+
+				<!--<div class="form-group">-->
+					<!--<label for="password">Password</label>-->
+					<!--<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">-->
+				<!--</div>-->
 				<div class="text-center form-group">
 					<button type="submit" class="btn btn-primary">Sign in</button>&nbsp; or&nbsp;
 					<a href="/#!/signup">Sign up</a>

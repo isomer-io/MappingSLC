@@ -50,7 +50,10 @@ module.exports = {
 				'//api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css',
 				'public/lib/sidebar-v2/css/leaflet-sidebar.min.css',
 				'public/lib/font-awesome/css/font-awesome.min.css',
-				'public/lib/ng-ckeditor/ng-ckeditor.css'
+				'public/lib/ng-ckeditor/ng-ckeditor.css',
+				'public/lib/angular-tablesort/tablesort.css',
+				'public/lib/ng-grid/ng-grid.min.css',
+				'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css'
 
 			],
 			js: [
@@ -76,7 +79,12 @@ module.exports = {
 				'//maps.stamen.com/js/tile.stamen.js?v1.3.0',
 				'public/lib/classie/classie.js',
 				'public/lib/masonry/dist/masonry.pkgd.min.js',
-				'public/lib/imagesloaded/imagesloaded.pkgd.js'
+				'public/lib/imagesloaded/imagesloaded.pkgd.js',
+				'public/lib/angular-tablesort/js/angular-tablesort.js',
+				'public/lib/moment/min/moment.min.js',
+				'public/lib/ng-grid/ng-grid-2.0.14.min.js',
+				'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js'
+
 			]
 		},
 		css: [

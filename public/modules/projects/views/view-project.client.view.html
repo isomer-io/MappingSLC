@@ -5,7 +5,7 @@
          data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
     <section class="container">
         <section data-ng-controller="ProjectsController" data-ng-init="findOne()">
-
+            <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
             <div class="main-content-outer">
 
@@ -20,7 +20,12 @@
 
                             <div class="page-header">
                                 <h1 data-ng-bind="project.title"></h1>
+                                {{category}}
                             </div>
+
+                            <!--<div class="videoWrapper" data-ng-if="">-->
+                                <!--<iframe data-ng-show="!videoSizeSelect()" width="560" height="349" data-ng-src={{vimeoId}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
+                            <!--</div>-->
 
                             <small>
                                 <em class="text-muted">
@@ -31,8 +36,8 @@
                                     <span data-ng-bind="project.user.fullName"></span>
                                 </em>
                             </small>
-
-                            <div>
+                            <!--data-ng-class="{'input-filled': user.userZip !== ''}"-->
+                            <div data-ng-show="project.story !== ''">
                                 <p data-ng-bind-html="trustAsHtml(project.story)"></p>
                             </div>
 

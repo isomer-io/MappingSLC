@@ -12,3 +12,26 @@
 	right: 10px;
 	position: absolute;
 }
+
+.users .open .dropdown-menu {
+	background: rgba(235, 235, 235, 0.8);
+	border: solid 3px #2c2c2c;
+	border-radius: 5px;
+	left: -50%;
+}
+
+.users .dropdown-menu > li > a {
+	font-size: 2rem;
+}
+
+.users .dropdown-menu > li > a:hover, .users .dropdown-menu > li > a:focus {
+	background: #023a31;
+	color: #ffffff;
+	border: solid 1px #ffffff;
+}
+
+
+.users-dropdown ul > li > a,
+.users-dropdown .dropdown-menu > li > a {
+
+}

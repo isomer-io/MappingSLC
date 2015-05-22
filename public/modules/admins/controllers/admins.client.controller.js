@@ -1,79 +1,12 @@
 'use strict';
 
 // Admins controller
-angular.module('admins').controller('AdminsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Admins', 'Projects', 'UsersService',
-    function($scope, $stateParams, $location, AuthenticationService, Admins, Projects, UsersService) {
+angular.module('admins').controller('AdminsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Admins', 'Projects', 'UsersService', 'Contacts',
+    function($scope, $stateParams, $location, AuthenticationService, Admins, Projects, UsersService, Contacts) {
         $scope.authentication = AuthenticationService;
 
         // If user is not an administrator then redirect back home
         if (!$scope.admin) $location.path('/');
-
-
-        //// Create new Admin
-        //$scope.create = function() {
-        //    // Create new Admin object
-        //    var admin = new Admins ({
-        //        firstname: this.firstname,
-        //        lastname: this.lastname,
-        //        email: this.email,
-        //        story: this.story,
-        //        address: this.address
-        //    });
-        //
-        //    // Redirect after save
-        //    admin.$save(function(response) {
-        //        $location.path('admins/' + response._id);
-        //
-        //        // Clear form fields
-        //        $scope.firstname = '';
-        //        $scope.lastname = '';
-        //        $scope.email = '';
-        //        $scope.story = '';
-        //        $scope.address= '';
-        //    }, function(errorResponse) {
-        //        $scope.error = errorResponse.data.message;
-        //    });
-        //};
-        //
-        //// Remove existing Admin
-        //$scope.remove = function(admin) {
-        //    if ( admin ) {
-        //        admin.$remove();
-        //
-        //        for (var i in $scope.admins) {
-        //            if ($scope.admins [i] === admin) {
-        //                $scope.admins.splice(i, 1);
-        //            }
-        //        }
-        //    } else {
-        //        $scope.admin.$remove(function() {
-        //            $location.path('admins');
-        //        });
-        //    }
-        //};
-        //
-        //// Update existing Admin
-        //$scope.update = function() {
-        //    var admin = $scope.admin;
-        //
-        //    admin.$update(function() {
-        //        $location.path('admins/' + admin._id);
-        //    }, function(errorResponse) {
-        //        $scope.error = errorResponse.data.message;
-        //    });
-        //};
-        //
-        //// Find a list of Admins
-        //$scope.find = function() {
-        //    $scope.admins = Admins.query();
-        //};
-        //
-        //// Find existing Admin
-        //$scope.findOne = function() {
-        //    $scope.admin = Admins.get({
-        //        adminId: $stateParams.adminId
-        //    });
-        //};
 
 
         /**
@@ -158,6 +91,8 @@ angular.module('admins').controller('AdminsController', ['$scope', '$stateParams
         $scope.isConnectedSocialAccount = function(provider) {
             return $scope.user.provider === provider || ($scope.user.additionalProvidersData && $scope.user.additionalProvidersData[provider]);
         };
+
+
 
     }
 ]);

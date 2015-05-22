@@ -21,7 +21,8 @@
     border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%;
 }
 .filter label .box     {
-    border:2px solid #000;
+    /*border:2px solid #f5deb3;*/
+    border:2px solid #f5deb3;
     height:20px;
     width:20px;
     z-index:888;
@@ -32,7 +33,7 @@
     left: 6px;
     width: 12px;
     height: 24px;
-    border:2px solid #0f9d58;
+    border:2px solid #023a31;
     border-top: none;
     border-left: none;
     opacity:0;
@@ -76,3 +77,55 @@
     0%, 100%   { transform:scale(0); }
     70%        { background:#DDD; transform:scale(1.25); }
 }
+
+
+/**
+
+RADIO BUTTONS
+
+**/
+
+strong{
+    /*color: #58ba83;*/
+}
+
+/*.transition{*/
+    /*transition: all .3s ease-out;*/
+/*}*/
+
+/*.heading{*/
+    /*text-align: center;*/
+    /*font-size:0.8em;*/
+/*}*/
+
+/*.center-align{*/
+    /*width: 300px;*/
+    /*height: 80px;*/
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*display: table;*/
+    /*margin-top: -40px;*/
+    /*margin-left: -150px;*/
+/*}*/
+
+/*#map */
+.map input[type="radio"] {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+.leaflet-control-layers-expanded label {
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    background-color: #454545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+
+    /*background-color: #023a31;*/
+/*}*/

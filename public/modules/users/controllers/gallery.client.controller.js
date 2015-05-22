@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('users').controller('GalleryController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'UsersService', 'Projects', '$http', '$modal',
-    function ($scope, $stateParams, $location, AuthenticationService, UsersService, Projects, $http, $modal) {
+angular.module('users').controller('GalleryController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Projects', '$http', '$modal',
+    function ($scope, $stateParams, $location, AuthenticationService, Projects, $http, $modal) {
 
         $scope.slides = [
 

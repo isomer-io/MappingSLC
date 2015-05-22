@@ -1,16 +1,15 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http',
-	function ($scope, AuthenticationService, ApiKeys, $http) {
+angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http', 'MarkerDataService',
+	function ($scope, AuthenticationService, ApiKeys, $http, MarkerDataService) {
 		$scope.authentication = AuthenticationService;
-
 
 		//for overlay
 		$scope.featuredProjects = {};
 
 		//placeholder for featured projects images
 		//todo once admin module is built, create a function that makes photo1 and 2 dynamic rather than hard-coded
-
+		$scope.photo0 = 'chris--bw-2.jpg';
 		$scope.photo1 = 'as_thumb_150.jpg';
 		$scope.photo2 = 'wli_thumb_150.jpg';
 		$scope.photo3 = 'dw_thumb_150.jpg';
@@ -62,15 +61,15 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 
 		//atrribution toggle
 		$scope.attributionFull = false;
-		$scope.attributionText = '<div style="padding: 0 5px 0 2px"><a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> & <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, <a href="http://openstreetmap.org/copyright">with map data by OpenStreetMap ©</a> | <a href="http://mapbox.com/map-feedback/" class="mapbox-improve-map">Improve this map</a></div>';
+		$scope.attributionText = '<div style="padding: 0 5px 0 2px"><a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> & <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, with map data by <a href="http://openstreetmap.org/copyright">OpenStreetMap©</a> | <a href="http://mapbox.com/map-feedback/" class="mapbox-improve-map">Improve this map</a></div>';
 
 
 		//subscribe form animations
 		var cssLayout = function(){
-			[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+			[].slice.call( document.querySelectorAll( 'input.input_field' ) ).forEach( function( inputEl ) {
 				// in case the input is already filled..
 				if( inputEl.value.trim() !== '' ) {
-					classie.add( inputEl.parentNode, 'input--filled' );
+					classie.add( inputEl.parentNode, 'input-filled' );
 				}
 
 				// events:
@@ -79,12 +78,12 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 			} );
 
 			function onInputFocus( ev ) {
-				classie.add( ev.target.parentNode, 'input--filled' );
+				classie.add( ev.target.parentNode, 'input-filled' );
 			}
 
 			function onInputBlur( ev ) {
 				if( ev.target.value.trim() === '' ) {
-					classie.remove( ev.target.parentNode, 'input--filled' );
+					classie.remove( ev.target.parentNode, 'input-filled' );
 				}
 			}
 		};
@@ -120,6 +119,34 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				alert('Failed to load Mapbox API key. Status: ' + status);
 			});
 
+		//service that returns project markers
+		MarkerDataService.getMarkerData()
+			.success(function (markerData) {
+				$scope.addProjectMarkers(markerData);
+				console.log('marker data: ', markerData);
+				console.log('marker array length: ', markerData.features.length);
+				console.log('marker data value coords: ', markerData.features[0]['geometry']['coordinates']);
+				console.log('marker data value title: ', markerData.features[0]['properties']['title']);
+				console.log('marker data value description: ', markerData.features[0]['properties']['description']);
+			})
+			.error(function (data, status) {
+				alert('Failed to load project markers. Status: ' + status);
+			});
+
+
+	//	coordinates: [
+	//		-111.702,
+	//		40.773
+	//	]
+	//},
+	//properties: {
+	//title: 'Peregrine The Espresso',
+	//	description: '1718 14th St NW, Washington, DC',
+	//	// one can customize markers by adding simplestyle properties
+	//	// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+	//	'marker-size': 'large',
+	//	'marker-color': '#BE9A6B',
+	//	'marker-symbol': 'cafe'
 
 //
 //call the .map and add functionality
@@ -177,41 +204,37 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				closeButton: true,
 				position: 'left'
 			}).addTo(map);
-			//.map.addControl(sidebar);
 
 
-			//add marker where sidebar will toggle from
-			//var sidePop = L.mapbox.featureLayer({
-			//L.mapbox.layerGroup({
-			L.mapbox.featureLayer({
-				// this feature is in the GeoJSON format: see geojson.org
-				// for the full specification
-				type: 'Feature',
-				geometry: {
-					type: 'Point',
-					// coordinates here are in longitude, latitude order because
-					// x, y is the standard for GeoJSON and many formats
-					coordinates: [
-						-111.702,
-						40.773
-					]
-				},
-				properties: {
-					title: 'Peregrine The Espresso',
-					description: '1718 14th St NW, Washington, DC',
-					// one can customize markers by adding simplestyle properties
-					// https://www.mapbox.com/guides/an-open-platform/#simplestyle
-					'marker-size': 'large',
-					'marker-color': '#BE9A6B',
-					'marker-symbol': 'cafe'
-				}
-			})
+			//add markers from marker data
+			$scope.addProjectMarkers = function(markerData){
+				//loop through markers array and return values for each property
+				for(var i = 0; i < markerData.features.length; i++){
 
+				L.mapbox.featureLayer({
+					// this feature is in the GeoJSON format: see geojson.org
+					// for the full specification
+					type: 'Feature',
+					geometry: {
+						type: 'Point',
+						// coordinates here are in longitude, latitude order because
+						// x, y is the standard for GeoJSON and many formats
+						coordinates: markerData.features[i]['geometry']['coordinates']
+					},
+					properties: {
+						title: markerData.features[i]['properties']['title'],
+						description: markerData.features[i]['properties']['description'],
+						// one can customize markers by adding simplestyle properties
+						// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+						'marker-size': 'large',
+						'marker-color': markerData.features[i]['properties']['marker-color'],
+						'marker-symbol': markerData.features[i]['properties']['marker-symbol']
+					}
+				})
+
+				//create toogle for marker event that toggles sidebar on marker click
 				.on('click', function (e) {
-
-
-					////the below line of code centers the .map when the marker is clicked
-					////source: https://www.mapbox.com/mapbox.js/example/v1.0.0/centering-markers/
+					//center the map when a project marker is clicked
 					map.panTo(e.layer.getLatLng());
 
 					//$scope.$apply(
@@ -235,6 +258,8 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 					}
 				})
 				.addTo(map);
+				}
+			};
 
 			//style the polygon tracts
 			var style = {

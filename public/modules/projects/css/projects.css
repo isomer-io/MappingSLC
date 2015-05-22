@@ -79,6 +79,11 @@ fieldset > div > div {
     padding: 1%;
 }
 
+.project-body {
+    font-size: 1.65rem;
+    text-align: justify;
+    margin-top: 3%;
+}
 
 /*ckEditor Styling*/
 .cke_wysiwyg, .cke_chrome, #story.cke_1 .cke_chrome, #cke_story {
@@ -90,6 +95,7 @@ fieldset > div > div {
 .ck-crazy {
     border-color: blue;
 }
+
 
 
 /* Thumbnail STYLINGS

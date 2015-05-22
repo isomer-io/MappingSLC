@@ -9,7 +9,16 @@
 
 /* The main '.footer-overlay' class is located in the core/css/animations.css file */
 
-.footer-overlay .body{
+.footer-overlay input {
+    margin-bottom: 2rem;
+}
+
+.footer-overlay input:focus {
+    margin-bottom: 4rem;
+    transition: all 0.3s ease;
+}
+
+.footer-overlay .body {
     padding-top: 10px;
     margin-left: 5px;
 }

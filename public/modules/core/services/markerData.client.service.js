@@ -2,9 +2,9 @@
 
 angular.module('core').service('MarkerDataService', ['$http',
     function($http) {
-        // ApiKeys service logic
+        // Project Marker Data Service
         // ...
-        this.getMarkerData= function(){
+        this.getMarkerData = function(){
             return  $http.get('/markerData');
         };
     }

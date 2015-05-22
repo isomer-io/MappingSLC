@@ -11,9 +11,11 @@
         ]
       },
       "properties": {
-        "title": "Marker one",
         "description": "<em>Wow</em>, this tooltip is breaking all the rules.",
-        "marker-color": "#548cba"
+        "title": "Marker #2",
+        "marker-color": "#548cba",
+        "marker-size": "large",
+        "marker-symbol": "art-gallery"
       }
     },
     {
@@ -28,7 +30,9 @@
       "properties": {
         "title": "Marker two",
         "description": "Another marker, including <a href='http://mapbox.com'>a link</a>.",
-        "marker-color": "#548cba"
+        "marker-color": "#2C2C2C",
+        "marker-size": "large",
+        "marker-symbol": "heart"
       }
     },
     {
@@ -46,6 +50,23 @@
         "marker-size": "large",
         "marker-color": "#BE9A6B",
         "marker-symbol": "cafe"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.802,
+          40.763
+        ]
+      },
+      "properties": {
+        "title": "Andrew Shaw: Local Artist Interview Series",
+        "description": "Meet Andrew Shaw, lead singer of the Color Animals, as Mapping SLC continues to expand its Local Artist Interview Series",
+        "marker-size": "large",
+        "marker-color": "#871212",
+        "marker-symbol": "star"
       }
     }
   ]

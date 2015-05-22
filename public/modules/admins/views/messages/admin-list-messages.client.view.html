@@ -1,0 +1,61 @@
+<secondary-menu-directive></secondary-menu-directive>
+
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }"
+         data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
+    <section class="container">
+
+        <div class="main-content-outer admin">
+
+            <section class="main-content-inner" data-ng-controller="ContactsController" data-ng-init="find()">
+                <a href="/#!/admin"><span><i class="fa fa-chevron-left"></i></span></a>
+
+                <div class="page-header">
+                    <h1>Messages</h1>
+                </div>
+
+
+                <table class="table table-bordered table-striped" data-ng-repeat="contact in contacts">
+
+                    <thead ts-wrapper>
+                    <tr>
+                        <!--<td data-ng-click="toggleSort = !toggleSort">First Name <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
+                        <!--<td data-ng-click="toggleSort = !toggleSort">Last Name <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
+                        <!--<td data-ng-click="toggleSort = !toggleSort">Date Received <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
+                        <!--<td data-ng-click="toggleSort = !toggleSort">Zip Code <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
+                        <!--<td data-ng-click="toggleSort = !toggleSort">Date Received <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
+
+                        <!--<td>Misc.<i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
+
+                        <th ts-criteria="firstName">First Name</th>
+                        <th ts-criteria="lastName|lowercase" ts-default>Last Name</th>
+                        <th ts-criteria="email">E-Mail</th>
+                        <th ts-criteria="zip | parseInt">Zip Code</th>
+                        <!--<th ts-criteria="firstName">First Name</th>-->
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr ng-repeat="message in messageData" ts-repeat>
+                            <td>{{ message.firstName }}</td>
+                            <td>{{ message.lastName }}</td>
+                            <td>{{ message.email }}</td>
+                            <td>{{ message.zip }}</td>
+                            <!--<td>{{sentToday()}}</td>-->
+                            <!--<td>{{contact._id}}</td>-->
+                    </tr>
+                    </tbody>
+
+                </table>
+
+                <div class="alert alert-warning text-center" data-ng-hide="!contacts.$resolved || contacts.length">
+                    No Contacts yet, why don't you <a href="/#!/contacts/create">create one</a>?
+                </div>
+            </section>
+        </div>
+
+
+    </section>
+</section>
