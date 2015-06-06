@@ -257,6 +257,7 @@ submit-project-directive > section > div > div {
     top: 1.25%;
     width: 6.5%;
     height: auto;
+    position: fixed;
 }
 
 .menu-toggle-backdrop {

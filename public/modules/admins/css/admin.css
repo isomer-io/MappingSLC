@@ -14,11 +14,16 @@ a.widget-box {
     text-align: center;
     text-decoration: none;
     display: flex;
+    margin: 2rem 0;
+    color: hsla(156, 68%, 29%, 1);
+    border: solid 2px transparent;
 }
 
 a.widget-box:hover {
-    background: hsla(156, 68%, 29%, 0.5);
-    border: solid 1px #fff9e6;
+    background: hsla(156, 68%, 29%, 1);
+    border: solid 2px #ffffff;
+    border-radius: 5px;
+    color: #FFFFFF;
 }
 
 a.widget-box i {

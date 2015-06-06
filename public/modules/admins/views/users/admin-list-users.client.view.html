@@ -5,23 +5,17 @@
          data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
 
     <section class="container">
+        <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
         <div class="main-content-outer">
             <!--<section data-ng-controller="SettingsController" data-ng-init="find()" class="main-content-inner">-->
-            <section data-ng-controller="SettingsController" data-ng-init="init()" class="main-content-inner">
+            <section data-ng-controller="UsersController" data-ng-init="init()" class="main-content-inner">
 
                 <a href="/#!/admin"><span><i class="fa fa-chevron-left"></i></span></a>
 
-                <div class="img-responsive">
-                    <a ng-href="/"><img ng-src="{{logo}}" style="left: -35%; top: -20%"></a>
-                </div>
-
-
                 <div class="page-header">
-                    <h1>Users Menu</h1>
+                    <h1>List of Users</h1>
                 </div>
-
-
 
                 <form novalidate id="search-form" class="container" data-ng-submit="find()">
                     <div class="form-group col-xs-4 col-md-4" data-ng-repeat="field in fields" data-ng-switch="field.type">

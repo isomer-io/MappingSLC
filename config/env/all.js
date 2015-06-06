@@ -53,7 +53,8 @@ module.exports = {
 				'public/lib/ng-ckeditor/ng-ckeditor.css',
 				'public/lib/angular-tablesort/tablesort.css',
 				'public/lib/ng-grid/ng-grid.min.css',
-				'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css'
+				'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css',
+				'public/lib/c3/c3.min.css'
 
 			],
 			js: [
@@ -67,14 +68,17 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-messages/angular-messages.min.js',
+				'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js',
 				'public/lib/angular-material/angular-material.min.js',
+				'public/lib/modernizr/modernizr.js',
 				'//api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/jquery/dist/jquery.js',
 				'public/lib/rangy/rangy-core.js',
+				'public/lib/d3/d3.min.js',
+				'public/lib/ng-grid/ng-grid-2.0.14.min.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
-				'public/lib/modernizr/modernizr.js',
 				'public/lib/sidebar-v2/js/leaflet-sidebar.js',
 				'//maps.stamen.com/js/tile.stamen.js?v1.3.0',
 				'public/lib/classie/classie.js',
@@ -82,9 +86,7 @@ module.exports = {
 				'public/lib/imagesloaded/imagesloaded.pkgd.js',
 				'public/lib/angular-tablesort/js/angular-tablesort.js',
 				'public/lib/moment/min/moment.min.js',
-				'public/lib/ng-grid/ng-grid-2.0.14.min.js',
-				'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js'
-
+				'public/lib/c3/c3.min.js'
 			]
 		},
 		css: [

@@ -79,6 +79,12 @@ var UserSchema = new Schema({
 		validate: [validateLocalStrategyProperty, 'Please enter your e-mail, and make sure you have not already signed up with this e-mail.'],
 		match: [/.+\@.+\..+/, 'That doesn\'t look like an e-mail address to us. Please make sure you\'re using a valid e-mail address.']
 	},
+	username: {
+		type: String,
+		unique: 'Username already exists',
+		required: 'Please fill in a username',
+		trim: true
+	},
 	password: {
 		type: String,
 		default: '',
@@ -102,7 +108,7 @@ var UserSchema = new Schema({
 			type: String,
 			enum: ['blocked', 'unregistered', 'registered', 'contributor', 'admin', 'superUser']
 		}],
-		default: ['admin']
+		default: ['registered']
 	},
 	updated: {
 		type: Date,

@@ -83,7 +83,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
                 var hereSecret = data.hereSecret;
 
                 GeoCodeApi.callGeoCodeApi(project, hereKey, hereSecret, saveProject)
-                    .success(function (data) {
+                    .success(function (project) {
                         project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',15/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
                         saveProject();
                     });
@@ -172,8 +172,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
             }
         };
         cssLayout();
-
-
 
 
 

@@ -46,7 +46,7 @@
 }
 
 .menu-body {
-    margin: 15% 5%;
+    margin: 15% 0;
 }
 
 .menu-body ul {
@@ -55,7 +55,7 @@
 }
 
 .menu-body ul {
-    padding: 3% 7%;
+    padding: 3% 0;
 }
 
 .menu-body ul a, .social-media-button li a {
@@ -63,21 +63,36 @@
     padding: 3% 0;
 }
 
-.menu-body ul a:hover {
 
+.menu-body ul li a {
+    padding-bottom: 2rem;
 }
 
 .menu-body ul li {
-    padding: 2%;
-    border: solid 1px #fff;
+    width: 100%;
+    padding: 4% 2%;
+    border-top: solid 1px transparent;
+    border-bottom: solid 1px transparent;
 }
 
 .menu-body ul li:hover, .social-media-button li a:hover, .social-media-button li:hover {
     background-color: #023a31;
-    color: #fff;
-    text-decoration: none;
-
+    border-top: solid 1px #ffffff;
+    border-bottom: solid 1px #ffffff;
+    cursor: pointer;
 }
+
+/*.menu-body ul a:hover, */
+.menu-body li:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+.menu-body i {
+    padding-right: 0.75rem;
+}
+
 
 p.menu-body, .menu-body p {
     margin: 15% 5%;

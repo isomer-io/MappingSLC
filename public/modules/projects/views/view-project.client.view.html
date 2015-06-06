@@ -1,31 +1,29 @@
 <secondary-menu-directive></secondary-menu-directive>
 
 <section class="content background" data-ng-controller="RandomMapController"
-         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }"
-         data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
     <section class="container">
-        <section data-ng-controller="ProjectsController" data-ng-init="findOne()">
-            <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
+        <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
-            <div class="main-content-outer">
+        <div class="main-content-outer">
 
-                <section class="row">
-                    <div class="col-xs-12 ">
+            <section data-ng-controller="ProjectsController" data-ng-init="findOne()" class="main-content-inner">
+                <div class="view-project">
 
-                        <div class="main-content-inner">
+                    <div class="page-header">
+                        <h1 data-ng-bind="project.title"></h1>
+                        Category: {{category}}
+                    </div>
 
-                            <div class="img-responsive">
-                                <a ng-href="/"><img ng-src="{{logo}}"></a>
+                    <div class="row">
+                        <div class="col-xs-12 ">
+
+
+                            <div class="videoWrapper" data-ng-show="project.category === 'video'" data-ng-if="">
+                                <iframe data-ng-show="!videoSizeSelect()" width="560" height="349" data-ng-src={{vimeoId}}" frameborder="0" webkitallowfullscreen
+                                        mozallowfullscreen allowfullscreen></iframe>
                             </div>
-
-                            <div class="page-header">
-                                <h1 data-ng-bind="project.title"></h1>
-                                {{category}}
-                            </div>
-
-                            <!--<div class="videoWrapper" data-ng-if="">-->
-                                <!--<iframe data-ng-show="!videoSizeSelect()" width="560" height="349" data-ng-src={{vimeoId}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-                            <!--</div>-->
 
                             <small>
                                 <em class="text-muted">
@@ -46,6 +44,7 @@
                             <div>
                                 <img ng-src="{{project.mapImage}}" class="img-responsive">
                             </div>
+
                             <div class="pull-right"
                                  data-ng-show="((authentication.user) && (authentication.user._id == project.user._id))">
                                 <a class="btn btn-primary" href="/#!/projects/{{project._id}}/edit">
@@ -58,8 +57,9 @@
 
                         </div>
                     </div>
-                </section>
-            </div>
-        </section>
+                </div>
+
+            </section>
+        </div>
     </section>
 </section>

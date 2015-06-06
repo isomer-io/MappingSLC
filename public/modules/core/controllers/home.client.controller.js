@@ -13,6 +13,7 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		$scope.photo1 = 'as_thumb_150.jpg';
 		$scope.photo2 = 'wli_thumb_150.jpg';
 		$scope.photo3 = 'dw_thumb_150.jpg';
+		$scope.photo4 = 'as_thumb_bw.png';
 
 
 		/**
@@ -123,11 +124,11 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		MarkerDataService.getMarkerData()
 			.success(function (markerData) {
 				$scope.addProjectMarkers(markerData);
-				console.log('marker data: ', markerData);
-				console.log('marker array length: ', markerData.features.length);
-				console.log('marker data value coords: ', markerData.features[0]['geometry']['coordinates']);
-				console.log('marker data value title: ', markerData.features[0]['properties']['title']);
-				console.log('marker data value description: ', markerData.features[0]['properties']['description']);
+				//console.log('marker data: ', markerData);
+				//console.log('marker array length: ', markerData.features.length);
+				//console.log('marker data value coords: ', markerData.features[0]['geometry']['coordinates']);
+				//console.log('marker data value title: ', markerData.features[0]['properties']['title']);
+				//console.log('marker data value description: ', markerData.features[0]['properties']['description']);
 			})
 			.error(function (data, status) {
 				alert('Failed to load project markers. Status: ' + status);

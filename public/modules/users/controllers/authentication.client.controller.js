@@ -27,6 +27,7 @@ angular.module('users').controller('AuthenticationServiceController', ['$scope',
 				// And redirect to the index page
 				$location.path('/');
 			}).error(function(response) {
+				console.log('auth.client.controller error ln 30', response);
 				$scope.error = response.message;
 			});
 		};

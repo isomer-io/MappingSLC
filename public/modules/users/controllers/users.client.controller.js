@@ -1,8 +1,8 @@
 'use strict';
 
 // Users controller
-angular.module('users').controller('UsersController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Users', '_',
-    function($scope, $stateParams, $location, AuthenticationService, Users, _) {
+angular.module('users').controller('UsersController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Users',
+    function($scope, $stateParams, $location, AuthenticationService, Users) {
         $scope.authentication = AuthenticationService;
         $scope.gridOptions = {
             data: 'users',
@@ -14,46 +14,46 @@ angular.module('users').controller('UsersController', ['$scope', '$stateParams',
 
         $scope.query = {};
 
-        $scope.getSchema = function() {
-            Users.query({
-                userId: 'schema'
-            }, function(userSchema) {
-                var fields = [];
-                var field = null;
-
-                _.each(userSchema, function(schemaField) {
-                    if (schemaField.path !== '_id') {
-                        field = {
-                            path: schemaField.path,
-                            title: _.string.humanize(schemaField.path)
-                        };
-
-                        if (schemaField.instance) {
-                            if (schemaField.enumValues && schemaField.enumValues.length) {
-                                field.type = 'Select';
-                                field.options = schemaField.enumValues;
-                            } else {
-                                field.type = schemaField.instance;
-                            }
-                        } else {
-                            if (schemaField.caster) {
-                                if (schemaField.caster.enumValues) {
-                                    field.type = 'Options';
-                                    field.options = schemaField.caster.enumValues;
-                                }
-                            } else {
-                                field.type = 'Date';
-                            }
-                        }
-
-                        fields.push(field);
-                    }
-                });
-
-                $scope.fields = fields;
-                $scope.buildGridOptions();
-            });
-        };
+        //$scope.getSchema = function() {
+        //    Users.query({
+        //        userId: 'schema'
+        //    }, function(userSchema) {
+        //        var fields = [];
+        //        var field = null;
+        //
+        //        _.each(userSchema, function(schemaField) {
+        //            if (schemaField.path !== '_id') {
+        //                field = {
+        //                    path: schemaField.path,
+        //                    title: _.string.humanize(schemaField.path)
+        //                };
+        //
+        //                if (schemaField.instance) {
+        //                    if (schemaField.enumValues && schemaField.enumValues.length) {
+        //                        field.type = 'Select';
+        //                        field.options = schemaField.enumValues;
+        //                    } else {
+        //                        field.type = schemaField.instance;
+        //                    }
+        //                } else {
+        //                    if (schemaField.caster) {
+        //                        if (schemaField.caster.enumValues) {
+        //                            field.type = 'Options';
+        //                            field.options = schemaField.caster.enumValues;
+        //                        }
+        //                    } else {
+        //                        field.type = 'Date';
+        //                    }
+        //                }
+        //
+        //                fields.push(field);
+        //            }
+        //        });
+        //
+        //        $scope.fields = fields;
+        //        $scope.buildGridOptions();
+        //    });
+        //};
 
         $scope.buildGridOptions = function() {
             var gridFields = [{

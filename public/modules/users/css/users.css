@@ -35,3 +35,13 @@
 .users-dropdown .dropdown-menu > li > a {
 
 }
+
+.auth-form .fa {
+	font-size: 5.5rem;
+	padding: 2% 4%;
+	color: #023a31;
+}
+
+.auth-form .fa:hover {
+
+}
