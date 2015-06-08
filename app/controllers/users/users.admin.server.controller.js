@@ -65,7 +65,7 @@ exports.delete = function(req, res) {
  * List of Users
  */
 exports.list = function(req, res) {
-	console.log(req.query);
+	//console.log(req.query);
     User.find(req.query).sort('-firstName').exec(function(err, users) {
         if (err) {
             return res.send(400, {
@@ -75,6 +75,14 @@ exports.list = function(req, res) {
             res.jsonp(users);
         }
     });
+};
+
+
+/**
+ * Show the current Project
+ */
+exports.read = function(req, res) {
+    res.jsonp(req.user);
 };
 
 /**
@@ -99,14 +107,37 @@ exports.getSchema = function(req, res) {
  * Find this method in users.authentication.server.controller.js
  *
  */
-//exports.userByID = function(req, res, next, id) {
-//    User.findById(id).populate('user', 'displayName').exec(function(err, user) {
-//        if (err) return next(err);
-//        if (!user) return next(new Error('Failed to load User ' + id));
-//        req.currentUser = user;
-//        next();
-//    });
-//};
+exports.userByID = function(req, res, next, id) {
+    console.log('working. req, res, next, id : ', req, res, next, id);
+    //User.findById(id).populate('user', 'displayName').exec(function(err, user) {
+    User.findById(id).exec(function(err, user) {
+    //User.find(req.query).sort('-firstName').exec(function(err, users) {
+        console.log('err, user: ', err, user);
+        if (err) return next(err);
+        if (!user) return next(new Error('Failed to load User ' + id));
+        req.currentUser = user;
+        next();
+    });
+};
+
+
+/**
+ * Find Single User by ID
+ */
+exports.findUser = function(req, res) {
+    //console.log(req.query);
+    User.findOne(req.query).sort('-firstName').exec(function(err, users) {
+        if (err) {
+            return res.send(400, {
+                message: getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(users);
+        }
+    });
+};
+
+
 
 /**
  * Admin authorization middleware

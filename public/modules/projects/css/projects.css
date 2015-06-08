@@ -108,6 +108,10 @@ fieldset > div > div {
     /*margin: 1%;*/
 }
 
+.list-group-item:hover{
+
+}
+
 .essay {
     background-color: rgba(0, 185, 0, 0.4);
 }
@@ -132,9 +136,9 @@ div.list-group > a > div {
     position:absolute;
     left:30px;
     right:30px;
-    transition:0.5s all ease;
     -moz-transition:0.5s all ease;
     -webkit-transition:0.5s all ease;
+    transition:0.5s all ease;
 }
 
 /* enter animation */

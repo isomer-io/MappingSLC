@@ -8,6 +8,7 @@ var passport = require('passport');
 module.exports = function(app) {
 	// User Routes
 	var users = require('../../app/controllers/users.server.controller');
+	//var auth = require('../../app/controllers/users/users.authorization.server.controller');
 
 	// Setting up the users profile api
 	app.route('/users/me').get(users.me);
@@ -16,15 +17,20 @@ module.exports = function(app) {
 
 
 	// Users Routes for Admin Panel
-	app.route('/admin/users')
-		.get(users.isAdmin, users.list)
-		.post(users.isAdmin, users.create);
+	app.route('/users')
+		.get(users.isAdmin, users.list);
 	app.route('/admin/users/schema')
 		.get(users.isAdmin, users.getSchema);
-	app.route('/admin/users/:userId')
+	app.route('/users/:userId')
+		//.get(users.isAdmin, users.findUser)
+		.get(users.read)
+		//.get(users.isAdmin, users.userByID)
 		.put(users.isAdmin, users.update)
 		.delete(users.isAdmin, users.delete);
-
+	app.route('/admin/users')
+		//.get(users.isAdmin, users.list)
+		.get(users.isAdmin, users.list)
+		.post(users.isAdmin, users.create);
 
 	// Setting up the users password api
 	app.route('/users/password').post(users.changePassword);

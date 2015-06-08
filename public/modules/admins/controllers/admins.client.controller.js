@@ -1,8 +1,8 @@
 'use strict';
 
 // Admins controller
-angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$stateParams', '$location', 'AuthenticationService', 'Projects', 'UserDataService', 'Contacts',
-	function ($scope, d3, $stateParams, $location, AuthenticationService, Projects, UserDataService, Contacts) {
+angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$stateParams', '$location', 'AuthenticationService', 'Projects', 'UserData', 'Contacts',
+	function ($scope, d3, $stateParams, $location, AuthenticationService, Projects, UserData, Contacts) {
 		$scope.authentication = AuthenticationService;
 
 		// If user is not an administrator then redirect back home
@@ -45,12 +45,12 @@ angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$state
 		};
 
 		// Find a list of Projects
-		$scope.find = function () {
+		$scope.findProjects = function () {
 			$scope.projects = Projects.query();
 		};
 
 		// Find existing Project
-		$scope.findOne = function () {
+		$scope.findOneProject = function () {
 			$scope.project = Projects.get({
 				projectId: $stateParams.projectId
 			});
@@ -67,7 +67,7 @@ angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$state
 			// Update a user profile
 		$scope.updateUserProfile = function () {
 			$scope.success = $scope.error = null;
-			var user = new UserDataService($scope.user);
+			var user = new UserData($scope.user);
 
 			user.$update(function (response) {
 				$scope.success = true;

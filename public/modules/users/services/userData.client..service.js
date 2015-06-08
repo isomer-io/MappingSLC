@@ -1,12 +1,25 @@
 'use strict';
 
-angular.module('users').service('UserDataService', ['$http',
-	function($http) {
-		// retrieve user's profile data from users.model
-		//
+// retrieve user's profile data from users.model
+angular.module('users').factory('UserData', ['$http', '$resource',
+	function($http, $resource) {
+			return $resource('users/:userId', {userId: '@_id'
+			}, {
+					update: {
+						method: 'PUT'
+					}
+				});
 
-		this.getUserData = function(){
-			return  $http.get('/userData');
-		};
+
+
+
+		//this.getUser = function(){
+
+
+		//};
+		//
+		//this.getUserData = function(){
+		//	return  $http.get('/userData');
+		//};
 	}
 ]);

@@ -1,17 +1,20 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'AuthenticationService', 'UserDataService',
-	function($scope, $http, $location, Users, AuthenticationService, UserDataService) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'AuthenticationService', 'UserData', '$stateParams',
+	function($scope, $http, $location, Users, AuthenticationService, UserData, $stateParams) {
 		$scope.user = AuthenticationService.user;
 		$scope.userRole = null;
 		$scope.userZip = null;
+		$scope.toggleEdit = false;
+
+		$scope.photo0 = 'chris--bw-2.jpg';
 
 		// If user is not signed in then redirect back home
 		if (!$scope.user) $location.path('/');
 
 
 		////call on UserData Service to Get Data for Individual User
-		//UserDataService.getUserData()
+		//UserData.getUserData()
 		//	.success(function (userData) {
 		//		findOne(userData);
 		//	})
@@ -104,13 +107,30 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			$scope.users = Users.query();
 		};
 
-		// Find existing Project
-		$scope.findOne = function () {
-			$scope.user = Users.get({
+		//// Find existing Project
+		//$scope.findOne = function () {
+		//	$scope.user = Users.get({
+		//		userId: $stateParams.userId
+		//	});
+		//
+		//};
+
+
+		//// Find existing Project
+		//$scope.find1One = function () {
+		//	$scope.project = Projects.get({
+		//		projectId: $stateParams.projectId
+		//	});
+		//};
+
+		// Find existing User
+		$scope.findOne = function() {
+			$scope.user = UserData.get({
 				userId: $stateParams.userId
 			});
-
 		};
+
+		//get all properties from user object for admin panel view user
 
 
 

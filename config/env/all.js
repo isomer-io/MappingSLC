@@ -74,6 +74,7 @@ module.exports = {
 				'//api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/jquery/dist/jquery.js',
+				'public/lib/underscore/underscore-min.js',
 				'public/lib/rangy/rangy-core.js',
 				'public/lib/d3/d3.min.js',
 				'public/lib/ng-grid/ng-grid-2.0.14.min.js',

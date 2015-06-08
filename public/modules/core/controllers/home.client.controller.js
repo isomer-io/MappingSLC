@@ -120,20 +120,6 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				alert('Failed to load Mapbox API key. Status: ' + status);
 			});
 
-		//service that returns project markers
-		MarkerDataService.getMarkerData()
-			.success(function (markerData) {
-				$scope.addProjectMarkers(markerData);
-				//console.log('marker data: ', markerData);
-				//console.log('marker array length: ', markerData.features.length);
-				//console.log('marker data value coords: ', markerData.features[0]['geometry']['coordinates']);
-				//console.log('marker data value title: ', markerData.features[0]['properties']['title']);
-				//console.log('marker data value description: ', markerData.features[0]['properties']['description']);
-			})
-			.error(function (data, status) {
-				alert('Failed to load project markers. Status: ' + status);
-			});
-
 
 	//	coordinates: [
 	//		-111.702,
@@ -205,6 +191,21 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				closeButton: true,
 				position: 'left'
 			}).addTo(map);
+
+
+			//service that returns project markers
+			MarkerDataService.getMarkerData()
+				.success(function (markerData) {
+					$scope.addProjectMarkers(markerData);
+					//console.log('marker data: ', markerData);
+					//console.log('marker array length: ', markerData.features.length);
+					//console.log('marker data value coords: ', markerData.features[0]['geometry']['coordinates']);
+					//console.log('marker data value title: ', markerData.features[0]['properties']['title']);
+					//console.log('marker data value description: ', markerData.features[0]['properties']['description']);
+				})
+				.error(function (data, status) {
+					alert('Failed to load project markers. Status: ' + status);
+				});
 
 
 			//add markers from marker data
