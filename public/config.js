@@ -5,7 +5,7 @@ var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mapping-salt-lake-city';
 	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'ngCkeditor',
-		'ngMessages', 'bootstrapLightbox'];
+		'ngMessages', 'bootstrapLightbox', 'ngFileUpload'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {

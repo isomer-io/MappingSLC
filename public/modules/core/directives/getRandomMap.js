@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').directive('RandomMapDirective', [
+angular.module('core').directive('randomMapDirective', [
     function ($scope) {
 
         var staticMap = null;

@@ -50,7 +50,7 @@ angular.module('admins').config(['$stateProvider',
 			.state('adminDashboard', {
 				url: '/admin/dashboard',
 				templateUrl: 'modules/admins/views/dashboard/admin-dashboard.client.view.html'
-			})
+			});
 	}
 
 ]);

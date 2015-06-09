@@ -10,16 +10,5 @@ angular.module('users').factory('UserData', ['$http', '$resource',
 					}
 				});
 
-
-
-
-		//this.getUser = function(){
-
-
-		//};
-		//
-		//this.getUserData = function(){
-		//	return  $http.get('/userData');
-		//};
 	}
 ]);

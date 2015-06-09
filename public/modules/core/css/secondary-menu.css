@@ -58,49 +58,59 @@
     padding: 3% 0;
 }
 
-.menu-body ul a, .social-media-button li a {
+.menu-body ul a, .social-media-button a li {
     font-size: 2rem;
-    padding: 3% 0;
+    padding: 0;
 }
 
+.social-media-button a li {
+    font-size: 1.75rem;
+}
 
-.menu-body ul li a {
-    padding-bottom: 2rem;
+.menu-body i {
+    margin: 0 20px;
+}
+
+.menu-body ul a {
+    padding: 0 1rem;
+    color: #023A31;
+}
+
+.menu-body li + a:hover {
+    color: #ffffff;
 }
 
 .menu-body ul li {
     width: 100%;
-    padding: 4% 2%;
-    border-top: solid 1px transparent;
-    border-bottom: solid 1px transparent;
+    padding: 2% 0 2% 0 ;
+    border: solid 1px transparent;
 }
 
-.menu-body ul li:hover, .social-media-button li a:hover, .social-media-button li:hover {
+.menu-body .social-media-button ul a:hover {
+    background: #023A31;
+}
+
+.menu-body ul a:hover, .social-media-button a:hover {
     background-color: #023a31;
-    border-top: solid 1px #ffffff;
-    border-bottom: solid 1px #ffffff;
+    border: solid 1px #ffffff;
     cursor: pointer;
-}
-
-/*.menu-body ul a:hover, */
-.menu-body li:hover {
-    color: #ffffff;
     text-decoration: none;
+    color: #ffffff;
 }
-
 
 .menu-body i {
     padding-right: 0.75rem;
 }
 
-
 p.menu-body, .menu-body p {
-    margin: 15% 5%;
+    margin: 1% 7%;
     text-align: justify;
     font-size: 1.8rem;
 }
 
-
+.menu-body p:nth-child(1) {
+    margin-bottom: 3%;
+}
 
 /*styling for the page when secondary menu is closed*/
 .page-view-menu-closed {

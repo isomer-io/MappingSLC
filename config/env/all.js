@@ -76,6 +76,8 @@ module.exports = {
 				'public/lib/jquery/dist/jquery.js',
 				'public/lib/underscore/underscore-min.js',
 				'public/lib/rangy/rangy-core.js',
+				'public/lib/ng-file-upload/ng-file-upload-all.min.js',
+				'public/lib/ng-file-upload/FileAPI.min.js',
 				'public/lib/d3/d3.min.js',
 				'public/lib/ng-grid/ng-grid-2.0.14.min.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',

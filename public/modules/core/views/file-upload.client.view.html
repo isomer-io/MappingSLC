@@ -1,0 +1,55 @@
+<secondary-menu-directive></secondary-menu-directive>
+
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+    <section class="container">
+        <div class="main-content-outer">
+            <section data-ng-controller="FileUploadController" class="main-content-inner">
+
+
+                <div ngf-drop ngf-select ng-model="files" class="drop-box"
+                     ngf-drag-over-class="dragover"  ngf-allow-dir="true"
+                     accept="image/*" >Drag images here or click to upload</div>
+                <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+                <button ng-click="uploadFile(files)" data-ng-show="files[0].type.indexOf('image') > -1">Upload</button>
+
+                <!--<img ngf-src="files[0]" ng-show="files[0].type.indexOf('image') > -1" ngf-accept="'image/*'">-->
+                <img ngf-src="files[0]" ngf-accept="'image/*'">
+
+                <img ng-src="{{imgSrc}}"/>
+                <br /><br />
+                <img ngf-src="{{files}}"
+                     ngf-accept="'.png,.jpg'"
+                     ngf-min-size='100'
+                     ngf-max-size='30000'
+                        >
+                <div >
+                    <form>
+                        <input type="url" placeholder="Type in the url you want to upload" ng-model="imgUrl"/><br/>
+                        <button ng-click="submitUrl(imgUrl)">Submit Url</button>
+                    </form>
+                </div>
+
+
+                <hr />
+
+                Upload Log:
+                <pre>{{log}}</pre>
+
+                <hr />
+
+                <!--<img ng-src="{{imgUrl}}"/><br />-->
+
+                <hr />
+
+                <!--<img src="../uploads/326e8d49-bd9f-49c4-a21a-5b60e8e44ece.png"/>-->
+
+
+
+
+
+            </section>
+        </div>
+    </section>
+</section>

@@ -12,19 +12,32 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		// If user is not signed in then redirect back home
 		if (!$scope.user) $location.path('/');
 
+		var cssLayout = function(){
+			[].slice.call( document.querySelectorAll( 'input.input_field' ) ).forEach( function( inputEl ) {
+				// in case the input is already filled..
+				if( inputEl.value.trim() !== '' ) {
+					classie.add( inputEl.parentNode, 'input-filled' );
+				}
 
-		////call on UserData Service to Get Data for Individual User
-		//UserData.getUserData()
-		//	.success(function (userData) {
-		//		findOne(userData);
-		//	})
-		//	.error(function (data, status) {
-		//		alert('Failed to load User Data. Status: ' + status);
-		//	});
+				// events:
+				inputEl.addEventListener( 'focus', onInputFocus );
+				inputEl.addEventListener( 'blur', onInputBlur );
+			} );
+
+			function onInputFocus( ev ) {
+				classie.add( ev.target.parentNode, 'input-filled' );
+			}
+
+			function onInputBlur( ev ) {
+				if( ev.target.value.trim() === '' ) {
+					classie.remove( ev.target.parentNode, 'input-filled' );
+				}
+			}
+		};
+		cssLayout();
 
 
-
-		// Check if there are additional accounts 
+		// Check if there are additional accounts
 		$scope.hasConnectedAdditionalSocialAccounts = function(provider) {
 			for (var i in $scope.user.additionalProvidersData) {
 				return true;
@@ -87,9 +100,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		};
 
 
-
-		//admin panel functions
-
+	//admin panel functions
 
 		// Update existing User
 		$scope.update = function () {
@@ -107,57 +118,12 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			$scope.users = Users.query();
 		};
 
-		//// Find existing Project
-		//$scope.findOne = function () {
-		//	$scope.user = Users.get({
-		//		userId: $stateParams.userId
-		//	});
-		//
-		//};
-
-
-		//// Find existing Project
-		//$scope.find1One = function () {
-		//	$scope.project = Projects.get({
-		//		projectId: $stateParams.projectId
-		//	});
-		//};
-
 		// Find existing User
 		$scope.findOne = function() {
 			$scope.user = UserData.get({
 				userId: $stateParams.userId
 			});
 		};
-
-		//get all properties from user object for admin panel view user
-
-
-
-		//subscribe form animations
-		var cssLayout = function(){
-			[].slice.call( document.querySelectorAll( 'input.input_field' ) ).forEach( function( inputEl ) {
-				// in case the input is already filled..
-				if( inputEl.value.trim() !== '' ) {
-					classie.add( inputEl.parentNode, 'input-filled' );
-				}
-
-				// events:
-				inputEl.addEventListener( 'focus', onInputFocus );
-				inputEl.addEventListener( 'blur', onInputBlur );
-			} );
-
-			function onInputFocus( ev ) {
-				classie.add( ev.target.parentNode, 'input-filled' );
-			}
-
-			function onInputBlur( ev ) {
-				if( ev.target.value.trim() === '' ) {
-					classie.remove( ev.target.parentNode, 'input-filled' );
-				}
-			}
-		};
-		cssLayout();
 
 	}
 ]);

@@ -3,12 +3,8 @@
 angular.module('projects').service('GeoCodeApi', ['$http',
 	function($http) {
 
-        this.something = function () {
-            console.log('lololololololol');
-        };
-
 		// Geocodeapi service logic
-		// ...
+
         this.callGeoCodeApi = function(project, key, secret, projectSaveCallback){
             console.log('keys from geoCode service: ', key, secret);
             console.log('err, there\'s an error, yo.');

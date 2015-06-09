@@ -15,6 +15,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		.state('subscribeForm', {
 			url: '/subscribe-form',
 			templateUrl: 'modules/core/views/subscribe-form.client.view.html'
+		})
+		.state('uploads', {
+			url: '/uploads',
+			templateUrl: 'modules/core/views/file-upload.client.view.html'
+		})
+		.state('uploadFile', {
+			url: '/uploads/:fileHash'
+			//templateUrl: 'modules/users/views/create-user.client.view.html'
 		});
 	}
 ]);

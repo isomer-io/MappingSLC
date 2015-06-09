@@ -25,6 +25,8 @@ var fs = require('fs'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
 	path = require('path');
+	global.appRoot = path.resolve(__dirname);
+
 
 module.exports = function(db) {
 	// Initialize express app
