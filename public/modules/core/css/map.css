@@ -281,20 +281,32 @@ div .leaflet-top.leaflet-left .mapbox-share {
 }
 
 .leaflet-control-layers .leaflet-control {
-    margin-top: 455%;
+    /*margin-top: 455%;*/
 }
 
 .leaflet-left .leaflet-control {
-    left: 3500%;
+    /*left: 4500%;*/
+    /*right: -1687px;*/
+    /*position: relative;*/
 }
 
 .leaflet-top.leaflet-right {
-    top: 18%;
+    /*top: 18%;*/
+    top: 185px;
+    /*right: -8px;*/
+    right: -17px;
 }
 
 .leaflet-top.leaflet-left {
-    top: -7%;
-    left: 8.75%;
+    top: -6.5%;
+    left: 97%;
+    /*top: -55px;*/
+    /*left: 175px;*/
+    /*top: -60px;*/
+    /*left: -787px;*/
+    /*position: absolute;*/
+    /*left: 1573px;*/
+    /*top: -55px;*/
 }
 
 .leaflet-control-layers label {

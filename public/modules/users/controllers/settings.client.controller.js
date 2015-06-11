@@ -69,16 +69,20 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		};
 
 		// Update a user profile
+		// from above, $scope.user = AuthenticationService.user;
 		$scope.updateUserProfile = function(isValid) {
 			if (isValid) {
 				$scope.success = $scope.error = null;
 				var user = new Users($scope.user);
+				console.log('front end user', user);
 
 				user.$update(function(response) {
+					console.log('front end $update response', response);
 					$scope.success = true;
 					AuthenticationService.user = response;
 				}, function(response) {
 					$scope.error = response.data.message;
+					console.log('$scope.error = response.data.message')
 				});
 			} else {
 				$scope.submitted = true;

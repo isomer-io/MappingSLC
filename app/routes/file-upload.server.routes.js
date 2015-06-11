@@ -10,4 +10,8 @@ module.exports = function(app) {
 		//.get(files.list)
 		.post(upload.fileUploader);
 
+	app.route('/uploads/users')
+		//.get(files.list)
+		.post(upload.fileUploader);
+
 };

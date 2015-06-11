@@ -30,6 +30,36 @@
 	border: solid 1px #ffffff;
 }
 
+.auth-form .form-group {
+	margin: -25% 0 0 25%;
+}
+
+.auth-form .form-group a {
+	font-size: 1.75rem;
+}
+
+.auth-form .form-group .forgot-password {
+	margin: 0.5rem 0 0 0.75rem;
+}
+
+.auth-form .form-group .forgot-password a {
+	font-size: 1.5rem;
+	text-align: center;
+	margin-top: 0.5rem;
+}
+
+.forgot-password, .auth-form .form-group a {
+	color: #023A31;
+}
+
+.auth-form .form-group a, .auth-form .form-group .forgot-password, .auth-form .form-group button {
+
+}
+.auth-form .form-group a:hover, .auth-form .form-group .forgot-password:hover, .auth-form .form-group button:hover {
+	transform: scale(1.2);
+	transition: all 0.5s ease 0s;
+	text-decoration: none;
+}
 
 .users-dropdown ul > li > a,
 .users-dropdown .dropdown-menu > li > a {
@@ -39,9 +69,56 @@
 .auth-form .fa {
 	font-size: 5.5rem;
 	padding: 2% 4%;
+	margin: 2%;
 	color: #023a31;
+	border: solid 3px transparent;
 }
 
 .auth-form .fa:hover {
-
+	transform: scale(1.2);
+	transition: all 0.5s ease 0s;
+	border: solid 3px #ffffff;
+	background-color: #023A31;
+	border-radius: 5px;
+	color: #ffffff;
 }
+
+.auth-form .signup-email {
+	margin-top: 5%;
+	padding: 3px 0;
+	border-bottom: 2px solid transparent;
+	cursor: pointer;
+
+	font-size: 2.25rem;
+	color: #000;
+	margin-left: 15rem;
+}
+
+.auth-form .signup-email span {
+	font-size: 2.25rem;
+	color: #000;
+	margin-left: 15rem;
+}
+
+.auth-form .signup-email i {
+	font-size: 2rem;
+	margin-left: 1%;
+	padding: 0;
+	color: #000;
+}
+
+.auth-form .signup-email:hover {
+	border-bottom: solid 2px #023A31;
+	transition: all 0.5s ease 0s;
+}
+
+/*.example2 {*/
+/*transition-property: background-color, color;*/
+/*transition-duration: 1s;*/
+/*transition-timing-function: ease-out;*/
+/*transition-delay: 2s;*/
+/*}*/
+
+/*.example1 {*/
+	/*transition: [transition-property] [transition-duration] [transition-timing-function] [transition-delay];*/
+/*}*/

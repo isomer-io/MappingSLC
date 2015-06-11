@@ -10,12 +10,13 @@
             <section data-ng-controller="AuthenticationServiceController" class="main-content-inner">
                 <div class="auth-form">
 
-                    <h1 class="page-header col-md-12 text-center">Sign In</h1>
-
+                    <h1 class="page-header col-md-12">Sign In</h1>
 
                     <div class="row">
 
                         <div class="col-md-12">
+
+                            <h3>... with your social accounts</h3>
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -39,11 +40,15 @@
                                 </div>
                             </div>
 
+                            <span>
+                                <div class="signup-email" data-ng-click="toggleSignup = !toggleSignup" data-ng-class="{'carot-down': toggleSignup}">
+                                    ... or click here to sign in with your email address <i class="fa fa-chevron-right" data-ng-show="!toggleSignup"></i><i
+                                        class="fa fa-chevron-down" data-ng-show="toggleSignup"></i>
+                                </div>
+                            </span>
 
-                            <h3 class="col-md-12 text-center">Or with your account</h3>
-
-                            <div class="row">
-                                <div class="col-md-12">
+                            <div class="row" data-ng-show="toggleSignup">
+                                <div class="col-md-12 col-md-offset-3">
                                     <form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
                                         <fieldset>
 
@@ -61,7 +66,8 @@
                                             <div class="row"> <!-- Row #2 -->
                                                 <div class="col-md-12">
                                                     <span class="input input-secondary">
-                                                        <input class="input_field input_field-secondary" type="text" id="username" data-ng-model="credentials.username"/>
+                                                        <input class="input_field input_field-secondary" type="text" id="username"
+                                                               data-ng-model="credentials.username"/>
                                                         <label class="input_label input_label-secondary" for="username">
                                                             <span class="input_label-content input_label-content-secondary">Username</span>
                                                         </label>
@@ -77,7 +83,8 @@
                                             <div class="row">  <!-- Row #4 -->
                                                 <div class="col-md-12">
                                                     <span class="input input-secondary">
-                                                        <input class="input_field input_field-secondary" type="password" id="password" data-ng-model="credentials.password"/>
+                                                        <input class="input_field input_field-secondary" type="password" id="password"
+                                                               data-ng-model="credentials.password"/>
                                                         <label class="input_label input_label-secondary" for="password">
                                                             <span class="input_label-content input_label-content-secondary">Password</span>
                                                         </label>
@@ -89,16 +96,23 @@
                                             <!--<label for="password">Password</label>-->
                                             <!--<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">-->
                                             <!--</div>-->
-                                            <div class="text-center form-group">
-                                                <button type="submit" class="btn btn-primary">Sign in</button>
-                                                &nbsp; or&nbsp;
-                                                <a href="/#!/signup">Sign up</a>
-                                            </div>
-                                            <div class="forgot-password">
-                                                <a href="/#!/password/forgot">Forgot your password?</a>
-                                            </div>
-                                            <div data-ng-show="error" class="text-center text-danger">
-                                                <strong data-ng-bind="error"></strong>
+
+                                            <div class="row">
+                                                <div class="col-xs-4">
+                                                    <div class="form-group">
+                                                        <div>
+                                                            <button type="submit" class="btn btn-main grow">Sign in</button>
+                                                            &nbsp; or&nbsp;
+                                                            <a href="/#!/signup">Sign up</a>
+                                                        </div>
+                                                        <div class="forgot-password">
+                                                            <a href="/#!/password/forgot">Forgot your password?</a>
+                                                        </div>
+                                                        <div data-ng-show="error" class="text-center text-danger">
+                                                            <strong data-ng-bind="error"></strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </fieldset>
                                     </form>

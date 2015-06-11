@@ -1,24 +1,15 @@
 .file-upload {
+    margin: 5%;
     font-size: 2rem;
 }
 
-.button {
-    -moz-appearance: button;
-    /* Firefox */
-    -webkit-appearance: button;
-    /* Safari and Chrome */
-    padding: 10px;
-    margin: 10px;
-    width: 70px;
-}
 .drop-box {
     background: #F8F8F8;
     border: 5px dashed #DDD;
     width: 45%;
-    height: 10%;
+    height: 20%;
     text-align: center;
     padding: 5% 0;
-    margin: 5%;
 }
 .dragover {
     border: 5px dashed blue;
@@ -31,12 +22,25 @@ hr {
     width: 105%;
     transform: translate(-2.5%, 0);
     display: block;
-    margin: 4% 0;
+    margin: 6% 0;
     height: 1px;
     background-image: linear-gradient(to right, #ccc, #1d1d1d, #ccc);
 }
 
-.file-upload .main-content-outer {
-    width: 115%;
-    transform: translateX(-7.5%);
+.file-upload img {
+    margin: 4% 3% 4% 0;
+    max-height: 100px;
+    -webkit-transition: all 1.7s ease-in-out;
+    -moz-transition: all 1.7s ease-in-out;
+    -ms-transition: all 1.7s ease-in-out;
+    -o-transition: all 1.7s ease-in-out;
+    transition: all 1.7s ease-in-out;
+}
+
+.file-upload .grow {
+    margin: 3% 0;
+}
+
+.file-upload pre {
+    min-height: 65px;
 }

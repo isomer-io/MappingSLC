@@ -12,7 +12,7 @@ var _ = require('lodash'),
 /**
  * Update user details
  */
-exports.update = function(req, res) {
+exports.update = function (req, res) {
 	// Init Variables
 	var user = req.user;
 	var message = null;
@@ -26,13 +26,13 @@ exports.update = function(req, res) {
 		user.updated = Date.now();
 		user.displayName = user.firstName + ' ' + user.lastName;
 
-		user.save(function(err) {
+		user.save(function (err) {
 			if (err) {
 				return res.status(400).send({
 					message: errorHandler.getErrorMessage(err)
 				});
 			} else {
-				req.login(user, function(err) {
+				req.login(user, function (err) {
 					if (err) {
 						res.status(400).send(err);
 					} else {
@@ -51,6 +51,6 @@ exports.update = function(req, res) {
 /**
  * Send User
  */
-exports.me = function(req, res) {
+exports.me = function (req, res) {
 	res.json(req.user || null);
 };

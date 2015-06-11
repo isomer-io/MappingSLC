@@ -15,27 +15,73 @@ var express = require('express'),
 	_ = require('lodash');
 
 
+/**
+ * Update user profile picture
+ */
+exports.updateProfilePic = function(req, res) {
+	// Init Variables
+	var user = req.user;
+
+	// For security measurement we remove the roles from the req.body object
+	delete req.body.roles;
+
+	if (user) {
+		// Merge existing user
+		user = _.extend(user, req.body);
+		user.updated = Date.now();
+
+		user.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				req.login(user, function(err) {
+					if (err) {
+						res.status(400).send(err);
+					} else {
+						User.profilePic = res;
+							//res.json(user);
+					}
+				});
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+};
+
 
 exports.fileUploader = function(req,res){
 	//console.log('req: ', req);
-	var form = new multiparty.Form();
-	form.parse(req, function(err, fields, files) {
-		console.log('err: ', err);
-		console.log('fields: ', fields);
-		console.log('files: ', files);
-		var file = files.file[0];
-		//console.log('files.file.length: ', files.file.length);
-		console.log('files.file[0]: ', files.file[0]);
+	//console.log('req.client: ', req.client);
+	console.log('req.body.data: ', req.body.data);
+	console.log('req.body.data.files: ', req.body.data.files);
+	//console.log('req.read: ', req.read);
+	//console.log('req.sessionStore: ', req.sessionStore);
+	//console.log('req.user: ', req.user);
+	//var form = new multiparty.Form();
+	//form.parse(req, function(err, fields, files) {
+		//console.log('err: ', err);
+		//console.log('fields: ', fields);
+		//console.log('files: ', files);
+		//var file = files.file[0];
+		//console.log('files.file[0]: ', files.file[0]);
+		var file = req.body;
+		console.log('file:', file);
 		var contentType = file.headers['content-type'];
 		var tmpPath = file.path;
 		//get the file extension type
-		var extIndex = tmpPath.lastIndexOf('.');
-		var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
+		//var extIndex = tmpPath.lastIndexOf('.');
+		//var extension = (extIndex < 0) ? '' : tmpPath.substr(extIndex);
 		// generate a unique filename
-		var fileName = uuid.v4() + extension;
+		//var fileName = uuid.v4() + extension;
+		var fileName = uuid.v4() + '.png';
 		var destPath = 'app/uploads/users/' + fileName;
 		//var destPath = 'public/modules/core/uploads/' + fileName;
-		console.log('response: ', res);
+		//console.log('response: ', res);
 
 		// Server side file type checker.
 		if (contentType !== 'image/png' && contentType !== 'image/jpeg') {
@@ -56,7 +102,6 @@ exports.fileUploader = function(req,res){
 			return res.json(destPath);
 		}else
 			return res.json('File not uploaded');
-	});
 };
 
 

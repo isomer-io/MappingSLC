@@ -50,7 +50,18 @@ exports.signup = function(req, res) {
  * Signin after passport authentication
  */
 exports.signin = function(req, res, next) {
+
+	//console.log('exports.signin req: ', req);
+
+	//new
+	var user = req;
+	console.log('backend authent ctrl, req.user: \n', user );
+	//console.log('backend authent ctrl, user: \n', user );
+	// end of new, for now
+
+
 	passport.authenticate('local', function(err, user, info) {
+		//console.log('exports.signin: passport.authenticate(local, function(err, user, info): ', user);
 		if (err || !user) {
 			console.log('user.auth.server.controller error ln 55');
 			res.status(400).send(info);
@@ -62,14 +73,41 @@ exports.signin = function(req, res, next) {
 			req.login(user, function(err) {
 				if (err) {
 
-					console.log('user.auth.server.controller error ln 65');
+					console.log('user.auth.server.controller error ln 67');
 					res.status(400).send(err);
 				} else {
 					res.json(user);
+					//console.log('exports.signin res: ', res);
+					//console.log('exports.signin res.json(user): ', res.json(user));
 				}
 			});
 		}
 	})(req, res, next);
+
+	//var user = req.user;
+	//console.log('backend authent ctrl, req.user: \n', req.user );
+	//
+	//user = _.extend(user, req.body);
+	//console.log('user.res: \n', user.res );
+	//
+	//user.lastVisit = Date.now();
+	//
+	//user.save(function(err) {
+	//	if (err) {
+	//		return res.status(400).send({
+	//			message: errorHandler.getErrorMessage(err)
+	//		});
+	//	} else {
+	//		req.login(user, function(err) {
+	//			if (err) {
+	//				res.status(400).send(err);
+	//			} else {
+	//				res.json(user);
+	//				console.log('backend authent ctrl, res.json(user): \n', res.json(user) );
+	//			}
+	//		});
+	//	}
+	//});
 };
 
 /**

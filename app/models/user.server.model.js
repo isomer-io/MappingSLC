@@ -39,11 +39,13 @@ var UserSchema = new Schema({
 	},
 	lastName: {
 		type: String,
-		trim: true
+		trim: true,
+		default: ''
 	},
 	userTitle: {
 		type: String,
-		trim: true
+		trim: true,
+		default: ''
 	},
 	displayName: {
 		type: String,
@@ -127,17 +129,23 @@ var UserSchema = new Schema({
 		type: Object
 	},
 	favorites: {
-		type: String
+		type: String,
+		trim: true,
+		default: ''
 	},
 	newsletter: {
 		type: Boolean,
 		default: false
 	},
 	profilePic: {
-		type: String
+		type: String,
+		trim: true,
+		default: ''
 	},
 	associatedProjects: {
-		type: String
+		type: String,
+		trim: true,
+		default: ''
 	}
 });
 
