@@ -1,12 +1,18 @@
 'use strict';
 
-angular.module('users').controller('AuthenticationServiceController', ['$scope', '$http', '$location', 'AuthenticationService', '$modal', '$state', 'Users', 'UserData',
-	function ($scope, $http, $location, AuthenticationService, $modal, $state, Users, UserData) {
+angular.module('users').controller('AuthenticationServiceController', ['$scope', '$http', '$location', 'AuthenticationService', '$modal', '$state', 'Users', 'UserData', '$rootScope',
+	function ($scope, $http, $location, AuthenticationService, $modal, $state, Users, UserData, $rootScope) {
 		$scope.authentication = AuthenticationService;
 		$scope.toggleSignup = false;
 
+		$rootScope.signInBeforeProject = true;
+
+		$scope.signInBeforeProject = $rootScope.signInBeforeProject;
+		$scope.closeWarning = false;
+
 		// If user is signed in then redirect back home
 		if ($scope.authentication.user) $location.path('/');
+
 
 		$scope.signup = function () {
 			$http.post('/auth/signup', $scope.credentials).success(function (response) {
@@ -29,8 +35,14 @@ angular.module('users').controller('AuthenticationServiceController', ['$scope',
 					// If successful we assign the response to the global user model
 					$scope.authentication.user = response;
 					//todo add function to update lastVisited property in user db model
-					// And redirect to the index page
-					$location.path('/');
+					// redirect to the project create page if $rootScope.signInBeforeProject = true
+					if ($rootScope.signInBeforeProject = true) {
+						$rootScope.signInBeforeProject = false;
+						$location.path('/projects/create');
+					} else {
+						// And redirect to the index page
+						$location.path('/');
+					}
 				})
 				.error(function (response) {
 					console.log('auth.client.controller error ln 30', response);

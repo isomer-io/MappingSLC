@@ -10,7 +10,19 @@
             <section data-ng-controller="AuthenticationServiceController" class="main-content-inner">
                 <div class="auth-form">
 
-                    <h1 class="page-header col-md-12">Sign In</h1>
+                    <div class="row" data-ng-show="signInBeforeProject && !closeWarning">
+                        <div class="col-md-12">
+                            <div class="sign-in-warning">
+                                <div class="pull-right" data-ng-click="closeWarning = true">X</div>
+                                <div>
+                                    <p>You need to sign in before you create a project.</p>
+                                    <p>If you have not registered yet, it's quick. <a href="/#!/signup">Register here</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h1 class="page-header text-center col-md-12">Sign In</h1>
 
                     <div class="row">
 
@@ -75,11 +87,6 @@
                                                 </div>
                                             </div>
 
-                                            <!--<div class="form-group">-->
-                                            <!--<label for="username">Username</label>-->
-                                            <!--<input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">-->
-                                            <!--</div>-->
-
                                             <div class="row">  <!-- Row #4 -->
                                                 <div class="col-md-12">
                                                     <span class="input input-secondary">
@@ -91,11 +98,6 @@
                                                     </span>
                                                 </div>
                                             </div>
-
-                                            <!--<div class="form-group">-->
-                                            <!--<label for="password">Password</label>-->
-                                            <!--<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">-->
-                                            <!--</div>-->
 
                                             <div class="row">
                                                 <div class="col-xs-4">

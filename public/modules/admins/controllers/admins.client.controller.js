@@ -4,6 +4,28 @@
 angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$stateParams', '$location', 'AuthenticationService', 'Projects', 'UserData', 'Contacts',
 	function ($scope, d3, $stateParams, $location, AuthenticationService, Projects, UserData, Contacts) {
 		$scope.authentication = AuthenticationService;
+		//
+		//function run($rootScope, $state, AuthenticationService) {
+		//
+		//	$rootScope.$on('$stateChangeStart',
+		//		function(event, toState, toParams, fromState, fromParams) {
+		//			if ( toState.authenticate && !AuthenticationService.isLoggedIn() ) {
+		//				$state.go( 'login' );
+		//			}
+		//			event.preventDefault();
+		//		}
+		//	)};
+
+
+	var run = function ($rootScope, $state, AuthenticationService) {
+		$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+			if (toState.authenticate && !AuthenticationService.isLoggedIn()) {
+				$state.go('signin')
+			}
+			event.preventDefault();
+		});
+
+	};
 
 		// If user is not an administrator then redirect back home
 		if (!$scope.admin) $location.path('/');

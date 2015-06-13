@@ -7,9 +7,12 @@ angular.module('admins').config(['$stateProvider',
 		$stateProvider.
 			state('admin', {
 				url: '/admin',
-				templateUrl: 'modules/admins/views/admins.client.view.html'
+				templateUrl: 'modules/admins/views/admins.client.view.html',
+				//data property is inherited by child states, so you can place something like this authenticate flag in the parent.
+				data: {
+					authenticate: true
+				}
 			})
-
 			//admin projects routes
 			.state('adminProjectsQueue', {
 				url: '/admin/projects-queue',

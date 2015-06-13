@@ -7,9 +7,9 @@ angular.module('projects').service('GeoCodeApi', ['$http',
 
         this.callGeoCodeApi = function(project, key, secret, projectSaveCallback){
             console.log('keys from geoCode service: ', key, secret);
-            console.log('err, there\'s an error, yo.');
             if (!project || !project.state || !project.city || !project.zip || !project.street || !key || !secret) {
                 projectSaveCallback();
+                console.log('err, there\'s an error, yo.');
                 return;
             }
 

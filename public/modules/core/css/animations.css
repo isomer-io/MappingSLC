@@ -255,20 +255,26 @@
 }
 
 .animate-small-logo {
-    z-index: 999;
+    /*z-index: 3;*/
     background: #023a31;
-    border: 2px solid #fff;
+    border: 3px solid #fff;
     border-radius: 50%;
     color: #fff;
     cursor: pointer;
-    font-size: 22pt;
+    font-size: 5.5rem;
     position: absolute;
     text-align: center;
     top: -4%;
-    left: -2%;
+    left: -2.2%;
     height: 50px;
     width: 50px;
     background-image: url(../img/circle_button.png);
+}
+
+.animate-small-logo div {
+    /*transform: scale(1.5);*/
+    margin-top: -1.75rem;
+    position: relative;
 }
 
 .animate-small-logo-active {

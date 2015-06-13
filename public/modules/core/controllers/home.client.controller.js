@@ -4,6 +4,29 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 	function ($scope, AuthenticationService, ApiKeys, $http, MarkerDataService) {
 		$scope.authentication = AuthenticationService;
 
+
+
+		//toggles off/on for main overlay page and menu
+		$scope.toggle = true;
+		$scope.animateLogoCheck = false;
+		$scope.animateMainOverlayCheck = false;
+		$scope.animateFooterOverlayCheck = false;
+
+		$scope.animateSmallLogo = function(){
+			//animate into the small logo from round 'X' on main modal
+			if($scope.animateLogoCheck === false) {
+				$scope.animateLogoCheck = true;
+				$scope.animateMainOverlayCheck = true;
+				$scope.animateFooterOverlayCheck = true;
+			}else{
+				$scope.animateLogoCheck = false;
+				$scope.animateMainOverlayCheck = false;
+				$scope.animateFooterOverlayCheck = false;
+			}
+		};
+
+
+
 		//for overlay
 		$scope.featuredProjects = {};
 
