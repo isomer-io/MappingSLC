@@ -16,7 +16,7 @@ angular.module('admins').config(['$stateProvider',
 			//admin projects routes
 			.state('adminProjectsQueue', {
 				url: '/admin/projects-queue',
-				templateUrl: 'modules/admins/views/projects/admin-projects-queue.client.view.html'
+				templateUrl: 'modules/admins/views/projects/admin-projects-list.client.view.html'
 			})
 			.state('adminEditProject', {
 				url: '/admin/edit-project/:projectId',

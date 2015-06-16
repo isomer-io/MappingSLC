@@ -13,70 +13,80 @@
 
                 <div class="admin">
 
-                <a href="/#!/admin"><span><i class="fa fa-chevron-left"></i></span></a>
+                    <div class="admin-user">
 
-                <div class="page-header">
-                    <h1>List of Users</h1>
-                </div>
+                        <a href="/#!/admin"><span><i class="fa fa-chevron-left"></i></span></a>
 
-
-
-                    <div class="row">
-                        <div class="col-md-12">
-
-                        <!--<a data-ng-repeat="user in users" data-ng-href="#!/users/{{user._id}}" class="what-what" data-ng-submit="find()">-->
-                        <a data-ng-repeat="user in users" data-ng-href="#!/users/{{user._id}}">
-                            <div data-ng-bind="user.displayName">{{user._id}}</div>
-                            <!--<div data-ng-bind="user._id"></div>-->
-                        </a>
+                        <div class="page-header">
+                            <h1>List of Users</h1>
                         </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a data-ng-repeat="user in users" data-ng-href="#!/users/{{user._id}}">
+                                    <div data-ng-bind="user.displayName">{{user._id}}</div>
+                                </a>
+                            </div>
+                        </div>
+
+
                     </div>
 
-                <!--<form novalidate id="search-form" class="container" data-ng-submit="find()">-->
+
+
+
+
+
+
+
+
+
+
+                    <div class="container">
+                        <div class="gridStyle" data-ng-grid="gridOptions"></div>
+                    </div>
+
+
+                    <!--<form novalidate id="search-form" class="container" data-ng-submit="find()">-->
                     <!--<div class="form-group col-xs-4 col-md-4" data-ng-repeat="field in fields" data-ng-switch="field.type">-->
-                        <!--<div data-ng-switch-default>-->
-                            <!--<label for="{{field.path}}">{{field.displayName}}</label>-->
-                            <!--<input required type="text" id="{{field.path}}" name="{{field.title}}" class="form-control" data-ng-model="query[field.path]" placeholder="{{field.type}}">-->
-                        <!--</div>-->
-                        <!--<div data-ng-switch-when="Select">-->
-                            <!--<label for="{{field.path}}">{{field.title}}</label>-->
-                            <!--<select class="form-control" data-ng-model="query[field.path]" ng-options="option for option in field.options"></select>-->
-                        <!--</div>-->
-                        <!--<div data-ng-switch-when="Options">-->
-                            <!--<label for="{{field.path}}">{{field.title}}</label>-->
-                            <!--<select class="form-control" data-ng-model="query[field.path]" ng-options="option for option in field.options"></select>-->
-                        <!--</div>-->
-                        <!--<div data-ng-switch-when="Date">-->
-                            <!--<label for="{{field.path}}">{{field.title}} After</label>-->
-                            <!--<input required type="text" id="{{field.path}}" name="{{field.title}}" class="form-control" datepicker-popup="yyyy-MM-dd" data-ng-model="query[field.path]" placeholder="{{field.type}}">-->
-                            <!--<label for="{{field.path}}">{{field.title}} Before</label>-->
-                            <!--<input required type="text" id="{{field.path}}" name="{{field.title}}" class="form-control" datepicker-popup="yyyy-MM-dd" data-ng-model="query[field.path]" placeholder="{{field.type}}">-->
-                        <!--</div>-->
+                    <!--<div data-ng-switch-default>-->
+                    <!--<label for="{{field.path}}">{{field.displayName}}</label>-->
+                    <!--<input required type="text" id="{{field.path}}" name="{{field.title}}" class="form-control" data-ng-model="query[field.path]" placeholder="{{field.type}}">-->
+                    <!--</div>-->
+                    <!--<div data-ng-switch-when="Select">-->
+                    <!--<label for="{{field.path}}">{{field.title}}</label>-->
+                    <!--<select class="form-control" data-ng-model="query[field.path]" ng-options="option for option in field.options"></select>-->
+                    <!--</div>-->
+                    <!--<div data-ng-switch-when="Options">-->
+                    <!--<label for="{{field.path}}">{{field.title}}</label>-->
+                    <!--<select class="form-control" data-ng-model="query[field.path]" ng-options="option for option in field.options"></select>-->
+                    <!--</div>-->
+                    <!--<div data-ng-switch-when="Date">-->
+                    <!--<label for="{{field.path}}">{{field.title}} After</label>-->
+                    <!--<input required type="text" id="{{field.path}}" name="{{field.title}}" class="form-control" datepicker-popup="yyyy-MM-dd" data-ng-model="query[field.path]" placeholder="{{field.type}}">-->
+                    <!--<label for="{{field.path}}">{{field.title}} Before</label>-->
+                    <!--<input required type="text" id="{{field.path}}" name="{{field.title}}" class="form-control" datepicker-popup="yyyy-MM-dd" data-ng-model="query[field.path]" placeholder="{{field.type}}">-->
+                    <!--</div>-->
                     <!--</div>-->
 
                     <!--<div class="col-xs-4 col-md-4">-->
-                        <!--<input type="submit" class="btn btn-default" value="Find" />-->
+                    <!--<input type="submit" class="btn btn-default" value="Find" />-->
                     <!--</div>-->
 
-
-                </form>
-                <div class="container">
-                    <div class="gridStyle" data-ng-grid="gridOptions"></div>
-                </div>
+                    <!--</form>-->
 
 
-
-
-                <!--<div class="list-group">-->
+                    <!--<div class="list-group">-->
                     <!--&lt;!&ndash;<a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="list-group-item" data-ng-class="{'': }">&ndash;&gt;-->
                     <!--<a data-ng-repeat="user in users" data-ng-href="#!/users/{{user._id}}" class="list-group-item">-->
-                        <!--<div >-->
-                            <!--<img data-ng-src="{{thumbs[0]['image']}}" />-->
-                            <!--<span data-ng-bind="user.firstName"></span><br />-->
-                        <!--</div>-->
+                    <!--<div >-->
+                    <!--<img data-ng-src="{{thumbs[0]['image']}}" />-->
+                    <!--<span data-ng-bind="user.firstName"></span><br />-->
+                    <!--</div>-->
 
                     <!--</a>-->
-                <!--</div>-->
+                    <!--</div>-->
                 </div>
             </section>
         </div>

@@ -31,7 +31,7 @@
                                     Published
                                     <span data-ng-bind="project.created | date:'mediumDate'"></span>
                                     by
-                                    <span data-ng-bind="project.user.fullName"></span>
+                                    <span data-ng-bind="project.user.firstName"></span>
                                 </em>
                             </small>
                             <!--data-ng-class="{'input-filled': user.userZip !== ''}"-->
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="pull-right"
-                                 data-ng-show="((authentication.user) && (authentication.user._id == project.user._id))">
+                                 data-ng-show="((authentication.user) && (authentication.user._id == project.user._id)) || isAdmin.user === 'admin'">
                                 <a class="btn btn-primary" href="/#!/projects/{{project._id}}/edit">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </a>

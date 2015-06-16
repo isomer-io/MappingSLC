@@ -15,6 +15,10 @@ module.exports = function(app) {
         .put(users.requiresLogin, projects.hasAuthorization, projects.update)
         .delete(users.requiresLogin, projects.hasAuthorization, projects.delete);
 
+// Project Markers Routes
+    app.route('/markerData')
+        .get(projects.markerList);
+
     // Finish by binding the Project middleware
     app.param('projectId', projects.projectByID);
 

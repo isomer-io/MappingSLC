@@ -5,6 +5,6 @@ angular.module('users').factory('AuthenticationService', ['$window', function($w
 	var auth = {
 		user: $window.user
 	};
-	
+	console.log('auth service: ', auth);
 	return auth;
 }]);

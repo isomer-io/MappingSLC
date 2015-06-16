@@ -4,7 +4,7 @@ module.exports = function (app) {
     var users = require('../../app/controllers/users.server.controller'),
         keys = require('../models/data/private/keys.js') || require('../../config/env/keys.js'),//second options is deprecated, use /models route
         tractData = require('../models/data/utahTract.json'),
-        markerData = require('../models/data/projectMarkers.json'),
+        markerData = require('../models/project.server.model.js'),
         request = require('request');
 
     //Google Places API Call
@@ -47,12 +47,13 @@ module.exports = function (app) {
         .get(function (req, res) {
             res.jsonp(tractData);
         });
-
-// Project Markers Routes
-    app.route('/markerData')
-        .get(function (req, res) {
-            res.jsonp(markerData);
-        });
+//
+//// Project Markers Routes
+//    app.route('/markerData')
+//        .get(function (req, res) {
+//            console.log('res.sessionStore: \n', res.sessionStore);
+//            res.jsonp(markerData);
+//        });
 
     //// User Profile Data Routes
     //app.route('/userData')

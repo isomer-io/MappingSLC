@@ -24,9 +24,10 @@ angular.module('projects').service('GeoCodeApi', ['$http',
              .success(function(geoData){
                  project.lat = geoData.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
                  project.lng = geoData.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+                 //console.log('lat: ', project.lat + '\nlng:', project.lng);
 
          }).error(function(error) {
-                 var x = 0;
+                 console.log('geocode error: ', error);
                  //TODO: handle this gracefully
              });
 

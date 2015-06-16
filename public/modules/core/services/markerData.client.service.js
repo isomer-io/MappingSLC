@@ -5,7 +5,16 @@ angular.module('core').service('MarkerDataService', ['$http',
         // Project Marker Data Service
         // ...
         this.getMarkerData = function(){
-            return  $http.get('/markerData');
+            return  $http.get('/markerData').
+                success(function(projects){
+                    //console.log('projects: \n', projects);
+                    //for (var prop in projects) {
+                    //    console.log('projects[prop].lng: \n', projects[prop].lng);
+                    //}
+                })
+                .error(function(error){
+                    console.log('marker data error: \n', error);
+                });
         };
     }
 ]);

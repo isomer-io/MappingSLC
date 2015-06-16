@@ -254,6 +254,47 @@
     }
 }
 
+@-webkit-keyframes spin-logo {
+    0% {
+        -webkit-transform: rotate(0deg) scale(1);
+        -moz-transform: rotate(0deg) scale(1);
+        -ms-transform: rotate(0deg) scale(1);
+        -o-transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1);
+    }
+    100% {
+        -webkit-transform: rotate(180deg) scale(1);
+        -moz-transform: rotate(180deg) scale(1);
+        -ms-transform: rotate(180deg) scale(1);
+        -o-transform: rotate(180deg) scale(1);
+        transform: rotate(180deg) scale(1);
+    }
+}
+
+@keyframes spin-logo {
+    0% {
+        -webkit-transform: rotate(0deg) scale(1);
+        -moz-transform: rotate(0deg) scale(1);
+        -ms-transform: rotate(0deg) scale(1);
+        -o-transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    100% {
+        -webkit-transform: rotate(180deg) scale(1);
+        -moz-transform: rotate(180deg) scale(1);
+        -ms-transform: rotate(180deg) scale(1);
+        -o-transform: rotate(180deg) scale(1);
+        transform: rotate(180deg) scale(1);
+    }
+}
+
 .animate-small-logo {
     /*z-index: 3;*/
     background: #023a31;
@@ -268,21 +309,35 @@
     left: -2.2%;
     height: 50px;
     width: 50px;
-    background-image: url(../img/circle_button.png);
+    /*background-image: url(../img/circle_button.png);*/
 }
 
-.animate-small-logo div {
-    /*transform: scale(1.5);*/
+.animate-small-logo:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    -webkit-animation: spin-logo 1s ease forwards;
+    -o-animation: spin-logo 1s ease forwards;
+    animation: spin-logo 1s ease forwards;
+}
+
+span.animate-small-logo div {
     margin-top: -1.75rem;
     position: relative;
 }
 
+span.animate-small-logo div:hover {
+}
+
 .animate-small-logo-active {
-    /*creates animation (vs. transformation)*/
     -webkit-animation: animate-logo 2s ease-out forwards;
     -webkit-animation-delay: 1.16s;
-    /*-moz-animation: animate-logo 2s ease-out forwards;*/
-    /*-moz-animation-delay: 1.16s;*/
     -o-animation: animate-logo 2s ease forwards;
     -o-animation-delay: 1.16s;
     animation: animate-logo 2s ease-out forwards;

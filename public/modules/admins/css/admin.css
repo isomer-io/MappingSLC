@@ -37,8 +37,8 @@ a.widget-box span {
     margin-top: 14%;
 }
 
-.main-content-inner > a > span > i {
-    font-size: 2rem;
+.main-content-inner > a > span > i, .admin a > span > i {
+    font-size: 3rem;
     color: green;
 }
 
@@ -194,7 +194,8 @@ div.admin > div.row > div > a > div:hover {
     margin-top: 2%;
 }
 
-.admin-user .btn-warning {
+/*.chrisIsChris .btn-warning {*/
+.admin .btn-warning {
     background: rgba(245, 2, 25, 0.9);
 }
 
@@ -209,7 +210,8 @@ div.admin > div.row > div > a > div:hover {
     transition: all 0.3s ease 0s;
 }
 
-.admin-user .grow:hover {
+/*.chrisIsChris .grow:hover {*/
+.admin .grow:hover {
     border-radius: 5px;
     background: rgba(0, 45, 0, 0.6);
     border-color: #000;
@@ -217,25 +219,51 @@ div.admin > div.row > div > a > div:hover {
     transition: all 0.3s ease 0s;
 }
 
-.admin-user .btn-warning:hover {
+/*.chrisIsChris .btn-warning:hover {*/
+.admin .btn-warning:hover {
     background: rgba(45, 0, 0, 0.6);
     border-color: #ff0000;
 }
 
-.user-profile .fa {
+.user-profile .fa, .admin .fa {
     cursor: pointer;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
 }
 
-.user-profile .fa:hover {
+/*.user-profile .fa:hover, .chrisIsChris .fa:hover, .chrisIsChris .fa:hover {*/
+.user-profile .fa:hover, .admin .fa:hover {
     color: #006600;
+    background-color: transparent;
     -webkit-transform: scale(1.5);
     -moz-transform: scale(1.5);
     -ms-transform: scale(1.5);
     -o-transform: scale(1.5);
     transform: scale(1.5);
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
 }
 
-.admin-user .header-profile-image {
+/* stlying for hover on main admin panel only */
+.admin .widget-box .fa:hover {
+    color: #ffffff;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+/*.chrisIsChris .header-profile-image {*/
+.admin .header-profile-image {
     height: 100px;
     width: 100px;
     margin-left: 5%;

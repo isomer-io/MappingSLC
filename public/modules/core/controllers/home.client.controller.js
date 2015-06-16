@@ -1,31 +1,9 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http', 'MarkerDataService',
-	function ($scope, AuthenticationService, ApiKeys, $http, MarkerDataService) {
+angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http', 'MarkerDataService', 'AdminAuthService',
+	function ($scope, AuthenticationService, ApiKeys, $http, MarkerDataService, AdminAuthService) {
 		$scope.authentication = AuthenticationService;
-
-
-
-		//toggles off/on for main overlay page and menu
-		$scope.toggle = true;
-		$scope.animateLogoCheck = false;
-		$scope.animateMainOverlayCheck = false;
-		$scope.animateFooterOverlayCheck = false;
-
-		$scope.animateSmallLogo = function(){
-			//animate into the small logo from round 'X' on main modal
-			if($scope.animateLogoCheck === false) {
-				$scope.animateLogoCheck = true;
-				$scope.animateMainOverlayCheck = true;
-				$scope.animateFooterOverlayCheck = true;
-			}else{
-				$scope.animateLogoCheck = false;
-				$scope.animateMainOverlayCheck = false;
-				$scope.animateFooterOverlayCheck = false;
-			}
-		};
-
-
+		$scope.isAdmin = AdminAuthService;
 
 		//for overlay
 		$scope.featuredProjects = {};
@@ -219,8 +197,12 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 			//service that returns project markers
 			MarkerDataService.getMarkerData()
 				.success(function (markerData) {
+					//console.log('markerData: ', markerData);
 					$scope.addProjectMarkers(markerData);
-					//console.log('marker data: ', markerData);
+					//console.log('marker data lng \n: ', markerData[0].lng);
+					//for (var prop in markerData) {
+					//    console.log('markerData[prop].lng: \n', markerData[prop].lng);
+					//}
 					//console.log('marker array length: ', markerData.features.length);
 					//console.log('marker data value coords: ', markerData.features[0]['geometry']['coordinates']);
 					//console.log('marker data value title: ', markerData.features[0]['properties']['title']);
@@ -231,59 +213,90 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				});
 
 
+			////add markers from marker data
+			//$scope.addProjectMarkers = function(markerData){
+			//	//loop through markers array and return values for each property
+			//	for(var i = 0; i < markerData.features.length; i++){
+			//
+			//	L.mapbox.featureLayer({
+			//		// this feature is in the GeoJSON format: see geojson.org
+			//		// for the full specification
+			//		type: 'Feature',
+			//		geometry: {
+			//			type: 'Point',
+			//			// coordinates here are in longitude, latitude order because
+			//			// x, y is the standard for GeoJSON and many formats
+			//			coordinates: markerData.features[i]['geometry']['coordinates']
+			//		},
+			//		properties: {
+			//			title: markerData.features[i]['properties']['title'],
+			//			description: markerData.features[i]['properties']['description'],
+			//			// one can customize markers by adding simplestyle properties
+			//			// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+			//			'marker-size': 'large',
+			//			'marker-color': markerData.features[i]['properties']['marker-color'],
+			//			'marker-symbol': markerData.features[i]['properties']['marker-symbol']
+			//		}
+			//	})
+			//
+			//	//create toogle for marker event that toggles sidebar on marker click
+			//	.on('click', function (e) {
+			//		//center the map when a project marker is clicked
+			//		map.panTo(e.layer.getLatLng());
+			//
+			//		//$scope.$apply(
+			//		//    function(){
+			//		//        $scope.toggleDetails = !$scope.toggleDetails;
+			//		//    }
+			//		//);
+			//		sidebar.getContainer();
+			//		//sidebar.setContent('test <b>test</b> test');
+			//		if ($scope.sidebarToggle === false) {
+			//			//$rootScope.animateLogoCheck = true;
+			//			setTimeout(function () {
+			//				sidebar.open('settings');
+			//			}, 500);
+			//			$scope.sidebarToggle = true;
+			//		} else {
+			//			setTimeout(function () {
+			//				sidebar.close();
+			//			}, 500);
+			//			$scope.sidebarToggle = false;
+			//		}
+			//	})
+			//	.addTo(map);
+			//	}
+			//};
+
 			//add markers from marker data
-			$scope.addProjectMarkers = function(markerData){
-				//loop through markers array and return values for each property
-				for(var i = 0; i < markerData.features.length; i++){
-
-				L.mapbox.featureLayer({
-					// this feature is in the GeoJSON format: see geojson.org
-					// for the full specification
-					type: 'Feature',
-					geometry: {
-						type: 'Point',
-						// coordinates here are in longitude, latitude order because
-						// x, y is the standard for GeoJSON and many formats
-						coordinates: markerData.features[i]['geometry']['coordinates']
-					},
-					properties: {
-						title: markerData.features[i]['properties']['title'],
-						description: markerData.features[i]['properties']['description'],
-						// one can customize markers by adding simplestyle properties
-						// https://www.mapbox.com/guides/an-open-platform/#simplestyle
-						'marker-size': 'large',
-						'marker-color': markerData.features[i]['properties']['marker-color'],
-						'marker-symbol': markerData.features[i]['properties']['marker-symbol']
-					}
-				})
-
-				//create toogle for marker event that toggles sidebar on marker click
-				.on('click', function (e) {
-					//center the map when a project marker is clicked
-					map.panTo(e.layer.getLatLng());
-
-					//$scope.$apply(
-					//    function(){
-					//        $scope.toggleDetails = !$scope.toggleDetails;
-					//    }
-					//);
-					sidebar.getContainer();
-					//sidebar.setContent('test <b>test</b> test');
-					if ($scope.sidebarToggle === false) {
-						//$rootScope.animateLogoCheck = true;
-						setTimeout(function () {
-							sidebar.open('settings');
-						}, 500);
-						$scope.sidebarToggle = true;
-					} else {
-						setTimeout(function () {
-							sidebar.close();
-						}, 500);
-						$scope.sidebarToggle = false;
-					}
-				})
-				.addTo(map);
+			$scope.addProjectMarkers = function(markerData) {
+				console.log('markerData: \n', markerData);
+				////loop through markers array and return values for each property
+				//for(var i = 0; i < 4; i++){
+				for (var prop in markerData) {
+					console.log('markerData[prop].lng: \n', markerData[prop].lng);
 				}
+				//L.mapbox.featureLayer({
+				//	// this feature is in the GeoJSON format: see geojson.org
+				//	// for the full specification
+				//	type: 'Feature',
+				//	geometry: {
+				//		type: 'Point',
+				//		// coordinates here are in longitude, latitude order because
+				//		// x, y is the standard for GeoJSON and many formats
+				//		coordinates: markerData.features[i]['geometry']['coordinates']
+				//	},
+				//	properties: {
+				//		title: markerData.features[i]['properties']['title'],
+				//		description: markerData.features[i]['properties']['description'],
+				//		// one can customize markers by adding simplestyle properties
+				//		// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+				//		'marker-size': 'large',
+				//		'marker-color': markerData.features[i]['properties']['marker-color'],
+				//		'marker-symbol': markerData.features[i]['properties']['marker-symbol']
+				//	}
+				//})
+
 			};
 
 			//style the polygon tracts

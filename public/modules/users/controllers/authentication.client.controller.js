@@ -5,7 +5,7 @@ angular.module('users').controller('AuthenticationServiceController', ['$scope',
 		$scope.authentication = AuthenticationService;
 		$scope.toggleSignup = false;
 
-		$rootScope.signInBeforeProject = true;
+		//$rootScope.signInBeforeProject = true;
 
 		$scope.signInBeforeProject = $rootScope.signInBeforeProject;
 		$scope.closeWarning = false;

@@ -71,9 +71,16 @@ exports.delete = function(req, res) {
 
 /**
  * List of Projects
+ *
+ * .find({ "invitees._id": req.query.invitation_id })
+ * .populate('invitees.user')
+ *
  */
 exports.list = function(req, res) {
 	//run a query in mongoose
+	//Project.find(
+		//{'projects._id': req.query.}
+	//)
 	Project.find()
 		.sort('-created')
 		.populate('user', 'displayName')
@@ -83,31 +90,49 @@ exports.list = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			//projects.user;
+			//console.log('projects.user', projects.user);
 			res.jsonp(projects);
 		}
 	});
 };
-//
-///**
-// * List of GeoCoordinates for Projects
-// */
-//exports.markerList = function(req, res) {
-//    Project.find().sort('-created').populate('status', 'lat', 'lng').exec(function(err, projects) {
-//        if (err) {
-//            return res.status(400).send({
-//                message: errorHandler.getErrorMessage(err)
-//            });
-//        } else {
-//            res.jsonp(projects);
-//        }
-//    });
-//};
+
+/**
+ * List of GeoCoordinates for Projects
+ */
+exports.markerList = function(req, res) {
+    Project.find()
+	    .sort('-created')
+	    //.populate('status', 'lat', 'lng')
+	    .exec(function(err, projects) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+	        //var lng = [];
+	        //for(var prop in projects) {
+		        //console.log('projects.lng: ' + prop + ' \n', projects[prop].lng);
+		        //console.log('projects.lng: \n', projects[prop].lng);
+	            //console.log('lng: \n', projects[0].lng);
+	            //res.jsonp(projects[prop].lng);
+	            //lng = lng.push(projects[prop].lng);
+	            //console.log('lng: \n', lng);
+	        //}
+	        //return lng;
+	        //console.log('projects: ', projects);
+	        res.jsonp(projects);
+        }
+    });
+};
 
 /**
  * Project middleware
  */
 exports.projectByID = function(req, res, next, id) { 
-	Project.findById(id).populate('user', 'createdOn').exec(function(err, project) {
+	Project.findById(id)
+		.populate('user', 'createdOn')
+		.exec(function(err, project) {
 		if (err) return next(err);
 		if (! project) return next(new Error('Failed to load Project ' + id));
 		req.project = project ;
