@@ -10,6 +10,7 @@ angular.module('users').controller('AuthenticationServiceController', ['$scope',
 		$scope.signInBeforeProject = $rootScope.signInBeforeProject;
 		$scope.closeWarning = false;
 
+
 		// If user is signed in then redirect back home
 		if ($scope.authentication.user) $location.path('/');
 
@@ -18,9 +19,14 @@ angular.module('users').controller('AuthenticationServiceController', ['$scope',
 			$http.post('/auth/signup', $scope.credentials).success(function (response) {
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
-
-				// And redirect to the index page
-				$location.path('/');
+				// redirect to the project create page if $rootScope.signInBeforeProject = true
+				if ($rootScope.signInBeforeProject = true) {
+					$rootScope.signInBeforeProject = false;
+					$location.path('/projects/create');
+				} else {
+					// And redirect to the index page
+					$location.path('/');
+				}
 			}).error(function (response) {
 				$scope.error = response.message;
 			});
@@ -36,7 +42,7 @@ angular.module('users').controller('AuthenticationServiceController', ['$scope',
 					$scope.authentication.user = response;
 					//todo add function to update lastVisited property in user db model
 					// redirect to the project create page if $rootScope.signInBeforeProject = true
-					if ($rootScope.signInBeforeProject = true) {
+					if ($rootScope.signInBeforeProject === true) {
 						$rootScope.signInBeforeProject = false;
 						$location.path('/projects/create');
 					} else {

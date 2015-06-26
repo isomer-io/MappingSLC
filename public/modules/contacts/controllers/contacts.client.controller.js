@@ -1,9 +1,49 @@
 'use strict';
 
 // Contacts controller
-angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Contacts', '$http',
-	function($scope, $stateParams, $location, AuthenticationService, Contacts, $http) {
+angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Contacts', '$http', 'AdminAuthService',
+	function($scope, $stateParams, $location, AuthenticationService, Contacts, $http, AdminAuthService) {
 		$scope.authentication = AuthenticationService;
+		$scope.isAdmin = AdminAuthService;
+
+		//$scope.toggleFlag = false;
+		//
+		//$scope.toggleRead = false;
+		//console.log('$scope.toggleRead outside', $scope.toggleRead);
+		//$scope.toggleReadFn = function(){
+		//	if (1===1) {
+		//
+		//	}
+		//
+		//console.log('$scope.toggleRead inside', $scope.toggleRead);
+		//};
+
+		//function to create a link on an entire row in a table
+		$scope.viewMessage = function(contactId) {
+			$location.path('admin/messages/' + contactId);
+		};
+
+
+
+
+		//table sort for contact messages
+
+
+		//for adming panel
+		//$scope.dateMoment = moment().format("MMM Do YYYY");
+		//$scope.dateMoment = ;
+		$scope.dateNow = moment();
+
+
+		$scope.toggleSort = true;
+		$scope.oneAtATime = true;
+
+
+
+
+
+
+
 
 		// Create new Contact
 		$scope.create = function() {
@@ -117,24 +157,6 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 			error(function(data, status){
 
 			});
-
-		//table sort for contact messages
-
-
-		//for adming panel
-		//$scope.dateMoment = moment().format("MMM Do YYYY");
-		//$scope.dateMoment = ;
-		$scope.dateNow = Date.now();
-
-		$scope.toggleSort = true;
-		$scope.oneAtATime = true;
-
-
-
-
-
-
-
 
 	}
 ]);

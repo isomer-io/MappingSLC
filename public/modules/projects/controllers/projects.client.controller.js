@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService',
-	function ($scope, $stateParams, $location, AuthenticationService, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', '$state',
+	function ($scope, $stateParams, $location, AuthenticationService, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, $state) {
 		$scope.AuthenticationService = AuthenticationService;
 		$scope.isAdmin = AdminAuthService;
 		$scope.logo = '../../../modules/core/img/brand/mapping_150w.png';
@@ -20,6 +20,26 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.title = 'my totally tabular title';
 
 		$scope.trustAsHtml = $sce.trustAsHtml;
+
+
+		//admin panel editing
+		$scope.toggleEdit = false;
+		$scope.toggleId = 0;
+		$scope.toggleEditFn = function(editNum) {
+			$scope.toggleEdit = !$scope.toggle;
+			$scope.toggleId = editNum;
+		};
+
+
+
+		$rootScope.previousState = '';
+		$rootScope.currentState = '';
+		$rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+			$rootScope.previousState = from.name;
+			$rootScope.currentState = to.name;
+		});
+
+		//$scope.goBack = $state.url($rootScope.previousState);
 
 		$scope.run = function ($rootScope, $state, AuthenticationService) {
 			$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {

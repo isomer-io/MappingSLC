@@ -1,9 +1,10 @@
 'use strict';
 
 // Admins controller
-angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$stateParams', '$location', 'AuthenticationService', 'Projects', 'UserData', 'Contacts',
-	function ($scope, d3, $stateParams, $location, AuthenticationService, Projects, UserData, Contacts) {
+angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$stateParams', '$location', 'AuthenticationService', 'Projects', 'UserData', 'Contacts', 'AdminAuthService',
+	function ($scope, d3, $stateParams, $location, AuthenticationService, Projects, UserData, Contacts, AdminAuthService) {
 		$scope.authentication = AuthenticationService;
+		$scope.isAdmin = AdminAuthService;
 		//
 		//function run($rootScope, $state, AuthenticationService) {
 		//
@@ -113,6 +114,10 @@ angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$state
 		$scope.isConnectedSocialAccount = function (provider) {
 			return $scope.user.provider === provider || ($scope.user.additionalProvidersData && $scope.user.additionalProvidersData[provider]);
 		};
+
+
+
+		//featured projects --- either a service injected into core or in core ctrl
 
 	}
 ]);

@@ -14,8 +14,6 @@ pre {
     margin-top: 20px;
 }
 
-
-
 h1 #form-container, h2 #form-container, h3 #form-container, h4 #form-container, h5 #form-container, p #form-container {
     color: #ffffff;
 }
@@ -96,6 +94,10 @@ fieldset > div > div {
     border-color: blue;
 }
 
+.view-projects div.pull-right .btn {
+    margin-top: 13%;
+    top: 13%;
+}
 
 
 /* Thumbnail STYLINGS

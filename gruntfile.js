@@ -2,6 +2,8 @@
 
 var fs = require('fs');
 
+//require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
+
 module.exports = function(grunt) {
 	// Unified Watch Object
 	var watchFiles = {
@@ -146,6 +148,16 @@ module.exports = function(grunt) {
 				configFile: 'karma.conf.js'
 			}
 		},
+		sass: {
+			options: {
+				sourceMap: true
+			},
+			dist: {
+				files: {
+					'main.css': 'main.scss'
+				}
+			}
+		},
 		copy: {
 		    localConfig: {
 	            src: 'config/env/local.example.js',
@@ -174,6 +186,9 @@ module.exports = function(grunt) {
 
 	// Default task(s).
 	grunt.registerTask('default', ['lint', 'copy:localConfig', 'concurrent:default']);
+
+	//compile sass to css
+	grunt.registerTask('sass', ['sass']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'copy:localConfig', 'concurrent:debug']);

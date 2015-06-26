@@ -20,7 +20,7 @@ angular.module('admins').config(['$stateProvider',
 			})
 			.state('adminEditProject', {
 				url: '/admin/edit-project/:projectId',
-				templateUrl: 'modules/admins/views/messages/admin-edit-project.client.view.html'
+				templateUrl: 'modules/admins/views/projects/admin-view-project.client.view.html'
 			})
 
 			//admin contact form routes

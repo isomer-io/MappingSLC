@@ -10,6 +10,18 @@
             <section data-ng-controller="AuthenticationServiceController" class="main-content-inner">
                 <div class="auth-form">
 
+                    <div class="row" data-ng-show="signInBeforeProject && !closeWarning">
+                        <div class="col-md-12">
+                            <div class="sign-in-warning">
+                                <div class="pull-right" data-ng-click="closeWarning = !closeWarning">X</div>
+                                <div>
+                                    <p>You need to sign up before you create a project.</p>
+                                    <p>If you've already registered, <a href="/#!/signin">sign in here</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <h1 class="page-header col-md-12 text-center">Sign Up</h1>
 
                     <div class="row">

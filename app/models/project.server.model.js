@@ -31,13 +31,13 @@ var ProjectSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    createdBy: {
+    firstName: {
         type: String,
-        default: ''
-        //todo test function that auto-generates current user to make sure it works
-        //default: (function(currentUser){
-        //	this.Schema.user = currentUser;
-        //})
+        ref: 'User'
+    },
+    lastName: {
+        type: String,
+        ref: 'User'
     },
     modifiedBy: {
         type: String,
@@ -87,6 +87,10 @@ var ProjectSchema = new Schema({
         default: 'Enter and format your project here',
         required: '',
         trim: true
+    },
+    storySummary: {
+        type: String,
+        default: ''
     },
     url: {
         type: String,
@@ -165,11 +169,6 @@ var ProjectSchema = new Schema({
         type: Array,
         default: '',
         trim: true
-    },
-    bio: {
-        type: String,
-        default: '',
-        trim: true
     }
 });
 
@@ -186,7 +185,7 @@ ProjectSchema.virtual('fullName').get(function () {
 
 //create virtual attribute setter for to spilt coordinates into lat and lng
 ProjectSchema.virtual('geoCoordinates').get(function () {
-    return this.lat + ' ' + this.lng;
+    return this.lat + ', ' + this.lng;
 }).set(function (geoCoordinates) {
     var splitCoordinates = geoCoordinates.split(', ');
     this.lat = splitCoordinates[0] || '';

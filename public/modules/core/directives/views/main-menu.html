@@ -1,4 +1,5 @@
 <div id="sidebar" class="sidebar" ng-class="{'collapsed': !menuOpen}">
+    <!--todo lookup the ng-class for 'collapsed' class to see if this is actually messing something up -->
 
     <!-- Main Menu Closed -->
     <ul class="sidebar-tabs" role="tablist">
@@ -191,22 +192,21 @@
 
     <!--settings menu-->
         <div class="sidebar-pane" id="settings" data-ng-click="toggleOverlayFunction('menu-open')">
-            <h1>Project Overview</h1>
+            <!--<h3 data-ng-bind="populateStory.title"></h3>-->
+            <h3>{{populateStory.title}}</h3>
 
             <div class="sidebar-view-date ">
-                <small>June 22, 2014</small>
+                <small>{{populateStory.published}}</small>
             </div>
-            <h3>An Interview with Andrew Shaw</h3>
-            <img ng-src="modules/core/img/{{photo4}}">
+            <!--<h3>An Interview with Andrew Shaw</h3>-->
+            <img ng-src="{{populateStory.mainImage}}">
             <!--<img src="../../core/img/as_thumb_bw.png">-->
 
             <div class="sidebar-view-text-content">
-                <p>
-                    Andrew Shaw is a songwriter, composer, and performer based in Salt Lake City. He composed, performed, and recorded the original score for the feature films The Strongest Man (Sundance Film Festival 2015) and Must Come Down. His music has been used in public television and commercial applications, as well.
-                </p>
+                <p data-ng-bind="populateStory.storySummary"></p>
             </div>
             <p>
-                <button type="button" class="btn btn-primary btn-lg">Read More</button>
+                <!--<button type="button" class="btn btn-primary btn-lg" data-ng-click="/projects/{{_id}}">Read More</button>-->
                 <button type="button" class="btn btn-default btn-lg">Share</button>
             </p>
 

@@ -28,14 +28,12 @@ var ContactSchema = new Schema({
 	firstName: {
 		type: String,
 		trim: true,
-		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your first name']
+		default: ''
 	},
 	lastName: {
 		type: String,
 		trim: true,
-		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
+		default: ''
 	},
 	created: {
 		type: Date,
@@ -48,7 +46,6 @@ var ContactSchema = new Schema({
 	zip: {
 		type: String,
 		default: '',
-		required: '',
 		trim: true
 	},
 	email: {
@@ -67,7 +64,22 @@ var ContactSchema = new Schema({
 		type: String,
 		required: '',
 		trim: true
+	},
+	read: {
+		type: Boolean,
+		required: '',
+		default: false
+	},
+	flag: {
+		type: Boolean,
+		required: '',
+		default: false
 	}
+});
+
+//create virtual attribute for full name
+ContactSchema.virtual('fullName').get(function () {
+	return this.firstName + ' ' + this.lastName;
 });
 
 mongoose.model('Contact', ContactSchema);

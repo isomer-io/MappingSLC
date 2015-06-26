@@ -6,7 +6,7 @@
 
     <section class="container">
 
-        <div class="main-content-outer admin">
+        <div class="main-content-outer">
 
             <section class="main-content-inner" data-ng-controller="ContactsController" data-ng-init="find()">
                 <a href="/#!/admin"><span><i class="fa fa-chevron-left"></i></span></a>
@@ -15,37 +15,31 @@
                     <h1>Messages</h1>
                 </div>
 
-
-                <table class="table table-bordered table-striped" data-ng-repeat="contact in contacts">
-
+                <table class="table table-bordered table-striped">
                     <thead ts-wrapper>
                     <tr>
-                        <!--<td data-ng-click="toggleSort = !toggleSort">First Name <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
-                        <!--<td data-ng-click="toggleSort = !toggleSort">Last Name <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
-                        <!--<td data-ng-click="toggleSort = !toggleSort">Date Received <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
-                        <!--<td data-ng-click="toggleSort = !toggleSort">Zip Code <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
-                        <!--<td data-ng-click="toggleSort = !toggleSort">Date Received <i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
-
-                        <!--<td>Misc.<i class="fa fa-chevron-up pull-right" data-ng-show="toggleSort"></i><i class="fa fa-chevron-down pull-right" data-ng-show="!toggleSort"></i></td>-->
-
                         <th ts-criteria="firstName">First Name</th>
                         <th ts-criteria="lastName|lowercase" ts-default>Last Name</th>
                         <th ts-criteria="email">E-Mail</th>
-                        <th ts-criteria="zip | parseInt">Zip Code</th>
-                        <!--<th ts-criteria="firstName">First Name</th>-->
-
+                        <th ts-criteria="created">Date Sent</th>
+                        <!--<th ts-criteria="read">Read</th>-->
+                        <!--<th ts-criteria="flag">Flag</th>-->
                     </tr>
                     </thead>
 
+
                     <tbody>
-                    <tr ng-repeat="message in messageData" ts-repeat>
-                            <td>{{ message.firstName }}</td>
-                            <td>{{ message.lastName }}</td>
-                            <td>{{ message.email }}</td>
-                            <td>{{ message.zip }}</td>
-                            <!--<td>{{sentToday()}}</td>-->
-                            <!--<td>{{contact._id}}</td>-->
+
+                    <tr data-ng-repeat="contact in contacts | orderBy: '-created'" data-ng-class="{'message-read' : contact.read}" data-ng-click="viewMessage(contact._id)">
+                            <td>{{ contact.firstName }}</td>
+                            <td>{{ contact.lastName }}</td>
+                            <!--<td>{{ contact.email }}</td>-->
+                            <td>{{ contact._id }}</td>
+                            <td>{{ contact.created | date : short }}</td>
+                            <!--<td>{{ contact.read }}</td>-->
+                            <!--<td align="center"><i class="fa fa-flag" data-ng-click="toggleFlag = !toggleFlag" data-ng-class="{'select' : toggleFlag = true}"></i></td>-->
                     </tr>
+
                     </tbody>
 
                 </table>

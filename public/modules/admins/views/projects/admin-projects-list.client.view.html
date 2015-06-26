@@ -21,7 +21,8 @@
                         </div>
 
                         <div class="row">
-                            <a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="col-md-12 admin-list">
+                            <!--<a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="col-md-12 admin-list">-->
+                            <a data-ng-repeat="project in projects" data-ng-href="#!/admin/edit-project/{{project._id}}" class="col-md-12 admin-list">
                                 <small>
                                     Posted on
                                     <span data-ng-bind="project.created | date:'medium'"></span>

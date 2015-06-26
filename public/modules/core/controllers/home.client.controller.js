@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http', 'MarkerDataService', 'AdminAuthService',
-	function ($scope, AuthenticationService, ApiKeys, $http, MarkerDataService, AdminAuthService) {
+angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http', 'MarkerDataService', 'AdminAuthService', '$rootScope',
+	function ($scope, AuthenticationService, ApiKeys, $http, MarkerDataService, AdminAuthService, $rootScope) {
 		$scope.authentication = AuthenticationService;
 		$scope.isAdmin = AdminAuthService;
 
@@ -16,6 +16,38 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		$scope.photo3 = 'dw_thumb_150.jpg';
 		$scope.photo4 = 'as_thumb_bw.png';
 
+		//var projectMarkers = null;
+
+		//service that returns project markers
+		MarkerDataService.getMarkerData()
+			.success(function (markerData) {
+				$scope.addProjectMarkers(markerData);
+				//markerColorFn(markerData);
+			})
+			.error(function (data, status) {
+				alert('Failed to load project markers. Status: ' + status);
+			});
+
+
+		var markerColorFn = function (markerData, prop) {
+			if (markerData.category === 'video') {
+				return '#ff0011';
+			} else if (markerData[prop].category === 'multimedia') {
+				return 'red';
+			} else if (markerData[prop].category === 'essay') {
+				return 'blue';
+			} else if (markerData[prop].category === 'literature') {
+				return 'green';
+			} else if (markerData[prop].category === 'interview') {
+				return 'brown';
+			} else if (markerData[prop].category === 'map') {
+				return 'yellow';
+			} else if (markerData[prop].category === 'audio') {
+				return 'black';
+			} else {
+				return '#00ff44';
+			}
+		};
 
 		/**
 		 *
@@ -39,12 +71,6 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				$scope.menuOpen = true;
 				changeMapFrom('gray-map');
 			} else if ($scope.overlayActive === false && source === 'menu-open') {
-				console.log('current if is \'overlay \'false\' and \'menu-open\'');
-				console.log('$scope.menuOpen: ', $scope.menuOpen);
-				//if (getAttribute('active')) {
-				//    console.log('in it!');
-				//    $scope.menuOpen = false;
-				//}
 			} else if ($scope.overlayActive === false && source === 'menu-closed') {
 				console.log('current if is \'overlay \'false\' and \'menu-closed\'');
 				$scope.triggerMenu = !$scope.triggerMenu;
@@ -54,7 +80,7 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 					$scope.menuOpen = true;
 				}
 			} else if ($scope.overlayActive === false && source === 'home') {
-				console.log('current if is \'home\'');
+				//console.log('current if is \'home\'');
 				$scope.menuOpen = false;
 				$scope.overlayActive = true;
 			}
@@ -67,25 +93,25 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 
 
 		//subscribe form animations
-		var cssLayout = function(){
-			[].slice.call( document.querySelectorAll( 'input.input_field' ) ).forEach( function( inputEl ) {
+		var cssLayout = function () {
+			[].slice.call(document.querySelectorAll('input.input_field')).forEach(function (inputEl) {
 				// in case the input is already filled..
-				if( inputEl.value.trim() !== '' ) {
-					classie.add( inputEl.parentNode, 'input-filled' );
+				if (inputEl.value.trim() !== '') {
+					classie.add(inputEl.parentNode, 'input-filled');
 				}
 
 				// events:
-				inputEl.addEventListener( 'focus', onInputFocus );
-				inputEl.addEventListener( 'blur', onInputBlur );
-			} );
+				inputEl.addEventListener('focus', onInputFocus);
+				inputEl.addEventListener('blur', onInputBlur);
+			});
 
-			function onInputFocus( ev ) {
-				classie.add( ev.target.parentNode, 'input-filled' );
+			function onInputFocus(ev) {
+				classie.add(ev.target.parentNode, 'input-filled');
 			}
 
-			function onInputBlur( ev ) {
-				if( ev.target.value.trim() === '' ) {
-					classie.remove( ev.target.parentNode, 'input-filled' );
+			function onInputBlur(ev) {
+				if (ev.target.value.trim() === '') {
+					classie.remove(ev.target.parentNode, 'input-filled');
 				}
 			}
 		};
@@ -98,12 +124,11 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		 *
 		 **/
 
-
 		$scope.markers = true;
 		$scope.filters = true;
 		$scope.censusDataTractLayer = true;
 		$scope.googlePlacesLayer = false;
-		//$scope.toggleDetails = false;
+		//$scope.toggleProjectDetails = false;
 		$scope.sidebarToggle = false;
 
 		var dataBoxStaticPopup = null,
@@ -121,24 +146,12 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				alert('Failed to load Mapbox API key. Status: ' + status);
 			});
 
+		//$scope.projectDetails = {};
+		var popupIndex = 0;
 
-	//	coordinates: [
-	//		-111.702,
-	//		40.773
-	//	]
-	//},
-	//properties: {
-	//title: 'Peregrine The Espresso',
-	//	description: '1718 14th St NW, Washington, DC',
-	//	// one can customize markers by adding simplestyle properties
-	//	// https://www.mapbox.com/guides/an-open-platform/#simplestyle
-	//	'marker-size': 'large',
-	//	'marker-color': '#BE9A6B',
-	//	'marker-symbol': 'cafe'
 
-//
-//call the .map and add functionality
-//
+//call map and add functionality
+
 		var mapFunction = function (key, accessToken) {
 			//creates a Mapbox Map
 			L.mapbox.accessToken = accessToken;
@@ -149,13 +162,16 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 			var map = L.mapbox.map('map', null, {
 				infoControl: false, attributionControl: false
 			})
+				//.on('click', function (e) {
+				//	if ($scope.menuOpen) {
+				//		sidebar.close();
+				//	}
+				//})
 				.setView([40.773, -111.902], 12)
 				//allow users to share maps on social media
 				// source: https://www.mapbox.com/mapbox.js/api/v2.1.5/l-mapbox-sharecontrol/
 				.addControl(L.mapbox.shareControl())
 				.addControl(L.mapbox.geocoderControl('mapbox.places'));
-
-
 
 			var grayMap = L.mapbox.tileLayer('poetsrock.b06189bb'),
 				mainMap = L.mapbox.tileLayer('poetsrock.la999il2'),
@@ -193,110 +209,97 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				position: 'left'
 			}).addTo(map);
 
+			//mapService.sidebar.addTo(map);
 
-			//service that returns project markers
-			MarkerDataService.getMarkerData()
-				.success(function (markerData) {
-					//console.log('markerData: ', markerData);
-					$scope.addProjectMarkers(markerData);
-					//console.log('marker data lng \n: ', markerData[0].lng);
-					//for (var prop in markerData) {
-					//    console.log('markerData[prop].lng: \n', markerData[prop].lng);
-					//}
-					//console.log('marker array length: ', markerData.features.length);
-					//console.log('marker data value coords: ', markerData.features[0]['geometry']['coordinates']);
-					//console.log('marker data value title: ', markerData.features[0]['properties']['title']);
-					//console.log('marker data value description: ', markerData.features[0]['properties']['description']);
-				})
-				.error(function (data, status) {
-					alert('Failed to load project markers. Status: ' + status);
-				});
-
-
-			////add markers from marker data
-			//$scope.addProjectMarkers = function(markerData){
-			//	//loop through markers array and return values for each property
-			//	for(var i = 0; i < markerData.features.length; i++){
-			//
-			//	L.mapbox.featureLayer({
-			//		// this feature is in the GeoJSON format: see geojson.org
-			//		// for the full specification
-			//		type: 'Feature',
-			//		geometry: {
-			//			type: 'Point',
-			//			// coordinates here are in longitude, latitude order because
-			//			// x, y is the standard for GeoJSON and many formats
-			//			coordinates: markerData.features[i]['geometry']['coordinates']
-			//		},
-			//		properties: {
-			//			title: markerData.features[i]['properties']['title'],
-			//			description: markerData.features[i]['properties']['description'],
-			//			// one can customize markers by adding simplestyle properties
-			//			// https://www.mapbox.com/guides/an-open-platform/#simplestyle
-			//			'marker-size': 'large',
-			//			'marker-color': markerData.features[i]['properties']['marker-color'],
-			//			'marker-symbol': markerData.features[i]['properties']['marker-symbol']
-			//		}
-			//	})
-			//
-			//	//create toogle for marker event that toggles sidebar on marker click
-			//	.on('click', function (e) {
-			//		//center the map when a project marker is clicked
-			//		map.panTo(e.layer.getLatLng());
-			//
-			//		//$scope.$apply(
-			//		//    function(){
-			//		//        $scope.toggleDetails = !$scope.toggleDetails;
-			//		//    }
-			//		//);
-			//		sidebar.getContainer();
-			//		//sidebar.setContent('test <b>test</b> test');
-			//		if ($scope.sidebarToggle === false) {
-			//			//$rootScope.animateLogoCheck = true;
-			//			setTimeout(function () {
-			//				sidebar.open('settings');
-			//			}, 500);
-			//			$scope.sidebarToggle = true;
-			//		} else {
-			//			setTimeout(function () {
-			//				sidebar.close();
-			//			}, 500);
-			//			$scope.sidebarToggle = false;
-			//		}
-			//	})
-			//	.addTo(map);
-			//	}
-			//};
+			$scope.populateStory = {};
+			var markerArray = [];
+			var projectMarker = {};
 
 			//add markers from marker data
-			$scope.addProjectMarkers = function(markerData) {
-				console.log('markerData: \n', markerData);
-				////loop through markers array and return values for each property
-				//for(var i = 0; i < 4; i++){
-				for (var prop in markerData) {
-					console.log('markerData[prop].lng: \n', markerData[prop].lng);
-				}
-				//L.mapbox.featureLayer({
-				//	// this feature is in the GeoJSON format: see geojson.org
-				//	// for the full specification
-				//	type: 'Feature',
-				//	geometry: {
-				//		type: 'Point',
-				//		// coordinates here are in longitude, latitude order because
-				//		// x, y is the standard for GeoJSON and many formats
-				//		coordinates: markerData.features[i]['geometry']['coordinates']
-				//	},
-				//	properties: {
-				//		title: markerData.features[i]['properties']['title'],
-				//		description: markerData.features[i]['properties']['description'],
-				//		// one can customize markers by adding simplestyle properties
-				//		// https://www.mapbox.com/guides/an-open-platform/#simplestyle
-				//		'marker-size': 'large',
-				//		'marker-color': markerData.features[i]['properties']['marker-color'],
-				//		'marker-symbol': markerData.features[i]['properties']['marker-symbol']
-				//	}
-				//})
+			$scope.addProjectMarkers = function (markerData) {
 
+				//loop through markers array and return values for each property
+				for (var prop in markerData) {
+					//console.log('markerData: ', markerData);
+
+					//$scope.$apply(function() {
+					$scope.populateStory = {
+						storyId: markerData[prop]._id,
+						summary: markerData[prop].storySummary,
+						title: markerData[prop].title,
+						mainImage: markerData[prop].mainImage,
+						category: markerData[prop].category,
+						mapImage: markerData[prop].mapImage,
+						lat: markerData[prop].lat,
+						lng: markerData[prop].lng,
+						published: markerData[prop].created,
+						leafletId: null
+					};
+					//});
+					projectMarker = L.mapbox.featureLayer({
+						//var singleMarker = L.mapbox.featureLayer({
+						// this feature is in the GeoJSON format: see geojson.org for full specs
+						type: 'Feature',
+						geometry: {
+							type: 'Point',
+							// coordinates here are in longitude, latitude order because
+							// x, y is the standard for GeoJSON and many formats
+							coordinates: [markerData[prop].lng, markerData[prop].lat]
+
+						},
+						properties: {
+							title: $scope.populateStory.title,
+							description: $scope.populateStory.summary,
+							// one can customize markers by adding simplestyle properties
+							// https://www.mapbox.com/guides/an-open-platform/#simplestyle
+							'marker-size': 'large',
+							'marker-color': markerColorFn(markerData, prop),
+							'marker-symbol': 'heart'
+						}
+					})
+						//create toogle for marker event that toggles sidebar on marker click
+						.on('click', function (e) {
+							$scope.populateStory.leafletId = e.target._leaflet_id;
+							console.log('e.layer', e.layer);
+							console.log('$scope.populateStory: ', $scope.populateStory);
+							console.log('$scope.populateStory.summary', $scope.populateStory.summary);
+							//center the map when a project marker is clicked
+							map.panTo(e.layer.getLatLng());
+							popupMenuToggle(e);
+
+							//$scope.$apply(
+							//    function(){
+							//        $scope.toggleProjectDetails = !$scope.toggleProjectDetails;
+							//    }
+							//);
+
+						})
+						.on('popupopen', function (e) {
+							//$scope.populateStory.leafletId = e.target._leaflet_id;
+							//return $scope.populateStory;
+						})
+						.addTo(map);
+
+					markerArray.push($scope.populateStory);
+				}
+			};
+
+
+			var popupMenuToggle = function (e) {
+				if ($scope.menuOpen === false && popupIndex !== e.target._leaflet_id) {
+					sidebar.open('settings');
+					popupIndex = e.target._leaflet_id;
+					console.log('1', '$scope.menuOpen', $scope.menuOpen, 'popupIndex', popupIndex, 'e.target._leaflet_id', e.target._leaflet_id);
+				} else if ($scope.menuOpen === true && popupIndex !== e.target._leaflet_id) {
+					//$scope.populateStorySummary($scope.projectDetails);
+					popupIndex = e.target._leaflet_id;
+					console.log('2', '$scope.menuOpen', $scope.menuOpen, 'popupIndex', popupIndex, 'e.target._leaflet_id', e.target._leaflet_id);
+				} else if ($scope.menuOpen === true && popupIndex === e.target._leaflet_id) {
+					sidebar.close();
+					popupIndex = 0;
+					console.log('3', '$scope.menuOpen', $scope.menuOpen, 'popupIndex', popupIndex, 'this._leaflet_id', e.target._leaflet_id);
+					//popupIndex = e.target._leaflet_id;
+				}
 			};
 
 			//style the polygon tracts
@@ -442,19 +445,20 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				}
 			};
 
+			//projectMarkers.on('click', function (e) {
+			//	console.log('yep, you clicked on a marker: \n', e); // e is an event object (MouseEvent in this case)
+			//	//alert(popup); // e is an event object (MouseEvent in this case)
+			//	//if ($scope.menuOpen) {
+			//	//	sidebar.close();
+			//	//}
+			//});
 
-			//    //connects to the sidebar client controller to open the modal when 'home' is clicked on the sidebar
-			//    $rootScope.$on('SHOW_MAP', function () {
-			//        //mainMap.addTo(.map);
-			//        .map.addLayer(mainMap);
-			//        .map.removeLayer(grayMap);
-			//    });
-			//
-			//    //connects to the sidebar client controller to close the modal when the sidebar is opened
-			//    $rootScope.$on('HIDE_MAP', function () {
-			//        grayMap.addTo(.map);
-			//        mainMap.removeLayer(.map);
-			//    });
+			map.on('click', function (e) {
+				if ($scope.menuOpen) {
+					sidebar.close();
+				}
+			});
+
 		};
 
 

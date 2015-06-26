@@ -126,7 +126,8 @@ var UserSchema = new Schema({
 	},
 	//this field will store info about users browsing history and preferences
 	browseHistory: {
-		type: Object
+		type: Object,
+		default: {}
 	},
 	favorites: {
 		type: String,
@@ -146,6 +147,11 @@ var UserSchema = new Schema({
 		type: String,
 		trim: true,
 		default: ''
+	},
+	bio: {
+		type: String,
+		default: '',
+		trim: true
 	}
 });
 

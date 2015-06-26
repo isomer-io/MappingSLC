@@ -7,9 +7,9 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		$scope.userZip = null;
 		$scope.toggleEdit = false;
 		$scope.toggleId = 0;
-			$scope.toggleEditFn = function(editNum) {
-				$scope.toggleEdit = !$scope.toggle;
-				$scope.toggleId = editNum;
+		$scope.toggleEditFn = function(editNum) {
+			$scope.toggleEdit = !$scope.toggle;
+			$scope.toggleId = editNum;
 		};
 
 		$scope.photo0 = 'chris--bw-2.jpg';

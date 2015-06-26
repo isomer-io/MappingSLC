@@ -39,6 +39,8 @@
 		<link rel="stylesheet" href="{{cssFile}}">
 	{% endfor %}
 
+	<!--<link rel="stylesheet" href="../../public/dist/application.min.css">-->
+
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -61,6 +63,7 @@
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};
 	</script>
+	<!--<script type="text/javascript" src="../../public/dist/application.min.js"></script>-->
 
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}

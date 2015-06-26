@@ -11,6 +11,8 @@
             <section data-ng-controller="ProjectsController" data-ng-init="findOne()" class="main-content-inner">
                 <div class="view-project">
 
+                    <!--<a ui-sref="goBack"><span><i class="fa fa-chevron-left"></i></span></a>-->
+
                     <div class="page-header">
                         <h1 data-ng-bind="project.title"></h1>
                         Category: {{category}}
@@ -21,8 +23,8 @@
 
 
                             <!--<div class="videoWrapper" data-ng-show="project.category === 'video'" data-ng-if="">-->
-                                <!--<iframe data-ng-show="!videoSizeSelect()" width="560" height="349" data-ng-src={{vimeoId}}" frameborder="0" webkitallowfullscreen-->
-                                        <!--mozallowfullscreen allowfullscreen></iframe>-->
+                            <!--<iframe data-ng-show="!videoSizeSelect()" width="560" height="349" data-ng-src={{vimeoId}}" frameborder="0" webkitallowfullscreen-->
+                            <!--mozallowfullscreen allowfullscreen></iframe>-->
                             <!--</div>-->
 
                             <small>
@@ -47,10 +49,10 @@
 
                             <div class="pull-right"
                                  data-ng-show="((authentication.user) && (authentication.user._id == project.user._id)) || isAdmin.user === 'admin'">
-                                <a class="btn btn-primary" href="/#!/projects/{{project._id}}/edit">
+                                <a class="btn btn-primary btn-go" href="/#!/projects/{{project._id}}/edit">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </a>
-                                <a class="btn btn-primary" data-ng-click="remove();">
+                                <a class="btn btn-primary btn-warning" data-ng-click="remove();">
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </a>
                             </div>

@@ -62,6 +62,10 @@ a.widget-box span {
     text-decoration: none;
 }
 
+.admin table, .admin tbody {
+    border-spacing: 5px;
+    border-color: #006666;
+}
 
 thead tr {
     background-color: rgba(0, 0, 0, 0.6);
@@ -78,29 +82,26 @@ thead tr {
     background-color: rgba(3, 3, 3, 0.6);
 }
 
-tbody tr {
+[ng-click], [data-ng-click] {
+    cursor: pointer;
+}
+
+/*tbody tr, tbody > tr:nth-of-type(odd), tbody > tr:nth-of-type(even) {*/
+tbody > tr, {
     color: #262626;
     font-size: 1.7rem;
 }
 
 tbody tr:hover {
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
-tbody tr:nth-child(odd) td {
-    background-color: rgba(2, 58, 49, 0.6);
-}
-
-tbody tr:nth-child(odd):hover {
-    background-color: rgba(3, 59, 50, 0.6);
+tbody tr td {
+    background-color: rgba(2, 58, 49, 0.3);
     color: #fffacd;
 }
 
-tbody tr:nth-child(even) td {
-    background-color: rgba(2, 58, 49, 0.3);
-}
-
-tbody tr:nth-child(even):hover {
+tbody tr:hover {
     background-color: rgba(2, 58, 49, 0.4);
     color: #000000;
 }
@@ -126,6 +127,18 @@ div.admin > div.row > div > a > div:hover {
     transition:0.5s all ease;
 }
 
+.table-bordered {
+    border: 5px solid green;
+}
+
+.message-read {
+    border: 2px solid rgba(0, 64, 208, 0.7);
+}
+
+td i .selected {
+    color: #FF0000;
+}
+
 .user-profile {
     font-size: 1.75rem;
 }
@@ -133,7 +146,8 @@ div.admin > div.row > div > a > div:hover {
 .user-profile .row {
     /*margin: 1% 0;*/
     padding-top: 2.5rem;
-    border-bottom: 1px solid rgba(158, 158, 158, 0.5);
+    border-bottom: 1px solid rgba(158, 158, 158, 1);
+    border-bottom: 1px solid #000;
 }
 
 .user-profile .no-border {
@@ -141,11 +155,6 @@ div.admin > div.row > div > a > div:hover {
 }
 
 .user-profile .row:hover {
-    /*background: rgba(3, 59, 50, 0.5);*/
-    /*color: #ffffff;*/
-    /*cursor: pointer;*/
-    /*border-bottom: none;*/
-    /*border-radius: 4px;*/
 }
 
 .user-profile .col-xs-2 {
@@ -194,8 +203,7 @@ div.admin > div.row > div > a > div:hover {
     margin-top: 2%;
 }
 
-/*.chrisIsChris .btn-warning {*/
-.admin .btn-warning {
+.admin .btn-warning, .admin-user .btn-warning, .view-project .btn-warning {
     background: rgba(245, 2, 25, 0.9);
 }
 
@@ -210,8 +218,7 @@ div.admin > div.row > div > a > div:hover {
     transition: all 0.3s ease 0s;
 }
 
-/*.chrisIsChris .grow:hover {*/
-.admin .grow:hover {
+.admin .grow:hover, .admin-user .grow:hover, .view-project .btn-go:hover {
     border-radius: 5px;
     background: rgba(0, 45, 0, 0.6);
     border-color: #000;
@@ -219,13 +226,12 @@ div.admin > div.row > div > a > div:hover {
     transition: all 0.3s ease 0s;
 }
 
-/*.chrisIsChris .btn-warning:hover {*/
-.admin .btn-warning:hover {
+.admin .btn-warning:hover, .admin-user .btn-warning:hover, .view-project .btn-warning:hover {
     background: rgba(45, 0, 0, 0.6);
     border-color: #ff0000;
 }
 
-.user-profile .fa, .admin .fa {
+.user-profile .fa, .admin .fa, .view-project .fa {
     cursor: pointer;
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
@@ -233,8 +239,7 @@ div.admin > div.row > div > a > div:hover {
     transition: all 0.25s ease;
 }
 
-/*.user-profile .fa:hover, .chrisIsChris .fa:hover, .chrisIsChris .fa:hover {*/
-.user-profile .fa:hover, .admin .fa:hover {
+.user-profile .fa:hover, .admin .fa:hover, .view-project .fa:hover {
     color: #006600;
     background-color: transparent;
     -webkit-transform: scale(1.5);
@@ -263,8 +268,18 @@ div.admin > div.row > div > a > div:hover {
 }
 
 /*.chrisIsChris .header-profile-image {*/
-.admin .header-profile-image {
+.admin-user .header-profile-image {
     height: 100px;
     width: 100px;
+    margin-left: 5%;
+    z-index: 150;
+}
+
+.admin-user .page-header {
+    border-bottom: 1px solid #023A31;
+    z-index: 1;
+}
+
+.admin-user span.pull-right {
     margin-left: 5%;
 }

@@ -4,7 +4,7 @@ module.exports = {
 	app: {
 		title: 'Mapping Salt Lake City',
 		description: 'Mapping Salt Lake City is a community-created archive of Salt Lake City’s neighborhoods and people that documents the city’s changes through art, critical and creative literature, personal maps and multimedia projects. We invite people to engage with and evolve this site by submitting their own contributions.',
-		keywords: 'mapping, .map, geojson, salt lake city, utah, art, humanities, digital humanities, isomer'
+		keywords: 'mapping, map, geojson, salt lake city, utah, art, humanities, digital humanities, nonfiction, essays, storytelling, salt lake county, paisley rekdal, chris tanseer'
 	},
 	port: process.env.PORT || 3000,
 	httpsPort: process.env.PORT || 3001,
@@ -52,7 +52,6 @@ module.exports = {
 				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/ng-ckeditor/ng-ckeditor.css',
 				'public/lib/angular-tablesort/tablesort.css',
-				'public/lib/ng-grid/ng-grid.min.css',
 				'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css',
 				'public/lib/c3/c3.min.css'
 
@@ -79,7 +78,6 @@ module.exports = {
 				'public/lib/ng-file-upload/ng-file-upload-all.min.js',
 				'public/lib/ng-file-upload/FileAPI.min.js',
 				'public/lib/d3/d3.min.js',
-				'public/lib/ng-grid/ng-grid-2.0.14.min.js',
 				'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
 				'public/lib/ng-ckeditor/ng-ckeditor.js',
 				'public/lib/sidebar-v2/js/leaflet-sidebar.js',
