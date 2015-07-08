@@ -190,30 +190,30 @@
 
         </div>
 
-<!--settings menu-->
+    <!--settings menu-->
         <div class="sidebar-pane" id="settings" data-ng-click="toggleOverlayFunction('menu-open')">
+            <h3>test</h3>
+            <h3 data-ng-bind="populateStory.title"></h3>
+            <h3>{{populateStory.title}}</h3>
+
+            <div class="sidebar-view-date ">
+                <small>{{populateStory.published}}</small>
+            </div>
+            <!--<h3>An Interview with Andrew Shaw</h3>-->
+            <img ng-src="{{populateStory.mainImage}}">
+            <!--<img src="../../core/img/as_thumb_bw.png">-->
+
+            <div class="sidebar-view-text-content">
+                <p data-ng-bind="populateStory.storySummary"></p>
+            </div>
+            <p>
+                <!--<button type="button" class="btn btn-primary btn-lg" data-ng-click="/projects/{{_id}}">Read More</button>-->
+                <button type="button" class="btn btn-default btn-lg">Share</button>
+            </p>
 
         </div>
 
-<!--details menu-->
-        <div class="sidebar-pane" id="details"><h1>Project Summary</h1>
-
-            <h3>{{storyEvent.title}}</h3>
-
-            <div class="sidebar-view-date ">
-                <small>{{storyEvent.published}}</small>
-            </div>
-            <img data-ng-src="{{storyEvent.mainImage}}">
-
-            <div class="sidebar-view-text-content">
-                <!--<p data-ng-bind-html="storyEvent.summary"></p>-->
-                <p data-ng-bind-html="trustAsHtml(storyEvent.summary)"></p>
-            </div>
-            <p>
-                <button type="button" class="btn btn-main btn-footer-overlay grow" data-ng-click="goToProject(storyEvent.projectId)">Read More</button>
-                <button type="button" class="btn btn-main btn-footer-overlay grow">Share</button>
-            </p>
-
+        <div class="sidebar-pane" id="details"><h1>Details</h1>
         </div>
     </div>
 

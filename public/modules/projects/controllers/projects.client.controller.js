@@ -12,15 +12,14 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.mapImage = '';
 		$rootScope.signInBeforeProject = false;
 
-		$scope.street = '547 S 300 East';
+		$scope.street = '569 1300 E';
 		$scope.city = 'Salt Lake City';
 		$scope.state = 'UT';
-		$scope.zip = '84111';
-		$scope.story = 'This story';
-		$scope.title = 'my totally tabular title';
+		$scope.zip = '84102';
+		$scope.story = 'This church';
+		$scope.title = 'get wit god, girl! jeez....';
 
 		$scope.trustAsHtml = $sce.trustAsHtml;
-
 
 		//admin panel editing
 		$scope.toggleEdit = false;
@@ -31,6 +30,23 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		};
 
 
+		var saveProject = null;
+		$scope.updateLatLng = function(project) {
+			$http.get('/keys').success(function (data) {
+				var mapboxKey = data.mapboxKey;
+				var mapboxSecret = data.mapboxSecret;
+				var hereKey = data.hereKey;
+				var hereSecret = data.hereSecret;
+
+				GeoCodeApi.callGeoCodeApi(project, hereKey, hereSecret, saveProject)
+				.success(function (data) {
+					project.lat = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
+					project.lng = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+					project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',15/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
+					saveProject();
+				});
+			});
+		};
 
 		$rootScope.previousState = '';
 		$rootScope.currentState = '';
@@ -44,16 +60,13 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.run = function ($rootScope, $state, AuthenticationService) {
 			$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 				if (toState.authenticate && !AuthenticationService.isLoggedIn()) {
-
 				}
 				event.preventDefault();
 			});
-
 		};
 
 		$scope.userLoggedin = function () {
 			// get request to /users/me
-			console.log('TEST111: ', $location.path());
 			if ($location.path() === '/projects/create' ) {
 				$http.get('http://localhost:3000/users/me').success(function (data) {
 					console.log('data: ', data);
@@ -115,7 +128,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				title: this.title
 		});
 
-			var saveProject = function () {
+			saveProject = function () {
 				project.$save(function (response) {
 					$location.path('projects/' + response._id);
 					// Clear form fields
@@ -130,20 +143,8 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				});
 			};
 
-			$http.get('/keys').success(function (data) {
-				var mapboxKey = data.mapboxKey;
-				var mapboxSecret = data.mapboxSecret;
-				var hereKey = data.hereKey;
-				var hereSecret = data.hereSecret;
+			$scope.updateLatLng(project);
 
-				GeoCodeApi.callGeoCodeApi(project, hereKey, hereSecret, saveProject)
-					.success(function (data) {
-						project.lat = data.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
-						project.lng = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
-						project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',15/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
-						saveProject();
-					});
-			});
 		};
 
 
@@ -169,7 +170,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			var project = $scope.project;
 
 			project.$update(function () {
-				$location.path('projects/' + project._id);
+				if($location.path() === '/admin/edit-project/' + project._id) {
+					return;
+				} else {
+					$location.path('projects/' + project._id);
+				}
 			}, function (errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

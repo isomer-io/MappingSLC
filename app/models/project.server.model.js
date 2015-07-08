@@ -16,6 +16,10 @@ var mongoose = require('mongoose'),
  **/
 
 var ProjectSchema = new Schema({
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
     status: {
         type: [{
             type: String,
@@ -47,10 +51,6 @@ var ProjectSchema = new Schema({
         //	this.Schema.user = currentUser;
         //})
     },
-    user: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    },
     street: {
         type: String,
         default: '',
@@ -73,12 +73,17 @@ var ProjectSchema = new Schema({
         required: '',
         trim: true
     },
-
     title: {
         type: String,
         es_indexed: true,
         default: '',
         required: 'Please fill out the title of your submission',
+        trim: true
+    },
+    shortTitle: {   //for featured projects, the title that will display in the street sign box
+        type: String,
+        es_indexed: true,
+        default: '',
         trim: true
     },
     story: {
@@ -101,7 +106,6 @@ var ProjectSchema = new Schema({
                 if (url.indexOf('http://') !== 0 && url.indexOf('https://') !== 0) {
                     url = 'http://' + url;
                 }
-
                 return url;
             }
         }
@@ -140,7 +144,7 @@ var ProjectSchema = new Schema({
     category: {
         type: [{
             type: String,
-            enum: ['multimedia', 'essay', 'literature', 'interview', 'map', 'video', 'audio']
+            enum: ['multimedia', 'essay', 'literature', 'interview', 'map', 'video', 'audio', 'this was here']
         }],
         trim: true
     },

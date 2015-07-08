@@ -30,7 +30,8 @@
     "moment": "~2.10.3",
     "angular-bootstrap-lightbox": "~0.6.1",
     "d3": "~3.5.5",
-    "c3": "~0.4.10"
+    "c3": "~0.4.10",
+    "leaflet.markercluster": "~0.4.0"
   },
   "resolutions": {
     "angular": "1.4.x",

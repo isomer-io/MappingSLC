@@ -39,6 +39,10 @@ h1 #form-container, h2 #form-container, h3 #form-container, h4 #form-container, 
     padding: 5px;
 }
 
+.view-project .pull-right {
+    padding: 15px 40px;
+}
+
 /* numbered buttons */
 #status-buttons {
 

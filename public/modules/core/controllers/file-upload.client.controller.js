@@ -5,7 +5,6 @@ angular.module('core').controller('FileUploadController', ['$scope', 'Authentica
 
 		$scope.authentication = AuthenticationService;
 		$scope.user = AuthenticationService.user;
-		console.log('$scope.user 0:', AuthenticationService.user);
 		$scope.imgUrl = '';
 		$scope.log = '';
 

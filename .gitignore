@@ -74,3 +74,5 @@ public/modules/core/img/tempProjects
 public/modules/core/img/tempPeople
 source.zip
 app/uploads
+app/models/test.model.js
+public/modules/test.js

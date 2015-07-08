@@ -1,12 +1,18 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http', 'MarkerDataService', 'AdminAuthService', '$rootScope',
-	function ($scope, AuthenticationService, ApiKeys, $http, MarkerDataService, AdminAuthService, $rootScope) {
+angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http', 'MarkerDataService', 'mapService', 'AdminAuthService', '$rootScope', '$location', 'formAnimationService', '$sce',
+	function ($scope, AuthenticationService, ApiKeys, $http, MarkerDataService, mapService, AdminAuthService, $rootScope, $location, formAnimationService, $sce) {
 		$scope.authentication = AuthenticationService;
 		$scope.isAdmin = AdminAuthService;
 
 		//for overlay
 		$scope.featuredProjects = {};
+
+		//menu functions
+		$scope.trustAsHtml = $sce.trustAsHtml;
+		$scope.goToProject = function(id){
+			$location.path('projects/' + id);
+		};
 
 		//placeholder for featured projects images
 		//todo once admin module is built, create a function that makes photo1 and 2 dynamic rather than hard-coded
@@ -16,38 +22,18 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		$scope.photo3 = 'dw_thumb_150.jpg';
 		$scope.photo4 = 'as_thumb_bw.png';
 
-		//var projectMarkers = null;
+		$scope.projectMarker = null;
+		$scope.markerData = null;
 
 		//service that returns project markers
 		MarkerDataService.getMarkerData()
 			.success(function (markerData) {
+				$scope.getProjectMarkers(markerData);
 				$scope.addProjectMarkers(markerData);
-				//markerColorFn(markerData);
 			})
 			.error(function (data, status) {
 				alert('Failed to load project markers. Status: ' + status);
 			});
-
-
-		var markerColorFn = function (markerData, prop) {
-			if (markerData.category === 'video') {
-				return '#ff0011';
-			} else if (markerData[prop].category === 'multimedia') {
-				return 'red';
-			} else if (markerData[prop].category === 'essay') {
-				return 'blue';
-			} else if (markerData[prop].category === 'literature') {
-				return 'green';
-			} else if (markerData[prop].category === 'interview') {
-				return 'brown';
-			} else if (markerData[prop].category === 'map') {
-				return 'yellow';
-			} else if (markerData[prop].category === 'audio') {
-				return 'black';
-			} else {
-				return '#00ff44';
-			}
-		};
 
 		/**
 		 *
@@ -60,32 +46,20 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		var changeMapFrom = null;
 
 		$scope.toggleOverlayFunction = function (source) {
-			if ($scope.overlayActive === true && source === 'overlay') {
-				console.log('current if is \'overlay\'');
-				$scope.overlayActive = false;
+			if ($scope.overlayActive && source === 'overlay') {
+				$scope.overlayActive = !$scope.overlayActive;
 				changeMapFrom('gray-map');
-			} else if ($scope.overlayActive === true && source === 'menu-closed') {
-				console.log('current if is \'overlay \'true\' and \'menu-closed\'');
+			} else if ($scope.overlayActive && source === 'menu-closed') {
 				$scope.overlayActive = false;
-				$scope.triggerMenu = !$scope.triggerMenu;
 				$scope.menuOpen = true;
 				changeMapFrom('gray-map');
-			} else if ($scope.overlayActive === false && source === 'menu-open') {
-			} else if ($scope.overlayActive === false && source === 'menu-closed') {
-				console.log('current if is \'overlay \'false\' and \'menu-closed\'');
-				$scope.triggerMenu = !$scope.triggerMenu;
-				if ($scope.menuOpen) {
-					$scope.menuOpen = false;
-				} else {
-					$scope.menuOpen = true;
-				}
-			} else if ($scope.overlayActive === false && source === 'home') {
-				//console.log('current if is \'home\'');
+			} else if (!$scope.overlayActive && source === 'menu-closed' && !$scope.menuOpen) {
+				$scope.menuOpen = !$scope.menuOpen;
+			} else if (!$scope.overlayActive && source === 'home') {
 				$scope.menuOpen = false;
 				$scope.overlayActive = true;
 			}
 		};
-
 
 		//atrribution toggle
 		$scope.attributionFull = false;
@@ -93,18 +67,18 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 
 
 		//subscribe form animations
+		//console.log('form animate\n', formAnimationService.cssLayout());
+
 		var cssLayout = function () {
 			[].slice.call(document.querySelectorAll('input.input_field')).forEach(function (inputEl) {
 				// in case the input is already filled..
 				if (inputEl.value.trim() !== '') {
 					classie.add(inputEl.parentNode, 'input-filled');
 				}
-
 				// events:
 				inputEl.addEventListener('focus', onInputFocus);
 				inputEl.addEventListener('blur', onInputBlur);
 			});
-
 			function onInputFocus(ev) {
 				classie.add(ev.target.parentNode, 'input-filled');
 			}
@@ -116,7 +90,6 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 			}
 		};
 		cssLayout();
-
 
 		/**
 		 *
@@ -131,11 +104,6 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		//$scope.toggleProjectDetails = false;
 		$scope.sidebarToggle = false;
 
-		var dataBoxStaticPopup = null,
-			dataBoxStaticPopupFn = null,
-			tractData = {},
-			censusTractData = null;
-
 
 		//service that returns api keys
 		ApiKeys.getApiKeys()
@@ -146,11 +114,12 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				alert('Failed to load Mapbox API key. Status: ' + status);
 			});
 
-		//$scope.projectDetails = {};
 		var popupIndex = 0;
 
+//
+// call map and add functionality
+//
 
-//call map and add functionality
 
 		var mapFunction = function (key, accessToken) {
 			//creates a Mapbox Map
@@ -162,14 +131,8 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 			var map = L.mapbox.map('map', null, {
 				infoControl: false, attributionControl: false
 			})
-				//.on('click', function (e) {
-				//	if ($scope.menuOpen) {
-				//		sidebar.close();
-				//	}
-				//})
 				.setView([40.773, -111.902], 12)
 				//allow users to share maps on social media
-				// source: https://www.mapbox.com/mapbox.js/api/v2.1.5/l-mapbox-sharecontrol/
 				.addControl(L.mapbox.shareControl())
 				.addControl(L.mapbox.geocoderControl('mapbox.places'));
 
@@ -194,6 +157,14 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 			grayMap.addTo(map);
 			L.control.layers(layers).addTo(map);
 
+			//$scope.sidebar = setTimeout(function() {
+					var sidebar = L.control.sidebar('sidebar', {
+						closeButton: true,
+						position: 'left'
+					}).addTo(map);
+				//}, 1500);
+
+
 			changeMapFrom = function (currentMap) {
 				if (currentMap === 'gray-map') {
 					map.addLayer(mainMap);
@@ -203,40 +174,22 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 					map.removeLayer(mainMap);
 				}
 			};
+			//var markers = new L.MarkerClusterGroup();
+			//markers.addLayer(new L.Marker(getRandomLatLng(map)));
+			//map.addLayer(markers);
 
-			var sidebar = L.control.sidebar('sidebar', {
-				closeButton: true,
-				position: 'left'
-			}).addTo(map);
-
-			//mapService.sidebar.addTo(map);
-
-			$scope.populateStory = {};
-			var markerArray = [];
-			var projectMarker = {};
+			$scope.markerArray = [];
 
 			//add markers from marker data
 			$scope.addProjectMarkers = function (markerData) {
+				$scope.markerData = markerData;
+				var index = 0;
+
 
 				//loop through markers array and return values for each property
 				for (var prop in markerData) {
-					//console.log('markerData: ', markerData);
 
-					//$scope.$apply(function() {
-					$scope.populateStory = {
-						storyId: markerData[prop]._id,
-						summary: markerData[prop].storySummary,
-						title: markerData[prop].title,
-						mainImage: markerData[prop].mainImage,
-						category: markerData[prop].category,
-						mapImage: markerData[prop].mapImage,
-						lat: markerData[prop].lat,
-						lng: markerData[prop].lng,
-						published: markerData[prop].created,
-						leafletId: null
-					};
-					//});
-					projectMarker = L.mapbox.featureLayer({
+					$scope.projectMarker = L.mapbox.featureLayer({
 						//var singleMarker = L.mapbox.featureLayer({
 						// this feature is in the GeoJSON format: see geojson.org for full specs
 						type: 'Feature',
@@ -245,60 +198,59 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 							// coordinates here are in longitude, latitude order because
 							// x, y is the standard for GeoJSON and many formats
 							coordinates: [markerData[prop].lng, markerData[prop].lat]
-
 						},
 						properties: {
-							title: $scope.populateStory.title,
-							description: $scope.populateStory.summary,
 							// one can customize markers by adding simplestyle properties
 							// https://www.mapbox.com/guides/an-open-platform/#simplestyle
 							'marker-size': 'large',
-							'marker-color': markerColorFn(markerData, prop),
-							'marker-symbol': 'heart'
+							'marker-color': mapService.markerColorFn(markerData, prop),
+							//'marker-color': '#00ff00',
+							'marker-symbol': 'heart',
+							projectId: markerData[prop]._id,
+							summary: markerData[prop].storySummary,
+							title: markerData[prop].title,
+							mainImage: markerData[prop].mainImage,
+							category: markerData[prop].category,
+							mapImage: markerData[prop].mapImage,
+							lat: markerData[prop].lat,
+							lng: markerData[prop].lng,
+							published: markerData[prop].created,
+							leafletId: null,
+							arrayIndexId: index
 						}
 					})
 						//create toogle for marker event that toggles sidebar on marker click
 						.on('click', function (e) {
-							$scope.populateStory.leafletId = e.target._leaflet_id;
-							console.log('e.layer', e.layer);
-							console.log('$scope.populateStory: ', $scope.populateStory);
-							console.log('$scope.populateStory.summary', $scope.populateStory.summary);
-							//center the map when a project marker is clicked
-							map.panTo(e.layer.getLatLng());
+							$scope.$apply(function() {
+								$scope.storyEvent = e.target._geojson.properties;
+							});
+							map.panTo(e.layer.getLatLng()); //	center the map when a project marker is clicked
 							popupMenuToggle(e);
+							return $scope.projectMarker[prop];
+						});
 
-							//$scope.$apply(
-							//    function(){
-							//        $scope.toggleProjectDetails = !$scope.toggleProjectDetails;
-							//    }
-							//);
-
-						})
-						.on('popupopen', function (e) {
-							//$scope.populateStory.leafletId = e.target._leaflet_id;
-							//return $scope.populateStory;
-						})
-						.addTo(map);
-
-					markerArray.push($scope.populateStory);
+					$scope.projectMarker.addTo(map);
+					$scope.markerArray.push($scope.projectMarker);
+					index++;
 				}
+				return $scope.markerArray;
 			};
-
-
+			
 			var popupMenuToggle = function (e) {
-				if ($scope.menuOpen === false && popupIndex !== e.target._leaflet_id) {
-					sidebar.open('settings');
-					popupIndex = e.target._leaflet_id;
-					console.log('1', '$scope.menuOpen', $scope.menuOpen, 'popupIndex', popupIndex, 'e.target._leaflet_id', e.target._leaflet_id);
-				} else if ($scope.menuOpen === true && popupIndex !== e.target._leaflet_id) {
+				if (!$scope.menuOpen && popupIndex !== e.target._leaflet_id) {
+					$scope.toggleOverlayFunction('menu-closed');
 					//$scope.populateStorySummary($scope.projectDetails);
+					sidebar.open('details');
 					popupIndex = e.target._leaflet_id;
-					console.log('2', '$scope.menuOpen', $scope.menuOpen, 'popupIndex', popupIndex, 'e.target._leaflet_id', e.target._leaflet_id);
-				} else if ($scope.menuOpen === true && popupIndex === e.target._leaflet_id) {
+				} else if (!$scope.menuOpen && popupIndex === e.target._leaflet_id) {
+					//$scope.populateStorySummary($scope.projectDetails);
+				} else if ($scope.menuOpen && popupIndex !== e.target._leaflet_id) {
+					//$scope.populateStorySummary($scope.projectDetails);
+					sidebar.open('details');
+					popupIndex = e.target._leaflet_id;
+				} else if ($scope.menuOpen && popupIndex === e.target._leaflet_id) {
 					sidebar.close();
 					popupIndex = 0;
-					console.log('3', '$scope.menuOpen', $scope.menuOpen, 'popupIndex', popupIndex, 'this._leaflet_id', e.target._leaflet_id);
-					//popupIndex = e.target._leaflet_id;
 				}
 			};
 
@@ -323,118 +275,6 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 
 			var hoverOffset = new L.Point(30, -16);
 
-			ApiKeys.getTractData()
-				.success(function (tractData) {
-					tractDataLayer(tractData);
-				})
-				.error(function (tractData) {
-					alert('Failed to load tractData. Status: ' + status);
-				});
-			var tractDataLayer = function (tractData) {
-				censusTractData = L.geoJson(tractData, {
-						style: style,
-						onEachFeature: function (feature, layer) {
-							if (feature.properties) {
-								var popupString = '<div class="popup">';
-								for (var k in feature.properties) {
-									var v = feature.properties[k];
-									popupString += k + ': ' + v + '<br />';
-								}
-								popupString += '</div>';
-								layer.bindPopup(popupString);
-							}
-							if (!(layer instanceof L.Point)) {
-								layer.on('mouseover', function () {
-									layer.setStyle(hoverStyle);
-									//layer.setStyle(hoverOffset);
-								});
-								layer.on('mouseout', function () {
-									layer.setStyle(style);
-									//layer.setStyle(hoverOffset);
-								});
-							}
-
-						}
-					}
-				);
-			};
-
-			dataBoxStaticPopupFn = function (dataBoxStaticPopup) {
-
-				// Listen for individual marker clicks.
-				dataBoxStaticPopup.on('mouseover', function (e) {
-					// Force the popup closed.
-					e.layer.closePopup();
-
-					var feature = e.layer.feature;
-					var content = '<div><strong>' + feature.properties.title + '</strong>' +
-						'<p>' + feature.properties.description + '</p></div>';
-
-					info.innerHTML = content;
-				});
-
-				function empty() {
-					info.innerHTML = '<div><strong>Click a marker</strong></div>';
-				}
-
-				// Clear the tooltip when .map is clicked.
-				map.on('move', empty);
-
-				// Trigger empty contents when the script
-				// has loaded on the page.
-				empty();
-
-			};
-
-			//Google Places API
-			var googlePlacesMarker = null;
-			var googlePlacesMarkerLayer = null;
-			var googlePlacesMarkerArray = [];
-
-			var googlePlacesData = function () {
-				$http.get('/places').success(function (poiData) {
-
-					var placeLength = poiData.results.length;
-					for (var place = 0; place < placeLength; place++) {
-
-						var mapLat = poiData.results[place].geometry.location.lat;
-						var mapLng = poiData.results[place].geometry.location.lng;
-						var mapTitle = poiData.results[place].name;
-
-						googlePlacesMarker = L.marker([mapLat, mapLng]).toGeoJSON();
-
-						googlePlacesMarkerArray.push(googlePlacesMarker);
-					} //end of FOR loop
-
-					googlePlacesMarkerLayer = L.geoJson(googlePlacesMarkerArray, {
-						style: function (feature) {
-							return {
-								'title': mapTitle,
-								'marker-size': 'large',
-								//'marker-symbol': mapSymbol(),
-								'marker-symbol': 'marker',
-								'marker-color': '#00295A',
-								'riseOnHover': true,
-								'riseOffset': 250,
-								'opacity': 0.5,
-								'clickable': true
-							}
-						}
-					})
-				});
-			};
-
-			//create toggle/filter functionality for Census Tract Data
-			$scope.toggleCensusData = function () {
-				if (!$scope.censusDataTractLayer) {
-					map.removeLayer(censusTractData);
-					map.removeLayer(dataBoxStaticPopup);
-				} else {
-					map.addLayer(censusTractData);
-					map.addLayer(dataBoxStaticPopup);
-
-				}
-			};
 
 			//create toggle/filter functionality for Census Tract Data
 			$scope.toggleGooglePlacesData = function () {
@@ -445,20 +285,24 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 				}
 			};
 
-			//projectMarkers.on('click', function (e) {
-			//	console.log('yep, you clicked on a marker: \n', e); // e is an event object (MouseEvent in this case)
-			//	//alert(popup); // e is an event object (MouseEvent in this case)
-			//	//if ($scope.menuOpen) {
-			//	//	sidebar.close();
-			//	//}
-			//});
-
 			map.on('click', function (e) {
 				if ($scope.menuOpen) {
 					sidebar.close();
 				}
 			});
 
+			//var sidebar = L.control.sidebar('sidebar', {
+			//	closeButton: true,
+			//	position: 'left'
+			//}).addTo(map);
+
+			//projectMarker.on('click', function() {
+			//	alert('yep!');
+			//});
+
+		};
+
+		$scope.getProjectMarkers = function (markerData) {
 		};
 
 

@@ -193,6 +193,12 @@ div.morph-content > div > ul > div > li {
     padding-left: 0;
 }
 
+.sidebar-tabs>li.active:nth-last-child(1) {
+    background-color: transparent;
+    border-color: transparent;
+    cursor: auto!important;
+}
+
 
 
 /***

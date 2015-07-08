@@ -3,7 +3,7 @@
 angular.module('core').service('MarkerDataService', ['$http',
     function($http) {
         // Project Marker Data Service
-        // ...
+
         this.getMarkerData = function(){
             return  $http.get('/markerData').
                 success(function(projects){
@@ -11,6 +11,7 @@ angular.module('core').service('MarkerDataService', ['$http',
                     //for (var prop in projects) {
                     //    console.log('projects[prop].lng: \n', projects[prop].lng);
                     //}
+
                 })
                 .error(function(error){
                     console.log('marker data error: \n', error);

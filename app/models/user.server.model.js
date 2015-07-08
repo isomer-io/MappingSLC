@@ -33,9 +33,7 @@ var UserSchema = new Schema({
 	firstName: {
 		type: String,
 		trim: true,
-		required: '',
-		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your first name']
+		default: ''
 	},
 	lastName: {
 		type: String,
@@ -138,7 +136,7 @@ var UserSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
-	profilePic: {
+	profileImageURL: {
 		type: String,
 		trim: true,
 		default: ''
