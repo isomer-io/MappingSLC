@@ -48,15 +48,26 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			});
 		};
 
+		//$scope.goBack = null;
 		$rootScope.previousState = '';
 		$rootScope.currentState = '';
-		$rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+		$rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from) {
 			$rootScope.previousState = from.name;
+			console.log('from.name: ', from);
 			$rootScope.currentState = to.name;
+			//$scope.goBack = function() {
+			//	if (from )
+			//		$state.go($rootScope.previousState);
+			//};
 		});
-
-		//$scope.goBack = $state.url($rootScope.previousState);
-
+		$scope.goBack = function() {
+			console.log('$rootScope.previousState: ', $rootScope.previousState);
+			if ($rootScope.previousState === 'listProjects') {
+				$state.go($rootScope.previousState);
+			} else {
+				$state.go('admin');
+			}
+		};
 		$scope.run = function ($rootScope, $state, AuthenticationService) {
 			$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 				if (toState.authenticate && !AuthenticationService.isLoggedIn()) {
@@ -111,6 +122,8 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				text: 'A story even. Peoples'
 			}
 		];
+
+
 
 		var mapImage = '';
 		// Create new Project

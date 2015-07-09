@@ -11,7 +11,7 @@
             <section data-ng-controller="ProjectsController" data-ng-init="findOne()" class="main-content-inner">
                 <div class="view-project">
 
-                    <!--<a ui-sref="goBack"><span><i class="fa fa-chevron-left"></i></span></a>-->
+                    <a data-ng-click="goBack()"><span><i class="fa fa-chevron-left"></i></span></a>
 
                     <div class="page-header">
                         <h1 data-ng-bind="project.title"></h1>
@@ -31,10 +31,9 @@
                                 <em class="text-muted">
 
                                     Published
-                                    <span data-ng-bind="project.created | date:'mediumDate'"></span>
+                                    <span data-ng-bind="project.createdOn | date:'mediumDate'"></span>
                                     by
-                                    <span data-ng-bind="project.user.firstName"></span>
-                                    <span data-ng-bind="project.firstName"></span>
+                                    <span data-ng-bind="project.user.displayName"></span>
                                 </em>
                             </small>
                             <!--data-ng-class="{'input-filled': user.userZip !== ''}"-->

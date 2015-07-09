@@ -11,8 +11,6 @@ var apiKeys = require('../../app/models/data/private/keys.js');
 
 module.exports = {
 	db: {
-		//uri: 'mongodb://localhost/mean-dev',
-		//uri: 'mongodb://localhost/mapping-salt-lake-city-dev',
 		uri: 'mongodb://localhost/mapping-slc-dev',
 		options: {
 			user: '',
@@ -25,7 +23,7 @@ module.exports = {
 		// Stream defaults to process.stdout
 		// Uncomment to enable logging to a log on the file system
 		options: {
-			//stream: 'access.log'
+			stream: 'access.log'
 		}
 	},
 	app: {

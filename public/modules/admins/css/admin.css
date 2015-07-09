@@ -37,7 +37,7 @@ a.widget-box span {
     margin-top: 14%;
 }
 
-.main-content-inner > a > span > i, .admin a > span > i {
+.main-content-inner > a > span > i, .admin a > span > i, .view-project a > span > i {
     font-size: 3rem;
     color: green;
 }

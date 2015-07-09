@@ -131,16 +131,11 @@ exports.markerList = function(req, res) {
  */
 exports.projectByID = function(req, res, next, id) {
 	Project.findById(id)
-		.populate('user', 'createdOn')
-		.populate('user', 'firstName')
-		.populate('user', 'lastName')
+		.populate('user')
 		.exec(function(err, project) {
 		if (err) return next(err);
 		if (! project) return next(new Error('Failed to load Project ' + id));
 		req.project = project ;
-		//console.log('project: ', project);
-		//console.log('project.user: ', project.user);
-		//console.log('project.user.lastName: ', project.user.lastName);
 		next();
 	});
 };
