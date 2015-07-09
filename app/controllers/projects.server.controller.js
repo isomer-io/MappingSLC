@@ -6,7 +6,9 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Project = mongoose.model('Project'),
-	_ = require('lodash');
+	_ = require('lodash'),
+	AlchemyAPI = require('./alchemyapi'),
+	alchemyapi = new AlchemyAPI();
 
 /**
  * Create a Project
@@ -83,7 +85,7 @@ exports.list = function(req, res) {
 	//)
 	Project.find()
 		.sort('-created')
-		.populate('user', 'displayName')
+		.populate('user')
 		.exec(function(err, projects) {
 		if (err) {
 			return res.status(400).send({
@@ -100,7 +102,7 @@ exports.list = function(req, res) {
 /**
  * List of GeoCoordinates for Projects
  */
-exports.markerList = function(req, res) {
+exports.markerList = function(req, res, next) {
     Project.find()
 	    .sort('-created')
 	    //.populate('status', 'lat', 'lng')
@@ -124,6 +126,7 @@ exports.markerList = function(req, res) {
 	        res.jsonp(projects);
         }
     });
+	next();
 };
 
 /**
@@ -147,5 +150,17 @@ exports.hasAuthorization = function(req, res, next) {
 	if (req.project.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
+	next();
+};
+
+/**
+ * Alchemy API for NLP
+**/
+
+exports.nlpProjects = function(req, res, next) {
+	var myText = "Whoa, AlchemyAPI's Node.js SDK is really great, I can't wait to build my app!";
+	alchemyapi.sentiment("text", myText, {}, function (response) {
+		console.log("Sentiment: " + response["docSentiment"]["type"]);
+	});
 	next();
 };

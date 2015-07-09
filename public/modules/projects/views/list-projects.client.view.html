@@ -10,7 +10,7 @@
 
             <section data-ng-controller="ProjectsController" data-ng-init="find()" class="main-content-inner">
 
-                <div class="project-list">
+                <div class="list-projects">
 
                 <a data-ng-click="goBack()"><span><i class="fa fa-chevron-left"></i></span></a>
 
@@ -23,10 +23,14 @@
                             <div class="col-md-12">
                                 <!--<a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="list-group-item" data-ng-class="{'': }">-->
                                 <a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="col-md-4 story-summary">
-                                    <div>
-                                        <img data-ng-src="{{thumbs[0]['image']}}"/>
-                                        <span data-ng-bind="project.title"></span><br/>
-                                        <span data-ng-bind="project.user.firstName">there</span><br/>
+                                    <span>
+                                        <span>
+                                            <img data-ng-src="{{thumbs[0]['image']}}"/>
+                                        </span>
+                                        <span class="pull-right">
+                                            <span data-ng-bind="project.title"></span><br/>
+                                            <span data-ng-bind="project.user.displayName">there</span><br/>
+                                        </span>
                                     </div>
                                 </a>
                             </div>

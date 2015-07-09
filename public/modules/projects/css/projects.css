@@ -103,13 +103,15 @@ fieldset > div > div {
     top: 13%;
 }
 
-.project-list .list-group .story-summary {
+.list-projects .list-group .story-summary {
     border: solid 2px #023a31;
     border-radius: 5px;
     margin: 2%;
+    color: #000000;
+    font-size: 1.75rem;
 }
 
-.project-list .list-group .story-summary:hover {
+.list-projects .list-group .story-summary:hover {
 
 }
 

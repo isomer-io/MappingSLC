@@ -37,12 +37,12 @@ a.widget-box span {
     margin-top: 14%;
 }
 
-.main-content-inner > a > span > i, .admin a > span > i, .view-project a > span > i {
+.main-content-inner > a > span > i, .admin a > span > i, .view-project a > span > i, .list-projects a > span > i {
     font-size: 3rem;
     color: green;
 }
 
-.main-content-inner > a > span > i:hover {
+.main-content-inner > a > span > i:hover .list-projects a > span > i:hover {
     background: transparent;
     color: darkgreen;
     transform: scale(1.5);
@@ -231,7 +231,7 @@ td i .selected {
     border-color: #ff0000;
 }
 
-.user-profile .fa, .admin .fa, .view-project .fa {
+.user-profile .fa, .admin .fa, .view-project .fa, .list-projects .fa {
     cursor: pointer;
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
@@ -239,7 +239,7 @@ td i .selected {
     transition: all 0.25s ease;
 }
 
-.user-profile .fa:hover, .admin .fa:hover, .view-project .fa:hover {
+.user-profile .fa:hover, .admin .fa:hover, .view-project .fa:hover, .list-projects .fa:hover {
     color: #006600;
     background-color: transparent;
     -webkit-transform: scale(1.5);

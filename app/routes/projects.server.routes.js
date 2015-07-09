@@ -44,6 +44,8 @@ module.exports = function(app) {
     // Finish by binding the Admin middleware
     //app.param('adminId', admins.adminByID);
 
+    app.route('/nlp')
+        .get(projects.nlpProjects);
 
 
     // This is the search route, make a GET request on this endpoitn to return search results
