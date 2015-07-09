@@ -103,6 +103,16 @@ fieldset > div > div {
     top: 13%;
 }
 
+.project-list .list-group .story-summary {
+    border: solid 2px #023a31;
+    border-radius: 5px;
+    margin: 2%;
+}
+
+.project-list .list-group .story-summary:hover {
+
+}
+
 
 /* Thumbnail STYLINGS
 ============================================================================= */
