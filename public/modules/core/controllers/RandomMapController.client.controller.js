@@ -5,6 +5,9 @@ angular.module('core').controller('RandomMapController', ['$scope', '$stateParam
     function($scope, $stateParams, $location, RandomMapService) {
 
         $scope.staticMap = RandomMapService.getRandomMap();
+        $scope.myFunction = function(){
+            console.log('error loading that map!');
+        }
 
     }
 ]);

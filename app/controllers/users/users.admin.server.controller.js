@@ -65,8 +65,7 @@ exports.delete = function(req, res) {
  * List of Users
  */
 exports.list = function(req, res) {
-	//console.log(req.query);
-    User.find(req.query).sort('-firstName').exec(function(err, users) {
+	User.find(req.query).sort('-firstName').exec(function(err, users) {
         if (err) {
             return res.send(400, {
                 message: getErrorMessage(err)
@@ -75,6 +74,32 @@ exports.list = function(req, res) {
             res.jsonp(users);
         }
     });
+};
+
+exports.contributors = function(req, res) {
+    var query = User.find(req.query);
+    query.or([{ roles: 'contributor' }, { roles: 'admin' }])
+        .sort('-lastName')
+        .exec( function (err,users) {
+            if (err) {
+                return res.send(400, {
+                    message: getErrorMessage(err)
+                });
+            } else {
+                res.jsonp(users);
+            }
+        });
+};
+
+
+exports.profileImage = function(req, res, id) {
+    var UserImg = req.user;
+    UserImg.findById(id)
+        .exec(function (err, user) {
+            if (err) return next(err);
+            if (!User) return next(new Error('Failed to load User Profile ' + id));
+            req.user = user;
+        });
 };
 
 
@@ -106,11 +131,11 @@ exports.getSchema = function(req, res) {
  *
  * Find this method in users.authentication.server.controller.js
  *
- */
+**/
 exports.userByID = function(req, res, next, id) {
     console.log('working. req, res, next, id : ', req, res, next, id);
-    //User.findById(id).populate('user', 'displayName').exec(function(err, user) {
     User.findById(id).exec(function(err, user) {
+    //User.findById(id).populate('user', 'displayName').exec(function(err, user) {
     //User.find(req.query).sort('-firstName').exec(function(err, users) {
         console.log('err, user: ', err, user);
         if (err) return next(err);

@@ -121,8 +121,6 @@ angular.module('users').controller('UsersController', ['$scope', '$stateParams',
         // Find a list of Users
         $scope.find = function() {
             $scope.users = Users.query($scope.query);
-            console.log('Users.query($scope.query: ', Users.query($scope.query));
-            console.log('$scope.users: ', $scope.users);
         };
 
         // Find existing User
@@ -130,7 +128,6 @@ angular.module('users').controller('UsersController', ['$scope', '$stateParams',
             $scope.user = UserData.getUser({
                 userId: $stateParams.userId
             });
-            console.log('Users.query($scope.query: ', Users.query($scope.query));
             console.log('$scope.users: ', $scope.users);
         };
 
@@ -138,5 +135,6 @@ angular.module('users').controller('UsersController', ['$scope', '$stateParams',
             $scope.getSchema();
             $scope.find();
         };
+
     }
 ]);

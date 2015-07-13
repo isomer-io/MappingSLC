@@ -67,12 +67,11 @@ var UserSchema = new Schema({
 	userZip: {
 		type: Number,
 		default: '',
-		required: '',
 		trim: true
 	},
 	email: {
 		type: String,
-		unique: true,
+		unique: 'This e-mail address is already registered.',
 		trim: true,
 		default: '',
 		required: '',
@@ -82,7 +81,6 @@ var UserSchema = new Schema({
 	username: {
 		type: String,
 		unique: 'Username already exists',
-		required: 'Please fill in a username',
 		trim: true
 	},
 	password: {
@@ -158,6 +156,12 @@ var UserSchema = new Schema({
 UserSchema.virtual('fullName').get(function () {
 	return this.firstName + ' ' + this.lastName;
 });
+
+//create virtual attribute for full name
+UserSchema.virtual('localProfilePic').get(function () {
+	return this.profileImageURL + ' ' + this.id;
+});
+
 
 /**
  * Hook a pre save method to hash the password

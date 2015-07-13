@@ -6,12 +6,12 @@ var express = require('express'),
 
 module.exports = function(app) {
 
-	app.route('/uploads')
-		//.get(files.list)
-		.post(upload.fileUploader);
-
-	app.route('/uploads/users')
-		//.get(files.list)
-		.post(upload.fileUploader);
+	//app.route('/uploads')
+	//	//.get(files.list)
+	//	.post(upload.fileUploader);
+	//
+	//app.route('/uploads/users')
+	//	//.get(files.list)
+	//	.post(upload.fileUploader);
 
 };

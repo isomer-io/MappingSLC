@@ -203,7 +203,7 @@ td i .selected {
     margin-top: 2%;
 }
 
-.admin .btn-warning, .admin-user .btn-warning, .view-project .btn-warning {
+.admin .btn-warning, .admin-user .btn-warning, .view-project .btn-warning, .modal-content .btn-warning {
     background: rgba(245, 2, 25, 0.9);
 }
 
@@ -218,7 +218,7 @@ td i .selected {
     transition: all 0.3s ease 0s;
 }
 
-.admin .grow:hover, .admin-user .grow:hover, .view-project .btn-go:hover {
+.admin .grow:hover, .admin-user .grow:hover, .view-project .btn-go:hover, .view-project .btn-grow:hover, .modal-content .grow:hover {
     border-radius: 5px;
     background: rgba(0, 45, 0, 0.6);
     border-color: #000;

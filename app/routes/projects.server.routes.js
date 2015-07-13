@@ -15,6 +15,7 @@ module.exports = function(app) {
         .put(users.requiresLogin, projects.hasAuthorization, projects.update)
         .delete(users.requiresLogin, projects.hasAuthorization, projects.delete);
 
+
 // Project Markers Routes
     app.route('/markerData')
         .get(projects.markerList);
@@ -22,16 +23,9 @@ module.exports = function(app) {
     // Finish by binding the Project middleware
     app.param('projectId', projects.projectByID);
 
-    //app.route('/projects/:markers')
-    //    .get(projects.markerList);
-    //
-    //app.param('markers', projects.markersByGeo);
-
-    //todo finish building out Admin Panel on backend
-
-    /*
-    //Admin Routes
-    */
+/**
+** Admin Routes
+**/
     app.route('/admins')
         .get(admins.hasAuthorization, admins.list)
         .post(users.requiresLogin, admins.hasAuthorization, admins.create);
@@ -44,8 +38,11 @@ module.exports = function(app) {
     // Finish by binding the Admin middleware
     //app.param('adminId', admins.adminByID);
 
-    app.route('/nlp')
-        .get(projects.nlpProjects);
+    /**
+     * routes for Natural Language Processing Engine
+     */
+    //app.route('/nlp')
+    //    .get(projects.nlpEngine);
 
 
     // This is the search route, make a GET request on this endpoitn to return search results
@@ -55,24 +52,4 @@ module.exports = function(app) {
                 res.send(results);
             });
     });
-
-
-    //var projectData = require('../models/project.server.model.js');
-    //app.route('/projectData')
-    //      .get(function(req, res) {
-    //          res.jsonp(projectData);
-    //          console.log('project D = ' + projectData);
-    //      });
-    //// Setting up the users api
-    //app.route('/projectData')
-    //      .put(project.geocode);
-
-
-    //var projectObj = require('../models/project.server.model.js');
-    //
-    //// Maps Routes
-    //app.route('/projectObj')
-    //    .get(function(req, res) {
-    //        res.jsonp(projectObj);
-    //    });
 };

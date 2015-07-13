@@ -10,23 +10,22 @@
 
 .modal-content {
     color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.6);
-    /*border: solid rgba(0, 0, 0, 0.4) 12px;*/
+    background-color: rgba(2, 58, 49, 0.6);
+    border: solid rgba(255, 255, 255, 0.7) 2px;
 }
 
-/*.shadow {*/
-    /*Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    /*-webkit-box-shadow: 3px 3px 5px 6px #ccc;*/
-    /*Firefox 3.5 - 3.6*/
-    /*-moz-box-shadow: 3px 3px 5px 6px #ccc;*/
-    /*Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5*/
-    /*box-shadow: 3px 3px 5px 6px #FFFFFF;*/
-/*}*/
+.modal-body {
+    background-color: rgba(2, 58, 49, 0.8);
+}
 
-/*box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color];*/
+.modal-footer .grow:hover {
+    border-color: #03725e;
+    background: rgba(0, 45, 0, 0.8);
+}
 
-.text-center {
-    /*margin-left: -5%;*/
+.modal-footer .btn-warning:hover {
+    background: rgba(45, 0, 0, 0.8);
+    border-color: #ff0000;
 }
 
 .text-center.form-group {

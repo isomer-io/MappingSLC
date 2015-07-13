@@ -12,12 +12,26 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.mapImage = '';
 		$rootScope.signInBeforeProject = false;
 
-		$scope.street = '569 1300 E';
-		$scope.city = 'Salt Lake City';
-		$scope.state = 'UT';
-		$scope.zip = '84102';
-		$scope.story = 'This church';
-		$scope.title = 'get wit god, girl! jeez....';
+		//$scope.street = '850 S 300 E';
+		//$scope.city = 'Salt Lake City';
+		//$scope.state = 'UT';
+		//$scope.zip = '84102';
+		//$scope.title = 'Stale Street';
+
+		var publishUser = function(userId) {
+
+		};
+
+		var publishProject = function(project) {
+			if (project.status === 'published') {
+				console.log('project.user._id: ', project.user._id);
+				publishUser(project.user._id);
+				//do stuff to add marker
+				//means i'll have to pull marker data out of create project and into update project
+				//could probably use the same code as current, just put it in update fn
+				project.previouslyPublished = true; //need some func for deleting all of this if we unpublish a project. was thinking we check if prevPub is true and current status does not equal publish, then execute unPub func.
+			}
+		};
 
 		$scope.trustAsHtml = $sce.trustAsHtml;
 
@@ -53,15 +67,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$rootScope.currentState = '';
 		$rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from) {
 			$rootScope.previousState = from.name;
-			console.log('from.name: ', from);
 			$rootScope.currentState = to.name;
-			//$scope.goBack = function() {
-			//	if (from )
-			//		$state.go($rootScope.previousState);
-			//};
 		});
 		$scope.goBack = function() {
-			console.log('$rootScope.previousState: ', $rootScope.previousState);
+			//console.log('$rootScope.previousState: ', $rootScope.previousState);
 			if ($rootScope.previousState === 'listProjects') {
 				$state.go($rootScope.previousState);
 			} else {
@@ -80,10 +89,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			// get request to /users/me
 			if ($location.path() === '/projects/create' ) {
 				$http.get('http://localhost:3000/users/me').success(function (data) {
-					console.log('data: ', data);
+					//console.log('data: ', data);
 					if (data === null) {
 						$rootScope.signInBeforeProject = true;
-						console.log('proj ctrl: ', $rootScope.signInBeforeProject);
+						//console.log('proj ctrl: ', $rootScope.signInBeforeProject);
 						$location.path('/signin');
 					}
 				});
@@ -160,7 +169,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
 		};
 
-
 		// Remove existing Project
 		$scope.remove = function (project) {
 			if (project) {
@@ -173,7 +181,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				}
 			} else {
 				$scope.project.$remove(function () {
-					$location.path('projects');
+					if ($location.path() === '/admin/edit-project/' + $scope.project._id){
+						$location.path('admin/projects-queue');
+					}else {
+						$location.path('projects');
+					}
 				});
 			}
 		};
@@ -181,10 +193,9 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		// Update existing Project
 		$scope.update = function () {
 			var project = $scope.project;
-
+			publishProject(project);
 			project.$update(function () {
 				if($location.path() === '/admin/edit-project/' + project._id) {
-					return;
 				} else {
 					$location.path('projects/' + project._id);
 				}
@@ -203,6 +214,8 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			$scope.project = Projects.get({
 				projectId: $stateParams.projectId
 			});
+			$scope.soundCloudId = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + project.soundCloudId + '&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true';
+			$scope.vimeoId = '' + project.vimeoId + '';
 		};
 
 		$scope.completed = function () {
@@ -247,5 +260,58 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		};
 		cssLayout();
 
+
+		//modal for leaving projects
+		//Give user warning if leaving form
+		var preventRunning = false;
+		$scope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+			//console.log('fromState.url: ', fromState.url);
+			console.log('preventRunning: ', preventRunning);
+			if (preventRunning) {
+				return;
+			}
+			if (fromState.url === '/projects/create' && toState.url !== '/projects/:projectId') {
+				event.preventDefault();
+
+				$modal.open({
+					animation: true,
+					templateUrl: '/modules/projects/directives/views/project-warning-modal.html',
+					controller: function ($scope, $modalInstance, $location) {
+						$scope.stay = function (result) {
+							//$modalInstance.dismiss('cancel');
+							console.log('stay just a little bit longer, oh won\'t you stay');
+							$modalInstance.close(function (result) {
+								console.log('result: ', result);
+							});
+						};
+						$scope.leave = function () {
+							preventRunning = true;
+							$scope.stay();
+							$location.path(toState);
+						};
+					},
+					size: 'lg'
+				});
+			}
+
+		});
+
+
+		/**
+		 * nlp
+		**/
+		//$scope.nlpData = null;
+		//var getNlpData = function() {
+		//	$http.get('/nlp').
+		//		success(function (nlpData) {
+		//			console.log(nlpData);
+		//			$scope.nlpData = nlpData;
+		//		}).
+		//		error(function () {
+		//		});
+		//};
+
+
 	}
 ]);
+

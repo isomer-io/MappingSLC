@@ -41,10 +41,6 @@ angular.module('users').config(['$stateProvider',
 			url: '/password/reset/:token',
 			templateUrl: 'modules/users/views/password/reset-password.client.view.html'
 		}).
-		//state('adminEditUser', {
-		//	url: '/users/:userId',
-		//	templateUrl: 'modules/admins/views/users/admin-edit-users.client.view.html'
-		//}).
 		state('contributors', {
 			url: '/contributors',
 			templateUrl: 'modules/users/views/contributors.client.view.html'

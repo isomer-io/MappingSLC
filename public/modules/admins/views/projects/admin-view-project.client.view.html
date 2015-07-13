@@ -1,7 +1,7 @@
 <secondary-menu-directive></secondary-menu-directive>
 
 <section class="content background" data-ng-controller="RandomMapController"
-         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}" onerror="myFunction()">
 
     <section class="container">
         <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
@@ -41,6 +41,9 @@
                         <hr>
 
                         <div class="pull-right">
+                            <a class="btn btn-main grow" data-ng-click="testButton()">
+                                <i class="fa fa-check"></i>
+                            </a>
                             <a class="btn btn-main grow btn-warning" data-ng-click="remove();">
                                 <i class="glyphicon glyphicon-trash"></i>
                             </a>

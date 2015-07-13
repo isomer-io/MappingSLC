@@ -56,7 +56,6 @@ exports.signin = function(req, res, next) {
 	//new
 	var user = req;
 	console.log('backend authent ctrl, req.user: \n', user );
-	//console.log('backend authent ctrl, user: \n', user );
 	// end of new, for now
 
 

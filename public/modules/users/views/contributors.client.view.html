@@ -1,132 +1,59 @@
 <secondary-menu-directive></secondary-menu-directive>
 
 <section class="content background" data-ng-controller="RandomMapController"
-         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }"
-         data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
     <section class="container">
+        <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
-        <section data-ng-controller="GalleryController">
-            <div class="main-content-outer">
+        <div class="main-content-outer">
+            <section data-ng-controller="ContributorController" data-ng-init="init()">
                 <div class="contrib">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="main-content-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="main-content-inner">
 
-                            <h1>Contributors</h1>
+                                <h1>Contributors</h1>
 
-                            <!--<aside>-->
-                                <!--<h4>Submission Details</h4>-->
-                                <!--<h4>Interested in Getting Involved?</h4>-->
-                            <!--</aside>-->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div id="grid-gallery" class="grid-gallery">
-                                        <section class="grid-wrap">
-                                            <ul class="grid">
-                                                <li class="grid-sizer"></li>
-                                                <!-- for Masonry column width -->
-                                                <li>
-                                                    <figure>
-                                                        <img src="../../../modules/core/img/tempPeople/dani-zimmerman.jpg" alt="img01"/>
-                                                        <figcaption>    <h3>Dani Zimmerman</h3>
-
-                                                            <p>Dani Zimmerman was born in Salt Lake City on April 26, 1992 and spent most her childhood in Tooele, Utah.</p>
-                                                        </figcaption>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <img data-ng-src="{{slides[1]['image']}}" alt="img02"/>
-                                                        <figcaption><h3>Writer Person #2</h3>
-
-                                                            <p>Writer Person #2 has always loved long walk on the beach...</p></figcaption>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <img data-ng-src="{{slides[2]['image']}}" alt="img03"/>
-                                                        <figcaption><h3>Writer Person #3</h3>
-
-                                                            <p>Even before Writer could speak, he knew he wanted to be a writer...</p></figcaption>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <img data-ng-src="{{slides[3]['image']}}" alt="img04"/>
-                                                        <figcaption><h3>Writer Person #4</h3>
-
-                                                            <p>While Ms. Person #4 used to enjoy the outdoors, now she...</p></figcaption>
-                                                    </figure>
-                                                </li>
-                                            </ul>
-                                        </section>
+                                <div class="row">
+                                    <div class="col-md-12">
 
 
-                                        <!-- // grid-wrap -->
-                                        <section class="slideshow">
-                                            <ul>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Dani Zimmerman</h3>
+                                        <!--<li ng-repeat="image in images">-->
+                                            <!--<a ng-click="Lightbox.openModal(images, $index)">-->
+                                                <!--<img ng-src="{{image}}" class="img-circle" alt="" style="width: 6em;">-->
+                                            <!--</a>-->
+                                        <!--</li>-->
 
-                                                            <p>Dani Zimmerman was born in Salt Lake City on April 26, 1992 and spent most her childhood in Tooele, Utah.</p>
-                                                        </figcaption>
-                                                        <img src="../../../modules/core/img/tempPeople/dani-zimmerman.jpg" alt="img01"/>
-                                                        <figcaption><br /><p>Dani Zimmerman's project:<br /><a href="#">For the Love of These New Little Brown Girls</a></p></figcaption>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Writer Person #2</h3>
 
-                                                            <p>Fusce vel posuere mi. Cras pulvinar ullamcorper urna, vel pellentesque justo faucibus dictum. Fusce dapibus varius convallis. Maecenas dignissim, ipsum eget blandit consectetur, lacus dolor sollicitudin elit, eu accumsan lacus sapien dolor. Integer finibus erat vitae fringilla imperdiet.</p>
-                                                        </figcaption>
-                                                        <img data-ng-src="{{slides[1]['image']}}" alt="img02"/>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Writer Person #3</h3>
+                                        <ul id="gallery">
+                                            <li data-ng-repeat="contributor in contributors">
+                                                <a data-ng-click="Lightbox.openModal(images, $index)">
+                                                    <img ng-src="{{image}}" class="img-circle" alt="" style="width: 6em;">
+                                                    <h3>{{contributor.fullName}}</h3>
+                                                    <!--<img src="../../../../app/uploads/users/user2.jpg"/>-->
+                                                    <!--<img src="../../../modules/core/img/tempPeople/dani-zimmerman.jpg" alt="img01"/>-->
 
-                                                            <p>Nunc maximus, dolor sed facilisis pulvinar, neque diam aliquam libero, vitae placerat justo nisl vel mi. Nam imperdiet, sagittis dolor a, ullamcorper lorem. Nulla facilisi. Fusce iaculis nibh tristique nibh accumsan, vitae sagittis purus feugiat. Aliquam sed lacinia orci, semper viverra arcu. Nunc ac ipsum tortor.</p>
-                                                        </figcaption>
-                                                        <img data-ng-src="{{slides[2]['image']}}" alt="img03"/>
-                                                    </figure>
-                                                </li>
-                                                <li>
-                                                    <figure>
-                                                        <figcaption>
-                                                            <h3>Writer Person #4</h3>
+                                                    <!--<figure>-->
+                                                        <!--<figcaption>-->
+                                                            <!--<h3>{{contributor.fullName}}</h3>-->
 
-                                                            <p>Etiam imperdiet risus nibh, eu molestie lacus interdum id. Cras convallis ex justo. Sed tincidunt quis tortor id sollicitudin. Nullam vitae molestie ex, ac rhoncus lorem. Morbi ac ullamcorper mauris. Ut id hendrerit augue. Aenean cubilia Curae; Mauris sit amet varius lorem, at dapibus velit. Nunc posuere id elit eget scelerisque.</p>
-                                                        </figcaption>
-                                                        <img data-ng-src="{{slides[3]['image']}}" alt="img04"/>
-                                                    </figure>
-                                                </li>
-                                            </ul>
+                                                            <!--<p>{{contributor.bio}}</p>-->
+                                                        <!--</figcaption>-->
+                                                    <!--</figure>-->
+                                                </a>
+                                            </li>
+                                        </ul>
 
-                                            <!--control the slider with keyboard-->
-                                            <nav>
-                                                <span class="icon nav-prev"></span>
-                                                <span class="icon nav-next"></span>
-                                                <span class="icon nav-close"></span>
-                                            </nav>
 
-                                        </section>
-                                        <!-- // slideshow -->
                                     </div>
-                                    <!-- // grid-gallery -->
-
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </section>
 </section>
