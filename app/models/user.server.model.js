@@ -139,6 +139,11 @@ var UserSchema = new Schema({
 		trim: true,
 		default: ''
 	},
+	userSelectedImageURL: {
+		type: String,
+		trim: true,
+		default: ''
+	},
 	associatedProjects: {
 		type: String,
 		trim: true,

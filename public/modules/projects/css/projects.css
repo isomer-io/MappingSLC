@@ -227,3 +227,98 @@ div.list-group > a > div {
     to { -webkit-transform: translateX(0);
     }
 }
+
+
+
+
+
+
+/*.animation-cards {*/
+    /*-webkit-animation: card-initial-animation 4s ease;*/
+    /*-o-animation: card-initial-animation 4s ease;*/
+    /*animation: card-initial-animation 4s ease;*/
+/*}*/
+
+.animation-cards.ng-enter {
+    -webkit-animation: card-initial-animation 4s;
+    -o-animation: card-initial-animation 4s;
+    animation: card-initial-animation 4s;
+}
+
+.animation-cards.ng-enter-stagger, .animation-cards.ng-leave-stagger, .animation-cards.ng-move-stagger {
+    /* this will create a delay between each successive enter animation */
+    -webkit-animation-delay: 0.50s;
+    animation-delay: 0.5s;
+
+    /* yes we still need to do this too */
+    -webkit-animation-duration: 0s;
+    animation-duration: 0s;
+}
+
+@-webkit-keyframes card-initial-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 0.35;
+        border: 3px solid #bbb;
+    }
+
+    65% {
+        border: solid 3px #1346E9;
+    }
+
+    75% {
+        opacity: 0.6;
+        border: solid 3px #1346E9;
+    }
+
+    90% {
+        transform: scale(1.01);
+    }
+
+    95% {
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        border: 3px solid #bbb;
+    }
+}
+
+@keyframes card-initial-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    45% {
+        opacity: 0.35;
+        border: 3px solid #bbb;
+    }
+
+    65% {
+        border: solid 3px #1346E9;
+    }
+
+    75% {
+        opacity: 0.6;
+        border: solid 3px #1346E9;
+    }
+
+    90% {
+        transform: scale(1.01);
+    }
+
+    95% {
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        border: 3px solid #bbb;
+    }
+}

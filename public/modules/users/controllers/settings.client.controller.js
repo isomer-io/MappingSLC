@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'AuthenticationService', 'UserData', '$stateParams',
-	function($scope, $http, $location, Users, AuthenticationService, UserData, $stateParams) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'AuthenticationService', 'UserData', '$stateParams', '$window',
+	function($scope, $http, $location, Users, AuthenticationService, UserData, $stateParams, $window) {
 		$scope.user = AuthenticationService.user;
 		$scope.userRole = null;
 		$scope.userZip = null;
@@ -12,7 +12,59 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			$scope.toggleId = editNum;
 		};
 
+		//var profilePic = {
+		//	profileDefault: $window.user.userSelectedImageURL,
+		//	facebook: $window.user.additionalProvidersData.facebook.picture.data.url,
+		//	twitter: $window.user.additionalProvidersData.twitter.profile_image_url,
+		//	local: $window.user.profileImageURL,
+		//	noPic: '<span class="profile-pic fa fa-user" />'
+		//};
+		//$scope.profilePicDisplayed = null;
+		//$scope.profilePicArray = [];
+		//
+		//
+		//$scope.getProfilePic = function (profilePicToArray) {
+		//	console.log('profilePic obj: ', profilePic);
+		//	console.log('$window.user.default: ', $window.user.userSelectedImageURL);
+		//	console.log('$window.user facebook: ', $window.user.additionalProvidersData.facebook.picture.data.url);
+		//	console.log('$window.user twitter: ', $window.user.additionalProvidersData.twitter.profile_image_url);
+		//	console.log('$window.user.local: ', $window.user.profileImageURL);
+		//	if (profilePic.profileDefault !== '' && profilePic.profileDefault !== undefined && profilePic.profileDefault !== null) {
+		//		$scope.profilePicDisplayed = profilePic.profileDefault;
+		//	} else {
+		//		if (profilePic.facebook) {
+		//			$scope.profilePicArray.push(profilePic.facebook);
+		//			$scope.profilePicDisplayed = profilePic.facebook;
+		//		}
+		//		if (profilePic.twitter) {
+		//			$scope.profilePicArray.push(profilePic.twitter);
+		//			$scope.profilePicDisplayed = profilePic.twitter;
+		//		}
+		//		if (profilePic.local) {
+		//			$scope.profilePicArray.push(profilePic.local);
+		//			$scope.profilePicDisplayed = profilePic.local;
+		//		} else {
+		//			$scope.profilePicDisplayed = profilePic.noPic;
+		//		}
+		//	}
+		//	if (profilePicToArray === true) {
+		//		console.log('$scope.profilePicArray: ', $scope.profilePicArray);
+		//		return $scope.profilePicArray;
+		//	}
+		//	console.log('$scope.profilePicDisplayed: ', $scope.profilePicDisplayed);
+		//	return $scope.profilePicDisplayed;
+		//};
+		//
+		////$scope.profilePic = profilePicService.getProfilePic();
+		//$scope.returnProfilePic = $scope.getProfilePic();
+		////$scope.profilePicArray = profilePicService.getProfilePic(true);
+		//$scope.returnProfilePicArray = $scope.getProfilePic(true);
+
+
+
+
 		$scope.photo0 = 'chris--bw-2.jpg';
+
 
 		// If user is not signed in then redirect back home
 		if (!$scope.user) $location.path('/');

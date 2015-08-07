@@ -1,4 +1,4 @@
-'use strict';
+    'use strict';
 
 angular.module('users').service('SubscribeService', [
     function ($scope, $location, Projects) {

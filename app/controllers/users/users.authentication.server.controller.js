@@ -54,8 +54,8 @@ exports.signin = function(req, res, next) {
 	//console.log('exports.signin req: ', req);
 
 	//new
-	var user = req;
-	console.log('backend authent ctrl, req.user: \n', user );
+	//var user = req;
+	//console.log('backend authent ctrl, req.user: \n', user );
 	// end of new, for now
 
 
@@ -124,6 +124,8 @@ exports.oauthCallback = function(strategy) {
 	return function(req, res, next) {
 		passport.authenticate(strategy, function(err, user, redirectURL) {
 			if (err || !user) {
+				console.log('err: \n', err);
+				console.log('user: \n', user);
 				return res.redirect('/#!/signin');
 			}
 			req.login(user, function(err) {

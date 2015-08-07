@@ -28,6 +28,8 @@ module.exports = function() {
 				firstName: profile.name.givenName,
 				lastName: profile.name.familyName,
 				displayName: profile.displayName,
+				ageRange: profile.age_range,
+				gender: profile.gender,
 				email: profile.emails[0].value,
 				profileImageURL: (profile.id) ? '//graph.facebook.com/' + profile.id + '/picture?type=large' : undefined,
 				username: profile.username,

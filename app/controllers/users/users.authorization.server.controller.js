@@ -19,18 +19,33 @@ var _ = require('lodash'),
 //	});
 //};
 
+
 exports.userByID = function(req, res, next, id) {
-	console.log('working');
 	User.findById(id).populate('user', 'displayName').exec(function(err, user) {
-		console.log('still working');
 		if (err) return next(err);
 		if (!user) return next(new Error('Failed to load User ' + id));
 		req.currentUser = user;
-
 		next();
 
 	});
 };
+
+
+/**
+ *  mean v 0.4.0 implementation
+ */
+
+ exports.userByIDv4 = function(req, res, next, id) {
+	User.findOne({
+		_id: id
+	}).exec(function(err, user) {
+		if (err) return next(err);
+		if (!user) return next(new Error('Failed to load User ' + id));
+		req.profile = user;
+		next();
+	});
+};
+
 
 /**
  * Require login routing middleware

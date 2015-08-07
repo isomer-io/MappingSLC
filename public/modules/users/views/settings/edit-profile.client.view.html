@@ -1,14 +1,14 @@
 <secondary-menu-directive></secondary-menu-directive>
 
 <section class="content background" data-ng-controller="RandomMapController"
-         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }"
-         data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
 
     <section class="container">
+        <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
         <div class="main-content-outer">
 
-            <section data-ng-controller="SettingsController" class="main-content-inner">
+        <section data-ng-controller="SettingsController" class="main-content-inner">
 
                 <h3 class="col-md-12 text-center">Edit your profile</h3>
 
@@ -122,6 +122,15 @@
                                             </div>
 
                                         </div>
+
+                                    <!--<div class="row">  &lt;!&ndash; Row #4b &ndash;&gt;-->
+                                        <!--&lt;!&ndash;<a data-ng-repeat="(key, value) in returnProfilePic"> </a>&ndash;&gt;-->
+                                        <!--<ul>-->
+                                            <!--<span/><a data-ng-href="#"><li><img data-ng-src="{{returnProfilePicArray[0]}}" class="col-md-4" /></li></a></span>-->
+                                            <!--<span/><a data-ng-href="#"><li><img data-ng-src="{{returnProfilePicArray[1]}}" class="col-md-4" /></li></a></span>-->
+                                            <!--<span/><a data-ng-href="#"><li><img data-ng-src="{{returnProfilePicArray[2]}}" class="col-md-4" /></li></a></span>-->
+                                        <!--</ul>-->
+                                    <!--</div>-->
 
 
                                     <div class="row">  <!-- Row #5 -->

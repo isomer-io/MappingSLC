@@ -10,12 +10,12 @@
                 </button>
 
                 <ul class="dropdown-menu">
-                    <li ui-route="/signup" ng-class="{active: $uiRoute}">
-                        <a href="/#!/signup">Sign Up</a>
-                    </li>
-                    <!--<li class="divider-vertical"></li>-->
                     <li ui-route="/signin" ng-class="{active: $uiRoute}">
                         <a href="/#!/signin">Sign In</a>
+                    </li>
+                    <!--<li class="divider-vertical"></li>-->
+                    <li ui-route="/signup" ng-class="{active: $uiRoute}">
+                        <a href="/#!/signup">Sign Up</a>
                     </li>
                 </ul>
 
@@ -26,13 +26,9 @@
             <li class="dropdown" dropdown>
                 <!--<button class="btn btn-dark">-->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
-                        <span data-ng-bind="authentication.user.firstName"></span>
-                        <!--<span data-ng-bind="authentication.user.roles"></span>-->
-                        <span class="header-profile-image" data-ng-bind="authentication.user.profileImageURL"></span>
-                        <!--<img data-ng-src="{{authentication.user.profileImageURL}}" class="header-profile-image"/> <b class="caret"></b>-->
-                        <img data-ng-src="modules/core/img/{{photo0}}" class="header-profile-image"/> <b class="caret"></b>
-
-                </a>
+                        <img data-ng-src="{{profilePic}}" alt="{{authentication.user.displayName}}" class="header-profile-image"/>
+                        <span data-ng-bind="authentication.user.firstName"></span> <b class="caret"></b>
+                    </a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="/#!/settings/profile">Edit Profile</a>

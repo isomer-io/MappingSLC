@@ -35,8 +35,8 @@ module.exports = function(app) {
 		.post(users.isAdmin, users.create);
 	app.route('/admin/list-users')
 		.get(users.isAdmin, users.list);
-	app.route('/uploads/users/:userId')
-		.get(users.profileImage);
+	//app.route('/uploads/users/:userId')
+	//	.get(users.profileImage);
 
 
 	// Setting up the users password api
@@ -50,6 +50,7 @@ module.exports = function(app) {
 	app.route('/auth/signin').post(users.signin);
 	app.route('/auth/signout').get(users.signout);
 
+	// Setting the facebook oauth routes
 	// Setting the facebook oauth routes
 	app.route('/auth/facebook').get(passport.authenticate('facebook', {
 		scope: ['email']

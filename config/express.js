@@ -98,6 +98,13 @@ module.exports = function(db) {
 
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));
+	app.use('/assets', express.static(__dirname + 'app/assets'));
+	//app.use('/assets', express.static(path.resolve('./assets')));
+
+	//app.use(express.static(__dirname + 'app/assets'));
+	//app.use('/assets', express.static(__dirname + '/app/assets'));
+	//app.use(express.static(__dirname + '/app/assets'));
+	//app.use('/assets', express.static(__dirname + '/assets'));
 
 	// CookieParser should be above session
 	app.use(cookieParser());

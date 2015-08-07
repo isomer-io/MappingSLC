@@ -5,6 +5,8 @@
  */
 var _ = require('lodash'),
 	errorHandler = require('../errors.server.controller.js'),
+	fs = require('fs'),
+	path = require('path'),
 	mongoose = require('mongoose'),
 	passport = require('passport'),
 	User = mongoose.model('User');
@@ -37,6 +39,46 @@ exports.update = function (req, res) {
 						res.status(400).send(err);
 					} else {
 						res.json(user);
+					}
+				});
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+};
+
+/**
+ * Update profile picture
+ */
+exports.changeProfilePicture = function (req, res) {
+	var user = req.user;
+	var message = null;
+
+	if (user) {
+		fs.writeFile('./app/assets/userAssets/' + req.files.file.name, req.files.file.buffer, function (uploadError) {
+			if (uploadError) {
+				return res.status(400).send({
+					message: 'Error occurred while uploading profile picture'
+				});
+			} else {
+				user.profileImageURL = './app/assets/userAssets/' + req.files.file.name;
+
+				user.save(function (saveError) {
+					if (saveError) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(saveError)
+						});
+					} else {
+						req.login(user, function (err) {
+							if (err) {
+								res.status(400).send(err);
+							} else {
+								res.json(user);
+							}
+						});
 					}
 				});
 			}
