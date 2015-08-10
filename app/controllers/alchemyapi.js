@@ -66,7 +66,7 @@ function AlchemyAPI() {
 
 	//Load the key from api keys file, then try to create key and place in api_key.txt
 	//try {
-		key = key.alchemy.key;
+		key = '9eb2296b11f66a08cb20ef6771bbe32b523a0840';
 		//key = nlpKey.alchemy.key;
 	//}
 	//catch(err){
