@@ -1,6 +1,7 @@
 'use strict';
 
 var apiKeys = require('../../app/models/data/private/keys.js');
+//var apiKeys = require('../../config/env/production.js');
 
 //module.exports = {
 //	db: 'mongodb://localhost/mapping-salt-lake-city-dev',

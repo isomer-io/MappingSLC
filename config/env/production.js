@@ -69,5 +69,25 @@ module.exports = {
 				pass: process.env.MAILER_PASSWORD || 'MAILER_PASSWORD'
 			}
 		}
+	},
+	mapbox: {
+		secret: process.env.MAPBOX_SECRET || 'APP_ID',
+		key: process.env.MAPBOX_KEY || 'APP_ID',
+		maps: {
+			'grayMap': 'L.mapbox.tileLayer(\'poetsrock.b06189bb\')',
+			'mainMap': 'L.mapbox.tileLayer(\'poetsrock.la999il2\')',
+			'topoMap': 'L.mapbox.tileLayer(\'poetsrock.la97f747\')',
+			'greenMap': 'L.mapbox.tileLayer(\'poetsrock.jdgpalp2\')',
+			'landscape': 'L.tileLayer(\'http://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png\')',
+			'watercolor': 'L.tileLayer(\'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png\')'
+		}
+	},
+	alchemy: {
+		key: process.env.ALCHEMY_KEY || 'API_KEY'
+	},
+	here: {
+		secret: process.env.HERE_SECRET || 'API_SECRET',
+		key: process.env.HERE_KEY || 'API_KEY'
 	}
+
 };

@@ -11,15 +11,15 @@ var express = require('express'),
     connectMongo = require('connect-mongo'),
     request = require('request'),
     CensusData = mongoose.model('CensusDataSchema'),
-    censusKey = require('./../models/data/private/keys.js');
-
+    census = require('../models/data/private/keys.js') || require('../../config/env/production.js');
+    //census = require('./../models/data/private/keys.js');
 /**
  * Create a Record in the Census Data Model
  */
 //create a function that receive http request from front end front end function will pass the following 3 arguments:
 //censusDataVariable (e.g., 'P0010001'); censusYear (e.g., 2000, 2010, 2011, 2012, 2013, 2014); censusType (e.g., 'sf1', 'acs')
 //this back end function will, first, check against the json objects and models to ensure there is no error in the requested data and that the data exists.
-exports.create = function (req, res, censusKey) {
+exports.create = function (req, res, census) {
 //    if (!req.params.name) {
 //        res.status('400').jsonp('Bad request')
 //    } else {
@@ -41,7 +41,7 @@ exports.create = function (req, res, censusKey) {
         censusYear = [1990, 2000, 2010, 2011, 2012, 2013, 2014],
         censusType = ['sf1', 'acs'];
 
-    var query = 'http://api.census.gov/data/' + censusYear[1] + '/' + censusType[0] + '?get=' + censusDataVariable[0] + '&for=tract:*&in=state:49+county:035&key=' + censusKey;
+    var query = 'http://api.census.gov/data/' + censusYear[1] + '/' + censusType[0] + '?get=' + censusDataVariable[0] + '&for=tract:*&in=state:49+county:035&key=' + census.key;
     request(query,
         function (error, response, body) {
             console.log('censusData response.body: ', response.body);

@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer'),
-    emailKey = require('../models/data/private/keys.js');
-
+    emailKey = require('../models/data/private/keys.js') || require('../../config/env/production.js');
+    //emailKey = require('../models/data/private/keys.js');
 
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({

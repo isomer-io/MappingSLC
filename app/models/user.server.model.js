@@ -106,7 +106,7 @@ var UserSchema = new Schema({
 			type: String,
 			enum: ['blocked', 'unregistered', 'registered', 'contributor', 'admin', 'superUser']
 		}],
-		default: ['registered']
+		default: ['admin']
 	},
 	updated: {
 		type: Date,
