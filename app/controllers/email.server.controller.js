@@ -1,6 +1,4 @@
 var nodemailer = require('nodemailer');
-    //emailKey = require('../models/data/private/keys.js') || require('../../config/env/production.js');
-    //emailKey = require('../models/data/private/keys.js');
 
 var keys;
 if (process.env.NODE_ENV === 'development') {

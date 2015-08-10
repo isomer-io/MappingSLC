@@ -2,8 +2,6 @@
 
 module.exports = function (app) {
     var users = require('../../app/controllers/users.server.controller'),
-        //keys = require('../models/data/private/keys.js') || require('../../config/env/production.js'),
-        //keys = require('../models/data/private/keys.js'),
         tractData = require('../models/data/utahTract.json'),
         markerData = require('../models/project.server.model.js'),
         request = require('request');

@@ -11,9 +11,6 @@ var express = require('express'),
     connectMongo = require('connect-mongo'),
     request = require('request'),
     CensusData = mongoose.model('CensusDataSchema');
-    //census = require('../models/data/private/keys.js') || require('../../config/env/production.js');
-    //census = require('./../models/data/private/keys.js');
-
 var census;
 if (process.env.NODE_ENV === 'development') {
     census = require('../../config/env/local.js');
