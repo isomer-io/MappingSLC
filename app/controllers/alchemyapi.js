@@ -20,12 +20,8 @@ var http = require('http'),
 var key;
 if (process.env.NODE_ENV === 'development') {
 	key = require('../../config/env/local.js');
-	//console.log('local key: ', key);
-	//console.log('local key.alchemy.key: ', key.alchemy.key);
 } else if (process.env.NODE_ENV === 'production') {
 	key = require('../../config/env/production.js');
-	//console.log('prod key: ', key);
-	//console.log('prod key.alchemy.key: ', key.alchemy.key);
 }
 
 

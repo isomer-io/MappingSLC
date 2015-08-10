@@ -1,14 +1,21 @@
-var nodemailer = require('nodemailer'),
-    emailKey = require('../models/data/private/keys.js') || require('../../config/env/production.js');
+var nodemailer = require('nodemailer');
+    //emailKey = require('../models/data/private/keys.js') || require('../../config/env/production.js');
     //emailKey = require('../models/data/private/keys.js');
+
+var keys;
+if (process.env.NODE_ENV === 'development') {
+    keys = require('../../config/env/local.js');
+} else if (process.env.NODE_ENV === 'production') {
+    keys = require('../../config/env/production.js');
+}
 
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({
     service: 'Hotmail',
-    auth: {
-        user: emailAddress,
-        pass: emailKey
-    }
+    //auth: {
+    //    user: keys.emailAddress,
+    //    pass: keys.emailKey
+    //}
 });
 
 // NB! No need to recreate the transporter object. You can use
