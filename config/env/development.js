@@ -1,5 +1,8 @@
 'use strict';
 
+var apiKeys = require('../../app/models/data/private/keys.js');
+//var apiKeys = require('../../config/env/production.js');
+
 module.exports = {
 	db: {
 		uri: 'mongodb://localhost/mapping-slc-dev',
@@ -8,6 +11,9 @@ module.exports = {
 			pass: ''
 		}
 	},
+    // Enable mongoose debug mode
+    debug: process.env.MONGODB_DEBUG || false,
+
 	log: {
 		// Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
 		format: 'dev',

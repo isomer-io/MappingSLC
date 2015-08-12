@@ -4,14 +4,15 @@ module.exports = function (app) {
     var users = require('../../app/controllers/users.server.controller'),
         tractData = require('../models/data/utahTract.json'),
         markerData = require('../models/project.server.model.js'),
-        request = require('request');
+        request = require('request'),
+        keys = require('../../app/models/data/private/keys.js');
 
-    var keys;
-    if (process.env.NODE_ENV === 'development') {
-        keys = require('../../config/env/local.js');
-    } else if (process.env.NODE_ENV === 'production') {
-        keys = require('../../config/env/production.js');
-    }
+    //var keys;
+    //if (process.env.NODE_ENV === 'development') {
+    //    keys = require('../../config/env/local.js');
+    //} else if (process.env.NODE_ENV === 'production') {
+    //    keys = require('../../config/env/production.js');
+    //}
 
     //Google Places API Call
     app.route('/places')
