@@ -9,6 +9,66 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		//for overlay
 		$scope.featuredProjects = {};
 
+		$scope.profilePic = function(profilePic) {
+			if($window.user.additionalProvidersData.facebook.picture.data.url){
+				return profilePic.facebook
+			} else if($window.user.additionalProvidersData.twitter.profile_image_url){
+				return profilePic.twitter
+			} else if($window.user.additionalProvidersData.twitter.profile_image_url){
+				return profilePic.twitter
+			} else if(profilePic.profileImageURL) {
+				return profilePic.profileImageURL
+			} else {
+				//return profilePic.profileDefault;
+				$scope.profilePic = './img/chris--bw-2.jpg';
+				return $scope.profilePic;
+			}
+		};
+		//
+		//var profilePic = {
+		//	profileDefault: $window.user.userSelectedImageURL,
+		//	facebook: $window.user.additionalProvidersData.facebook.picture.data.url,
+		//	twitter: $window.user.additionalProvidersData.twitter.profile_image_url,
+		//	local: $window.user.profileImageURL,
+		//	noPic: '<span class="profile-pic fa fa-user" />'
+		//};
+		//$scope.profilePicDisplayed = null;
+		//$scope.profilePicArray = [];
+		//
+		//
+		//$scope.getProfilePic = function (profilePicToArray) {
+		//	console.log('profilePic obj: ', profilePic);
+		//	if (profilePic.profileDefault !== '' && profilePic.profileDefault !== undefined && profilePic.profileDefault !== null) {
+		//		$scope.profilePicDisplayed = profilePic.profileDefault;
+		//	} else {
+		//		if (profilePic.facebook) {
+		//			$scope.profilePicArray.push(profilePic.facebook);
+		//			$scope.profilePicDisplayed = profilePic.facebook;
+		//		}
+		//		if (profilePic.twitter) {
+		//			$scope.profilePicArray.push(profilePic.twitter);
+		//			$scope.profilePicDisplayed = profilePic.twitter;
+		//		}
+		//		if (profilePic.local) {
+		//			$scope.profilePicArray.push(profilePic.local);
+		//			$scope.profilePicDisplayed = profilePic.local;
+		//		} else {
+		//			$scope.profilePicDisplayed = profilePic.noPic;
+		//		}
+		//	}
+		//	if (profilePicToArray === true) {
+		//		console.log('$scope.profilePicArray: ', $scope.profilePicArray);
+		//		return $scope.profilePicArray;
+		//	}
+		//	console.log('$scope.profilePicDisplayed: ', $scope.profilePicDisplayed);
+		//	return $scope.profilePicDisplayed;
+		//};
+		//
+		////$scope.profilePic = profilePicService.getProfilePic();
+		//$scope.returnProfilePic = $scope.getProfilePic();
+		////$scope.profilePicArray = profilePicService.getProfilePic(true);
+		//$scope.returnProfilePicArray = $scope.getProfilePic(true);
+
 		//menu functions
 		$scope.trustAsHtml = $sce.trustAsHtml;
 		$scope.goToProject = function(id){
