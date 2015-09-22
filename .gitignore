@@ -1,10 +1,9 @@
-# iOS / Apple
+# OS
 # ===========
 .DS_Store
 ehthumbs.db
 Icon?
 Thumbs.db
-config/env/local.js
 
 # Node and related ecosystem
 # ==========================
@@ -15,35 +14,61 @@ public/lib/
 app/tests/coverage/
 .bower-*/
 .idea/
+coverage/
 
 # MEAN.js app and assets
 # ======================
-config/sslcerts/*.pem
 public/dist/
+uploads
+modules/users/client/img/profile/uploads
+config/env/local.js
+*.pem
+
+# Ignoring MEAN.JS's gh-pages branch for documenation
+_site/
 
 # General
 # =======
 *.log
 *.csv
 *.dat
+*.out
 *.pid
+*.gz
 *.tmp
 *.bak
 *.swp
 logs/
 build/
 
+# Sublime editor
+# ==============
+.sublime-project
+*.sublime-project
+*.sublime-workspace
 
-# Custom
-# =======
-email_template.html
-app/models/data/private
-config/certs
-public/modules/core/img/chris--bw-2.jpg
-public/modules/core/img/chris's-Face_300.jpg
-public/modules/core/img/tempProjects
-public/modules/core/img/tempPeople
-source.zip
-app/assets
-app/models/test.model.js
-public/modules/test.js
+# Eclipse project files
+# =====================
+.project
+.settings/
+.*.md.html
+.metadata
+*~.nib
+local.properties
+
+# IntelliJ
+# ========
+*.iml
+
+# Cloud9 IDE
+# =========
+.c9/
+data/
+mongod
+
+# Visual Studio
+# =========
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
