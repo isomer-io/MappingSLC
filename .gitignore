@@ -1,3 +1,6 @@
+# dir for private files and API keys
+/modules/users/server/config/.private
+
 # OS
 # ===========
 .DS_Store
