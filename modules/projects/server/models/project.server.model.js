@@ -6,7 +6,8 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     _ = require('underscore'),
-    mongoosastic = require('mongoosastic');
+    mongoosastic = require('mongoosastic'),
+    projects = require('../../app/controllers/projects.server.controller');
 
 /**
  *

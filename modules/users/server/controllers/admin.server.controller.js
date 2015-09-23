@@ -81,7 +81,7 @@ exports.contributors = function(req, res) {
     .exec( function (err,users) {
       if (err) {
         return res.send(400, {
-          message: getErrorMessage(err)
+          message: errorHandler.getErrorMessage(err)
         });
       } else {
         res.jsonp(users);
