@@ -28,11 +28,11 @@ angular.module('users').config(['$httpProvider',
     ]);
 
 
-
-    // Lightbox
+/**
+    // todo Lightbox
 
     // set a custom template
-    LightboxProvider.templateUrl = '/modules/users/directives/views/lightbox.html';
+    LightboxProvider.templateUrl = '/modules/users/client/directives/views/lightbox.html';
 
     // our images array is not in the default format, so we have to write this
     // custom method
@@ -70,6 +70,7 @@ angular.module('users').config(['$httpProvider',
       };
     };
 
+ **/
 
 
   }

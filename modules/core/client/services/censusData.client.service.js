@@ -8,6 +8,7 @@ angular.module('core').service('CensusDataService', ['$http', 'ApiKeys',
         var censusData = null;
         var censusDataKey = 'P0010001';
         var censusYear = [2000, 2010, 2011, 2012, 2013, 2014];
+        var population = '';
 
         this.callCensusApi = function () {
             ApiKeys.getApiKeys()
@@ -22,8 +23,6 @@ angular.module('core').service('CensusDataService', ['$http', 'ApiKeys',
                 return $http.get('http://api.census.gov/data/' + censusYear[1] + '/sf1?get=' + population + '&for=tract:*&in=state:49+county:035&key=' + censusKey);
             }
         };
-
-
     }
 ]);
 

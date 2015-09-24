@@ -1,7 +1,7 @@
     'use strict';
 
 angular.module('users').service('SubscribeService', [
-    function ($scope, $location, Projects) {
+    function ($scope, $location, Projects, $stateParams) {
 
 
     //search database for e-mail address--if found, update newsletter subscription field; else, create new user
@@ -33,7 +33,8 @@ angular.module('users').service('SubscribeService', [
             var formField;
             for (formField in $scope.createProject) {
                 if ($scope.createProject === null) {
-                    return $scope.completed = false;
+                    $scope.completed = false;
+                    return $scope.completed;
                 } else {
                     $scope.completed = true;
                 }

@@ -4,7 +4,7 @@
 angular.module('users').factory('AdminAuthService', ['$window', 'AuthenticationService',
 	function($window, AuthenticationService) {
 		var auth = AuthenticationService;
-		if(auth.user != '') {
+		if(auth.user !== '') {
 			var isAdmin = {
 				user: $window.user.roles[0]
 			};

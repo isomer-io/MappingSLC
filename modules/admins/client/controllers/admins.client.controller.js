@@ -41,7 +41,7 @@ angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$state
 	var run = function ($rootScope, $state, AuthenticationService) {
 		$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
 			if (toState.authenticate && !AuthenticationService.isLoggedIn()) {
-				$state.go('signin')
+				$state.go('signin');
 			}
 			event.preventDefault();
 		});

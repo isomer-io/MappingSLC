@@ -9,65 +9,6 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		//for overlay
 		$scope.featuredProjects = {};
 
-		$scope.profilePic = function(profilePic) {
-			if($window.user.additionalProvidersData.facebook.picture.data.url){
-				return profilePic.facebook
-			} else if($window.user.additionalProvidersData.twitter.profile_image_url){
-				return profilePic.twitter
-			} else if($window.user.additionalProvidersData.twitter.profile_image_url){
-				return profilePic.twitter
-			} else if(profilePic.profileImageURL) {
-				return profilePic.profileImageURL
-			} else {
-				//return profilePic.profileDefault;
-				$scope.profilePic = './img/chris--bw-2.jpg';
-				return $scope.profilePic;
-			}
-		};
-		//
-		//var profilePic = {
-		//	profileDefault: $window.user.userSelectedImageURL,
-		//	facebook: $window.user.additionalProvidersData.facebook.picture.data.url,
-		//	twitter: $window.user.additionalProvidersData.twitter.profile_image_url,
-		//	local: $window.user.profileImageURL,
-		//	noPic: '<span class="profile-pic fa fa-user" />'
-		//};
-		//$scope.profilePicDisplayed = null;
-		//$scope.profilePicArray = [];
-		//
-		//
-		//$scope.getProfilePic = function (profilePicToArray) {
-		//	console.log('profilePic obj: ', profilePic);
-		//	if (profilePic.profileDefault !== '' && profilePic.profileDefault !== undefined && profilePic.profileDefault !== null) {
-		//		$scope.profilePicDisplayed = profilePic.profileDefault;
-		//	} else {
-		//		if (profilePic.facebook) {
-		//			$scope.profilePicArray.push(profilePic.facebook);
-		//			$scope.profilePicDisplayed = profilePic.facebook;
-		//		}
-		//		if (profilePic.twitter) {
-		//			$scope.profilePicArray.push(profilePic.twitter);
-		//			$scope.profilePicDisplayed = profilePic.twitter;
-		//		}
-		//		if (profilePic.local) {
-		//			$scope.profilePicArray.push(profilePic.local);
-		//			$scope.profilePicDisplayed = profilePic.local;
-		//		} else {
-		//			$scope.profilePicDisplayed = profilePic.noPic;
-		//		}
-		//	}
-		//	if (profilePicToArray === true) {
-		//		console.log('$scope.profilePicArray: ', $scope.profilePicArray);
-		//		return $scope.profilePicArray;
-		//	}
-		//	console.log('$scope.profilePicDisplayed: ', $scope.profilePicDisplayed);
-		//	return $scope.profilePicDisplayed;
-		//};
-		//
-		////$scope.profilePic = profilePicService.getProfilePic();
-		//$scope.returnProfilePic = $scope.getProfilePic();
-		////$scope.profilePicArray = profilePicService.getProfilePic(true);
-		//$scope.returnProfilePicArray = $scope.getProfilePic(true);
 
 		//menu functions
 		$scope.trustAsHtml = $sce.trustAsHtml;
@@ -125,32 +66,6 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 		//atrribution toggle
 		$scope.attributionFull = false;
 		$scope.attributionText = '<div style="padding: 0 5px 0 2px"><a href="http://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> & <a href="http://leafletjs.com/" target="_blank">Leaflet</a>, with map data by <a href="http://openstreetmap.org/copyright">OpenStreetMap©</a> | <a href="http://mapbox.com/map-feedback/" class="mapbox-improve-map">Improve this map</a></div>';
-
-
-		//subscribe form animations
-		//console.log('form animate\n', formAnimationService.cssLayout());
-
-		var cssLayout = function () {
-			[].slice.call(document.querySelectorAll('input.input_field')).forEach(function (inputEl) {
-				// in case the input is already filled..
-				if (inputEl.value.trim() !== '') {
-					classie.add(inputEl.parentNode, 'input-filled');
-				}
-				// events:
-				inputEl.addEventListener('focus', onInputFocus);
-				inputEl.addEventListener('blur', onInputBlur);
-			});
-			function onInputFocus(ev) {
-				classie.add(ev.target.parentNode, 'input-filled');
-			}
-
-			function onInputBlur(ev) {
-				if (ev.target.value.trim() === '') {
-					classie.remove(ev.target.parentNode, 'input-filled');
-				}
-			}
-		};
-		cssLayout();
 
 		/**
 		 *
@@ -338,6 +253,7 @@ angular.module('core').controller('HomeController', ['$scope', 'AuthenticationSe
 
 
 			//create toggle/filter functionality for Census Tract Data
+
 			$scope.toggleGooglePlacesData = function () {
 				if ($scope.googlePlacesLayer) {
 					map.removeLayer(googlePlacesMarkerLayer);

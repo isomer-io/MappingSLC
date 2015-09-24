@@ -6,8 +6,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     _ = require('underscore'),
-    mongoosastic = require('mongoosastic'),
-    projects = require('../../app/controllers/projects.server.controller');
+    mongoosastic = require('mongoosastic');
 
 /**
  *
@@ -199,11 +198,11 @@ ProjectSchema.virtual('geoCoordinates').get(function () {
 
 //see mongoose-function library in node modules
 //source: https://github.com/aheckmann/mongoose-function
-var defaultKeywords = [];
-ProjectSchema.methods.setDefaultKeywords = function(){
-    defaultKeywords.push(project.user, project.title);
-};
-console.log('defaultKeywords: ', defaultKeywords);
+//var defaultKeywords = [];
+//ProjectSchema.methods.setDefaultKeywords = function(){
+//    defaultKeywords.push(project.user, project.title);
+//};
+//console.log('defaultKeywords: ', defaultKeywords);
 
 // Using Mongoosastic to watch what's going on with the MongoDB server and feeding into Elastic Search
 ProjectSchema.plugin(mongoosastic);
