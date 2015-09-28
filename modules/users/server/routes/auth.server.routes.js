@@ -8,7 +8,7 @@ var passport = require('passport');
 module.exports = function (app) {
   // User Routes
   var users = require('../controllers/users.server.controller'),
-      keys = require('./modules/users/server/config/.private/keys.js');
+      keys = require('../config/.private/keys.js');
 
   // Setting up the users password api
   app.route('/api/auth/forgot').post(users.forgot);

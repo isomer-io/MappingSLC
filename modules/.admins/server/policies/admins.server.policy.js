@@ -9,47 +9,47 @@ var acl = require('acl');
 acl = new acl(new acl.memoryBackend());
 
 /**
- * Invoke Projects Permissions
+ * Invoke Admins Permissions
  */
 exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
-      resources: '/api/projects',
+      resources: '/api/admins',
       permissions: '*'
     }, {
-      resources: '/api/projects/:projectId',
+      resources: '/api/admins/:adminId',
       permissions: '*'
     }]
   }, {
     roles: ['user'],
     allows: [{
-      resources: '/api/projects',
+      resources: '/api/admins',
       permissions: ['get', 'post']
     }, {
-      resources: '/api/projects/:projectId',
+      resources: '/api/admins/:adminId',
       permissions: ['get']
     }]
   }, {
     roles: ['guest'],
     allows: [{
-      resources: '/api/projects',
+      resources: '/api/admins',
       permissions: ['get']
     }, {
-      resources: '/api/projects/:projectId',
+      resources: '/api/admins/:adminId',
       permissions: ['get']
     }]
   }]);
 };
 
 /**
- * Check If Projects Policy Allows
+ * Check If Admins Policy Allows
  */
 exports.isAllowed = function (req, res, next) {
   var roles = (req.user) ? req.user.roles : ['guest'];
 
-  // If an project is being processed and the current user created it then allow any manipulation
-  if (req.project && req.user && req.project.user.id === req.user.id) {
+  // If an admin is being processed and the current user created it then allow any manipulation
+  if (req.admin && req.user && req.admin.user.id === req.user.id) {
     return next();
   }
 

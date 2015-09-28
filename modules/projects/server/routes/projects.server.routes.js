@@ -1,58 +1,57 @@
 'use strict';
 
 module.exports = function(app) {
-    var users = require('../../app/controllers/users.server.controller'),
-        projects = require('../../app/controllers/projects.server.controller'),
+    var users = require('../../../users/server/controllers/users.server.controller.js'),
+        projectsPolicy = require('../policies/projects.server.policy'),
+        projects = require('../../../projects/server/controllers/projects.server.controller'),
         mongoose = require('mongoose'),
-        Schema = mongoose.Schema,
         Project = mongoose.model('Project'),
-        admins = require('../../app/controllers/projects.server.controller'),
         tractData = require('../models/data/utahTract.json'),
         markerData = require('../models/project.server.model.js'),
         request = require('request');
 
-// Projects Routes
-    app.route('/projects')
-        .get(projects.list)
-        .post(users.requiresLogin, projects.create);
 
-    app.route('/projects/:projectId')
-        .get(projects.read)
-        .put(users.requiresLogin, projects.hasAuthorization, projects.update)
-        .delete(users.requiresLogin, projects.hasAuthorization, projects.delete);
+// Projects collection routes
+  app.route('/api/projects').all(projectsPolicy.isAllowed)
+    .get(projects.list)
+    .post(projects.create);
+
+// Single project routes
+  app.route('/api/projects/:projectId').all(projectsPolicy.isAllowed)
+    .get(projects.read)
+    .put(projects.update)
+    .delete(projects.delete);
 
 
 // Project Markers Routes
-    app.route('/markerData')
+    app.route('/api/markerData').all(projectsPolicy.isAllowed)
         .get(projects.markerList);
 
     // Finish by binding the Project middleware
     app.param('projectId', projects.projectByID);
 
-/**
-** Admin Routes
-**/
-    app.route('/admins')
-        .get(admins.hasAuthorization, admins.list)
-        .post(users.requiresLogin, admins.hasAuthorization, admins.create);
+///**
+//** Admin Routes
+//**/
+//    app.route('/admins')
+//        .get(admins.hasAuthorization, admins.list)
+//        .post(users.requiresLogin, admins.hasAuthorization, admins.create);
+//
+//    app.route('/admins/:adminId')
+//        .get(admins.hasAuthorization, admins.read)
+//        .put(users.requiresLogin, admins.hasAuthorization, admins.update)
+//        .delete(users.requiresLogin, admins.hasAuthorization, admins.delete);
 
-    app.route('/admins/:adminId')
-        .get(admins.hasAuthorization, admins.read)
-        .put(users.requiresLogin, admins.hasAuthorization, admins.update)
-        .delete(users.requiresLogin, admins.hasAuthorization, admins.delete);
-
-    // Finish by binding the Admin middleware
-    //app.param('adminId', admins.adminByID);
 
     /**
      * routes for Natural Language Processing Engine
      */
-    //app.route('/nlp')
+    //app.route('/api/nlp')
     //    .get(projects.nlpEngine);
 
 
     // This is the search route, make a GET request on this endpoitn to return search results
-    app.route('/search')
+    app.route('/api/search').all(projectsPolicy.isAllowed)
         .post(function(req,res){
             Project.search({query:req.body.q}, function(err, results){
                 res.send(results);
@@ -62,7 +61,7 @@ module.exports = function(app) {
 
 
     //Google Places API Call
-    app.route('/places')
+    app.route('/api/places')
       .get(function (req, res) {
           var results = {};
           var tempResults = [];
@@ -88,7 +87,7 @@ module.exports = function(app) {
 
 
 // Utah Census Tract Routes
-    app.route('/tractData')
+    app.route('/api/tractData')
       .get(function (req, res) {
           res.jsonp(tractData);
       });

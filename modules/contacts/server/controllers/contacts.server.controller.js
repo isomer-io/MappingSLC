@@ -3,10 +3,11 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-	errorHandler = require('./errors.server.controller'),
-	Contact = mongoose.model('Contact'),
-	_ = require('lodash');
+var path = require('path'),
+		mongoose = require('mongoose'),
+		errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+		Contact = mongoose.model('Contact'),
+		_ = require('lodash');
 
 /**
  * Create a Contact

@@ -3,16 +3,18 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-	errorHandler = require('./errors.server.controller'),
-	Project = mongoose.model('Project'),
-	_ = require('lodash'),
-	AlchemyAPI = require('./alchemyapi.js'),
-	alchemyapi = new AlchemyAPI(),
-	sanitizeHtml = require('sanitize-html');
-//	Promise = require('bluebird'),
-//	fs = Promise.promisifyAll(require('fs')),
-//	exports = Promise.promisifyAll(exports);
+var path = require('path'),
+		mongoose = require('mongoose'),
+		errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+		Project = mongoose.model('Project'),
+		_ = require('lodash'),
+		keys = require('../../../users/server/config/.private/keys.js'),
+		AlchemyAPI = require('alchemy-api'),
+		alchemyapi = new AlchemyAPI(keys.alchemyKey),
+		sanitizeHtml = require('sanitize-html');
+		//Promise = require('bluebird'),
+		//fs = Promise.promisifyAll(require('fs')),
+		//exports = Promise.promisifyAll(exports);
 //
 //
 //
