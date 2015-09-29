@@ -18,7 +18,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		//$scope.zip = '84102';
 		//$scope.title = 'Stale Street';
 
-		var publishUser = function(userId) {
+	var publishUser = function(userId) {
 
 		};
 

@@ -59,7 +59,7 @@ module.exports = function (app) {
 
 
 // API Keys Routes
-  app.route('/keys')
+  app.route('/api/keys')
     .get(function (req, res) {
       res.jsonp(keys);
     });

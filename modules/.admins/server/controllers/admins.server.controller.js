@@ -6,7 +6,7 @@
 var path = require('path'),
   mongoose = require('mongoose'),
   Admin = mongoose.model('Admin'),
-  errorHandler = require(path.resolve('../../../core/server/controllers/errors.server.controller.js'));
+  errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
  * Create a admin
