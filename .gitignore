@@ -1,5 +1,5 @@
 # dir for private files and API keys
-/modules/users/server/config/.private
+/modules/.1users/server/config/.private
 
 # OS
 # ===========
@@ -23,7 +23,7 @@ coverage/
 # ======================
 public/dist/
 uploads
-modules/users/client/img/profile/uploads
+modules/.1users/client/img/profile/uploads
 config/env/local.js
 *.pem
 

@@ -7,13 +7,15 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 
-/**
- * A Validation function for local strategy properties
- */
-var validateLocalStrategyProperty = function(property) {
-	return ((this.provider !== 'local' && !this.updated) || property.length);
-};
+///**
+// * A Validation function for local strategy properties
+// */
+//var validateLocalStrategyProperty = function(property) {
+//	return ((this.provider !== 'local' && !this.updated) || property.length);
+//};
 
+//validate: [validateLocalStrategyProperty, 'Please enter your email, and make sure you have not already signed up with this email.'],
+//		match: [/.+\@.+\..+/, 'That doesn\'t look like an emmail address to us. Please make sure you\'re using a valid email address.']
 
 
 /**
@@ -52,9 +54,7 @@ var ContactSchema = new Schema({
 		type: String,
 		unique: true,
 		trim: true,
-		required: '',
-		validate: [validateLocalStrategyProperty, 'Please enter your email, and make sure you have not already signed up with this email.'],
-		match: [/.+\@.+\..+/, 'That doesn\'t look like an emmail address to us. Please make sure you\'re using a valid email address.']
+		required: ''
 	},
 	newsletter: {
 		type: Boolean,

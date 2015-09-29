@@ -204,25 +204,27 @@ ProjectSchema.virtual('geoCoordinates').get(function () {
 //};
 //console.log('defaultKeywords: ', defaultKeywords);
 
-// Using Mongoosastic to watch what's going on with the MongoDB server and feeding into Elastic Search
-ProjectSchema.plugin(mongoosastic);
+//// Using Mongoosastic to watch what's going on with the MongoDB server and feeding into Elastic Search
+//ProjectSchema.plugin(mongoosastic);
+//
+//ProjectSchema.set('toJSON', {
+//    getters: true,
+//    virtuals: true
+//});
+//
+//// Add model
+//var Project = mongoose.model('Project', ProjectSchema),
+//    stream = Project.synchronize(),
+//    count = 0;
+//
+//stream.on('data', function (err, doc) {
+//    count++;
+//});
+//stream.on('close', function () {
+//    console.log('indexed ' + count + ' documents!');
+//});
+//stream.on('error', function (err) {
+//    //console.log(err);
+//});
 
-ProjectSchema.set('toJSON', {
-    getters: true,
-    virtuals: true
-});
-
-// Add model
-var Project = mongoose.model('Project', ProjectSchema),
-    stream = Project.synchronize(),
-    count = 0;
-
-stream.on('data', function (err, doc) {
-    count++;
-});
-stream.on('close', function () {
-    console.log('indexed ' + count + ' documents!');
-});
-stream.on('error', function (err) {
-    //console.log(err);
-});
+mongoose.model('Project', ProjectSchema);

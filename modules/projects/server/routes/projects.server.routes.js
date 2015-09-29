@@ -3,7 +3,7 @@
 module.exports = function(app) {
     var users = require('../../../users/server/controllers/users.server.controller.js'),
         projectsPolicy = require('../policies/projects.server.policy'),
-        projects = require('../../../projects/server/controllers/projects.server.controller'),
+        projects = require('../controllers/projects.server.controller'),
         mongoose = require('mongoose'),
         Project = mongoose.model('Project'),
         tractData = require('../models/data/utahTract.json'),

@@ -250,7 +250,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
 				$modal.open({
 					animation: true,
-					templateUrl: '/modules/projects/directives/views/project-warning-modal.html',
+					templateUrl: '/modules/.projects/directives/views/project-warning-modal.html',
 					controller: function ($scope, $modalInstance, $location) {
 						$scope.stay = function (result) {
 							//$modalInstance.dismiss('cancel');
