@@ -7,8 +7,7 @@ var passport = require('passport');
 
 module.exports = function (app) {
   // User Routes
-  var users = require('../controllers/users.server.controller'),
-      keys = require('../config/.private/keys.js');
+  var users = require('../controllers/users.server.controller');
 
   // Setting up the users password api
   app.route('/api/auth/forgot').post(users.forgot);
@@ -57,11 +56,11 @@ module.exports = function (app) {
   app.route('/api/auth/paypal/callback').get(users.oauthCallback('paypal'));
 
 
-
-// API Keys Routes
-  app.route('/api/keys')
-    .get(function (req, res) {
-      res.jsonp(keys);
-    });
+//
+//// API Keys Routes
+//  app.route('/api/keys')
+//    .get(function (req, res) {
+//      res.jsonp(keys);
+//    });
 
 };

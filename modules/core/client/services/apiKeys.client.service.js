@@ -5,10 +5,10 @@ angular.module('core').service('ApiKeys', ['$http',
 		// ApiKeys service logic
 		// ...
         this.getApiKeys = function(){
-            return  $http.get('/keys');
+            return  $http.get('/api/v1/keys');
         };
         this.getTractData = function(){
-            return  $http.get('/tractData');
+            return  $http.get('api/v1/tractData');
         };
     }
 ]);

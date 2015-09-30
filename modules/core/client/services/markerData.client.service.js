@@ -5,7 +5,7 @@ angular.module('core').service('MarkerDataService', ['$http',
         // Project Marker Data Service
 
         this.getMarkerData = function(){
-            return  $http.get('/markerData').
+            return  $http.get('/api/v1/markerData').
                 success(function(projects){
                     //console.log('projects: \n', projects);
                     //for (var prop in projects) {

@@ -1,16 +1,16 @@
 'use strict';
-
+/**
 (function () {
   // Articles Controller Spec
-  describe('Articles Controller Tests', function () {
+  describe('ProjectsController', function () {
     // Initialize global variables
-    var ArticlesController,
+    var ProjectsController,
       scope,
       $httpBackend,
       $stateParams,
       $location,
       Authentication,
-      Articles,
+      Projects,
       mockArticle;
 
     // The $resource service augments the response object with methods for updating and deleting the resource.
@@ -38,7 +38,7 @@
     // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
     // This allows us to inject a service but then attach it to a variable
     // with the same name as the service.
-    beforeEach(inject(function ($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_, _Authentication_, _Articles_) {
+    beforeEach(inject(function ($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_, _Authentication_, _Projects_) {
       // Set a new global scope
       scope = $rootScope.$new();
 
@@ -114,7 +114,7 @@
         spyOn($location, 'path');
       });
 
-      it('should send a POST request with the form input values and then locate to new object URL', inject(function (Articles) {
+      it('should send a POST request with the form input values and then locate to new object URL', inject(function (Projects) {
         // Set POST response
         $httpBackend.expectPOST('api/articles', sampleArticlePostData).respond(mockArticle);
 
@@ -174,7 +174,7 @@
       }));
     });
 
-    describe('$scope.remove(article)', function () {
+    describe('$scope.remove(project)', function () {
       beforeEach(function () {
         // Create new articles array and include the article
         scope.articles = [mockArticle, {}];
@@ -208,3 +208,5 @@
     });
   });
 }());
+
+ **/

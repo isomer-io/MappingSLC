@@ -27,15 +27,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.projectMarker = null;
 		$scope.markerData = null;
 
-		//service that returns project markers
-		MarkerDataService.getMarkerData()
-			.success(function (markerData) {
-				$scope.getProjectMarkers(markerData);
-				$scope.addProjectMarkers(markerData);
-			})
-			.error(function (data, status) {
-				alert('Failed to load project markers. Status: ' + status);
-			});
 
 		/**
 		 *
@@ -84,6 +75,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		//service that returns api keys
 		ApiKeys.getApiKeys()
 			.success(function (data) {
+				console.log('key success:', data);
 				mapFunction(data.mapboxKey, data.mapboxSecret);
 			})
 			.error(function (data, status) {
@@ -153,6 +145,18 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			//var markers = new L.MarkerClusterGroup();
 			//markers.addLayer(new L.Marker(getRandomLatLng(map)));
 			//map.addLayer(markers);
+
+
+
+			//service that returns project markers
+			MarkerDataService.getMarkerData()
+					.success(function (markerData) {
+						$scope.getProjectMarkers(markerData);
+						$scope.addProjectMarkers(markerData);
+					})
+					.error(function (data, status) {
+						alert('Failed to load project markers. Status: ' + status);
+					});
 
 			$scope.markerArray = [];
 
@@ -277,11 +281,10 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			//	alert('yep!');
 			//});
 
-		};
+			$scope.getProjectMarkers = function (markerData) {
+			};
 
-		$scope.getProjectMarkers = function (markerData) {
 		};
-
 
 	}
 ]);
