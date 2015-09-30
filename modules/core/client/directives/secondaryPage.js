@@ -5,6 +5,6 @@ angular.module('core').directive('secondaryPageDirective', function() {
         restrict: 'AE',
         //replace: true,
         priority: 0,
-        templateUrl:'/modules/core/directives/views/secondary-page.html'
+        templateUrl:'/modules/core/client/directives/views/secondary-page.html'
     };
 });

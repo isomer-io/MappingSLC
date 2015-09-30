@@ -1,9 +1,9 @@
 'use strict';
 
 // Admins controller
-angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$stateParams', '$location', 'AuthenticationService', 'Projects', 'UserData', 'Contacts', 'AdminAuthService',
-	function ($scope, d3, $stateParams, $location, AuthenticationService, Projects, UserData, Contacts, AdminAuthService) {
-		$scope.authentication = AuthenticationService;
+angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$stateParams', '$location', 'Authentication', 'Projects', 'UserData', 'Contacts', 'AdminAuthService',
+	function ($scope, d3, $stateParams, $location, Authentication, Projects, UserData, Contacts, AdminAuthService) {
+		$scope.authentication = Authentication;
 		$scope.isAdmin = AdminAuthService;
 
 		//for dropdown
@@ -26,11 +26,11 @@ angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$state
 
 
 		//
-		//function run($rootScope, $state, AuthenticationService) {
+		//function run($rootScope, $state, Authentication) {
 		//
 		//	$rootScope.$on('$stateChangeStart',
 		//		function(event, toState, toParams, fromState, fromParams) {
-		//			if ( toState.authenticate && !AuthenticationService.isLoggedIn() ) {
+		//			if ( toState.authenticate && !Authentication.isLoggedIn() ) {
 		//				$state.go( 'login' );
 		//			}
 		//			event.preventDefault();
@@ -38,9 +38,9 @@ angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$state
 		//	)};
 
 
-	var run = function ($rootScope, $state, AuthenticationService) {
+	var run = function ($rootScope, $state, Authentication) {
 		$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-			if (toState.authenticate && !AuthenticationService.isLoggedIn()) {
+			if (toState.authenticate && !Authentication.isLoggedIn()) {
 				$state.go('signin');
 			}
 			event.preventDefault();
@@ -114,7 +114,7 @@ angular.module('admins').controller('AdminsController', ['$scope', 'd3', '$state
 
 			user.$update(function (response) {
 				$scope.success = true;
-				AuthenticationService.user = response;
+				Authentication.user = response;
 			}, function (response) {
 				$scope.error = response.data.message;
 			});

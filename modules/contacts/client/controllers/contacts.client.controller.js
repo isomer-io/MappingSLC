@@ -1,9 +1,9 @@
 'use strict';
 
 // Contacts controller
-angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Contacts', '$http', 'AdminAuthService',
-	function($scope, $stateParams, $location, AuthenticationService, Contacts, $http, AdminAuthService) {
-		$scope.authentication = AuthenticationService;
+angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Contacts', '$http', 'AdminAuthService',
+	function($scope, $stateParams, $location, Authentication, Contacts, $http, AdminAuthService) {
+		$scope.authentication = Authentication;
 		$scope.isAdmin = AdminAuthService;
 
 		//$scope.toggleFlag = false;

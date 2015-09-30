@@ -7,6 +7,6 @@
 angular.module('core').directive('submitProjectDirective', function() {
         return {
             restrict: 'E',
-            templateUrl: '/modules/core/directives/views/submit-project-directive.html'
+            templateUrl: '/modules/core/client/directives/views/submit-project-directive.html'
         };
     });

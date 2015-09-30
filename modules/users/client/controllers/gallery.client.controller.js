@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('users').controller('GalleryController', ['$scope', '$stateParams', '$location', 'AuthenticationService', '$http', '$modal',
-    function ($scope, $stateParams, $location, AuthenticationService, $http, $modal) {
+angular.module('users').controller('GalleryController', ['$scope', '$stateParams', '$location', 'Authentication', '$http', '$modal',
+    function ($scope, $stateParams, $location, Authentication, $http, $modal) {
 
         //Give user warning if leaving form
         var preventRunning = false;

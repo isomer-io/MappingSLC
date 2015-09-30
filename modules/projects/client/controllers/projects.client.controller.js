@@ -1,9 +1,9 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'AuthenticationService', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', '$state',
-	function ($scope, $stateParams, $location, AuthenticationService, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, $state) {
-		$scope.AuthenticationService = AuthenticationService;
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', '$state',
+	function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, $state) {
+		$scope.Authentication = Authentication;
 		$scope.isAdmin = AdminAuthService;
 		$scope.logo = '../../../modules/core/img/brand/mapping_150w.png';
 		var width = '800';
@@ -77,9 +77,9 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				$state.go('admin');
 			}
 		};
-		$scope.run = function ($rootScope, $state, AuthenticationService) {
+		$scope.run = function ($rootScope, $state, Authentication) {
 			$rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-				if (toState.authenticate && !AuthenticationService.isLoggedIn()) {
+				if (toState.authenticate && !Authentication.isLoggedIn()) {
 				}
 				event.preventDefault();
 			});

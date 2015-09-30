@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', 'AuthenticationService', 'ApiKeys', '$http', 'MarkerDataService', 'mapService', 'AdminAuthService', '$rootScope', '$location', 'formAnimationService', '$sce', '$window',
-	function ($scope, AuthenticationService, ApiKeys, $http, MarkerDataService, mapService, AdminAuthService, $rootScope, $location, formAnimationService, $sce, $window) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'ApiKeys', '$http', 'MarkerDataService', 'mapService', 'AdminAuthService', '$rootScope', '$location', '$sce', '$window',
+	function ($scope, Authentication, ApiKeys, $http, MarkerDataService, mapService, AdminAuthService, $rootScope, $location, $sce, $window) {
 
-		$scope.authentication = AuthenticationService;
+		$scope.authentication = Authentication;
 		$scope.isAdmin = AdminAuthService;
 
 		//for overlay

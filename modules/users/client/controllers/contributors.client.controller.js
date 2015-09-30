@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('users').controller('ContributorController', ['$scope', '$animate', '$location', 'AuthenticationService', 'GetContributors', '$stateParams', '$http', '$modal', '$window', 'Lightbox',
-    function ($scope, $animate, $location, AuthenticationService, GetContributors, $stateParams, $http, $modal, $window, Lightbox) {
+angular.module('users').controller('ContributorController', ['$scope', '$animate', '$location', 'Authentication', 'GetContributors', '$stateParams', '$http', '$modal', '$window', 'Lightbox',
+    function ($scope, $animate, $location, Authentication, GetContributors, $stateParams, $http, $modal, $window, Lightbox) {
 
         $scope.init = function() {
             GetContributors.contributors();

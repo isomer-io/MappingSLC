@@ -5,6 +5,6 @@ angular.module('core').directive('footerDirective', function() {
         restrict: 'AE',
         //replace: true,
         priority: 0,
-        templateUrl:'/modules/core/directives/views/footer-directive.html'
+        templateUrl:'/modules/core/client/directives/views/footer-directive.html'
     };
 });

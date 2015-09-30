@@ -5,7 +5,7 @@ angular.module('core').directive('secondaryMenuDirective', function() {
     return {
 
         restrict: 'E',
-        templateUrl: '/modules/core/directives/views/secondary-menu-directive.html',
+        templateUrl: '/modules/core/client/directives/views/secondary-menu-directive.html',
         link: function($scope, $rootScope, $broadcast, $location, Users) {
 
             $scope.secondMenuOpened = false;
