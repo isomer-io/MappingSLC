@@ -22,7 +22,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
         return false;
       }
 
-      $http.post('/api/auth/signup', $scope.credentials).success(function (response) {
+      $http.post('/api/v1/auth/signup', $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
 
@@ -42,7 +42,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
         return false;
       }
 
-      $http.post('/api/auth/signin', $scope.credentials).success(function (response) {
+      $http.post('/api/v1/auth/signin', $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
 
@@ -75,10 +75,10 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
         templateUrl: function () {
           if (!isSwitched) {
             isSwitched = false;
-            return '/modules/users/views/signup.client.view.html';
+            return '/modules/users/client/views/signup.client.view.html';
 
           } else {
-            return '/modules/users/views/signin.client.view.html';
+            return '/modules/users/client/views/signin.client.view.html';
           }
         },
         size: 'lg',

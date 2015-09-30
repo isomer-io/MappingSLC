@@ -16,12 +16,12 @@ module.exports = function(app) {
 	//	.delete(users.requiresLogin, contacts.hasAuthorization, contacts.delete);
 
 // Contacts collection routes
-	app.route('/api/contacts').all(contactsPolicy.isAllowed)
+	app.route('/api/v1/contacts').all(contactsPolicy.isAllowed)
 			.get(contacts.list)
 			.post(contacts.create);
 
 // Single contact routes
-	app.route('/api/contacts/:contactId').all(contactsPolicy.isAllowed)
+	app.route('/api/v1/contacts/:contactId').all(contactsPolicy.isAllowed)
 			.get(contacts.read)
 			.put(contacts.update)
 			.delete(contacts.delete);

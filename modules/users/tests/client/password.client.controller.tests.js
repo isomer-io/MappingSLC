@@ -100,7 +100,7 @@
         describe('POST error', function() {
           var errorMessage = 'No account with that username has been found';
           beforeEach(function() {
-            $httpBackend.when('POST', '/api/auth/forgot', credentials).respond(400, {
+            $httpBackend.when('POST', '/api/v1/auth/forgot', credentials).respond(400, {
               'message': errorMessage
             });
 
@@ -120,7 +120,7 @@
         describe('POST success', function() {
           var successMessage = 'An email has been sent to the provided email with further instructions.';
           beforeEach(function() {
-            $httpBackend.when('POST', '/api/auth/forgot', credentials).respond({
+            $httpBackend.when('POST', '/api/v1/auth/forgot', credentials).respond({
               'message': successMessage
             });
 
@@ -159,7 +159,7 @@
 
         it('POST error should set scope.error to response message', function() {
           var errorMessage = 'Passwords do not match';
-          $httpBackend.when('POST', '/api/auth/reset/' + token, passwordDetails).respond(400, {
+          $httpBackend.when('POST', '/api/v1/auth/reset/' + token, passwordDetails).respond(400, {
             'message': errorMessage
           });
 
@@ -174,7 +174,7 @@
             username: 'test'
           };
           beforeEach(function() {
-            $httpBackend.when('POST', '/api/auth/reset/' + token, passwordDetails).respond(user);
+            $httpBackend.when('POST', '/api/v1/auth/reset/' + token, passwordDetails).respond(user);
 
             scope.resetUserPassword(true);
             $httpBackend.flush();

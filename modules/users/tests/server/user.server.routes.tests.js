@@ -49,7 +49,7 @@ describe('User CRUD tests', function () {
   });
 
   it('should not be able to retrieve a list of users if not admin', function (done) {
-    agent.post('/api/auth/signin')
+    agent.post('/api/v1/auth/signin')
       .send(credentials)
       .expect(200)
       .end(function (signinErr, signinRes) {
@@ -59,7 +59,7 @@ describe('User CRUD tests', function () {
         }
 
         // Request list of users
-        agent.get('/api/users')
+        agent.get('/api/v1/users')
           .expect(403)
           .end(function (usersGetErr, usersGetRes) {
             if (usersGetErr) {
@@ -75,7 +75,7 @@ describe('User CRUD tests', function () {
     user.roles = ['user', 'admin'];
 
     user.save(function () {
-      agent.post('/api/auth/signin')
+      agent.post('/api/v1/auth/signin')
         .send(credentials)
         .expect(200)
         .end(function (signinErr, signinRes) {
@@ -85,7 +85,7 @@ describe('User CRUD tests', function () {
           }
 
           // Request list of users
-          agent.get('/api/users')
+          agent.get('/api/v1/users')
             .expect(200)
             .end(function (usersGetErr, usersGetRes) {
               if (usersGetErr) {

@@ -49,7 +49,7 @@
       describe('$scope.signin()', function () {
         it('should login with a correct user and password', function () {
           // Test expected GET request
-          $httpBackend.when('POST', '/api/auth/signin').respond(200, 'Fred');
+          $httpBackend.when('POST', '/api/v1/auth/signin').respond(200, 'Fred');
 
           scope.signin(true);
           $httpBackend.flush();
@@ -61,7 +61,7 @@
 
         it('should fail to log in with nothing', function () {
           // Test expected POST request
-          $httpBackend.expectPOST('/api/auth/signin').respond(400, {
+          $httpBackend.expectPOST('/api/v1/auth/signin').respond(400, {
             'message': 'Missing credentials'
           });
 
@@ -78,7 +78,7 @@
           scope.credentials = 'Bar';
 
           // Test expected POST request
-          $httpBackend.expectPOST('/api/auth/signin').respond(400, {
+          $httpBackend.expectPOST('/api/v1/auth/signin').respond(400, {
             'message': 'Unknown user'
           });
 
@@ -94,7 +94,7 @@
         it('should register with correct data', function () {
           // Test expected GET request
           scope.authentication.user = 'Fred';
-          $httpBackend.when('POST', '/api/auth/signup').respond(200, 'Fred');
+          $httpBackend.when('POST', '/api/v1/auth/signup').respond(200, 'Fred');
 
           scope.signup(true);
           $httpBackend.flush();
@@ -107,7 +107,7 @@
 
         it('should fail to register with duplicate Username', function () {
           // Test expected POST request
-          $httpBackend.when('POST', '/api/auth/signup').respond(400, {
+          $httpBackend.when('POST', '/api/v1/auth/signup').respond(400, {
             'message': 'Username already exists'
           });
 

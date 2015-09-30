@@ -30,7 +30,7 @@ module.exports = {
     yelpSecret: 'FZU4zSc-S3NJgI_aKm2O0_4ym6c',
 
 /**
- *   Mapbox mapping service api via https://www.mapbox.com/mapbox.js/api/v2.1.4/
+ *   Mapbox mapping service api via https://www.mapbox.com/mapbox.js/api/v1/v2.1.4/
  *   Mapbox sits on top of Leaflet.js @ http://leafletjs.com/reference.html
  *   Leaflet.js in turn is the main js library for Open Street Maps
 **/

@@ -135,7 +135,7 @@ var ProjectSchema = new Schema({
 
     //stores a static .map image, created on new project creation
     //calls from mapbox web services static .map image:
-    //https://www.mapbox.com/developers/api/static/#images
+    //https://www.mapbox.com/developers/api/v1/static/#images
     mapImage: {
         type: String,
         default: '',
