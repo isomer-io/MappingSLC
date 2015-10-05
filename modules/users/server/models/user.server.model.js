@@ -115,7 +115,7 @@ var UserSchema = new Schema({
       type: String,
       enum: ['user', 'blocked', 'unregistered', 'registered', 'contributor', 'admin', 'superUser']
     }],
-    default: ['user'],
+    default: ['registered'],
     required: 'Please provide at least one role'
   },
   updated: {

@@ -245,12 +245,12 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			if (preventRunning) {
 				return;
 			}
-			if (fromState.url === '/projects/create' && toState.url !== '/projects/:projectId') {
+			if (fromState.url === '/projects/client/create' && toState.url !== '/projects/:projectId') {
 				event.preventDefault();
 
 				$modal.open({
 					animation: true,
-					templateUrl: '/modules/.projects/directives/views/project-warning-modal.html',
+					templateUrl: '/modules/projects/client/directives/views/project-warning-modal.html',
 					controller: function ($scope, $modalInstance, $location) {
 						$scope.stay = function (result) {
 							//$modalInstance.dismiss('cancel');
