@@ -4,7 +4,7 @@
          ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
 
     <section class="container">
-        <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
+        <a href="/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
         <div class="main-content-outer">
 
@@ -14,7 +14,7 @@
 
                     <div class="admin-user">
 
-                        <a href="/#!/admin"><span><i class="fa fa-chevron-left"></i></span></a>
+                        <a href="/admin"><span><i class="fa fa-chevron-left"></i></span></a>
 
                         <div class="page-header">
                             <h1>{{user.firstName}} {{user.lastName}}'s Profile
@@ -37,7 +37,7 @@
 
                         <div class="pull-right">
                             <!--data-ng-show="((authentication.user) && (authentication.user._id == project.user._id))">-->
-                            <!--<a class="btn btn-primary" href="/#!/users/{{user._id}}/edit">-->
+                            <!--<a class="btn btn-primary" href="/users/{{user._id}}/edit">-->
                             <!--<i class="glyphicon glyphicon-edit"></i>-->
                             <!--</a>-->
                             <a class="btn btn-main grow btn-warning" data-ng-click="remove();">

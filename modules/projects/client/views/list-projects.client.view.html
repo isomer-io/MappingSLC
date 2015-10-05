@@ -4,7 +4,7 @@
          ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
 
     <section class="container">
-        <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
+        <a href="/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
         <div class="main-content-outer">
 
@@ -21,7 +21,7 @@
                     <div class="list-group">
                         <div class="row">
                             <div class="col-md-12">
-                                <a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="col-md-4 story-summary animation-cards">
+                                <a data-ng-repeat="project in projects" data-ng-href="/projects/{{project._id}}" class="col-md-4 story-summary animation-cards">
                                     <span>
                                         <span>
                                             <img data-ng-src="{{thumbs[0]['image']}}"/>
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="alert alert-warning text-center" data-ng-hide="!projects.$resolved || projects.length">
-                            No Projects yet, why don't you <a href="/#!/projects/create">create one</a>?
+                            No Projects yet, why don't you <a href="/projects/create">create one</a>?
                         </div>
 
                     </div>

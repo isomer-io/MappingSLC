@@ -4,7 +4,7 @@
          ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
 
     <section class="container">
-        <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
+        <a href="/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
         <div class="main-content-outer">
 
@@ -14,14 +14,14 @@
 
                     <div class="admin-projects">
 
-                        <a href="/#!/admin"><span><i class="fa fa-chevron-left"></i></span></a>
+                        <a href="/admin"><span><i class="fa fa-chevron-left"></i></span></a>
 
                         <div class="page-header">
                             <h1>Admin Panel</h1>
                         </div>
 
                         <div class="row">
-                            <a data-ng-repeat="project in projects" data-ng-href="#!/projects/{{project._id}}" class="col-md-12 admin-list">
+                            <a data-ng-repeat="project in projects" data-ng-href="/projects/{{project._id}}" class="col-md-12 admin-list">
                                 <small>
                                     Posted on
                                     <span data-ng-bind="project.created | date:'medium'"></span>

@@ -25,7 +25,7 @@ var validateLocalStrategyEmail = function (email) {
 
 /**
  * User Schema
- */
+ **/
 var UserSchema = new Schema({
   namePrefix: {
     type: String,
@@ -113,7 +113,7 @@ var UserSchema = new Schema({
   roles: {
     type: [{
       type: String,
-      enum: ['blocked', 'unregistered', 'registered', 'contributor', 'admin', 'superUser']
+      enum: ['user', 'blocked', 'unregistered', 'registered', 'contributor', 'admin', 'superUser']
     }],
     default: ['user'],
     required: 'Please provide at least one role'
@@ -178,6 +178,10 @@ UserSchema.pre('save', function (next) {
  * Hook a pre validate method to test the local password
  */
 UserSchema.pre('validate', function (next) {
+  // Pass a hash of settings to the `config` method to override defaults
+  owasp.config({
+    minLength: 8  //this overrides default val -- original set to 10
+  });
   if (this.provider === 'local' && this.password) {
     var result = owasp.test(this.password);
     if (result.errors.length) {

@@ -1,52 +1,51 @@
 <section>
 
-    <div>  <!-- signin  signout functionality -->
+  <div>  <!-- signin  signout functionality -->
 
-        <ul class="pull-right" data-ng-hide="authentication.user">
-            <li class="dropdown" dropdown>
-                <button class="btn btn-dark">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
-                    <span class="fa fa-sign-in hvr-icon-forward"> Sign In</span></a>
-                </button>
+    <ul class="pull-right" data-ng-hide="authentication.user">
+      <li class="dropdown" dropdown>
+        <button class="btn btn-dark">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
+            <span class="fa fa-sign-in hvr-icon-forward"> Sign In</span></a>
+        </button>
 
-                <ul class="dropdown-menu">
-                    <li ui-route="/signin" ng-class="{active: $uiRoute}">
-                        <a href="/#!/signin">Sign In</a>
-                    </li>
-                    <!--<li class="divider-vertical"></li>-->
-                    <li ui-route="/signup" ng-class="{active: $uiRoute}">
-                        <a href="/#!/signup">Sign Up</a>
-                    </li>
-                </ul>
-
-            </li>
+        <ul class="dropdown-menu">
+          <li ui-sref-active="active">
+            <a ui-sref="authentication.signin">Sign In</a>
+          </li>
+          <li class="divider-vertical"></li>
+          <li ui-sref-active="active">
+            <a ui-sref="authentication.signup">Sign Up</a>
+          </li>
         </ul>
-
-        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-            <li class="dropdown" dropdown>
-                <!--<button class="btn btn-dark">-->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
-                        <!--<img data-ng-src="{{profilePic}}" alt="{{authentication.user.displayName}}" class="header-profile-image"/>-->
-                        <img src="../../../core/img/chris--bw-2.jpg"/>
-                        <span data-ng-bind="authentication.user.firstName"></span> <b class="caret"></b>
-                    </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="/#!/settings/profile">Edit Profile</a>
-                    </li>
-                    <li>
-                        <a href="/#!/settings/accounts">Manage Social Accounts</a>
-                    </li>
-                    <li data-ng-show="authentication.user.provider === 'local'">
-                        <a href="/#!/settings/password">Change Password</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="/auth/signout">Signout</a>
-                    </li>
-                </ul>
-            </li>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+      <li class="dropdown" dropdown>
+        <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
+          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+          <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li ui-sref-active="active">
+            <a ui-sref="settings.profile">Edit Profile</a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="settings.picture">Change Profile Picture</a>
+          </li>
+          <li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">
+            <a ui-sref="settings.password">Change Password</a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="settings.accounts">Manage Social Accounts</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="/api/v1/auth/signout" target="_self">Signout</a>
+          </li>
         </ul>
+      </li>
+    </ul>
 
-    </div>
+  </div>
 </section>

@@ -3,6 +3,10 @@
     position: fixed;
   }
 }
+
+.signin-icons {
+  z-index: 200;
+}
 .social-account-container {
   display: inline-block;
   position: relative;

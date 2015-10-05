@@ -5,7 +5,7 @@
          data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
 
     <section class="container">
-        <a href="/#!/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
+        <a href="/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
         <div class="main-content-outer">
             <!--<section data-ng-controller="SettingsController" data-ng-init="find()" class="main-content-inner">-->
@@ -15,7 +15,7 @@
 
                     <div class="admin-user">
 
-                        <a href="/#!/admin"><span><i class="fa fa-chevron-left"></i></span></a>
+                        <a href="/admin"><span><i class="fa fa-chevron-left"></i></span></a>
 
                         <div class="page-header">
                             <h1>List of Users</h1>
@@ -23,7 +23,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <a data-ng-repeat="user in users" data-ng-href="#!/users/{{user._id}}" class="col-md-4">
+                                <a data-ng-repeat="user in users" data-ng-href="/users/{{user._id}}" class="col-md-4">
                                     <div class="user-summary" data-ng-bind="user.displayName">{{user._id}}</div>
                                 </a>
                             </div>

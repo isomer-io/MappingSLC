@@ -102,7 +102,6 @@ module.exports = function(app) {
 // API Keys Routes
   app.route('/api/v1/keys')
     .get(function (req, res) {
-      console.log('response:\n', res);
       res.jsonp(keys);
     });
 
