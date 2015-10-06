@@ -12,12 +12,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.mapImage = '';
 		$rootScope.signInBeforeProject = false;
 
-		$scope.street = '850 S 300 E';
-		$scope.city = 'Salt Lake City';
-		$scope.state = 'UT';
-		$scope.zip = '84102';
-		$scope.title = 'Stale Street';
-
 	var publishUser = function(userId) {
 
 		};
@@ -47,7 +41,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		var saveProject = null;
 		$scope.updateLatLng = function(project) {
 			$http.get('/api/v1/keys').success(function (data) {
-				console.log('data:\n', data);
 				var mapboxKey = data.mapboxKey;
 				var mapboxSecret = data.mapboxSecret;
 				var hereKey = data.hereKey;
@@ -66,7 +59,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			});
 		};
 
-		//$scope.goBack = null;
 		$rootScope.previousState = '';
 		$rootScope.currentState = '';
 		$rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from) {
@@ -74,7 +66,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			$rootScope.currentState = to.name;
 		});
 		$scope.goBack = function() {
-			//console.log('$rootScope.previousState: ', $rootScope.previousState);
 			if ($rootScope.previousState === 'listProjects') {
 				$state.go($rootScope.previousState);
 			} else {
@@ -92,11 +83,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.userLoggedin = function () {
 			// get request to /users/me
 			if ($location.path() === '/projects/create' ) {
-				$http.get('http://localhost:3000/users/me').success(function (data) {
-					//console.log('data: ', data);
+				$http.get('/api/v1/users/me')
+						.success(function (data) {
 					if (data === null) {
 						$rootScope.signInBeforeProject = true;
-						//console.log('proj ctrl: ', $rootScope.signInBeforeProject);
 						$location.path('/signin');
 					}
 				});
@@ -121,10 +111,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				image: 'http://lorempixel.com/600/400/food',
 				text: 'Talk to me! Foodie'
 			}
-
 		];
-
-
 		$scope.thumbs = [
 			{
 				image: 'http://lorempixel.com/100/100/sports',
@@ -136,8 +123,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			}
 		];
 
-
-
 		var mapImage = '';
 		// Create new Project
 		$scope.create = function (isValid) {
@@ -146,11 +131,8 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
 			if (!isValid) {
 				$scope.$broadcast('show-errors-check-validity', 'projectForm');
-
 				return false;
 			}
-
-
 
 			// Create new Project object
 			var project = new Projects({
@@ -228,8 +210,18 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			$scope.project = Projects.get({
 				projectId: $stateParams.projectId
 			});
-			$scope.soundCloudId = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + project.soundCloudId + '&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true';
-			$scope.vimeoId = '' + project.vimeoId + '';
+			var vimeoId,
+					soundCloudId;
+			$http.get('/api/v1/keys').success(function (data) {
+				vimeoId = data.vimeoId;
+				soundCloudId = data.soundCloudId;
+			});
+				if (soundCloudId) {
+					$scope.soundCloudId = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + project.soundCloudId + '&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true';
+				}
+				if (vimeoId) {
+					$scope.vimeoId = '' + project.vimeoId + ''
+				}
 		};
 
 		$scope.completed = function () {

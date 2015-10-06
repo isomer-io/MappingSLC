@@ -131,7 +131,6 @@ exports.list = function (req, res) {
 	//{'projects._id': req.query.}
 	//)
 	Project.find()
-		console.log('here i am!  here i am!  here i am!  here i am!  here i am!  here i am!  here i am!')
 		.sort('-created')
 		.populate('user')
 		.exec(function (err, projects) {
