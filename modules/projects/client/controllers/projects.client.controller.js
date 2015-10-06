@@ -12,11 +12,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.mapImage = '';
 		$rootScope.signInBeforeProject = false;
 
-		//$scope.street = '850 S 300 E';
-		//$scope.city = 'Salt Lake City';
-		//$scope.state = 'UT';
-		//$scope.zip = '84102';
-		//$scope.title = 'Stale Street';
+		$scope.street = '850 S 300 E';
+		$scope.city = 'Salt Lake City';
+		$scope.state = 'UT';
+		$scope.zip = '84102';
+		$scope.title = 'Stale Street';
 
 	var publishUser = function(userId) {
 
@@ -46,7 +46,8 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
 		var saveProject = null;
 		$scope.updateLatLng = function(project) {
-			$http.get('/keys').success(function (data) {
+			$http.get('/api/v1/keys').success(function (data) {
+				console.log('data:\n', data);
 				var mapboxKey = data.mapboxKey;
 				var mapboxSecret = data.mapboxSecret;
 				var hereKey = data.hereKey;
@@ -58,7 +59,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 					project.lng = data.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
 					project.mapImage = 'http://api.tiles.mapbox.com/v4/' + mapboxKey + '/' + markerUrl + '(' + project.lng + ',' + project.lat + ')/' + project.lng + ',' + project.lat + ',15/' + width + 'x' + height + '.png?access_token=' + mapboxSecret;
 					saveProject();
-				});
+				})
+				.error(function (data, status) {
+
+				})
 			});
 		};
 
@@ -136,7 +140,17 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
 		var mapImage = '';
 		// Create new Project
-		$scope.create = function () {
+		$scope.create = function (isValid) {
+
+			$scope.error = null;
+
+			if (!isValid) {
+				$scope.$broadcast('show-errors-check-validity', 'projectForm');
+
+				return false;
+			}
+
+
 
 			// Create new Project object
 			var project = new Projects({

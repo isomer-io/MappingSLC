@@ -3,7 +3,7 @@
 // Users service used for communicating with the users REST endpoint
 angular.module('users').factory('Users', ['$resource',
   function ($resource) {
-    return $resource('api/users', {}, {
+    return $resource('/api/v1/users', {}, {
       update: {
         method: 'PUT'
       }
@@ -14,7 +14,7 @@ angular.module('users').factory('Users', ['$resource',
 //TODO this should be Users service
 angular.module('users.admin').factory('Admin', ['$resource',
   function ($resource) {
-    return $resource('api/users/:userId', {
+    return $resource('/api/v1/users/:userId', {
       userId: '@_id'
     }, {
       update: {

@@ -9,8 +9,8 @@ var path = require('path'),
 		Project = mongoose.model('Project'),
 		_ = require('lodash'),
 		keys = require('../../../users/server/config/private/keys.js'),
-		//AlchemyAPI = require('alchemy-api'),
-		//alchemyapi = new AlchemyAPI(keys.alchemyKey),
+		AlchemyAPI = require('alchemy-api'),
+		alchemyapi = new AlchemyAPI(keys.alchemyKey),
 		sanitizeHtml = require('sanitize-html');
 		//Promise = require('bluebird'),
 		//fs = Promise.promisifyAll(require('fs')),
@@ -51,14 +51,15 @@ var projectKeywords = {};
  * Create a Project
  */
 exports.create = function (req, res) {
-	//console.log('project create req: \n', req);
+	//console.log('!!!!project create req: \n', req);
 	var project = new Project(req.body);
-	var dirty = req.body.story;
-	var nlpText = sanitizeHtml(dirty);
+	//var dirty = req.body.story;
+	//var nlpText = sanitizeHtml(dirty);
 
-	alchemyapi.keywords('text', nlpText, {'sentiment': 0},
-		function (response) {
-			project.keywords = response.keywords;
+	//todo hookup keyword analysis again
+	//alchemyapi.keywords('text', nlpText, {'sentiment': 0},
+	//	function (response) {
+	//		project.keywords = response.keywords;
 			project.user = req.user;
 
 			project.save(function (err) {
@@ -70,8 +71,8 @@ exports.create = function (req, res) {
 					res.jsonp(project);
 				}
 			});
-		}
-	);
+		//}
+	//);
 };
 
 /**

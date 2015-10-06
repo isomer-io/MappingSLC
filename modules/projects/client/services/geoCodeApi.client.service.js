@@ -6,6 +6,7 @@ angular.module('projects').service('GeoCodeApi', ['$http',
 		// Geocodeapi service logic
 
         this.callGeoCodeApi = function(project, key, secret, projectSaveCallback){
+          console.log('project:\n', project, '\nkey:\n', key, '\nsecret:\n', secret);
             if (!project || !project.state || !project.city || !project.zip || !project.street || !key || !secret) {
                 projectSaveCallback();
                 console.log('err, there\'s an error, yo.');
@@ -21,11 +22,12 @@ angular.module('projects').service('GeoCodeApi', ['$http',
             '&app_id=' + key +
             '&app_code=' + secret)
              .success(function(geoData){
+                console.log('success:  modules/projects/client/services/geoCodeApi.client.service.js line 24');
                  project.lat = geoData.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
                  project.lng = geoData.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
 
-         }).error(function(error) {
-                 console.log('geocode error: ', error);
+         }).error(function(data, status) {
+                 console.log('geocode error:\n', data, 'status:\n', status);
                  //TODO: handle this gracefully
              });
 
