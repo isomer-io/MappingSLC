@@ -1,37 +1,47 @@
 'use strict';
 
 // Contacts controller
-angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Contacts', '$http', 'AdminAuthService',
-	function($scope, $stateParams, $location, Authentication, Contacts, $http, AdminAuthService) {
+angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Contacts', '$http', 'AdminAuthService', 'UtilsService',
+	function($scope, $stateParams, $location, Authentication, Contacts, $http, AdminAuthService, UtilsService) {
 		$scope.authentication = Authentication;
 		$scope.isAdmin = AdminAuthService;
-
-		//$scope.toggleFlag = false;
-		//
-		//$scope.toggleRead = false;
-		//console.log('$scope.toggleRead outside', $scope.toggleRead);
-		//$scope.toggleReadFn = function(){
-		//	if (1===1) {
-		//
-		//	}
-		//
-		//console.log('$scope.toggleRead inside', $scope.toggleRead);
-		//};
 
 		//function to create a link on an entire row in a table
 		$scope.viewMessage = function(contactId) {
 			$location.path('admin/messages/' + contactId);
 		};
 
+		/**
+		 * the commented out code below works fine
+		 */
+		////logic for css on the contact form
+		//var cssLayout = function(){
+		//	[].slice.call( document.querySelectorAll( 'input.input_field' ) ).forEach( function( inputEl ) {
+		//		// in case the input is already filled..
+		//		if( inputEl.value.trim() !== '' ) {
+		//			classie.add( inputEl.parentNode, 'input-filled' );
+		//		}
+    //
+		//		// events:
+		//		inputEl.addEventListener( 'focus', onInputFocus );
+		//		inputEl.addEventListener( 'blur', onInputBlur );
+		//	} );
+    //
+		//	function onInputFocus( ev ) {
+		//		classie.add( ev.target.parentNode, 'input-filled' );
+		//	}
+    //
+		//	function onInputBlur( ev ) {
+		//		if( ev.target.value.trim() === '' ) {
+		//			classie.remove( ev.target.parentNode, 'input-filled' );
+		//		}
+		//	}
+		//};
+		//cssLayout();
 
 
+		UtilsService.cssLayout();
 
-		//table sort for contact messages
-
-
-		//for adming panel
-		//$scope.dateMoment = moment().format("MMM Do YYYY");
-		//$scope.dateMoment = ;
 
 		//todo  'moment' is not defined.  --> from grunt jslint
 		// $scope.dateNow = moment();
@@ -39,13 +49,6 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 
 		$scope.toggleSort = true;
 		$scope.oneAtATime = true;
-
-
-
-
-
-
-
 
 		// Create new Contact
 		$scope.create = function() {
@@ -115,11 +118,10 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 			});
 		};
 
-		$scope.sentToday = null;
 		//get data from back end for display in table
 		$http.get('/contacts').
 			success(function(messageData){
-				console.log(messageData);
+				//console.log(messageData);
 				$scope.messageData = messageData;
 
 				$scope.sentToday = function(){

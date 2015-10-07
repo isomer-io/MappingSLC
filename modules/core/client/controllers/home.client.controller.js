@@ -9,6 +9,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		//for overlay
 		$scope.featuredProjects = {};
 
+		//utilsService.cssLayout();
 
 		//menu functions
 		$scope.trustAsHtml = $sce.trustAsHtml;
@@ -75,7 +76,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		//service that returns api keys
 		ApiKeys.getApiKeys()
 			.success(function (data) {
-				console.log('key success:', data);
 				mapFunction(data.mapboxKey, data.mapboxSecret);
 			})
 			.error(function (data, status) {
@@ -125,13 +125,10 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 			grayMap.addTo(map);
 			L.control.layers(layers).addTo(map);
 
-			//$scope.sidebar = setTimeout(function() {
-					var sidebar = L.control.sidebar('sidebar', {
-						closeButton: true,
-						position: 'left'
-					}).addTo(map);
-				//}, 1500);
-
+			//var sidebar = L.control.sidebar('sidebar', {
+			//	closeButton: true,
+			//	position: 'left'
+			//}).addTo(map);
 
 			changeMapFrom = function (currentMap) {
 				if (currentMap === 'gray-map') {
