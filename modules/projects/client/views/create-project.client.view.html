@@ -1,0 +1,123 @@
+<secondary-menu-directive></secondary-menu-directive>
+
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }"
+         data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
+    <section class="container">
+        <a href="/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
+
+        <div class="main-content-outer">
+            <section data-ng-controller="ProjectsController" class="main-content-inner">
+
+                <div class="page-header">
+                    <h1>Project Submission Form</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        Please include an address for <span>the location of a your essay or project</span>. (Feel free to approximate if there's not an exact address.)
+
+                        <form name="projectForm" class="form-horizontal" data-ng-submit="create(projectForm.$valid)" novalidate>
+                            <fieldset>
+                                <div class="form-group">
+
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <span class="input input-secondary">
+                                                <input class="input_field input_field-secondary" type="text" id="street" data-ng-model="street" required/>
+                                                <label class="input_label input_label-secondary" for="street">
+                                                    <span class="input_label-content input_label-content-secondary">Street Address for Project</span>
+                                                </label>
+                                            </span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <span class="input input-secondary">
+                                                <input class="input_field input_field-secondary" type="text" id="city" data-ng-model="city" required/>
+                                                <label class="input_label input_label-secondary" for="city">
+                                                    <span class="input_label-content input_label-content-secondary">City</span>
+                                                </label>
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                    <span class="input input-secondary">
+                                        <input class="input_field input_field-secondary" type="text" id="state" data-ng-model="state" required/>
+                                        <label class="input_label input_label-secondary" for="state">
+                                            <span class="input_label-content input_label-content-secondary">State</span>
+                                        </label>
+                                    </span>
+                                        </div>
+
+                                        <div class="col-md-6">
+
+                                    <span class="input input-secondary">
+                                        <input class="input_field input_field-secondary" type="zip" id="zip" data-ng-model="zip" required/>
+                                        <label class="input_label input_label-secondary" for="zip">
+                                            <span class="input_label-content input_label-content-secondary">Zip Code</span>
+                                        </label>
+                                    </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                    <span class="input input-secondary">
+                                        <input class="input_field input_field-secondary" type="text" id="title" data-ng-model="title" required/>
+                                        <label class="input_label input_label-secondary" for="street">
+                                            <span class="input_label-content input_label-content-secondary">Title of Your Project</span>
+                                        </label>
+                                    </span>
+                                            </div>
+                                    </div>
+
+                                    <div class="row">  <!-- Row #5 -->
+
+                                        <div class="col-md-12">
+                                            Please enter and format your project in the text editor below. <a href="" data-ng-click="">Click here</a> for instructions on copy and pasting from Word.
+
+                                            <br /><div>If your project does not have any text, check this box. (For example, a photography, multimedia, or a map.)
+                                            <span id="check-awesome" class="form-group filter first-filter">
+                                                <input type="checkbox" name="filters" id="skipText" value="skipText" data-ng-model="skipText">
+                                                <label for="skipText">
+                                                    <span class="check"></span>
+                                                    <span class="box"></span>
+                                                </label>
+                                            </span>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">  <!-- Row #6 -->
+                                        <div class="col-md-12">
+                                            <div class="controls width">
+                                                <textarea ckeditor="editorOptions" ng-model="story" id="story" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group pull-right">
+                                    <input type="submit" class="btn btn-primary btn-lg btn-main grow">
+                                </div>
+
+                                <div data-ng-show="error" class="text-danger">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</section>

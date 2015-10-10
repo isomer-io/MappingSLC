@@ -1,0 +1,54 @@
+<secondary-menu-directive></secondary-menu-directive>
+
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }"
+         data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
+    <section class="container">
+
+        <div class="main-content-outer admin">
+
+            <section data-ng-controller="ContactsController" data-ng-init="findOne()" class="main-content-inner">
+
+                <div class="admin">
+
+                    <div class="admin-messages">
+
+                        <a href="/admin"><span><i class="fa fa-chevron-left"></i></span></a>
+
+                        <div class="page-header">
+                            <h1 data-ng-bind="contact.name"></h1>
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="row">
+                                <!--<div class="col-md-5" data-ng-bind="contact.fullName"></div>-->
+                                <div class="col-md-8">{{contact.firstName}} {{contact.lastName}}</div>
+                                <div class="col-md-2" data-ng-bind="contact.email"></div>
+                            </div>
+                            <div class="row">
+                                <div data-ng-bind="contact.message"></div>
+                            </div>
+                            <small>
+                                <em class="text-muted">
+                                    <span data-ng-bind="contact.created | date:'mediumDate'"></span>
+                                    from
+                                    <span data-ng-bind="contact.user.displayName"></span>
+                                </em>
+                            </small>
+                        </div>
+
+                        <div class="pull-right" data-ng-show="isAdmin.user">
+                            <a class="btn btn-primary btn-warning" data-ng-click="remove();">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</section>

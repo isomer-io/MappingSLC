@@ -1,0 +1,174 @@
+<!--
+***
+***  THIS IS THE MENU SIDEBAR FOR ALL PAGES EXCEPT THE HOME PAGE
+***
+-->
+
+<!--this icon will be displayed when the menu is closed-->
+<strong data-ng-show="!toggleSecondMenu" data-ng-click="toggleSecondMenu=!toggleSecondMenu">
+    <div class="menu-toggle-backdrop">
+        <span>
+            <i class="menu-icon menu-closed-icon glyphicon glyphicon-align-justify"></i>
+        </span>
+    </div>
+</strong>
+
+
+<!--this is the icon that will be displayed in the menu is open-->
+<section data-ng-show="toggleSecondMenu"
+         data-ng-class="{'menu-top-level': toggleSecondMenu, 'menu-top-level-closed': !toggleSecondMenu}">
+
+    <div data-ng-click="toggleSecondMenu=!toggleSecondMenu"> <!--toggle icon for secondary menu, BEGIN-->
+        <strong>
+            <span>
+                <i class="menu-icon menu-open-icon glyphicon glyphicon-align-justify"></i>
+            </span>
+        </strong>
+    </div>
+    <!--toggle icon for secondary menu, END-->
+
+
+    <div class="menu-body">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <ul>
+                    <a href="/" class="col-sm-12">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            Home
+                        </li>
+                    </a>
+
+
+                    <a href="/projects" class="col-sm-12">
+                        <li>
+                            <i class="fa fa-map-marker"></i>
+                            Stories
+                        </li>
+                    </a>
+                    <a href="#" class="col-sm-12">
+                        <li>
+                            <i class="fa fa-heart"></i>
+                            Favorites
+                        </li>
+                    </a>
+                    <a href="/projects/create" class="col-sm-12">
+                        <li>
+                            <i class="fa fa-file"></i>
+                            Get Involved
+                        </li>
+                    </a>
+                    <a href="/contributors" class="col-sm-12">
+                        <li>
+                            <i class="fa fa-users"></i>
+                            Contributors
+                        </li>
+                    </a>
+                    <a href="/about-the-project" class="col-sm-12">
+                        <li>
+                            <i class="fa fa-user"></i>
+                            About Us
+                        </li>
+                    </a>
+                    <a href="/contact-us" class="col-sm-12">
+                        <li>
+                            <i class="fa fa-envelope"></i>
+                            Contact
+                        </li>
+                    </a>
+                    <a href="/settings/profile" class="col-sm-12" data-ng-hide="isAdmin.user === ''">
+                      <li>
+                        <i class="fa fa-cog"></i>
+                        Account Settings
+                      </li>
+                    </a>
+                    <a href="/admin" class="col-sm-12" data-ng-show="isAdmin.user === 'admin'">
+                        <li>
+                            <i class="fa fa-star"></i>
+                            Admin Panel
+                        </li>
+                    </a>
+
+                </ul>
+
+            </div>
+        </div>
+
+
+        <!--<a href="/projects" data-ng-show="authentication.user">-->
+        <!--<div class="row">-->
+        <!--<li class="col-md-12">-->
+        <!--<i class="fa fa-heart"></i>-->
+        <!--Favorites-->
+        <!--</li>-->
+        <!--</div>-->
+        <!--</a>-->
+
+
+        <!--<div accordion> &lt;!&ndash; close others should evaluate to true in order to close all other accordions&ndash;&gt;-->
+        <!--<div accordion-group heading="Account">-->
+        <!--<p>The body of the accordion group grows to fit the contents</p>-->
+        <!--<button class="btn btn-default btn-sm" ng-click="">Do Something!</button>-->
+        <!--<div ng-repeat="item in items">{{item}}</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<ul class="row" data-ng-show="authentication.user">-->
+        <!--<div class="col-md-12">-->
+
+
+        <!--<li class="dropdown" dropdown>-->
+
+        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>-->
+
+        <!--<i class="fa fa-user"></i>-->
+        <!--Account-->
+        <!--</a>-->
+
+        <!--<ul class="dropdown-menu">-->
+        <!--<li ui-route="/signup">-->
+        <!--<a href="/signup">Sign Up</a>-->
+        <!--</li>-->
+        <!--<li ui-route="/signin" ng-class="{active: $uiRoute}">-->
+        <!--<a href="/signin">Sign In</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+
+        <!--</li>-->
+        <!--</div>-->
+        <!--</ul>-->
+
+        <!--</ul>-->
+
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p>Mapping Salt Lake City is a community-created archive of Salt Lake City’s
+                    neighborhoods and people that documents the city’s changes through art, critical and creative
+                    literature, personal maps and multi-media projects.</p>
+
+                <p>We invite people to engage with and evolve this site by submitting their own contributions.</p>
+            </div>
+        </div>
+        <ul>
+            <div class="row social-media-button">
+                <a href="https://twitter.com/mappingslc" target="_blank" class="col-md-5 col-xs-11">
+                    <li>
+                        <i class="fa fa-twitter-square"></i>
+                        Twitter
+                    </li>
+                </a>
+                <a href="https://www.facebook.com/MappingSaltLakeCity" target="_blank" class="col-md-5 col-md-offset-1 col-xs-11">
+                    <li>
+                        <i class="fa fa-facebook-square"></i>
+                        Facebook
+                    </li>
+                </a>
+            </div>
+        </ul>
+    </div>
+</section>

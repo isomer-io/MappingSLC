@@ -1,0 +1,104 @@
+<secondary-menu-directive></secondary-menu-directive>
+
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
+    <section class="container">
+        <a href="/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
+
+        <div class="main-content-outer">
+
+            <section data-ng-controller="ProjectsController" data-ng-init="find()" class="main-content-inner">
+                <div class="admin">
+
+                    <div class="page-header">
+                        <h1>Admin Panel</h1>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="/admin/list-users" class="widget-box">
+                                <i class="fa fa-users"></i><br/>
+                                <span>User Menu</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="/admin/projects-queue" class="widget-box">
+                                <i class="fa fa-th"></i><br/>
+                                <span>Projects</span>
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="/admin/messages" class="widget-box">
+                                <i class="fa fa-envelope"></i><br/>
+                                <span>Messages</span>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <a href="/admin/dashboard" class="widget-box">
+                                <i class="fa fa-bar-chart"></i><br/>
+                                <span>Dashboard</span>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a href="#" class="widget-box">
+                                <i class="fa fa-thumb-o-up"></i><br/>
+                                <span>Like</span>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a href="#" class="widget-box">
+                                <i class="fa fa-thumb-o-down"></i><br/>
+                                <span>Unlike</span>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3">
+
+                            <!--<a href="#" data-ng-click="{{likeCount}} + 1" data-ng-bind="{{likeCount}"><i class="fa fa-thumbs-o-up"></i></a>-->
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+
+                            <!--<a href="#" data-ng-click="{{likeCount}} + 1" data-ng-bind="{{likeCount}"><i class="fa fa-thumbs-o-up"></i></a>-->
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+
+                            <!--<a href="#" data-ng-click="{{likeCount}} + 1" data-ng-bind="{{likeCount}"><i class="fa fa-thumbs-o-up"></i></a>-->
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+    </section>
+</section>

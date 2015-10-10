@@ -1,0 +1,101 @@
+<div class="row" data-ng-show="toggleEdit === true  && toggleId === 10">
+    <div class="col-xs-8">
+        <div class="dropdown">
+            <label for="status">Submission Status</label>
+            <select id="status" data-ng-model="project.status">
+                <option value="pending">Pending</option>
+                <option value="rejected">Rejected</option>
+                <option value="revise and resubmit">Revise & Resubmit</option>
+                <option value="accepted">Accepted</option>
+                <option value="published">Published</option>
+            </select>
+            <!--<strong>Selected color:</strong> {{simpleColorValue}}<br/>-->
+        </div>
+    </div>
+    <div class="col-xs-3 col-xs-offset-1">
+        <span class="pull-right">
+            <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
+        </span>
+        <span class="pull-right">
+            <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>
+        </span>
+    </div>
+</div>
+<div class="row" data-ng-hide="toggleEdit === true  && toggleId === 10">
+    <div class="col-xs-2">Submission Status</div>
+    <div class="col-xs-9" data-ng-bind="project.status"></div>
+    <div class="col-xs-1" data-ng-click="toggleEditFn(10)"><i class="fa fa-pencil"></i></div>
+</div>
+
+
+<div class="row" data-ng-show="toggleEdit === true  && toggleId === 11">
+    <div class="col-xs-8 col-xs-offset-1">
+        <span class="input input-secondary" data-ng-class="{'input-filled': project.storySummary !== ''}">
+            <input class="input_field input_field-secondary" type="text" id="storySummary" data-ng-model="project.storySummary"/>
+            <label class="input_label input_label-secondary" for="storySummary">
+                <span class="input_label-content input_label-content-secondary">Story Summary</span>
+            </label>
+            <span class="pull-right">
+                <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
+            </span>
+            <span class="pull-right">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>
+            </span>
+        </span>
+    </div>
+</div>
+<div class="row" data-ng-hide="toggleEdit === true  && toggleId === 11">
+    <div class="col-xs-2">Story Summary</div>
+    <div class="col-xs-9" data-ng-bind="project.storySummary"></div>
+    <div class="col-xs-1" data-ng-click="toggleEditFn(11)"><i class="fa fa-pencil"></i></div>
+</div>
+
+
+<div class="row" data-ng-show="toggleEdit === true  && toggleId === 12">
+    <div class="col-xs-8">
+        <div class="dropdown">
+            <label for="featured">Featured Project</label>
+            <select id="featured" data-ng-model="project.featured">
+                <option value="false">Not Featured</option>
+                <option value="true">Featured</option>
+            </select>
+            <!--<strong>Selected color:</strong> {{simpleColorValue}}<br/>-->
+        </div>
+    </div>
+    <div class="col-xs-3 col-xs-offset-1">
+        <span class="pull-right">
+            <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
+        </span>
+        <span class="pull-right">
+            <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>
+        </span>
+    </div>
+</div>
+<div class="row" data-ng-hide="toggleEdit === true  && toggleId ===12">
+    <div class="col-xs-2">Featured Project</div>
+    <div class="col-xs-9" data-ng-bind="project.featured"></div>
+    <div class="col-xs-1" data-ng-click="toggleEditFn(12)"><i class="fa fa-pencil"></i></div>
+</div>
+
+
+<div class="row" data-ng-show="toggleEdit === true  && toggleId ===13">
+    <div class="col-xs-8 col-xs-offset-1">
+        <span class="input input-secondary" data-ng-class="{'input-filled': project.category !== ''}">
+            <input class="input_field input_field-secondary" type="text" id="category" data-ng-model="project.category"/>
+            <label class="input_label input_label-secondary" for="category">
+                <span class="input_label-content input_label-content-secondary">Project Category</span>
+            </label>
+            <span class="pull-right">
+                <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
+            </span>
+            <span class="pull-right">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>
+            </span>
+        </span>
+    </div>
+</div>
+<div class="row" data-ng-hide="toggleEdit === true  && toggleId ===13">
+    <div class="col-xs-2">Project Category</div>
+    <div class="col-xs-9" data-ng-bind="project.category"></div>
+    <div class="col-xs-1" data-ng-click="toggleEditFn(13)"><i class="fa fa-pencil"></i></div>
+</div>

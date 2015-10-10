@@ -1,0 +1,73 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.902,
+          40.783
+        ]
+      },
+      "properties": {
+        "description": "<em>Wow</em>, this tooltip is breaking all the rules.",
+        "title": "Marker #2",
+        "marker-color": "#548cba",
+        "marker-size": "large",
+        "marker-symbol": "art-gallery"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.922,
+          40.773
+        ]
+      },
+      "properties": {
+        "title": "Marker two",
+        "description": "Another marker, including <a href='http://mapbox.com'>a link</a>.",
+        "marker-color": "#2C2C2C",
+        "marker-size": "large",
+        "marker-symbol": "heart"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.712,
+          40.773
+        ]
+      },
+      "properties": {
+        "title": "Peregrine The Espresso",
+        "description": "1718 14th St NW, Washington, DC",
+        "marker-size": "large",
+        "marker-color": "#BE9A6B",
+        "marker-symbol": "cafe"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.802,
+          40.763
+        ]
+      },
+      "properties": {
+        "title": "Andrew Shaw: Local Artist Interview Series",
+        "description": "Meet Andrew Shaw, lead singer of the Color Animals, as Mapping SLC continues to expand its Local Artist Interview Series",
+        "marker-size": "large",
+        "marker-color": "#871212",
+        "marker-symbol": "star"
+      }
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+<secondary-menu-directive></secondary-menu-directive>
+
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+    <section class="container">
+        <div class="main-content-outer">
+            <section data-ng-controller="FileUploadController" class="main-content-inner">
+
+                <div class="file-upload">
+
+                    <div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="dragover" ngf-allow-dir="true" accept="image/*">
+                        <span>Drag images or click here to load a file</span>
+                    </div>
+
+                    <!--preview file before upload-->
+                    <div>
+                        <img ngf-src="files[0]" data-ng-show="files[0].type.indexOf('image') === 0" data-ng-hide="uploadCommplete" ngf-accept="'image/*'"/>
+                    </div>
+
+                    <!--update button will appear after file has been selected-->
+                    <div>
+                        <button data-ng-click="uploadFile(files)" data-ng-show="files[0].type.indexOf('image') > -1" class="btn btn-main grow">
+                            Upload
+                        </button>
+                    </div>
+
+
+                    <!--preview of uploaded file-->
+                    <!--<img ng-src="{{imgSrc}}" data-ng-show="files[0].type.indexOf('image') > -1" />-->
+                    <!--<img ng-src="{{imgSrc}}" />-->
+                    <img data-ng-show="imgSrc"
+                         ngf-src="{{files}}"
+                         ngf-accept="'.png,.jpg'"
+                         ngf-min-size='100'
+                         ngf-max-size='30000'
+                            />
+
+                    <!--<span data-ng-if="uploadInProgress">Upload progress: {{ uploadProgress }}</span> <br />-->
+                    <!--<img data-ng-src="uploadedImage" data-ng-if="uploadedImage"> <br />-->
+
+                    Upload Log:
+                    <pre>{{log}}</pre>
+
+
+                    <hr/>
+
+
+                    <form name="myForm">
+                        <fieldset>
+                            <legend>Upload on form submit</legend>
+                            Username: <input type="text" name="userName" ng-model="username" size="39" required="">
+                            <i ng-show="myForm.userName.$error.required">*required</i><br>
+                            Profile Picture: <input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" required="">
+                            <i ng-show="myForm.file.$error.required">*required</i>
+                            <br>
+
+                            <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)">Submit</button>
+                            <img ng-show="picFile[0] != null" ngf-src="picFile[0]" class="thumb">
+                            <span class="progress" ng-show="picFile[0].progress >= 0">
+                                <div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
+                            </span>
+                            <span ng-show="picFile[0].result">Upload Successful</span>
+                        </fieldset>
+                        <br>
+                    </form>
+
+
+                    <hr/>
+
+
+                    <div>
+                        <form>
+                            <div>Image URL</div>
+                            <div>
+                                <input type="url" placeholder="Type in the url you want to upload" data-ng-model="imgUrl.url" name="url" id="url"/>
+                            </div>
+                            <div>
+                                <button data-ng-click="submitUrl(imgUrl)" class="btn btn-main grow" data-ng-show="imgUrl !== ''">
+                                    Submit Url
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+                    <!--<div ngf-no-file-drop>-->
+                    <!--<span>File Drag/Drop is not supported for this browser</span>-->
+
+                    <!--<div>-->
+                    <!--<form>-->
+                    <!--<div><input type="url" placeholder="Type in the url you want to upload" ng-model="imgUrl"/></div>-->
+                    <!--<div>-->
+                    <!--<button ng-click="submitUrl(imgUrl)">Submit Url</button>-->
+                    <!--</div>-->
+                    <!--</form>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+
+                </div>
+
+
+            </section>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,654 @@
+.content {
+  margin-top: 0;
+}
+.undecorated-link:hover {
+  text-decoration: none;
+}
+[ng\:cloak],
+[ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+.header-profile-image {
+  opacity: 0.8;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.open .header-profile-image,
+a:hover .header-profile-image {
+  opacity: 1;
+}
+.user-header-dropdown-toggle {
+  padding-top: 11px !important;
+  padding-bottom: 11px !important;
+}
+.error-text {
+  display: none;
+}
+.has-error .help-block.error-text {
+  display: block;
+}
+.has-error .help-inline.error-text {
+  display: inline;
+}
+
+* {
+  font-family: "pragmatica-web", "jaf-facitweb", Verdana, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  /*font-family: "pragmatica-web", "jaf-facitweb", Verdana, Helvetica, sans-serif;*/
+  /*-webkit-font-smoothing: antialiased;*/
+  /*-moz-osx-font-smoothing: grayscale;*/
+  overflow: hidden;
+}
+
+body {
+  overflow-x: auto;
+}
+
+.undecorated-link:hover {
+  text-decoration: none;
+}
+[ng\:cloak],
+[ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+.header-profile-image {
+  opacity: 0.8;
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.open .header-profile-image,
+a:hover .header-profile-image {
+  opacity: 1;
+}
+.user-header-dropdown-toggle {
+  padding-top: 11px !important;
+  padding-bottom: 11px !important;
+}
+.error-text {
+  display: none;
+}
+.has-error .help-block.error-text {
+  display: block;
+}
+.has-error .help-inline.error-text {
+  display: inline;
+}
+
+.center-x {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-25%, 0);
+}
+
+/*applies to all pages that have a static map as background image, so most views other than home page*/
+.main-content-outer {
+  height: 100%;
+  background-color: rgba(221, 215, 200, 0.6);
+  margin: 5%;
+  padding: 1% 2%;
+  border-radius: 10px;
+  border: solid 2px #090909;
+}
+/*applies to all pages that have a static map as background image, so most views other than home page*/
+.main-content-inner {
+  height: 100%;
+  background-color: rgba(255, 248, 231, 0.9);
+  margin: 5% 2%;
+  padding: 5%;
+  border-radius: 10px;
+}
+
+.sidebar-content-below {
+  height: 100%;
+  background-color: rgba(255, 248, 231, 0.9);
+  margin: 0.5% 2% 5% 2%;
+  padding: 2% 5%;
+  border-radius: 10px;
+}
+
+.sidebar-content-right {
+  height: 100%;
+  background-color: rgba(255, 248, 231, 0.9);
+  margin: 5% 2% 5% 1%;
+  padding: 5%;
+  border-radius: 10px;
+}
+
+.content-wide {
+  width: 125%;
+}
+
+.background {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: 100%;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  .background {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+div.main-overlay.core > div > div.row:first-child {
+  margin: 0 2.5%;
+}
+
+.core ul {
+  /*margin-top: 20px;*/
+  list-style-type: none;
+  left: 3%;
+}
+
+.core h2, .core h3, .core h4 {
+  color: #ffffff;
+  text-shadow: #023a31;
+}
+
+div:nth-child(1) > div.row > div > div > p:nth-child(1)::first-letter {
+  font-size: 40px;
+}
+
+.core img.desaturate:hover, .core img.desaturate:active {
+  -webkit-filter: grayscale(75%);
+  -moz-filter: grayscale(75%);
+  filter: grayscale(75%);
+}
+
+.core img.saturate:hover, .core img.saturate:active {
+  -webkit-filter: saturate(50%);
+  -moz-filter: saturate(50%);
+  -o-filter: saturate(50%);
+  -ms-filter: ;
+  filter: saturate(50%);
+
+}
+
+.core img.sepia:hover, .core img.sepia:active {
+  -webkit-filter: sepia(100%);
+  -moz-filter: sepia(100%);
+  -o-filter: sepia(100%);
+  filter: sepia(100%);
+}
+
+.core .navbar-brand, .core .navbar-nav, .core li a {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.0);
+  text-align: right;
+}
+
+/*body > section > section > section > section.home-view.ng-scope > div > span > div > div:nth-child(1) > div.col-md-2 > sign-in-directive > section > */
+div > ul.pull-right > li > ul > li > a {
+  padding: 5% 20%;
+  /*width: 30%;*/
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/*.core .dropdown-menu > li > a:hover, .core .dropdown-menu > li > a:focus {*/
+/*color: #033a31;*/
+/*}*/
+
+.dropdown-menu {
+  min-width: 200%;
+  /*width: 100%;*/
+}
+
+.header-profile-image {
+  opacity: 0.8;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.open  .header-profile-image,
+a:hover .header-profile-image {
+  opacity: 1;
+}
+
+.user-header-dropdown-toggle {
+  padding-top: 11px !important;
+  padding-bottom: 11px !important;
+}
+
+.core .nav .open a:focus, .core .nav li a:hover, .core .nav li a:focus {
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.0);
+}
+
+.core .nav .open a {
+  color: #ffffff;
+}
+
+.core .table-bordered {
+  margin: 20px 0 10px 0;
+}
+
+.open > .dropdown-menu {
+  background: rgba(0, 0, 0, 0.8);
+  border: solid 3px #2c2c2c;
+  border-radius: 5px;
+  left: -75%;
+  margin: 10%;
+  width: 100%;
+}
+
+.undecorated-link:hover {
+  text-decoration: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+.clear{
+  clear:both;
+}
+
+.ng-invalid.ng-dirty{
+  border-color:#FA787E;
+}
+
+.ng-valid.ng-dirty{
+  /*border-color:#78FA89;*/
+}
+
+.hide-overlay-yes {
+  display: none;
+}
+
+.hide-overlay-no {
+  display: block;
+}
+
+/*submit-project-directive > section > div > div.pull-right*/
+submit-project-directive > section > div > div {
+
+}
+
+.col-equal {
+  margin-top: 6%;
+}
+
+/* mapping slc small logo */
+.small-main-logo {
+  content: url(../img/brand/mapping.png);
+  width: 150px;
+  height: 47px;
+  position: absolute;
+  display: block;
+  z-index: 999;
+  left: 2.75%;
+  top: 0.75%;
+}
+
+.logo-on-page {
+  top: 2.5%;
+  left: 5%;
+}
+
+.logo-in-menu {
+  top: 3%;
+  left: 15%;
+  width: 18.5rem;
+  height: auto;
+}
+
+.logo-second-page {
+  top: 1.25%;
+  width: 6.5%;
+  height: auto;
+  position: fixed;
+}
+
+.menu-toggle-backdrop {
+  background-color: hsla(36, 100%, 85%, 0.6);
+  width: 3%;
+  height: 4.75rem;
+  z-index: 9999;
+  margin-top: 0.3%;
+  margin-left: 0.3%;
+  border-radius: 1rem;
+}
+
+.group-overlays {
+  position: relative;
+}
+/*
+/ creates On/Off Toggle switch
+*/
+.switch-on{
+  background: #023a31;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 22pt;
+  height: 50px;
+  width: 50px;
+  left: -25px;
+  top: -25px;
+  line-height: 50px;
+  position: absolute;
+  text-align: center;
+  transition: all 0.7s ease;
+}
+
+.switch-on:hover{
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.switch-off {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(0, 0, 0, 0.8);
+  border-radius: 15%;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.4em;
+  height: 40px;
+  left: -615px;
+  line-height: 30px;
+  position: absolute;
+  text-align: center;
+  top: -25px;
+  width: 60px;
+}
+
+.core .switch-off:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border: 5px solid rgba(255, 255, 255, 0.4);
+}
+
+.core .home{
+  text-align: justify;
+}
+
+.core .home .core .page-header{
+  margin: 20px 0 10px 0;
+}
+
+.core .dropdown-menu > li > a:hover, .core .dropdown-menu > li > a:focus {
+  background: rgba(0, 0, 0, 0);
+  color: #f5deb3;
+}
+
+div.col-md-5.pull-left .btn.btn-primary.btn-lg.btn-main.grow.pull-right {
+  margin:0 0 20px 0;
+}
+
+.core div.row {
+  margin-top: 0;
+}
+
+.core div.row li:hover {
+  background-color: rgba(45, 45, 45, 0.7);
+}
+
+.core div.row p {
+  /*line-height: 155%;*/
+  /*font-size: 2rem;*/
+}
+
+.core p {
+  font-size: 1.75rem;
+  line-height: 155%;
+  color: #ffffff;
+  margin: 0 3.4% 0 3%;
+  text-align: justify;
+}
+
+.core .main-text p:nth-child(1){
+  margin-top: 3.4%;
+}
+
+.core .main-text p {
+  font-size: 2rem;
+}
+
+.core .photo {
+  padding: 15px;
+}
+
+.sign-in-modal-background {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* form styling -------------- */
+.group {
+  position:relative;
+  margin-bottom:45px;
+}
+
+
+::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: #ffffff;
+}
+
+:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+
+
+/* BOTTOM BARS ================================= */
+
+.bar {
+  position:relative; display:block; width:300px;
+}
+
+.bar:before, .bar:after {
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#5264AE;
+  transition:0.2s ease all;
+}
+
+.bar:before {
+  left:50%;
+}
+
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+
+
+/* ANIMATIONS ================ */
+@keyframes inputHighlighter {
+  from  { background:#5264AE; }
+  to    { width:0; background:transparent; }
+}
+
+
+.social-media-button{
+  display: block;
+}
+
+.medium-main-logo {
+  content: url(../img/brand/logo-75.png);
+  width: 225px;
+  height: 71px;
+  position: relative;
+  display: block;
+  z-index: 2;
+  left: 12px;
+  margin-top: 2%;
+}
+
+/* mapping slc small logo */
+.small-main-logo2 {
+  content: url(../img/brand/mapping_150w.png);
+  width: 150px;
+  height: 47px;
+  position: absolute;
+  display: block;
+  z-index: 999;
+  left: 3.5%;
+  top: 0.75%;
+}
+
+
+.btn-main {
+  color: #ffffff;
+  cursor:pointer;
+  border:2px solid #fff;
+  background: #023a31;
+}
+
+.btn-main:focus, .btn-main:hover {
+  background: #023a31;
+  border: 2px solid #fff;
+}
+
+.btn-dark {
+  background-color: rgba(50, 50, 50, 0.8);
+  font-size: 1.75rem;
+  /*text-decoration: none;*/
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.btn-dark:hover {
+  background-color: rgba(75, 75, 75, 0.4);
+  border: solid 1px #8a887a;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transition: all 0.2s ease-in-out 0.2s;
+}
+
+.dropdown-toggle:hover {
+  text-decoration: none;
+}
+
+
+/*button animation*/
+/* Grow */
+
+.grow {
+  display: inline-block;
+  -webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: transform;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transition: all 0.3s ease 0s;
+}
+
+.grow:hover {
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+button > .grow {
+  display: inline-block;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*animate font-awesome icons*/
+
+/* Icon Forward */
+.hvr-icon-forward {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  padding-right: 2.2em;
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+}
+.hvr-icon-forward:before {
+  /*content: "\f138";*/
+  content: "\f090";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-icon-forward:hover:before, .hvr-icon-forward:focus:before, .hvr-icon-forward:active:before {
+  -webkit-transform: translateX(4px);
+  transform: translateX(4px);
+}

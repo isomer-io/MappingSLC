@@ -1,0 +1,67 @@
+<secondary-menu-directive></secondary-menu-directive>
+
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
+    <section class="container">
+        <a href="/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
+
+        <div class="main-content-outer">
+
+            <section data-ng-controller="SettingsController" data-ng-init="findOne()" class="main-content-inner">
+
+                <div class="admin-user">
+
+                    <div class="page-header">
+                        <h1>Edit {{user.firstName}} {{user.lastName}}'s Profile</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
+                            <form data-ng-submit="updateUserProfile()" class="signin form-horizontal" autocomplete="off">
+
+                                <fieldset>
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName"
+                                               placeholder="First Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="text" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="zip">Zip Code</label>
+                                        <input type="number" id="zip" name="zip" class="form-control" data-ng-model="user.zip" placeholder="Zip Code">
+                                    </div>
+
+                                    <div class="text-center form-group">
+                                        <button type="submit" class="btn btn-large btn-primary">Save Profile</button>
+                                    </div>
+
+
+                                    <div data-ng-show="success" class="text-center text-success">
+                                        <strong>Profile Saved Successfully</strong>
+                                    </div>
+                                    <div data-ng-show="error" class="text-center text-danger">
+                                        <strong data-ng-bind="error"></strong>
+                                    </div>
+                                </fieldset>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</section>
