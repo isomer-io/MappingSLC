@@ -9,6 +9,7 @@ module.exports = {
         '//api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css',
         'public/lib/sidebar-v2/css/leaflet-sidebar.min.css',
         'public/lib/font-awesome/css/font-awesome.min.css',
+        'public/lib/angular-notify/dist/angular-notify.min.css',
         'public/lib/ng-ckeditor/ng-ckeditor.css',
         'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css',
         'public/lib/c3/c3.min.css'
@@ -44,7 +45,8 @@ module.exports = {
         'public/lib/classie/classie.js',
         'public/lib/masonry/dist/masonry.pkgd.min.js',
         'public/lib/moment/min/moment.min.js',
-        'public/lib/c3/c3.min.js'
+        'public/lib/c3/c3.min.js',
+        'public/lib/angular-notify/dist/angular-notify.min.js'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

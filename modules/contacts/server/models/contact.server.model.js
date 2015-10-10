@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+		Schema = mongoose.Schema;
 
 
 ///**
@@ -22,6 +22,10 @@ var mongoose = require('mongoose'),
  * Contact Schema
  */
 var ContactSchema = new Schema({
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User'
+	},
 	namePrefix: {
 		type: String,
 		trim: true,
@@ -41,10 +45,6 @@ var ContactSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	},
 	zip: {
 		type: String,
 		default: '',
@@ -52,7 +52,6 @@ var ContactSchema = new Schema({
 	},
 	email: {
 		type: String,
-		unique: true,
 		trim: true,
 		required: ''
 	},

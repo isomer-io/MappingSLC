@@ -1,5 +1,5 @@
 .content {
-  margin-top: 50px;
+  margin-top: 0;
 }
 .undecorated-link:hover {
   text-decoration: none;
@@ -53,9 +53,6 @@ body {
   overflow-x: auto;
 }
 
-.content {
-  margin-top: 50px;
-}
 .undecorated-link:hover {
   text-decoration: none;
 }

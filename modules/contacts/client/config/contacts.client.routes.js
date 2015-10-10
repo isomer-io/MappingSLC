@@ -13,10 +13,13 @@ angular.module('contacts').config(['$stateProvider',
                 url: '/contacts/:contactId/edit',
                 templateUrl: 'modules/contacts/client/views/edit-contact.client.view.html'
             })
-            .state('aboutUs', {
-                url: '/about',
-                templateUrl: 'modules/contacts/client/views/about-us.client.view.html'
+            .state('aboutMappingSlc', {
+                url: '/about-the-project',
+                templateUrl: 'modules/contacts/client/views/about-the-project.client.view.html'
             })
-        ;
+            .state('aboutUs', {
+              url: '/about-us',
+              templateUrl: 'modules/contacts/client/views/about-us.client.view.html'
+            });
     }
 ]);

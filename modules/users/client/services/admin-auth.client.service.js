@@ -8,6 +8,7 @@ angular.module('users').factory('AdminAuthService', ['$window', 'Authentication'
 			var isAdmin = {
 				user: $window.user.roles[0]
 			};
+			console.log('isAdmin.user', isAdmin.user);
 			return isAdmin;
 		} else {
 			return 'notAdmin';

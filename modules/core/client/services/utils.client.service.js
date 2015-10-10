@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('core').service('UtilsService', ['$scope',
-  function ($scope) {
+angular.module('core').service('UtilsService', ['$http', '$window',
+  function($http, $window) {
+
+
     //logic for css on the contact form
 
     this.cssLayout = function () {

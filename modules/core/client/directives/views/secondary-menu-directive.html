@@ -65,7 +65,7 @@
                             Contributors
                         </li>
                     </a>
-                    <a href="/about" class="col-sm-12">
+                    <a href="/about-the-project" class="col-sm-12">
                         <li>
                             <i class="fa fa-user"></i>
                             About Us
@@ -76,6 +76,12 @@
                             <i class="fa fa-envelope"></i>
                             Contact
                         </li>
+                    </a>
+                    <a href="/settings/profile" class="col-sm-12" data-ng-hide="isAdmin.user === ''">
+                      <li>
+                        <i class="fa fa-cog"></i>
+                        Account Settings
+                      </li>
                     </a>
                     <a href="/admin" class="col-sm-12" data-ng-show="isAdmin.user === 'admin'">
                         <li>

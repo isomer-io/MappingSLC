@@ -1,8 +1,8 @@
 'use strict';
 
 // Contacts controller
-angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Contacts', '$http', 'AdminAuthService', 'UtilsService',
-	function($scope, $stateParams, $location, Authentication, Contacts, $http, AdminAuthService, UtilsService) {
+angular.module('contacts').controller('ContactsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Contacts', '$http', 'AdminAuthService', 'UtilsService', 'notify',
+	function($scope, $stateParams, $location, Authentication, Contacts, $http, AdminAuthService, UtilsService, notify) {
 		$scope.authentication = Authentication;
 		$scope.isAdmin = AdminAuthService;
 
@@ -11,35 +11,7 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 			$location.path('admin/messages/' + contactId);
 		};
 
-		/**
-		 * the commented out code below works fine
-		 */
-		////logic for css on the contact form
-		//var cssLayout = function(){
-		//	[].slice.call( document.querySelectorAll( 'input.input_field' ) ).forEach( function( inputEl ) {
-		//		// in case the input is already filled..
-		//		if( inputEl.value.trim() !== '' ) {
-		//			classie.add( inputEl.parentNode, 'input-filled' );
-		//		}
-    //
-		//		// events:
-		//		inputEl.addEventListener( 'focus', onInputFocus );
-		//		inputEl.addEventListener( 'blur', onInputBlur );
-		//	} );
-    //
-		//	function onInputFocus( ev ) {
-		//		classie.add( ev.target.parentNode, 'input-filled' );
-		//	}
-    //
-		//	function onInputBlur( ev ) {
-		//		if( ev.target.value.trim() === '' ) {
-		//			classie.remove( ev.target.parentNode, 'input-filled' );
-		//		}
-		//	}
-		//};
-		//cssLayout();
-
-
+		//provides logic for the css in the forms
 		UtilsService.cssLayout();
 
 
@@ -64,7 +36,7 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 
 			// Redirect after save
 			contact.$save(function(response) {
-				$location.path('contacts/' + response._id);
+				$location.path('/');
 
 				// Clear form fields
 				$scope.firstName = '';
