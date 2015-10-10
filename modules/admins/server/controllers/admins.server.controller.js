@@ -88,7 +88,7 @@ exports.list = function (req, res) {
 /**
  * Admin middleware
  */
-exports.articleByID = function (req, res, next, id) {
+exports.adminByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({

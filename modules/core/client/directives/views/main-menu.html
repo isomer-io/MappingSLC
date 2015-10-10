@@ -93,14 +93,25 @@
                             </li>
                         </div>
 
-                        <div class="row" data-ng-show="isAdmin.user === 'admin'">
-                            <li class="col-sm-12">
-                                <a href="/admin">
-                                    <i class="fa fa-star"></i>
-                                    Admin Panel
-                                </a>
-                            </li>
-                        </div>
+                      <div class="row" data-ng-hide="isAdmin.user === ''">
+                        <li class="col-sm-12">
+                          <a href="/settings/profile">
+                            <i class="fa fa-cog"></i>
+                            Account Settings
+                          </a>
+                        </li>
+                      </div>
+
+                      <div class="row" data-ng-show="isAdmin.user === 'admin'">
+                          <li class="col-sm-12">
+                              <!--<a href="/admin">-->
+                              <!--<a ui-sref="admin.user({userId: user._id})">-->
+                              <a ui-sref="admin">
+                                  <i class="fa fa-star"></i>
+                                  Admin Panel
+                              </a>
+                          </li>
+                      </div>
 
                     </ul>
                 </div>
