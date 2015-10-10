@@ -1,0 +1,101 @@
+/*body {*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    /*background-color: #222;*/
+    /*color: #fff;*/
+/*}*/
+.container {
+    width: 512px;
+    margin: 0px auto;
+}
+/* Flip Effect from http://davidwalsh.name/css-flip */
+/* entire container, keeps perspective */
+.flip-container {
+    perspective: 1000;
+}
+/* flip the pane when hovered */
+.flip-container.hover .flipper {
+    transform: rotateX(180deg);
+}
+.flip-container,
+.front,
+.back,
+img {
+    width: 512px;
+    height: 340px;
+}
+/* flip speed goes here */
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: 100% 170px;
+    transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+    position: relative;
+}
+/* hide back of pane during swap */
+.front,
+.back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateX(0deg);
+}
+/* back, initially hidden pane */
+.back {
+    transform: rotateX(180deg);
+}
+/* leaflet map */
+#map {
+    width: 512px;
+    height: 340px;
+    background-color: #999;
+}
+.title-and-button {
+    position: relative;
+    height: 45px;
+}
+/* toggle button */
+.toggle-btn {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 130px;
+    padding: 12px 18px;
+    border: 1px solid #dedede;
+    border-bottom-width: 0px;
+    background-color: #efefef;
+    color: #333;
+    border-radius: 3px 3px 0 0;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    float: right;
+}
+.toggle-btn:active {
+    background-color: #dedede;
+}
+/* pin based on http://codepen.io/andreasstorm/pen/ClguF */
+.pin {
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    right: 11px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50% 50% 50% 0;
+    background: #156A7E;
+    transform: rotate(-45deg);
+}
+.pin:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    margin: 5px 0 0 5px;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+}

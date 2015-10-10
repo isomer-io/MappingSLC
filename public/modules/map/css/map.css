@@ -1,0 +1,329 @@
+.map {
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    box-sizing:border-box;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+#map-overlay {
+    height: 100%;
+    left: 0;
+    position: fixed !important; /* Acts in pretty much the same way as background-attachment: fixed for an image background. Has to be !important only if you're using the Google Maps API. */
+    top: 0;
+    width: 100%;
+    z-index: 1; /* Has to be at least one increment smaller in value than the container's z-index */
+}
+
+.map-details {
+    width: 80%;
+}
+
+.leaflet-control-zoom {
+    top: 75px;
+}
+
+.ui-select {
+    background: rgba(0, 0, 0, 0.8);
+    position:absolute;
+    margin-top:150px;
+    /*right:0;*/
+    z-index:100;
+    padding:10px;
+    border-radius: 10px 0 0 10px;
+    color: #f5deb3;
+    transition: all 0.7s ease;
+}
+
+.ui-select-details {
+    right:384px;
+    transition: all 0.7s ease;
+}
+
+.ui-select-off {
+    width: 15px;
+    transition: all 0.7s ease;
+}
+
+.ui-select-on {
+    width: 150px;
+    transition: all 0.7s ease;
+}
+
+span div input:nth-child(2) {
+    margin-top: 20px;
+}
+
+.fa-chevron-left, .fa-chevron-right{
+    cursor: pointer;
+}
+
+
+.fa-chevron-left:hover, .fa-chevron-right:hover, .fa-chevron-left:focus, .fa-chevron-right:focus {
+    /*-webkit-transform: scale(1.2);*/
+    /*-ms-transform: scale(1.2);*/
+    /*transform: scale(1.2);*/
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.first-filter {
+    margin-top: 15px;
+}
+
+/*.leaflet-control-layers-expanded {*/
+    /*display: block;*/
+
+/*}*/
+
+/**
+GeoJSON Styling
+**/
+
+.geojson-dialog-hover {
+    background: #EEE;
+    border: 1px solid #ff00ff;
+    border-radius: 5px;
+    color: #333;
+    font-family: sans-serif;
+    font-size: small;
+    margin: 0;
+    padding: 3px;
+}
+.geojson-dialog-hover p {
+    margin: 0 0 5px 0;
+    padding: 0;
+}
+.geojson-feature-property-name {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.sidebar-view{
+    width:20%;
+    background-color: rgba(40, 40, 36, 1);
+    z-index: 1000;
+    color:#FFFFFF;
+    float:right;
+    padding-top:10em;
+    padding-right: 15px;
+    padding-left: 10px;
+    height: 100%;
+
+}
+
+.sidebar-view-date{
+
+
+    padding-left: 18em;
+
+}
+.sidebar-view-text-content > p{
+
+    font-size: 1.2em;
+}
+
+
+
+/*custom popups*/
+/* popup */
+.leaflet-popup {
+    position:absolute;
+    text-align:center;
+    pointer-events:none;
+}
+
+.leaflet-popup-content {
+    padding:10px 10px 15px;
+    margin:0;
+    line-height:inherit;
+    border: solid 5px #FFFFFF;
+    border-radius: 10px;
+}
+
+.leaflet-popup-close-button {
+    text-indent:-999em;
+    position:absolute;
+    top:8px;
+    right:8px;
+    pointer-events:all;
+    color: #ffffff;
+    /*background-image: url(images/icons-000000@2x.png);*/
+}
+
+.leaflet-popup-close-button:hover {
+    color:#f8f8f8;
+}
+
+.leaflet-popup-scrolled {
+    overflow:auto;
+    border-bottom:1px solid #ddd;
+    border-top:1px solid #ddd;
+}
+
+.leaflet-popup-content-wrapper {
+    /*defaults*/
+    padding:1px;
+    text-align:left;
+    pointer-events:all;
+    /*custom settings*/
+    background:#023A31;
+    color:#fff;
+    font-size:14px;
+    line-height:24px;
+    border-radius: 10px;
+    font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+}
+.leaflet-popup-content-wrapper a {
+    color:rgba(255,255,255,0.5);
+}
+.leaflet-popup-tip-container {
+    /*defaults*/
+    margin:0 auto;
+    position:relative;
+    /*custom settings*/
+    width:30px;
+    height:15px;
+}
+.leaflet-popup-tip {
+    /*defaults*/
+    width:0;
+    height:0;
+    margin:0;
+    box-shadow:none;
+    /*custom settings*/
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-top:15px solid #023A31;
+}
+
+/*end of custom popups*/
+
+.sidebar-view{
+    width:20%;
+    background-color: rgba(40, 40, 36, 1);
+    z-index: 1000;
+    color:#FFFFFF;
+    float:right;
+    padding-top:10em;
+    padding-right: 15px;
+    padding-left: 10px;
+    height: 100%;
+
+}
+
+.sidebar-view-date{
+
+
+    padding-left: 18em;
+
+}
+.sidebar-view-text-content > p{
+
+    font-size: 1.2em;
+}
+
+.test {
+    width: 80%;
+    transition: all 0.7s ease;
+    right: 384px;
+    display: block;
+    color: red;
+}
+
+.test {
+    width: 20%;
+    transition: all 0.7s ease;
+    right: 684px;
+    display: block;
+    color: #800080;
+}
+
+#sidebar{
+
+    /*z-index: 100;*/
+    /*float:right;*/
+    /*width:20%;*/
+    /*background-color: rgba(40, 40, 36, 1);*/
+    /*z-index: 1000;*/
+    /*color:#FFFFFF;*/
+    /*float:right;*/
+    /*padding-top:10em;*/
+    /*padding-right: 15px;*/
+    /*padding-left: 10px;*/
+    /*height: 100%;*/
+
+}
+
+
+/*create tooltip with absolute position*/
+/*source: https://www.mapbox.com/mapbox.js/example/v1.0.0/marker-tooltips-outside-map/ */
+
+.info {
+    position:absolute;
+    bottom: 25px;
+    right: 10px;
+}
+
+.info-project-details {
+    right:394px;
+}
+
+.info div {
+    background: rgba(0, 0, 0, 0.8);
+    padding:10px;
+    border-radius:3px;
+    color: #ffffff
+}
+
+.info-default-size {
+    width: 260px;
+    height: 75px;
+}
+
+/*end of create tooltip*/
+
+
+div .leaflet-control-attribution.leaflet-control {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+div a .mapbox-share.mapbox-icon.mapbox-icon-share  {
+    top: 150px;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/*.leaflet-control.mapbox-icon.mapbox-icon-share, .leaflet-control.mapbox-icon.mapbox-icon-share:before {*/
+div .leaflet-top.leaflet-left .mapbox-share {
+    bottom: 150px;
+    /*background: rgba(0, 0, 0, 0.8);*/
+}
+
+.leaflet-bar .leaflet-control-mapbox-geocoder-toggle .mapbox-icon .mapbox-icon-geocoder {
+    display: inline;
+    border-bottom: dashed;
+}
+
+.leaflet-bar {
+    top: 70px;
+}
+
+.test-details-toggle {
+    background: rgba(0, 0, 0, 0.8);
+    position:absolute;
+    margin-top:250px;
+    right:0px;
+    z-index:100;
+    padding:10px;
+    border-radius: 10px 0 0 10px;
+    color: #f5deb3;
+    display:block;
+}
+
+.leafleft-top .leaftlet-left {
+    margin-top: -50px !important;
+}
