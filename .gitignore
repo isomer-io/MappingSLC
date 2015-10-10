@@ -26,6 +26,7 @@ uploads
 modules/.1users/client/img/profile/uploads
 config/env/local.js
 *.pem
+/modules/projects/server/models/data/private
 
 # Ignoring MEAN.JS's gh-pages branch for documenation
 _site/
