@@ -1,129 +1,70 @@
 <secondary-menu-directive></secondary-menu-directive>
 
-<section class="content background" data-ng-controller="RandomMapController" ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }" data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }"
+         data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
 
-    <section class="container">
+  <section class="container">
 
-        <div class="main-content-outer">
-            <section data-ng-controller="ContactsController" class="main-content-inner">
-                <div class="about">
+    <div class="main-content-outer">
+      <section data-ng-controller="ContactsController" class="main-content-inner">
+        <div class="about">
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="contact home">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="contact home">
 
-                                <h1>About Mapping Salt Lake City</h1>
-                                <!--<div>-->
-                                <!--<img src="{{staticMap.mapUrl}}">-->
-                                <!--</div>-->
-                                <p>
-                                    {{toggleSecondMenu}}
-                                </p>
+                <h1>About Mapping Salt Lake City</h1>
 
-                                <p>Mapping Salt Lake City is a not-for-profit community project based on <a
-                                        href="http://rebeccasolnit.net/atlases/" target="_blank">Rebecca Solnit's
-                                    book <em>Infinite City</em></a>, which maps many of the communities and histories
-                                    that
-                                    make up San Francisco. Initially the focus of a 2013 nonfiction writing course at
-                                    the
-                                    University of Utah taught by Paisley Rekdal, Mapping Salt Lake City has quickly
-                                    become a
-                                    city-wide collaboration led by professors, writers and scholars from the University
-                                    of
-                                    Utah and Westminster College.</p>
+                <p>Mapping Salt Lake City is an independent, non-profit organization made possible by grants from the <a
+                  href="http://www.utah.edu/"
+                  target="_blank">University
+                  of Utah</a>, <a href="http://www.westminstercollege.edu/" target="_blank">Westminster
+                  College</a>, the Richard Segal Foundation, and from the <a
+                  href="http://www.utahhumanities.org/" target="_blank">Utah Humanities
+                  Council</a>,
+                  which empowers organizations like ours to improve our community through active
+                  engagement in the humanities.</p>
 
-                                <p>Because a city and its history are not static but a complex network of connections,
-                                    environment and relationships, the purpose of Mapping Salt Lake City is to create a
-                                    continually evolving narrative in which community members and scholars, writers and
-                                    artists can be in dialogue. And because there are always absences in any record of
-                                    place, we rely on readers to fill in these gaps by writing and submitting their own
-                                    content. Over the years, as more people add their own stories, Mapping Salt Lake
-                                    City
-                                    will change, expand and grow in the same ways that a city might, to become a more
-                                    inclusive reflection of our community's diverse, and diverging, perspectives.</p>
+                <p>Mapping Salt Lake City also occasionally provides teaching resources and exercises
+                  involving creative mapping projects for educators in the Salt Lake City region. For
+                  current examples, see our <a
+                    href="index.php?option=com_k2&amp;view=item&amp;layout=item&amp;id=5&amp;Itemid=280">Resources</a>
+                  page. We are also interested in meeting with small groups and classes to lead
+                  creative
+                  mapping workshops. For more info, <a
+                    href="index.php?option=com_k2&amp;view=item&amp;layout=item&amp;id=6&amp;Itemid=281">please
+                    contact us</a>.</p>
 
-                                <p>Interested participants can <a
-                                        href="index.php?option=com_k2&amp;view=item&amp;layout=item&amp;id=4&amp;Itemid=279">contribute</a>
-                                    in a number of ways: by writing a critical, historical or personal essay or by
-                                    producing
-                                    a multi-media project about a subject relevant to Salt Lake; by creating a personal
-                                    city
-                                    map using mapping technologies such as Google Maps or Google Earth; by drawing their
-                                    own
-                                    Salt Lake City <a
-                                            href="index.php?option=com_k2&amp;view=item&amp;layout=item&amp;id=5&amp;Itemid=280">using
-                                        the map found on our site</a>; or by writing for our ongoing project, "This Was
-                                    Here."</p>
+                <p>As Mapping Salt Lake City is an arts and educational resource, the photos and images
+                  on
+                  this site are to be used solely for that purpose. Copyright for photo use must be
+                  obtained from the relevant institutions.</p>
 
-                                <p>We welcome you to join our community, either by assisting in the development of the
-                                    site,
-                                    or by submitting work to the project.</p>
-
-
-                                <p>Mapping Salt Lake City also occasionally provides teaching resources and exercises
-                                    involving creative mapping projects for educators in the Salt Lake City region. For
-                                    current examples, see our <a
-                                            href="index.php?option=com_k2&amp;view=item&amp;layout=item&amp;id=5&amp;Itemid=280">Resources</a>
-                                    page. We are also interested in meeting with small groups and classes to lead
-                                    creative
-                                    mapping workshops. For more info, <a
-                                            href="index.php?option=com_k2&amp;view=item&amp;layout=item&amp;id=6&amp;Itemid=281">please
-                                        contact us</a>.</p>
-
-                                <p>Our hope is for Mapping Salt Lake City to become an integral site for the community
-                                    to
-                                    visit, a place for people to enter the complex conversation about place that has
-                                    already
-                                    begun, and that continues to evolve, around Salt Lake City.</p>
-
-                                <p>Mapping Salt Lake City is made possible by grants from the <a
-                                        href="http://www.utah.edu/"
-                                        target="_blank">University
-                                    of Utah</a>, <a href="http://www.westminstercollege.edu/" target="_blank">Westminster
-                                    College</a>, the Richard Segal Foundation, and from the <a
-                                        href="http://www.utahhumanities.org/" target="_blank">Utah Humanities
-                                    Council</a>,
-                                    which empowers organizations like ours to improve our community through active
-                                    engagement in the humanities. Additionally, <a href="http://www.isomer.io"
-                                                                                   target="_blank">Isomer</a>, a web
-                                    development bootcamp in Salt Lake City, built and maintains our site. Managed by
-                                    Isomer
-                                    instructors, the students work on the site as a core part of their training before
-                                    beginning their careers as web developers. Interested in learning more about Isomer
-                                    or
-                                    want to help contribute to the open-source project? <a href="" target="_blank">Get
-                                        in
-                                        touch</a>.</p>
-
-                                <p>As Mapping Salt Lake City is an arts and educational resource, the photos and images
-                                    on
-                                    this site are to be used solely for that purpose. Copyright for photo use must be
-                                    obtained from the relevant institutions.</p>
-
-                                <div>
-                                    <h3>The Mapping SLC Crew</h3>
-                                    <a href="#">Paisley Rekdal</a> is the creator and Editor for Mapping Salt Lake
-                                    City.</br>
-                                    <a href="#">Chris Tanseer</a> serves as the Assistant Editor and Lead Web Developer
-                                    for
-                                    the
-                                    project.</br>
-                                </div>
-
-                                <div>
-                                    <h4>Founding Members</h4>
-                                    <ul>
-                                        <li>Chris Dunsmore</li>
-                                        <li>Jeff Nichols</li>
-                                        <li>Paisley Rekdal</li>
-                                        <li>Chris Tanseer</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                  <h3>The Mapping SLC Crew</h3>
+                  <a href="#">Paisley Rekdal</a> is the creator and Editor for Mapping Salt Lake
+                  City.</br>
+                  <a href="#">Chris Tanseer</a> serves as the Assistant Editor and Lead Web Developer
+                  for
+                  the
+                  project.</br>
                 </div>
-            </section>
+
+                <div>
+                  <h4>Founding Members</h4>
+                  <ul>
+                    <li>Chris Dunsmore</li>
+                    <li>Jeff Nichols</li>
+                    <li>Paisley Rekdal</li>
+                    <li>Chris Tanseer</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
+    </div>
+  </section>
 </section>

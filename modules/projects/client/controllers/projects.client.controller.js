@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', '$state',
-	function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, $state) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', '$state', 'UtilsService',
+	function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, $state, UtilsService) {
 		$scope.Authentication = Authentication;
 		$scope.isAdmin = AdminAuthService;
 		$scope.logo = '../../../modules/core/img/brand/mapping_150w.png';
@@ -12,9 +12,13 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.mapImage = '';
 		$rootScope.signInBeforeProject = false;
 
+
 	var publishUser = function(userId) {
 
 		};
+
+		//provides logic for the css in the forms
+		UtilsService.cssLayout();
 
 		var publishProject = function(project) {
 			if (project.status === 'published') {

@@ -270,3 +270,15 @@ div.morph-content > div > ul > div > li {
     /*-o-animation: sidebar-content 0.5s ease forwards;*/
     animation: sidebar-content 2.5s ease forwards;
 }
+
+.menu-icon .menu-closed-icon {
+
+}
+
+.menu-top-level, .menu-top-level-closed, .menu-top-level-open {
+    -webkit-transition: all ease 1.25s;
+    -moz-transition: all ease 1.25s;
+    -ms-transition: all ease 1.25s;
+    -o-transition: all ease 1.25s;
+    transition: all ease 1.25s;
+}
