@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('core').directive('secondaryMenuDirective', function() {
-    
+
     return {
 
         restrict: 'E',
