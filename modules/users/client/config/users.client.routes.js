@@ -70,7 +70,7 @@ angular.module('users').config(['$stateProvider',
       })
       .state('contributors', {
         url: '/contributors',
-        templateUrl: 'modules/users/views/contributors.client.view.html'
+        templateUrl: 'modules/users/client/views/contributors.client.view.html'
       });
   }
 ]);

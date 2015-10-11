@@ -75,7 +75,7 @@ exports.list = function (req, res) {
  * Get list of Contributors
  */
 
-exports.contributors = function(req, res) {
+exports.getContributors = function(req, res) {
   var query = User.find(req.query);
   query.or([{ roles: 'contributor' }, { roles: 'admin' }])
     .sort('-lastName')
@@ -88,6 +88,23 @@ exports.contributors = function(req, res) {
         res.jsonp(users);
       }
     });
+};
+
+/**
+ *
+ */
+
+exports.getContributorByID = function(req, res) {
+
+};
+
+
+/**
+ *
+ */
+
+exports.deleteContributor = function(req, res) {
+
 };
 
 /**

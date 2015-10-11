@@ -50,3 +50,13 @@
 .contact-form #check-awesome > label > span.box {
     border: 2px solid #023a31;
 }
+
+.ng-notify-contact-success {
+    background-color: #00A000;
+    color: #000;
+}
+
+.ng-notify-contact-failure {
+    background-color: #950B02;
+    color: #ffffff;
+}

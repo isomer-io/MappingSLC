@@ -12,6 +12,12 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.mapImage = '';
 		$rootScope.signInBeforeProject = false;
 
+		$scope.street = '547 South 300 East';
+		$scope.city = 'Salt Lake City';
+		$scope.state = 'UT';
+		$scope.zip = '84111';
+		$scope.title = 'My Goodly Project';
+		$scope.story = 'Here\'s my story... it starts with wisdom, loses that along the way and ends with sadness';
 
 	var publishUser = function(userId) {
 

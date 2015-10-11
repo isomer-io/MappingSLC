@@ -148,7 +148,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       //service that returns project markers
       MarkerDataService.getMarkerData()
         .success(function (markerData) {
-          $scope.getProjectMarkers(markerData);
+          //$scope.getProjectMarkers(markerData);
           $scope.addProjectMarkers(markerData);
         })
         .error(function (data, status) {
@@ -212,24 +212,24 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         }
         return $scope.markerArray;
       };
-
-      var popupMenuToggle = function (e) {
-        if (!$scope.menuOpen && popupIndex !== e.target._leaflet_id) {
-          $scope.toggleOverlayFunction('menu-closed');
-          //$scope.populateStorySummary($scope.projectDetails);
-          sidebar.open('details');
-          popupIndex = e.target._leaflet_id;
-        } else if (!$scope.menuOpen && popupIndex === e.target._leaflet_id) {
-          //$scope.populateStorySummary($scope.projectDetails);
-        } else if ($scope.menuOpen && popupIndex !== e.target._leaflet_id) {
-          //$scope.populateStorySummary($scope.projectDetails);
-          sidebar.open('details');
-          popupIndex = e.target._leaflet_id;
-        } else if ($scope.menuOpen && popupIndex === e.target._leaflet_id) {
-          sidebar.close();
-          popupIndex = 0;
-        }
-      };
+      //
+      //var popupMenuToggle = function (e) {
+      //  if (!$scope.menuOpen && popupIndex !== e.target._leaflet_id) {
+      //    $scope.toggleOverlayFunction('menu-closed');
+      //    //$scope.populateStorySummary($scope.projectDetails);
+      //    sidebar.open('details');
+      //    popupIndex = e.target._leaflet_id;
+      //  } else if (!$scope.menuOpen && popupIndex === e.target._leaflet_id) {
+      //    //$scope.populateStorySummary($scope.projectDetails);
+      //  } else if ($scope.menuOpen && popupIndex !== e.target._leaflet_id) {
+      //    //$scope.populateStorySummary($scope.projectDetails);
+      //    sidebar.open('details');
+      //    popupIndex = e.target._leaflet_id;
+      //  } else if ($scope.menuOpen && popupIndex === e.target._leaflet_id) {
+      //    sidebar.close();
+      //    popupIndex = 0;
+      //  }
+      //};
 
       //style the polygon tracts
       var style = {
@@ -269,10 +269,9 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         }
       });
 
-      //var sidebar = L.control.sidebar('sidebar', {
-      //	closeButton: true,
-      //	position: 'left'
-      //}).addTo(map);
+
+
+
 
       //projectMarker.on('click', function() {
       //	alert('yep!');
@@ -280,8 +279,33 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
       $scope.getProjectMarkers = function (markerData) {
       };
-
+      //var sidebar = L.control.sidebar('sidebar', {
+      //  closeButton: true,
+      //  position: 'left'
+      //}).addTo(map);
     };
 
+
+
+
+
+
+    var popupMenuToggle = function (e) {
+      if (!$scope.menuOpen && popupIndex !== e.target._leaflet_id) {
+        $scope.toggleOverlayFunction('menu-closed');
+        //$scope.populateStorySummary($scope.projectDetails);
+        sidebar.open('details');
+        popupIndex = e.target._leaflet_id;
+      } else if (!$scope.menuOpen && popupIndex === e.target._leaflet_id) {
+        //$scope.populateStorySummary($scope.projectDetails);
+      } else if ($scope.menuOpen && popupIndex !== e.target._leaflet_id) {
+        //$scope.populateStorySummary($scope.projectDetails);
+        sidebar.open('details');
+        popupIndex = e.target._leaflet_id;
+      } else if ($scope.menuOpen && popupIndex === e.target._leaflet_id) {
+        sidebar.close();
+        popupIndex = 0;
+      }
+    };
   }
 ]);
