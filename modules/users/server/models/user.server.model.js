@@ -85,7 +85,7 @@ var UserSchema = new Schema({
   username: {
     type: String,
     unique: 'Username already exists',
-    required: 'Please fill in a username',
+    //required: 'Please fill in a username',
     lowercase: true,
     trim: true
   },
@@ -105,8 +105,8 @@ var UserSchema = new Schema({
     trim: true
   },
   provider: {
-    type: String,
-    required: 'Provider is required'
+    type: String
+    //required: 'Provider is required'
   },
   providerData: {},
   additionalProvidersData: {},
