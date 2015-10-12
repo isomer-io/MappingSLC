@@ -156,7 +156,7 @@ exports.list = function (req, res) {
 exports.listPublished = function (req, res) {
 	//req.params
 	Project.find({
-		'status.type': 'published'
+		'status': 'published'
 	})
 			.sort('-created')
 			.populate('user')
