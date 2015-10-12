@@ -8,7 +8,7 @@
 
         <div class="main-content-outer">
 
-            <section data-ng-controller="ProjectsController" data-ng-init="find()" class="main-content-inner">
+            <section data-ng-controller="ProjectsController" data-ng-init="init()" class="main-content-inner">
 
                 <div class="list-projects">
 
@@ -36,7 +36,7 @@
                             </div>
                         </div>
 
-                        <div class="alert alert-warning text-center" data-ng-hide="!projects.$resolved || projects.length">
+                        <div class="alert alert-warning text-center" data-ng-hide="!PublishingService.getPublishedProjects() || projects.length">
                             No Projects yet, why don't you <a href="/projects/create">create one</a>?
                         </div>
 

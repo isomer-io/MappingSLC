@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', '$state', 'UtilsService',
-	function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, $state, UtilsService) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', '$state', 'UtilsService', 'PublishingService',
+	function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, $state,  UtilsService, PublishingService) {
 		$scope.Authentication = Authentication;
 		$scope.isAdmin = AdminAuthService;
 		$scope.logo = '../../../modules/core/img/brand/mapping_150w.png';
@@ -19,6 +19,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.title = 'My Goodly Project';
 		$scope.story = 'Here\'s my story... it starts with wisdom, loses that along the way and ends with sadness';
 
+
+		$scope.init = function() {
+			PublishingService.getPublishedProjects();
+		};
+
 	var publishUser = function(userId) {
 
 		};
@@ -30,6 +35,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			if (project.status === 'published') {
 				console.log('project.user._id: ', project.user._id);
 				publishUser(project.user._id);
+
 				//do stuff to add marker
 				//means i'll have to pull marker data out of create project and into update project
 				//could probably use the same code as current, just put it in update fn
@@ -102,36 +108,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				});
 			}
 		}();
-
-		$scope.slides = [
-
-			{
-				image: 'http://lorempixel.com/600/400/sports',
-				text: 'I am some words, a story even. Play Ball!'
-			},
-			{
-				image: 'http://lorempixel.com/600/400/people',
-				text: 'A story even. Peoples'
-			},
-			{
-				image: 'http://lorempixel.com/600/400/',
-				text: 'Story time! Anything!'
-			},
-			{
-				image: 'http://lorempixel.com/600/400/food',
-				text: 'Talk to me! Foodie'
-			}
-		];
-		$scope.thumbs = [
-			{
-				image: 'http://lorempixel.com/100/100/sports',
-				text: 'I am some words, a story even. Play Ball!'
-			},
-			{
-				image: 'http://lorempixel.com/100/100/people',
-				text: 'A story even. Peoples'
-			}
-		];
 
 		var mapImage = '';
 		// Create new Project
@@ -210,10 +186,22 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			});
 		};
 
+
+
+
+		// Find a list of all published projects
+		$scope.getPublishedProjects = function () {
+			$scope.publishedProjects = PublishingService.getPublishedProjects.query();
+			console.log('$scope.publishedProjects', $scope.publishedProjects);
+		};
+
+
 		// Find a list of Projects
 		$scope.find = function () {
 			$scope.projects = Projects.query();
+			console.log('$scope.projects', $scope.projects);
 		};
+
 
 		// Find existing Project
 		$scope.findOne = function () {

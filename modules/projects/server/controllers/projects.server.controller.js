@@ -147,6 +147,34 @@ exports.list = function (req, res) {
 };
 
 /**
+ * List of Projects with status "published"
+ *
+ * .find({ "invitees._id": req.query.invitation_id })
+ * .populate('invitees.user')
+ *
+ */
+exports.listPublished = function (req, res) {
+	//req.params
+	Project.find({
+		'status.type': 'published'
+	})
+			.sort('-created')
+			.populate('user')
+			.exec(function (err, projects) {
+				if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					//projects.user;
+					console.log('published projects:\n', projects);
+					res.jsonp(projects);
+				}
+			});
+};
+
+
+/**
  * List of GeoCoordinates for Projects
  */
 exports.markerList = function (req, res) {

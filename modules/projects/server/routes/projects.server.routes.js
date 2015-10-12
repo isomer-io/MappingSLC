@@ -16,6 +16,15 @@ module.exports = function(app) {
   app.route('/api/v1/projects')
     .get(projects.list);
 
+  // Projects collection routes
+  app.route('/api/v1/projects/all')
+    .get(projects.list);
+
+  // Projects collection routes
+  app.route('/api/v1/projects/published')
+    .get(projects.listPublished);
+
+
   app.route('/api/v1/projects').all(projectsPolicy.isAllowed)
     .post(projects.create);
 
