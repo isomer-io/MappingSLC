@@ -12,8 +12,8 @@
     "url": "https://github.com/poetsrock/mappingslc.git"
   },
   "engines": {
-    "node": ">=0.12.07",
-    "npm": ">=2.12.1"
+    "node": "0.12",
+    "npm": "2.12"
   },
   "scripts": {
     "start": "grunt --force",
