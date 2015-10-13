@@ -164,7 +164,7 @@ var ProjectSchema = new Schema({
         default: '',
         trim: true
     },
-    thumbnail: {
+    mainImgThumbnail: {
         type: String,
         default: '',
         trim: true

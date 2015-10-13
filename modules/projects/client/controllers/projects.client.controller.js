@@ -21,7 +21,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 
 
 		$scope.init = function() {
-			PublishingService.getPublishedProjects();
+			$scope.publishedProjects();
 		};
 
 	var publishUser = function(userId) {
@@ -74,6 +74,25 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				})
 			});
 		};
+
+
+
+
+		// Find a list of all published projects
+		//PublishingService.getPublishedProjects().
+		$scope.publishedProjects = function() {
+			$http.get('/api/v1/projects/published').
+			success(function (publishedProjects) {
+				$scope.publishedProjects = publishedProjects;
+				console.log('$scope.publishedProjects:\n', $scope.publishedProjects);
+				console.log('$scope.publishedProjects.title:\n', $scope.publishedProjects[0].title);
+
+			}).
+			error(function (data, status) {
+
+			});
+		};
+
 
 		$rootScope.previousState = '';
 		$rootScope.currentState = '';
@@ -184,15 +203,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			}, function (errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
-
-
-
-
-		// Find a list of all published projects
-		$scope.getPublishedProjects = function () {
-			$scope.publishedProjects = PublishingService.getPublishedProjects.query();
-			console.log('$scope.publishedProjects', $scope.publishedProjects);
 		};
 
 

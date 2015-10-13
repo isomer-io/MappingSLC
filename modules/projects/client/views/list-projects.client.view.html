@@ -22,15 +22,15 @@
                     <div class="list-group">
                         <div class="row">
                             <div class="col-md-12">
-                                <a data-ng-repeat="project in projects" data-ng-href="/projects/{{project._id}}" class="col-md-4 story-summary animation-cards">
+                                <a data-ng-repeat="publishedProject in publishedProjects" data-ng-href="/projects/{{publishedProject._id}}" class="col-md-4 story-summary animation-cards">
                                     <span>
                                         <span>
-                                            <img data-ng-src="{{thumbs[0]['image']}}"/>
+                                            <img data-ng-src="{{publishedProject.mainImgThumbnail}}"/>
                                         </span>
 
                                         <span class="pull-right">
-                                            <span data-ng-bind="project.title"></span><br/>
-                                            <span data-ng-bind="project.user.displayName">there</span><br/>
+                                            <span data-ng-bind="publishedProject.title"></span><br/>
+                                            <span data-ng-bind="publishedProject.user.displayName">there</span><br/>
                                         </span>
                                     </span>
                                 </a>

@@ -1,12 +1,40 @@
-<section class="row" ng-controller="AuthenticationController">
-  <h3 class="col-md-12 text-center">Sign in using your social accounts</h3>
-  <div class="col-md-12 text-center signin-icons">
-    <img ng-click="callOauthProvider('/api/v1/auth/facebook')" ng-src="/modules/users/client/img/buttons/facebook.png">
-    <img ng-click="callOauthProvider('/api/v1/auth/twitter')" ng-src="/modules/users/client/img/buttons/twitter.png">
-    <img ng-click="callOauthProvider('/api/v1/auth/google')" ng-src="/modules/users/client/img/buttons/google.png">
-    <img ng-click="callOauthProvider('/api/v1/auth/linkedin')" ng-src="/modules/users/client/img/buttons/linkedin.png">
-    <img ng-click="callOauthProvider('/api/v1/auth/github')" ng-src="/modules/users/client/img/buttons/github.png">
-    <img ng-click="callOauthProvider('/api/v1/auth/paypal')"  ng-src="/modules/users/client/img/buttons/paypal.png">
-  </div>
-  <div ui-view></div>
+<secondary-menu-directive></secondary-menu-directive>
+
+<section class="content background" data-ng-controller="RandomMapController"
+         ng-style="{'background-image': 'url(' + staticMap.mapUrl + ')', 'background-size' : 'cover' }"
+         data-ng-class="{'page-view-menu-open': toggleSecondMenu}">
+
+  <section class="container">
+    <a href="/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
+
+    <div class="main-content-outer">
+
+
+      <section ng-controller="AuthenticationController" class="main-content-inner">
+
+        <div class="row">
+
+          <h3 class="col-md-12 text-center">Sign in using your social accounts</h3>
+
+          <div class="col-md-12 text-center signin-icons">
+            <img ng-click="callOauthProvider('/api/v1/auth/facebook')"
+                 ng-src="/modules/users/client/img/buttons/facebook.png">
+            <img ng-click="callOauthProvider('/api/v1/auth/twitter')"
+                 ng-src="/modules/users/client/img/buttons/twitter.png">
+            <img ng-click="callOauthProvider('/api/v1/auth/google')"
+                 ng-src="/modules/users/client/img/buttons/google.png">
+            <img ng-click="callOauthProvider('/api/v1/auth/linkedin')"
+                 ng-src="/modules/users/client/img/buttons/linkedin.png">
+            <img ng-click="callOauthProvider('/api/v1/auth/github')"
+                 ng-src="/modules/users/client/img/buttons/github.png">
+            <img ng-click="callOauthProvider('/api/v1/auth/paypal')"
+                 ng-src="/modules/users/client/img/buttons/paypal.png">
+          </div>
+          <div ui-view></div>
+        </div>
+      </section>
+
+    </div>
+
+  </section>
 </section>
