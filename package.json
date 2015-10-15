@@ -18,7 +18,7 @@
   "scripts": {
     "start": "grunt --force",
     "test": "grunt test",
-    "postinstall": "bower install --config.interactive=false && gulp build"
+    "postinstall": "bower install --config.interactive=false && gulp prod"
   },
   "dependencies": {
     "acl": "~0.4.4",
