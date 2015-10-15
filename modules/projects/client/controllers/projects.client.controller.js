@@ -48,6 +48,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		//admin panel editing
 		$scope.toggleEdit = false;
 		$scope.toggleId = 0;
+
 		$scope.toggleEditFn = function(editNum) {
 			$scope.toggleEdit = !$scope.toggle;
 			$scope.toggleId = editNum;
@@ -197,6 +198,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			publishProject(project);
 			project.$update(function () {
 				if($location.path() === '/admin/edit-project/' + project._id) {
+					//return to view mode and call notify for success message
 				} else {
 					$location.path('projects/' + project._id);
 				}
