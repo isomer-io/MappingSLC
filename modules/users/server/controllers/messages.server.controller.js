@@ -4,20 +4,28 @@
 var path = require('path'),
     mongoose = require('mongoose'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
+    profile =  require('./users/users.profile.server.controller'),
+    authenticate = require('./users/users.authentication.server.controller'),
     User = mongoose.model('User'),
     _ = require('lodash');
 
  function _checkForExistingUser (currentUniqueId) {
-    User.find({
-        'user.email': req.body.email
+    User.findOne({
+        'email': currentUniqueId
     })
         .exec(function (err, users) {
+
+            console.log('exe made it!\n', users);
             if (err) {
+                console.log('err yo! create new user constructor require thingy');
                 return res.status(400).send({
                     message: errorHandler.getErrorMessage(err)
                 });
+            } else if (users === null) {
+                console.log('need to create a new user');
+                return false;
             } else {
-                console.log(users);
+                console.log('here i am', users);
                 if (users.email === currentUniqueId) {
                     return true;
                 }
@@ -26,39 +34,25 @@ var path = require('path'),
 };
 //Create a user for the Newsletter
 exports.subscriber = function (req,res) {
-    var user = new User(req.body);
-    user.email = req.body.email;
-    function saveUser(){
-        user.save(function (err) {
-            if (err) {
-                return res.status(400).send({
-                    message: errorHandler.getErrorMessage(err)
-                });
-            } else {
-                res.jsonp(user);
-            }
-        });
+    if (_checkForExistingUser(req.body.email)) {
+        req.user = User;
+        req.user.newsletter = true;
+        profile.update(req,res);
+
+        //User.save(){
+        // do code to update newsletter field to true;
+        // }
+
+
+
+    }else {
+        //add defaults for other required fields
+        //assign email address to user name
+        //User.username = req.body.email;
+        authenticate.signup(req,res);
     }
-
-    User.findOne({
-        'user.email': req.body.email
-    })
-        .exec(function (err, users) {
-            if (err) {
-
-                return res.status(400).send({
-
-                    message: errorHandler.getErrorMessage(err)
-                });
-            } else {
-
-                if (user.email === req.body.email) {
-                    console.log('Its unique!');
-                    saveUser();
-                }
-            }
-        });
-
+    //var user = new User(req.body);
+    //user.email = req.body.email;
 
 
 };
