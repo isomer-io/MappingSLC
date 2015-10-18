@@ -5,18 +5,20 @@
 
     <div class=lightbox-nav>
       <button class=close aria-hidden=true ng-click=$dismiss()>×</button>
-      <div class=btn-group><a class="btn btn-xs btn-default" ng-click=Lightbox.prevImage()>‹ Previous</a> <a
-        ng-href={{Lightbox.imageUrl}} target=_blank class="btn btn-xs btn-default" title="Open in new tab">Open image
-        in new tab</a> <a class="btn btn-xs btn-default" ng-click=Lightbox.nextImage()>Next ›</a></div>
+      <div class=btn-group>
+        <a class="btn btn-xs btn-default" ng-click=Lightbox.prevImage()>‹ Previous</a>
+        <a ng-href={{Lightbox.imageUrl}} target=_blank class="btn btn-xs btn-default" title="Open in new tab">Open image in new tab</a>
+        <a class="btn btn-xs btn-default" ng-click=Lightbox.nextImage()>Next ›</a>
+      </div>
     </div>
 
     <!-- image -->
     <div class="lightbox-image-container">
-
+      <h3>{{contributor.firstName}} {{contributor.lastName}}</h3>
       <img lightbox-src="{{Lightbox.imageUrl}}" alt="">
-
-      <div class=lightbox-image-caption><span>{{Lightbox.imageCaption}}</span></div>
-
+      <div class=lightbox-image-caption>
+        <span>{{Lightbox.imageCaption}}</span>
+      </div>
     </div>
 
   </div>
