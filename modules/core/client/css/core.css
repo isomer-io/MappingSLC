@@ -322,13 +322,6 @@ submit-project-directive > section > div > div {
   height: auto;
 }
 
-.logo-second-page {
-  top: 1.25%;
-  width: 6.5%;
-  height: auto;
-  position: fixed;
-}
-
 .menu-toggle-backdrop {
   background-color: hsla(36, 100%, 85%, 0.6);
   width: 3%;

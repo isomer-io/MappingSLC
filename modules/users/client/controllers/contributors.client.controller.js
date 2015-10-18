@@ -5,36 +5,43 @@ angular.module('users').controller('ContributorController', ['$scope', '$animate
   function ($scope, $animate, $location, Authentication, GetContributors, $stateParams, $http, $modal, $window, Lightbox) {
 
     $scope.contributors = null;
+    $scope.images = [];
 
-    $scope.init = function () {
-      GetContributors.contributors();
+    /**
+     * Lightbox
+     */
+
+    $scope.openLightboxModal = function (index) {
+      Lightbox.openModal($scope.images, index);
     };
 
-    GetContributors.contributors()
-      .success(function (contributorsData) {
-        console.log('contributorsData: ', contributorsData);
-        $scope.contributors = contributorsData;
-        console.log('$scope.contributors: ', $scope.contributors);
-      }).
-    error(function (errorData) {
-      console.log('errorData: ', errorData);
-    });
+    $scope.init = function () {
+      getContribData();
+    };
+
+    var getContribData = function() {
+      GetContributors.contributors()
+        .success(function (contributorsData) {
+          $scope.contributors = contributorsData;
+          getImages($scope.contributors);
+          return $scope.images;
+        }).
+      error(function (errorData) {
+        console.log('errorData: ', errorData);
+      });
+    };
+
+    var getImages = function (contribData) {
+      var i;
+      for(i = 0; i < contribData.length; i++ ) {
+        $scope.images.push(contribData[i].profileImageURL);
+      }
+    };
 
     $scope.changeView = function (view) {
       $location.path(view);
     };
 
-    /**
-     * Lightbox
-     */
-    $scope.Lightbox = Lightbox;
-    $scope.images = [];
-    $scope.getImages = function () {
-      var i;
-      for(i = 0; i > $scope.contributors.length; i++ ) {
-        $scope.images.push($scope.contributors[i].profileImageURL);
-      }
-    }
-  }
 
+  }
 ]);

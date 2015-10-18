@@ -84,7 +84,40 @@
 }
 
 @media (max-height: 1079px) {
+    .core .main-text p {
+        font-size: 1.2em;
+    }
+
+    .core p {
+        font-size: 1em;
+    }
+
+    .core .page-header {
+        margin: 20px 0 10px 0;
+    }
+
+    .pull-right.col-equal {
+        position: relative;
+        right: 7%;
+    }
+
+    featured-projects img {
+        height:10vh;
+    }
+
+    featured-projects ul, featured-projects .grid figure {
+        padding: 0;
+    }
+
     .sidebar-content.active {
         overflow-y: auto;
+    }
+
+    .col-equal {
+        margin-top: 0;
+    }
+
+    .footer-directive .body .div .div .div {
+        padding: 40px;
     }
 }

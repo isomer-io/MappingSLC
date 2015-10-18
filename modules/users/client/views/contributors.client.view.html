@@ -16,27 +16,18 @@
                 <h1>Contributors</h1>
 
                 <div class="row">
-                  <div class="col-md-12">
 
-
-                    <!--<li ng-repeat="image in images">-->
-                    <!--<a ng-click="Lightbox.openModal(images, $index)">-->
-                    <!--<img ng-src="{{image}}" class="img-circle" alt="" style="width: 6em;">-->
-                    <!--</a>-->
-                    <!--</li>-->
-
+                  <label>Search <input ng-model="searchText"></label>
 
                     <ul id="gallery">
-                      <li data-ng-repeat="contributor in contributors">
-                        <a data-ng-click="Lightbox.openModal(images, $index)">
-                          <img ng-src="{{contributor.profileImageURL}}" class="img-circle" alt="" style="width: 6em;">
-
+                      <li data-ng-repeat="contributor in contributors | filter:searchText" class="col-md-4">
+                        <a ng-click="openLightboxModal($index)">
+                          <img ng-src="{{contributor.profileImageURL}}" class="img-circle">
                           <h3>{{contributor.firstName}} {{contributor.lastName}}</h3>
-
-                          <!--<p>{{contributor.bio}}</p>-->
-
                         </a>
                       </li>
+
+
                     </ul>
 
 

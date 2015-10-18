@@ -1,26 +1,21 @@
-#slides_control .nav, #slides_control .pagination, #slides_control .carousel, #slides_control .panel-title a {
-    cursor: pointer;
+.contrib ul {
+    list-style-type: none;
 }
 
-#slides_control > div{
-    height: 400px;
-
-}
-#slides_control img {
-    margin: auto;
-    width: 600px;
+.contrib a {
+    text-decoration: none;
 }
 
-#slides_control {
-    position:absolute;
-    width: 600px;
-    left:50%;
-    top:20px;
-    margin-left:-200px;
+.contrib img {
+    width: 6em;
+    height: 6em;
 }
 
-#slides_control p {
-    background-color: rgba (0, 0, 0, 0.8);
-    color: #ffffff;
-    font-size: 2rem;
+.contrib label {
+    margin: 15px 0 35px 20px;
+    font-weight: normal;
+}
+
+.contrib input {
+
 }
