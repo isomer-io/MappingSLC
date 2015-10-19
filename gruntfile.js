@@ -33,7 +33,7 @@ module.exports = function (grunt) {
       },
       serverJS: {
         files: _.union(defaultAssets.server.gruntConfig, defaultAssets.server.allJS),
-        tasks: ['jshint'],
+        //tasks: ['jshint'],
         options: {
           livereload: true
         }
@@ -46,28 +46,28 @@ module.exports = function (grunt) {
       },
       clientJS: {
         files: defaultAssets.client.js,
-        tasks: ['jshint'],
+        //tasks: ['jshint'],
         options: {
           livereload: true
         }
       },
       clientCSS: {
         files: defaultAssets.client.css,
-        tasks: ['csslint'],
+        //tasks: ['csslint'],
         options: {
           livereload: true
         }
       },
       clientSCSS: {
         files: defaultAssets.client.sass,
-        tasks: ['sass', 'csslint'],
+        //tasks: ['sass', 'csslint'],
         options: {
           livereload: true
         }
       },
       clientLESS: {
         files: defaultAssets.client.less,
-        tasks: ['less', 'csslint'],
+        //tasks: ['less', 'csslint'],
         options: {
           livereload: true
         }
