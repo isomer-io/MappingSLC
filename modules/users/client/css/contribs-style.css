@@ -19,3 +19,25 @@
 .contrib input {
 
 }
+
+.lightbox-image-caption {
+    text-shadow: none;
+    position: relative;
+    font-weight: normal;
+    color: #fff;
+}
+
+.lightbox-image-caption span {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.lightbox-image-caption img {
+    width: 80% !important;
+    height: auto !important;
+}
+
+
+.contributors .modal-body, body > div.modal.fade.ng-isolate-scope.lightbox-modal.in > div > div > section > div {
+    background-color: rgba(0, 0, 0, 0.8);
+}

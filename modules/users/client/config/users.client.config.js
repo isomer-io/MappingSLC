@@ -80,10 +80,10 @@ angular.module('users').config(['$httpProvider',
   //set a custom template
   LightboxProvider.templateUrl = '/modules/users/client/views/lightbox.html';
 
-// set the caption of each image as its text color
-  LightboxProvider.getImageCaption = function (imageUrl) {
-    return '#' + imageUrl.match(/00\/(\w+)/)[1];
-  };
+//// set the caption of each image as its text color
+//  LightboxProvider.getImageCaption = function (imageUrl) {
+//    return '#' + imageUrl.match(/00\/(\w+)/)[1];
+//  };
 
   // increase the maximum display height of the image
   LightboxProvider.calculateImageDimensionLimits = function (dimensions) {

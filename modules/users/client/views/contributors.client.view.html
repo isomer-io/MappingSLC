@@ -7,7 +7,7 @@
     <a href="/" class="small-main-logo logo-on-page logo-second-page img-responsive"></a>
 
     <div class="main-content-outer">
-      <section data-ng-controller="ContributorController" data-ng-init="init()">
+      <section data-ng-controller="ContributorController" data-ng-init="init()" class="contributors">
         <div class="contrib">
           <div class="row">
             <div class="col-md-12">
@@ -21,6 +21,7 @@
 
                     <ul id="gallery">
                       <li data-ng-repeat="contributor in contributors | filter:searchText" class="col-md-4">
+                        <!--<a ng-click="openLightboxModal(images, $index)">-->
                         <a ng-click="openLightboxModal($index)">
                           <img ng-src="{{contributor.profileImageURL}}" class="img-circle">
                           <h3>{{contributor.firstName}} {{contributor.lastName}}</h3>
