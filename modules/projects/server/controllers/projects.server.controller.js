@@ -9,8 +9,8 @@ var path = require('path'),
 		Project = mongoose.model('Project'),
 		_ = require('lodash'),
 		keys = require('../../../users/server/config/private/keys.js'),
+		Kraken = require('kraken'),
 		AlchemyAPI = require('alchemy-api'),
-		alchemyapi = new AlchemyAPI(keys.alchemyKey),
 		sanitizeHtml = require('sanitize-html');
 		//Promise = require('bluebird'),
 		//fs = Promise.promisifyAll(require('fs')),
@@ -232,6 +232,7 @@ exports.hasAuthorization = function (req, res, next) {
  **/
 
 exports.nlpProjects = function (req, res) {
+	var alchemyapi = new AlchemyAPI(keys.alchemyKey);
 	var myText = "Whoa, AlchemyAPI's Node.js SDK is really great, I can't wait to build my app!";
 	alchemyapi.sentiment("text", myText, {}, function (response) {
 		console.log("Sentiment: " + response["docSentiment"]["type"]);
@@ -252,3 +253,28 @@ exports.nlpProjects = function (req, res) {
 //		}
 //	);
 //};
+
+/**
+ * Kraken.io Img Optimization
+ */
+
+exports.krakenImageUpload = function(req, res) {
+	var kraken = new Kraken({
+		api_key: keys.krakenKey,
+		api_secret: keys.krakenSecret
+	});
+
+	var opts = {
+		file: '/path/to/image/file.jpg',
+		wait: true
+	};
+
+	kraken.upload(opts, function(data) {
+		if (data.success) {
+			console.log('Success. Optimized image URL: %s', data.kraked_url);
+		} else {
+			console.log('Fail. Error message: %s', data.error);
+		}
+	});
+
+};

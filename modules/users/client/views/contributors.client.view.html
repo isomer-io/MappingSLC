@@ -13,30 +13,37 @@
             <div class="col-md-12">
               <div class="main-content-inner">
 
-                <h1>Contributors</h1>
-
                 <div class="row">
+                  <div><h1 class="col-md-6">Contributors</h1></div>
 
-                  <label>Search <input ng-model="searchText"></label>
-
-                    <ul id="gallery">
-                      <li data-ng-repeat="contributor in contributors | filter:searchText" class="col-md-4">
-                        <!--<a ng-click="openLightboxModal(images, $index)">-->
-                        <a ng-click="openLightboxModal($index)">
-                          <img ng-src="{{contributor.profileImageURL}}" class="img-circle">
-                          <h3>{{contributor.firstName}} {{contributor.lastName}}</h3>
-                        </a>
-                      </li>
-
-
-                    </ul>
-
-
+                  <div class="col-md-6 search-input-div">
+                    <span class="input input-secondary pull-right">
+                        <input class="input_field input_field-secondary" type="text" id="search"
+                               data-ng-model="searchContributors"/>
+                        <label class="input_label input_label-secondary" for="search">
+                          <span class="input_label-content input_label-content-secondary">Search Contributors</span>
+                        </label>
+                    </span>
                   </div>
                 </div>
 
+                <div class="row">
 
+                  <ul id="grid-view">
+                    <a ng-click="openLightboxModal($index)" data-ng-repeat="contributor in contributors | filter:searchContributors" class="col-md-3">
+                      <li>
+                        <div>
+                            <img ng-src="{{contributor.profileImageURL}}">
+                            <p>{{contributor.firstName}} {{contributor.lastName}}</p>
+                        </div>
+                      </li>
+                    </a>
+                  </ul>
+
+
+                </div>
               </div>
+
             </div>
           </div>
         </div>

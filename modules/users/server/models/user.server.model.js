@@ -100,7 +100,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'modules/users/client/img/profile/default.png'
   },
-  userSelectedImageURL: {
+  profileImageThumbURL: {
     type: String,
     trim: true
   },

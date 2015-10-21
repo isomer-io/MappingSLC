@@ -1,5 +1,3 @@
-# dir for private files and API keys
-/modules/.1users/server/config/.private
 
 # OS
 # ===========
@@ -21,9 +19,10 @@ coverage/
 
 # MEAN.js app and assets
 # ======================
-#public/dist/
-uploads
-modules/.1users/client/img/profile/uploads
+public/dist/
+/build
+/uploads
+modules/users/client/img/profile/uploads
 config/env/local.js
 *.pem
 /modules/projects/server/models/data/private

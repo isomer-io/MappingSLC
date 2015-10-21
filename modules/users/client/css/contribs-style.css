@@ -2,23 +2,73 @@
     list-style-type: none;
 }
 
-.contrib a {
-    text-decoration: none;
+
+
+.contrib .search-input-div {
+    position: relative;
+    top: -25px;
+    left: 25px;
 }
 
-.contrib img {
+.input_field-secondary {
+    color: #d7d7d7;
+    font-size: 1.3em;
+}
+
+.main-content-inner h1{
+    margin-bottom: 25px;
+}
+
+.contrib #grid-view li {
+    background-color: rgba(221, 215, 200, 0.6);
+    border: solid 1px #fff6de;
+    margin: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.contrib #grid-view li:hover {
+
+}
+
+.contrib #grid-view a {
+    text-decoration: none;
+    color: #000;
+}
+
+.contrib #grid-view div {
+    margin: 7px;
+}
+.contrib #grid-view img {
     width: 6em;
     height: 6em;
+    filter: sepia(75%);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
-.contrib label {
+.contrib #grid-view label {
     margin: 15px 0 35px 20px;
     font-weight: normal;
 }
 
-.contrib input {
-
+.contrib #grid-view p {
+    position: relative;
+    margin: 3px 0 10px -5px;
+    font-size: 1.6rem;
 }
+
+
+/**
+MODAL
+**/
+
+.contributors .modal-body, body > div.modal.fade.ng-isolate-scope.lightbox-modal.in > div > div > section > div {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 
 .lightbox-image-caption {
     text-shadow: none;
@@ -35,9 +85,4 @@
 .lightbox-image-caption img {
     width: 80% !important;
     height: auto !important;
-}
-
-
-.contributors .modal-body, body > div.modal.fade.ng-isolate-scope.lightbox-modal.in > div > div > section > div {
-    background-color: rgba(0, 0, 0, 0.8);
 }

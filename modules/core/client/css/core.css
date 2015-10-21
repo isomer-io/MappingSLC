@@ -99,10 +99,17 @@ a:hover .header-profile-image {
 .main-content-outer {
   height: 100%;
   background-color: rgba(221, 215, 200, 0.6);
-  margin: 5%;
+  margin: 10% 0 0 -5%;
   padding: 1% 2%;
   border-radius: 10px;
   border: solid 2px #090909;
+  width: 110%;
+  /*height: 100%;*/
+  /*background-color: rgba(221, 215, 200, 0.6);*/
+  /*margin: 5%;*/
+  /*padding: 1% 2%;*/
+  /*border-radius: 10px;*/
+  /*border: solid 2px #090909;*/
 }
 /*applies to all pages that have a static map as background image, so most views other than home page*/
 .main-content-inner {
