@@ -40,11 +40,8 @@ angular.module('users').controller('ContributorController', ['$scope', '$animate
         tempData.url = contribData[i].profileImageURL;
         tempData.thumbUrl = contribData[i].profileImageThumbURL;
         tempData.caption = contribData[i].bio;
-        console.log('$scope.contribData', $scope.contribData);
-        console.log('contribData[i]', contribData[i]);
         $scope.images.push(tempData);
       }
-      console.log('$scope.images', $scope.images);
 
     };
 
