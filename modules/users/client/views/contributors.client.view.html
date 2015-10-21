@@ -33,7 +33,7 @@
                     <a ng-click="openLightboxModal($index)" data-ng-repeat="contributor in contributors | filter:searchContributors" class="col-md-3">
                       <li>
                         <div>
-                            <img ng-src="{{contributor.profileImageURL}}">
+                            <img ng-src="{{contributor.profileImageURL}}" class="img-thumbnail">
                             <p>{{contributor.firstName}} {{contributor.lastName}}</p>
                         </div>
                       </li>
