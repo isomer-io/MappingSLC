@@ -16,7 +16,7 @@ angular.module('core').directive('footerDirective', function() {
                     }
                 }).success(function(data){
                     console.log(data);
-                    if (data) {
+                    if ('YO the DATA' ,data) {
 
                     }
                 })

@@ -36,20 +36,40 @@ var path = require('path'),
 exports.subscriber = function (req,res) {
     if (_checkForExistingUser(req.body.email)) {
         req.user = User;
-        req.user.newsletter = true;
-        profile.update(req,res);
+        if (req.user.newsletter == false){
+            req.user.newsletter = true;
+        }
+        User.save(function(err){
+            if (err) {
+                console.log('Houston we got a problem: ', err);
+            }else {
+                res.json(req.user);
+            }
+        })
+        //profile.update(req,res);
 
-        //User.save(){
-        // do code to update newsletter field to true;
-        // }
+      //res.json(req.user);
 
 
 
     }else {
         //add defaults for other required fields
         //assign email address to user name
-        //User.username = req.body.email;
-        authenticate.signup(req,res);
+        var user = new User({username: req.body.email});
+        user.newsletter = true;
+        delete req.body.roles;
+        console.log('new user: ' ,user);
+        user.save(function(err){
+            if (err){
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            }else {
+                res.json(user);
+            }
+        })
+        //res.json(user);
+        //authenticate.signup(req,res);
     }
     //var user = new User(req.body);
     //user.email = req.body.email;
