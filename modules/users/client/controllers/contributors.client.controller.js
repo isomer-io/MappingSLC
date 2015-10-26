@@ -27,6 +27,7 @@ angular.module('users').controller('ContributorController', ['$scope', '$animate
         .success(function (contributorsData) {
           getImages(contributorsData);
           $scope.contributors = contributorsData;
+          console.log('$scope.contributors:\n', $scope.contributors);
           return $scope.images;
         }).
       error(function (errorData) {

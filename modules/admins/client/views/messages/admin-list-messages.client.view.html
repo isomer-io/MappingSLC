@@ -44,9 +44,8 @@
 
                 </table>
 
-                <div class="alert alert-warning text-center" data-ng-hide="!contacts.$resolved || contacts.length">
-                    No Contacts yet, why don't you <a href="/contacts/create">create one</a>?
-                </div>
+              <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+
             </section>
         </div>
 

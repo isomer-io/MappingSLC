@@ -12,13 +12,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.mapImage = '';
 		$rootScope.signInBeforeProject = false;
 
-		$scope.street = '547 South 300 East';
-		$scope.city = 'Salt Lake City';
-		$scope.state = 'UT';
-		$scope.zip = '84111';
-		$scope.title = 'My Goodly Project';
-		$scope.story = 'Here\'s my story... it starts with wisdom, loses that along the way and ends with sadness';
-
+		$scope.trustAsHtml = $sce.trustAsHtml;
 
 		$scope.init = function() {
 			$scope.publishedProjects();
@@ -36,24 +30,16 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				console.log('project.user._id: ', project.user._id);
 				publishUser(project.user._id);
 
+				//need to turn add marker
+				//neeeds to make sure project shows up in list
+				//and contributor bio displays
+
 				//do stuff to add marker
 				//means i'll have to pull marker data out of create project and into update project
 				//could probably use the same code as current, just put it in update fn
 				project.previouslyPublished = true; //need some func for deleting all of this if we unpublish a project. was thinking we check if prevPub is true and current status does not equal publish, then execute unPub func.
 			}
 		};
-
-		$scope.trustAsHtml = $sce.trustAsHtml;
-
-		//admin panel editing
-		$scope.toggleEdit = false;
-		$scope.toggleId = 0;
-
-		$scope.toggleEditFn = function(editNum) {
-			$scope.toggleEdit = !$scope.toggle;
-			$scope.toggleId = editNum;
-		};
-
 
 		var saveProject = null;
 		$scope.updateLatLng = function(project) {
@@ -75,9 +61,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				})
 			});
 		};
-
-
-
 
 		// Find a list of all published projects
 		//PublishingService.getPublishedProjects().
@@ -130,6 +113,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		}();
 
 		var mapImage = '';
+
 		// Create new Project
 		$scope.create = function (isValid) {
 
@@ -283,10 +267,18 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 					},
 					size: 'lg'
 				});
-			}
 
+			}
 		});
 
+		//admin panel editing
+		$scope.toggleEdit = false;
+		$scope.toggleId = 0;
+
+		$scope.toggleEditFn = function(editNum) {
+			$scope.toggleEdit = !$scope.toggle;
+			$scope.toggleId = editNum;
+		};
 
 		/**
 		 * nlp

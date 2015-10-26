@@ -178,26 +178,17 @@ exports.listPublished = function (req, res) {
  * List of GeoCoordinates for Projects
  */
 exports.markerList = function (req, res) {
-	Project.find()
+	Project.find({
+				'status': 'published'
+			})
 		.sort('-created')
-		//.populate('status', 'lat', 'lng')
 		.exec(function (err, projects) {
 			if (err) {
 				return res.status(400).send({
 					message: errorHandler.getErrorMessage(err)
 				});
 			} else {
-				//var lng = [];
-				//for(var prop in projects) {
-				//console.log('projects.lng: ' + prop + ' \n', projects[prop].lng);
-				//console.log('projects.lng: \n', projects[prop].lng);
-				//console.log('lng: \n', projects[0].lng);
-				//res.jsonp(projects[prop].lng);
-				//lng = lng.push(projects[prop].lng);
-				//console.log('lng: \n', lng);
-				//}
-				//return lng;
-				//console.log('projects: ', projects);
+				console.log('projects: ', projects);
 				res.jsonp(projects);
 			}
 		});

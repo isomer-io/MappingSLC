@@ -8,7 +8,7 @@
 
         <div class="main-content-outer">
 
-            <section data-ng-controller="SettingsController" data-ng-init="findOne()" class="main-content-inner">
+            <section data-ng-controller="EditProfileController" data-ng-init="findOne()" class="main-content-inner">
 
                 <div class="admin">
 
@@ -18,17 +18,22 @@
 
                         <div class="page-header">
                             <h1>{{user.firstName}} {{user.lastName}}'s Profile
-                                <a href="#" data-ng-show="'modules/core/img/{{photo0}}'"><span><img data-ng-src="modules/core/img/{{photo0}}"
-                                                                                                    class="header-profile-image pull-right"/></span></a>
-                                <a href="#" data-ng-show="!'modules/core/img/{{photo0}}'"><span><img data-ng-src="" class="header-profile-image pull-right"/></span>Upload
-                                    a Pic</a>
+                                <a href="#" data-ng-show="user.profileImageURL"><span><img data-ng-src="{{user.profileImageURL}}" class="header-profile-image pull-right"/></span>
+                                </a>
+
+                                <a href="#" data-ng-show="!user.profileImageURL"><span><img data-ng-src="" class="header-profile-image pull-right"/></span>Upload a Pic
+                                </a>
                             </h1>
                         </div>
 
                         <div class="row user-profile">
                             <div class="col-xs-12">
 
-                                <user-view-form></user-view-form>
+                              <form name="editUser" class="form-horizontal" data-ng-submit="updateUserProfile(editUser.$valid)" novalidate>
+                                <fieldset>
+                                  <user-view-form></user-view-form>
+                                </fieldset>
+                              </form>
 
                             </div>
                         </div>

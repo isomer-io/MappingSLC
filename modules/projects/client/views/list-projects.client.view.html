@@ -37,12 +37,14 @@
                             </div>
                         </div>
 
+
                         <div class="alert alert-warning text-center" data-ng-hide="!PublishingService.getPublishedProjects() || projects.length">
                             No Projects yet, why don't you <a href="/projects/create">create one</a>?
                         </div>
 
                     </div>
                 </div>
+              <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
 
             </section>
         </div>

@@ -9,6 +9,10 @@ module.exports = {
     //US Census API Key
     censusKey: '4d396163ae90829a66916a08b3af462608c87316',
 
+    //Cloudinary
+    cloudinaryKey: '176182552531851',
+    cloudinarySecret: 'bAHO5GflAOEIAW4SbZRzmaxMKok',
+
     emailKey: '',
     emailAddress: 'christanseer@hotmail.com',
 
