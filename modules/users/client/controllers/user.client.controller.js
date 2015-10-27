@@ -27,8 +27,8 @@ angular.module('users').controller('UserController', ['$scope', '$state', '$stat
         return false;
       }
 
-      var user = $scope.user;
-
+      //probably need to create new User instance before being able to use `user.$update()`
+      //also need to better understand `$state.go()`
       user.$update(function () {
         $state.go('admin.user', {
           userId: user._id

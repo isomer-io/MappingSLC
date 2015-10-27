@@ -16,8 +16,9 @@ module.exports = function (app) {
 
   // Single user routes
   app.route('/api/v1/users/:userId')
-    .get(adminPolicy.isAllowed, admin.read)
-    .put(adminPolicy.isAllowed, admin.update)
+    //.get(adminPolicy.isAllowed, admin.read)
+    .get(admin.read)
+    .put(admin.update)
     .delete(adminPolicy.isAllowed, admin.delete);
 
   // Contributors collection routes

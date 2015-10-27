@@ -1,16 +1,17 @@
 'use strict';
 
-angular.module('users').controller('EditProfileController', ['$scope', '$http', '$location', 'Users', 'UserData', '$stateParams', 'Authentication', 'UtilsService',
-  function ($scope, $http, $location, Users, UserData, $stateParams, Authentication, UtilsService) {
-    $scope.currentUser = Authentication.user;
-    console.log('Authentication.users: ', Authentication.user);
-    //$scope.user;
+angular.module('users').controller('EditProfileController', ['$scope', '$http', '$location', 'Users', 'UserData', '$stateParams', 'Authentication', 'AdminAuthService', 'UtilsService',
+  function ($scope, $http, $location, Users, UserData, $stateParams, Authentication, AdminAuthService, UtilsService) {
+    $scope.user = Authentication.user;
+    $scope.isAdmin = AdminAuthService;
 
     // Provides logic for the css in the forms
     UtilsService.cssLayout();
 
+
+
     // Update a user profile
-    $scope.updateUserProfile = function (isValid) {
+    $scope.updateCurrentUser = function (isValid) {
       $scope.success = $scope.error = null;
 
       if (!isValid) {
@@ -18,20 +19,54 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
         return false;
       }
       console.log('here');
-      var user = new Users($scope.user);
+      var userToEditId = $stateParams.userId;
+      var user = AdminUpdateUser(userToEditId);
       user.$update(function (response) {
         $scope.$broadcast('show-errors-reset', 'userForm');
         $scope.success = true;
         Authentication.user = response;
-        console.log('here 2 w response', response);
       }, function (response) {
-        console.log('here 3 w response', response);
         $scope.error = response.data.message;
-        console.log('error!\n', $scope.error);
       });
     };
 
-    //admin panel functions
+    // Update a user profile
+    $scope.updateUserAdmin = function(isValid) {
+      if (isValid) {
+        $scope.success = $scope.error = null;
+        //var user = new Users($scope.userToEdit);
+        var user = new Users({
+          userId: $stateParams.userId
+        });
+        user.$update(function(response) {
+          $scope.success = true;
+          //$scope.user = Authentication.user = response;
+        }, function(response) {
+          $scope.error = response.data.message;
+          console.log('$scope.error = response.data.message');
+        });
+      } else {
+        $scope.submitted = true;
+      }
+    };
+
+
+    // Update existing User
+    //$scope.updateUserAdmin = function (isValid) {
+    //
+    //  if (!isValid || $scope.isAdmin.user !== 'admin') {
+    //    $scope.$broadcast('show-errors-check-validity', 'userForm');
+    //    return false;
+    //  }
+    //
+    //  var user = $scope.user;
+    //
+    //  user.$update(function () {
+    //    $location.path('users/' + user._id);
+    //  }, function (errorResponse) {
+    //    $scope.error = errorResponse.data.message;
+    //  });
+    //};
 
     $scope.toggleEdit = false;
     $scope.toggleId = 0;
@@ -53,10 +88,11 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
 
     // Find existing User
     $scope.findOne = function() {
-      $scope.user = UserData.get({
+      console.log('$stateParams.userId', $stateParams.userId);
+      $scope.userToEdit = UserData.get({
         userId: $stateParams.userId
       });
-      console.log('$scope.users: ', $scope.user);
+      console.log('$scope.userToEdit: ', $scope.userToEdit);
     };
 
 

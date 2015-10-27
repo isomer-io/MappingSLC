@@ -27,9 +27,14 @@
 
                         <div class="row projects-profile">
                             <div class="col-xs-12">
+                              <a class="btn btn-main grow" data-ng-click="publishProject()">
+                                Publish
+                                <i class="fa fa-check"></i>
+                              </a>
+
 
                                 <form class="form-horizontal" data-ng-submit="update()" novalidate>
-                                    <fieldset>
+                                  <fieldset>
                                         <project-view-form></project-view-form>
                                     </fieldset>
                                 </form>
