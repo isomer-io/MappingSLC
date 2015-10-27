@@ -17,16 +17,15 @@ var path = require('path'),
 
             console.log('exe made it!\n', users);
             if (err) {
-                console.log('err yo! create new user constructor require thingy');
+
                 return res.status(400).send({
                     message: errorHandler.getErrorMessage(err)
                 });
             } else if (users === null) {
-                console.log('need to create a new user');
                 return false;
             } else {
-                console.log('here i am', users);
-                if (users.email === currentUniqueId) {
+
+                if (users._doc.email === currentUniqueId) {
                     return true;
                 }
             }
@@ -35,7 +34,7 @@ var path = require('path'),
 //Create a user for the Newsletter
 exports.subscriber = function (req,res) {
     if (_checkForExistingUser(req.body.email)) {
-        //req.user = User();
+
         if (req.user.newsletter == false){
             req.user.newsletter = true;
         }
