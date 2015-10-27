@@ -35,7 +35,7 @@ var path = require('path'),
 //Create a user for the Newsletter
 exports.subscriber = function (req,res) {
     if (_checkForExistingUser(req.body.email)) {
-        req.user = User;
+        //req.user = User();
         if (req.user.newsletter == false){
             req.user.newsletter = true;
         }
@@ -57,10 +57,12 @@ exports.subscriber = function (req,res) {
         //assign email address to user name
         var user = new User({username: req.body.email});
         user.newsletter = true;
+        user.email = req.body.email;
         delete req.body.roles;
         console.log('new user: ' ,user);
         user.save(function(err){
             if (err){
+                console.log('i gotta an error: ', err);
                 return res.status(400).send({
                     message: errorHandler.getErrorMessage(err)
                 });
