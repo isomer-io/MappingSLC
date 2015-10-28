@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', 'Admin', 'AdminUpdateUser', '$state', 'UtilsService',
-  function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, Admin, AdminUpdateUser, $state, UtilsService) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', 'Admin', 'AdminUpdateUser', '$state', 'UtilsService', '$uibModal',
+  function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, Admin, AdminUpdateUser, $state, UtilsService, $uibModal) {
     $scope.Authentication = Authentication;
     $scope.isAdmin = AdminAuthService;
     $scope.logo = '../../../modules/core/img/brand/mapping_150w.png';
@@ -12,6 +12,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
     $scope.mapImage = '';
     $rootScope.signInBeforeProject = false;
     $scope.updateToContrib = null;
+    $scope.isPublished = false;
 
     $scope.trustAsHtml = $sce.trustAsHtml;
 
@@ -22,6 +23,31 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
     //provides logic for the css in the forms
     UtilsService.cssLayout();
 
+    /**
+     * called when $scope.project.status updates
+     */
+    $scope.projectStatusChanged = function(){
+      if($scope.project.status === 'published'){
+        $scope.update();
+        $scope.publishProject();
+        $scope.toggleEdit = false;
+      }else{
+        $scope.update();
+        $scope.toggleEdit = false;
+      }
+    };
+
+    $scope.modalTemplateUrl = '/modules/projects/client/directives/views/project-warning-modal.html';
+    //var confirmPublishModal = function(modalTemplateUrl){
+    $scope.confirmPublishModal = function(){
+      $scope.animationsEnabled = true;
+      $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: $scope.modalTemplateUrl,
+        controller: 'ModalController',
+        size: 'lg'
+      });
+    };
 
     var publishUser = function (projectId, userId) {
       $scope.updateToContrib = AdminUpdateUser.get({
