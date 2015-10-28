@@ -10,9 +10,7 @@ var path = require('path'),
     _ = require('lodash');
 
 
-
-
-exports.subscriber = function (req,res) {
+exports.subscriber = function (req, res) {
     User.findOne({
         'email': req.body.email
     }).exec(function (err, user) {
@@ -20,9 +18,9 @@ exports.subscriber = function (req,res) {
             console.log('houston, we got a problem');
         } else {
             if (user) {
-                if (user.newsletter == true){
+                if (user.newsletter == true) {
                     res.send('you are already signed up for the newsletter!, Thanks')
-                }else{
+                } else {
                     user.newsletter = true;
                     user.save(function (err) {
                         if (err) {
@@ -33,16 +31,18 @@ exports.subscriber = function (req,res) {
                     });
                 }
             } else {
-                var newsletteruser = new User();
-                delete newsletteruser.roles;
-                newsletteruser.newsletter = true;
-                newsletteruser.email = req.body.email;
-                console.log(newsletteruser);
-                newsletteruser.save(function (err) {
+                User.create({
+                    firstName: req.body.email,
+                    lastName: req.body.email,
+                    roles: 'user',
+                    username: req.body.email,
+                    email: req.body.email,
+                    newsletter: true
+                }, function (err) {
                     if (err) {
-                        console.log('new user could not save: ', user);
+                        console.log('crap out: ', err);
                     } else {
-                        req.send('New user added to DATABASE!!!');
+                        res.send('We made it : ');
                     }
                 })
             }
