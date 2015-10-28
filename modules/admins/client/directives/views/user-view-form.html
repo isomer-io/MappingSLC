@@ -1,12 +1,12 @@
 <section data-ng-controller="EditProfileController">
 <!--<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin" novalidate-->
-    <form name="editUser" data-ng-submit="updateUserAdmin(editUser.$valid)" class="form-horizontal" novalidate>
+    <form name="editUser" data-ng-submit="updateUserAdmin(edituserToEdit.$valid)" class="form-horizontal" novalidate>
   <fieldset>
     <div class="row no-border" data-ng-show="toggleEdit === true && toggleId === 1">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.namePrefix !== ''}">
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.namePrefix !== ''}">
             <input class="input_field input_field-secondary" type="text" id="namePrefix"
-                   data-ng-model="user.namePrefix"/>
+                   data-ng-model="userToEdit.namePrefix"/>
             <label class="input_label input_label-secondary" for="namePrefix">
               <span class="input_label-content input_label-content-secondary">Prefix</span>
             </label>
@@ -14,7 +14,7 @@
           <!--<button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>-->
           <!--</span>-->
           <!--<span class="pull-right">-->
-          <!--<button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>-->
+          <!--<button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>-->
           <!--</span>-->
         </span>
       </div>
@@ -23,7 +23,7 @@
             <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
         </span>
         <span class="pull-right">
-            <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save
+            <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save
             </button>
         </span>
       </div>
@@ -37,8 +37,8 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId === 2">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.firstName !== ''}">
-            <input class="input_field input_field-secondary" type="text" id="firstName" data-ng-model="user.firstName"/>
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.firstName !== ''}">
+            <input class="input_field input_field-secondary" type="text" id="firstName" data-ng-model="userToEdit.firstName"/>
             <label class="input_label input_label-secondary" for="firstName">
               <span class="input_label-content input_label-content-secondary">First Name</span>
             </label>
@@ -46,7 +46,7 @@
           <!--<button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>-->
           <!--</span>-->
           <!--<span class="pull-right">-->
-          <!--<button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>-->
+          <!--<button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>-->
           <!--</span>-->
         </span>
       </div>
@@ -55,7 +55,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>
@@ -70,8 +70,8 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId === 3">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.lastName !== ''}">
-            <input class="input_field input_field-secondary" type="text" id="lastName" data-ng-model="user.lastName"/>
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.lastName !== ''}">
+            <input class="input_field input_field-secondary" type="text" id="lastName" data-ng-model="userToEdit.lastName"/>
             <label class="input_label input_label-secondary" for="lastName">
               <span class="input_label-content input_label-content-secondary">Last Name</span>
             </label>
@@ -79,7 +79,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>
@@ -95,8 +95,8 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId === 4">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.userTitle !== ''}">
-            <input class="input_field input_field-secondary" type="text" id="userTitle" data-ng-model="user.userTitle"/>
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.userTitle !== ''}">
+            <input class="input_field input_field-secondary" type="text" id="userTitle" data-ng-model="userToEdit.userTitle"/>
             <label class="input_label input_label-secondary" for="userTitle">
               <span class="input_label-content input_label-content-secondary">Title</span>
             </label>
@@ -104,7 +104,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>
@@ -120,8 +120,8 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId ===5">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.email !== ''}">
-            <input class="input_field input_field-secondary" type="email" id="email" data-ng-model="user.email"/>
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.email !== ''}">
+            <input class="input_field input_field-secondary" type="email" id="email" data-ng-model="userToEdit.email"/>
             <label class="input_label input_label-secondary" for="email">
               <span class="input_label-content input_label-content-secondary">E-mail</span>
             </label>
@@ -129,7 +129,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>
@@ -145,8 +145,8 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId ===6">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.username !== ''}">
-            <input class="input_field input_field-secondary" type="text" id="username" data-ng-model="user.username"/>
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.username !== ''}">
+            <input class="input_field input_field-secondary" type="text" id="username" data-ng-model="userToEdit.username"/>
             <label class="input_label input_label-secondary" for="username">
               <span class="input_label-content input_label-content-secondary">Username</span>
             </label>
@@ -154,7 +154,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>
@@ -172,7 +172,7 @@
       <div class="col-xs-8 col-xs-offset-1">
         <div class="dropdown">
           <label for="roles">Submission Status</label>
-          <select id="roles" data-ng-model="user.roles">
+          <select id="roles" data-ng-model="userToEdit.roles">
             <option value="user">User</option>
             <option value="blocked">Blocked</option>
             <option value="unregistered">Unregistered</option>
@@ -189,7 +189,7 @@
         </span>
         <span class="pull-right">
             <!--<button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>-->
-          <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save
+          <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save
           </button>
         </span>
       </div>
@@ -203,9 +203,9 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId ===8">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.userStreet !== ''}">
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.userStreet !== ''}">
             <input class="input_field input_field-secondary" type="text" id="userStreet"
-                   data-ng-model="user.userStreet"/>
+                   data-ng-model="userToEdit.userStreet"/>
             <label class="input_label input_label-secondary" for="userStreet">
               <span class="input_label-content input_label-content-secondary">Street</span>
             </label>
@@ -213,7 +213,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>
@@ -229,8 +229,8 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId ===9">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.userCity !== ''}">
-            <input class="input_field input_field-secondary" type="text" id="userCity" data-ng-model="user.userCity"/>
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.userCity !== ''}">
+            <input class="input_field input_field-secondary" type="text" id="userCity" data-ng-model="userToEdit.userCity"/>
             <label class="input_label input_label-secondary" for="userCity">
               <span class="input_label-content input_label-content-secondary">City</span>
             </label>
@@ -238,7 +238,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>
@@ -254,8 +254,8 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId ===10">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.userState !== ''}">
-            <input class="input_field input_field-secondary" type="text" id="userState" data-ng-model="user.userState"/>
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.userState !== ''}">
+            <input class="input_field input_field-secondary" type="text" id="userState" data-ng-model="userToEdit.userState"/>
             <label class="input_label input_label-secondary" for="userState">
               <span class="input_label-content input_label-content-secondary">State</span>
             </label>
@@ -263,7 +263,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>
@@ -279,8 +279,8 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId ===11">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.userZip !== ''}">
-            <input class="input_field input_field-secondary" type="zip" id="userZip" data-ng-model="user.userZip"/>
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.userZip !== ''}">
+            <input class="input_field input_field-secondary" type="zip" id="userZip" data-ng-model="userToEdit.userZip"/>
             <label class="input_label input_label-secondary" for="userZip">
               <span class="input_label-content input_label-content-secondary">Zip Code</span>
             </label>
@@ -288,7 +288,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>
@@ -305,7 +305,7 @@
     <div class="row" data-ng-show="toggleEdit === true  && toggleId ===12">
       <div class="col-xs-8 col-xs-offset-1">
         <div id="check-awesome" class="form-group filter first-filter">
-          <input type="checkbox" name="filters" id="newsletter" value="newsletter" data-ng-model="user.newsletter">
+          <input type="checkbox" name="filters" id="newsletter" value="newsletter" data-ng-model="userToEdit.newsletter">
           <label for="newsletter">
             <span class="check"></span>
             <span class="box"></span>
@@ -315,7 +315,7 @@
           <!--<button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>-->
           <!--</span>-->
           <!--<span class="pull-right">-->
-          <!--<button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>-->
+          <!--<button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save</button>-->
           <!--</span>-->
           </span>
         </div>
@@ -324,7 +324,7 @@
             <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
         </span>
         <span class="pull-right">
-            <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save
+            <button type="submit" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">Save
             </button>
         </span>
         </div>
@@ -338,8 +338,8 @@
 
     <div class="row" data-ng-show="toggleEdit === true  && toggleId ===13">
       <div class="col-xs-8 col-xs-offset-1">
-        <span class="input input-secondary" data-ng-class="{'input-filled': user.bio !== ''}">
-            <input class="input_field input_field-secondary" type="bio" id="bio" data-ng-model="user.bio"/>
+        <span class="input input-secondary" data-ng-class="{'input-filled': userToEdit.bio !== ''}">
+            <input class="input_field input_field-secondary" type="bio" id="bio" data-ng-model="userToEdit.bio"/>
             <label class="input_label input_label-secondary" for="bio">
               <span class="input_label-content input_label-content-secondary">Contributor's Bio</span>
             </label>
@@ -347,7 +347,7 @@
                 <button data-ng-click="toggleEditFn(0)" class="btn btn-main grow btn-warning">Cancel</button>
             </span>
             <span class="pull-right">
-                <button data-ng-submit="updateUserAdmin()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
+                <button data-ng-submit="updateCurrentUser()" data-ng-click="toggleEditFn(0)" class="btn btn-main grow">
                   Save
                 </button>
             </span>

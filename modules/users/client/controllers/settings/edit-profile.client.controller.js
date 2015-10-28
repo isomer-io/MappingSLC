@@ -9,64 +9,24 @@ angular.module('users').controller('EditProfileController', ['$scope', '$http', 
     UtilsService.cssLayout();
 
 
-
-    // Update a user profile
-    $scope.updateCurrentUser = function (isValid) {
-      $scope.success = $scope.error = null;
+    // Update existing User
+    $scope.update = function ($valid) {
+      $scope.error = null;
 
       if (!isValid) {
-        $scope.$broadcast('show-errors-check-validity', 'userForm');
+        $scope.$broadcast('show-errors-check-validity', 'userAdminForm');
         return false;
       }
-      console.log('here');
-      var userToEditId = $stateParams.userId;
-      var user = AdminUpdateUser(userToEditId);
-      user.$update(function (response) {
-        $scope.$broadcast('show-errors-reset', 'userForm');
-        $scope.success = true;
-        Authentication.user = response;
-      }, function (response) {
-        $scope.error = response.data.message;
+
+      var userToEdit = $scope.userToEdit;
+
+      userToEdit.$update(function () {
+        $location.path('users/' + user._id);
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
       });
     };
 
-    // Update a user profile
-    $scope.updateUserAdmin = function(isValid) {
-      if (isValid) {
-        $scope.success = $scope.error = null;
-        //var user = new Users($scope.userToEdit);
-        var user = new Users({
-          userId: $stateParams.userId
-        });
-        user.$update(function(response) {
-          $scope.success = true;
-          //$scope.user = Authentication.user = response;
-        }, function(response) {
-          $scope.error = response.data.message;
-          console.log('$scope.error = response.data.message');
-        });
-      } else {
-        $scope.submitted = true;
-      }
-    };
-
-
-    // Update existing User
-    //$scope.updateUserAdmin = function (isValid) {
-    //
-    //  if (!isValid || $scope.isAdmin.user !== 'admin') {
-    //    $scope.$broadcast('show-errors-check-validity', 'userForm');
-    //    return false;
-    //  }
-    //
-    //  var user = $scope.user;
-    //
-    //  user.$update(function () {
-    //    $location.path('users/' + user._id);
-    //  }, function (errorResponse) {
-    //    $scope.error = errorResponse.data.message;
-    //  });
-    //};
 
     $scope.toggleEdit = false;
     $scope.toggleId = 0;
