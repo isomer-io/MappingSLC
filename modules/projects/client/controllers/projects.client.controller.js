@@ -19,17 +19,18 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
       $scope.publishedProjects();
     };
 
-
     //provides logic for the css in the forms
     UtilsService.cssLayout();
 
 
-    var publishUser = function (userId) {
+    var publishUser = function (projectId, userId) {
       $scope.updateToContrib = AdminUpdateUser.get({
         userId: userId
       }, function () {
         if (updateToContrib.roles[0] !== 'admin' || updateToContrib.roles[0] !== 'superUser') {
+          $scope.updateToContrib.associatedProjects.push(projectId);
           $scope.updateToContrib.roles[0] = 'contributor';
+          console.log('$scope.updateToContrib', $scope.updateToContrib);
           $scope.updateToContrib.$update(function () {
           });
         }
@@ -37,10 +38,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
     };
 
     $scope.publishProject = function () {
+      //todo need to call on a confirm modal first
       var project = Projects.get({
         projectId: $stateParams.projectId
       }, function () {
-        publishUser(project.user._id); //call method to display contributor bio
+        publishUser($stateParams.projectId, project.user._id); //call method to display contributor bio
         //todo need some func for deleting all of this if we unpublish a project. was thinking we check if prevPub is true and current status does not equal publish, then execute unPub func.
         //project.previouslyPublished = true;
       })
@@ -184,7 +186,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
     // Update existing Project
     $scope.update = function () {
       var project = $scope.project;
-      publishProject(project);
       project.$update(function () {
         if ($location.path() === '/admin/edit-project/' + project._id) {
           //return to view mode and call notify for success message
