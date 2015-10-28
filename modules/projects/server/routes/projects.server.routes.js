@@ -9,12 +9,22 @@ module.exports = function(app) {
         //tractData = require('../models/data/utahTract.json'),
         markerData = require('../models/project.server.model.js'),
         keys = require('../../../users/server/config/private/keys.js'),
-        request = require('request');
+        request = require('request'),
+        s3 = require('../controllers/s3.server.controller');
 
 
 // Projects collection routes
   app.route('/api/v1/projects')
     .get(projects.list);
+
+  // Projects collection routes
+  app.route('/api/v1/projects/all')
+    .get(projects.list);
+
+  // Projects collection routes
+  app.route('/api/v1/projects/published')
+    .get(projects.listPublished);
+
 
   app.route('/api/v1/projects').all(projectsPolicy.isAllowed)
     .post(projects.create);
@@ -104,6 +114,21 @@ module.exports = function(app) {
     .get(function (req, res) {
       res.jsonp(keys);
     });
+
+
+
+// Cloudinary File Storage and Opt
+  app.route('/api/v1/projects/upload')
+    .post(s3.uploadStream)
+    .get(s3.read)
+    .put(s3.update)
+    .delete(s3.delete);
+
+  app.route('/api/v1/users/upload')
+    .post(s3.uploadStream)
+    .get(s3.read)
+    .put(s3.update)
+    .delete(s3.delete);
 
 
 };

@@ -12,7 +12,7 @@ angular.module('users').factory('Users', ['$resource',
 ]);
 
 //TODO this should be Users service
-angular.module('users.admin').factory('Admin', ['$resource',
+angular.module('users').factory('Admin', ['$resource',
   function ($resource) {
     return $resource('/api/v1/users/:userId', {
       userId: '@_id'

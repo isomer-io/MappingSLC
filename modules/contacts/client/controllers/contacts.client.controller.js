@@ -45,6 +45,18 @@ angular.module('contacts').controller('ContactsController', ['$scope', '$statePa
 				$scope.zip = '';
 				$scope.newsletter = '';
 				$scope.message = '';
+        console.log('response:\n', response);
+        if(response.$resolved) {
+          notify({
+            message: 'Thanks for the message!',
+            classes: 'ng-notify-contact-success'
+          })
+        }else{
+          notify({
+            message: 'Something went wrong, and we didn\'t receive your message We apologize.',
+            classes: 'ng-notify-contact-failure'
+          })
+        }
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

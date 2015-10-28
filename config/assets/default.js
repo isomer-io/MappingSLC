@@ -12,7 +12,8 @@ module.exports = {
         'public/lib/angular-notify/dist/angular-notify.min.css',
         'public/lib/ng-ckeditor/ng-ckeditor.css',
         'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.css',
-        'public/lib/c3/c3.min.css'
+        'public/lib/c3/c3.min.css',
+        'public/lib/angular-loading-bar/build/loading-bar.min.css'
 
 
       ],
@@ -26,16 +27,15 @@ module.exports = {
         'public/lib/angular-aria/angular-aria.min.js',
         'public/lib/angular-touch/angular-touch.js',
         'public/lib/angular-sanitize/angular-sanitize.js',
+        'public/lib/jquery/dist/jquery.js',
         'public/lib/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.min.js',
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-        'public/lib/jquery/dist/jquery.js',
         'public/lib/underscore/underscore-min.js',
         'public/lib/modernizr/modernizr.js',
         '//api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js',
         'public/lib/angular-file-upload/angular-file-upload.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
-        'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/rangy/rangy-core.js',
         'public/lib/d3/d3.min.js',
         'public/lib/ng-ckeditor/libs/ckeditor/ckeditor.js',
@@ -46,7 +46,9 @@ module.exports = {
         'public/lib/masonry/dist/masonry.pkgd.min.js',
         'public/lib/moment/min/moment.min.js',
         'public/lib/c3/c3.min.js',
-        'public/lib/angular-notify/dist/angular-notify.min.js'
+        'public/lib/angular-notify/dist/angular-notify.min.js',
+        'public/lib/angular-loading-bar/build/loading-bar.min.js',
+        'public/lib/ng-videosharing-embed/build/ng-videosharing-embed.min.js'
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

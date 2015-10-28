@@ -85,7 +85,7 @@ var UserSchema = new Schema({
   username: {
     type: String,
     unique: 'Username already exists',
-    required: 'Please fill in a username',
+    //required: 'Please fill in a username',
     lowercase: true,
     trim: true
   },
@@ -100,13 +100,13 @@ var UserSchema = new Schema({
     type: String,
     default: 'modules/users/client/img/profile/default.png'
   },
-  userSelectedImageURL: {
+  profileImageThumbURL: {
     type: String,
     trim: true
   },
   provider: {
-    type: String,
-    required: 'Provider is required'
+    type: String
+    //required: 'Provider is required'
   },
   providerData: {},
   additionalProvidersData: {},

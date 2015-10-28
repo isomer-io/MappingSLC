@@ -5,7 +5,7 @@
 angular.module('users').service('GetContributors', ['$http',
 	function($http) {
 		this.contributors = function(){
-			return $http.get('/contributors');
+			return $http.get('/api/v1/contributors');
 		};
 	}
 ]);

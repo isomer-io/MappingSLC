@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', '$state', 'UtilsService',
-	function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, $state, UtilsService) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects', '$http', '$modal', '$sce', 'ApiKeys', 'GeoCodeApi', '$rootScope', 'AdminAuthService', '$state', 'UtilsService', 'PublishingService',
+	function ($scope, $stateParams, $location, Authentication, Projects, $http, $modal, $sce, ApiKeys, GeoCodeApi, $rootScope, AdminAuthService, $state,  UtilsService, PublishingService) {
 		$scope.Authentication = Authentication;
 		$scope.isAdmin = AdminAuthService;
 		$scope.logo = '../../../modules/core/img/brand/mapping_150w.png';
@@ -12,6 +12,11 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 		$scope.mapImage = '';
 		$rootScope.signInBeforeProject = false;
 
+		$scope.trustAsHtml = $sce.trustAsHtml;
+
+		$scope.init = function() {
+			$scope.publishedProjects();
+		};
 
 	var publishUser = function(userId) {
 
@@ -24,23 +29,17 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			if (project.status === 'published') {
 				console.log('project.user._id: ', project.user._id);
 				publishUser(project.user._id);
+
+				//need to turn add marker
+				//neeeds to make sure project shows up in list
+				//and contributor bio displays
+
 				//do stuff to add marker
 				//means i'll have to pull marker data out of create project and into update project
 				//could probably use the same code as current, just put it in update fn
 				project.previouslyPublished = true; //need some func for deleting all of this if we unpublish a project. was thinking we check if prevPub is true and current status does not equal publish, then execute unPub func.
 			}
 		};
-
-		$scope.trustAsHtml = $sce.trustAsHtml;
-
-		//admin panel editing
-		$scope.toggleEdit = false;
-		$scope.toggleId = 0;
-		$scope.toggleEditFn = function(editNum) {
-			$scope.toggleEdit = !$scope.toggle;
-			$scope.toggleId = editNum;
-		};
-
 
 		var saveProject = null;
 		$scope.updateLatLng = function(project) {
@@ -62,6 +61,22 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 				})
 			});
 		};
+
+		// Find a list of all published projects
+		//PublishingService.getPublishedProjects().
+		$scope.publishedProjects = function() {
+			$http.get('/api/v1/projects/published').
+			success(function (publishedProjects) {
+				$scope.publishedProjects = publishedProjects;
+				console.log('$scope.publishedProjects:\n', $scope.publishedProjects);
+				console.log('$scope.publishedProjects.title:\n', $scope.publishedProjects[0].title);
+
+			}).
+			error(function (data, status) {
+
+			});
+		};
+
 
 		$rootScope.previousState = '';
 		$rootScope.currentState = '';
@@ -97,37 +112,8 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			}
 		}();
 
-		$scope.slides = [
-
-			{
-				image: 'http://lorempixel.com/600/400/sports',
-				text: 'I am some words, a story even. Play Ball!'
-			},
-			{
-				image: 'http://lorempixel.com/600/400/people',
-				text: 'A story even. Peoples'
-			},
-			{
-				image: 'http://lorempixel.com/600/400/',
-				text: 'Story time! Anything!'
-			},
-			{
-				image: 'http://lorempixel.com/600/400/food',
-				text: 'Talk to me! Foodie'
-			}
-		];
-		$scope.thumbs = [
-			{
-				image: 'http://lorempixel.com/100/100/sports',
-				text: 'I am some words, a story even. Play Ball!'
-			},
-			{
-				image: 'http://lorempixel.com/100/100/people',
-				text: 'A story even. Peoples'
-			}
-		];
-
 		var mapImage = '';
+
 		// Create new Project
 		$scope.create = function (isValid) {
 
@@ -196,6 +182,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			publishProject(project);
 			project.$update(function () {
 				if($location.path() === '/admin/edit-project/' + project._id) {
+					//return to view mode and call notify for success message
 				} else {
 					$location.path('projects/' + project._id);
 				}
@@ -204,10 +191,13 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			});
 		};
 
+
 		// Find a list of Projects
 		$scope.find = function () {
 			$scope.projects = Projects.query();
+			console.log('$scope.projects', $scope.projects);
 		};
+
 
 		// Find existing Project
 		$scope.findOne = function () {
@@ -277,10 +267,18 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 					},
 					size: 'lg'
 				});
-			}
 
+			}
 		});
 
+		//admin panel editing
+		$scope.toggleEdit = false;
+		$scope.toggleId = 0;
+
+		$scope.toggleEditFn = function(editNum) {
+			$scope.toggleEdit = !$scope.toggle;
+			$scope.toggleId = editNum;
+		};
 
 		/**
 		 * nlp
