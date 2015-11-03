@@ -2,9 +2,9 @@
 
 // retrieve user's profile data from users.model
 
-angular.module('users').factory('UserData', ['$resource',
+angular.module('users').factory( 'UserData', ['$resource',
 	function($resource) {
-		return $resource('users/:userId', {userId: '@_id'}, {
+		return $resource('/api/v1/users/:userId', {userId: '@_id'}, {
 			update: {
 				method: 'PUT'
 			}

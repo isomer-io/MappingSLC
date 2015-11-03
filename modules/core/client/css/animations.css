@@ -97,7 +97,7 @@
     margin: 35px auto;
     overflow: visible !important; /* Has to be !important only if you're using an on/off switch */
     position: relative;
-    width: 100%;
+    width:90%;
     /*height: 8rem;*/
     height: 100%;
     z-index: 2;
@@ -155,7 +155,7 @@
 }
 
 .main-overlay {
-    width: 100%;
+    width: 90%;
     /*height: 60rem;*/
     height: 100%;
     background: rgba(0, 0, 0, 0.8);

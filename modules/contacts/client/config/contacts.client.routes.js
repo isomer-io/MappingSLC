@@ -15,7 +15,7 @@ angular.module('contacts').config(['$stateProvider',
             })
             .state('aboutMappingSlc', {
                 url: '/about-the-project',
-                templateUrl: 'modules/contacts/client/views/about-the-project.client.view.html'
+                templateUrl: 'modules/contacts/client/views/about-mapping-slc.client.view.html'
             })
             .state('aboutUs', {
               url: '/about-us',

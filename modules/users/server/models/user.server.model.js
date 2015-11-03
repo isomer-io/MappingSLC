@@ -100,7 +100,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'modules/users/client/img/profile/default.png'
   },
-  userSelectedImageURL: {
+  profileImageThumbURL: {
     type: String,
     trim: true
   },
@@ -135,18 +135,16 @@ var UserSchema = new Schema({
     default: {}
   },
   favorites: {
-    type: String,
-    trim: true,
-    default: ''
+    type: Array,
+    default: []
   },
   newsletter: {
     type: Boolean,
     default: false
   },
   associatedProjects: {
-    type: String,
-    trim: true,
-    default: ''
+    type: Array,
+    default: []
   },
   bio: {
     type: String,

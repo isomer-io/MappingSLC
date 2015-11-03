@@ -4,16 +4,20 @@
 
 module.exports = {
 
-    //social media accounts
-    facebookKey: '319019724936363',
-    facebookSecret: '3ebfd75fff26823c6ab3f462c7060af0',
-    twitterKey: '8CcbaDkZ6P5U4AsCyDFpqI2sI',
-    twitterSecret: 'pNt4bKHblud2TmbqGElP8LkLC9PvyjSa9hdLhk35NmTD9BKzfc',
-    googleKey: 'AIzaSyD3yA-DyCpAJnbwQ0p0jbAZSpSg0dzPpvE',
-    googleServerKey: 'AIzaSyBZ63pS3QFjYlXuaNwPUTvcYdM-SGRmeJ0',
-    googleSecret: 'PY2QWsCLXHVr5bTAEd_w92sI',
-    linkedInKey: '75g2nxzppxpqjs',
-    linkedInSecret: 'jNbubafbNyfVN4F7',
+    alchemyKey: '9eb2296b11f66a08cb20ef6771bbe32b523a0840',
+
+    //US Census API Key
+    censusKey: '4d396163ae90829a66916a08b3af462608c87316',
+
+    //Cloudinary
+    cloudinaryKey: '176182552531851',
+    cloudinarySecret: 'bAHO5GflAOEIAW4SbZRzmaxMKok',
+
+    emailKey: '',
+    emailAddress: 'christanseer@hotmail.com',
+
+    krakenKey: 'cd5c43377c25aa4fb43e6db37c408df7',
+    krakenSecret: '3a876e48662689c42f85bae1a7c1a6bba936dbfd',
 
     //geocoding api via http://developer.here.com
     hereKey: 'p2ylB3rWtlPf8qVLBeCs',
@@ -25,9 +29,6 @@ module.exports = {
 
     fourSquareKey: 'ANGO23TGLHZJUIIRTFCYBRHF03TNRVI5L0RPPUUMGDYODCTK',
     fourSquareSecret: 'CLXAKGVLEAFGNQSW1K5P4CCQVTXPWF3UZ0GKICKW2CRLX2EI',
-
-    yelpKey: 'if7aWpJFqEcJ6q8tM-Y9qQ',
-    yelpSecret: 'FZU4zSc-S3NJgI_aKm2O0_4ym6c',
 
 /**
  *   Mapbox mapping service api via https://www.mapbox.com/mapbox.js/api/v1/v2.1.4/
@@ -45,12 +46,20 @@ module.exports = {
         'watercolor': 'L.tileLayer(\'https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png\')'
     },
 
-    //US Census API Key
-    censusKey: '4d396163ae90829a66916a08b3af462608c87316',
 
-    emailKey: '',
-    emailAddress: 'christanseer@hotmail.com',
+    yelpKey: 'if7aWpJFqEcJ6q8tM-Y9qQ',
+    yelpSecret: 'FZU4zSc-S3NJgI_aKm2O0_4ym6c',
 
-    alchemyKey: '9eb2296b11f66a08cb20ef6771bbe32b523a0840'
+
+    //social media accounts
+    facebookKey: '319019724936363',
+    facebookSecret: '3ebfd75fff26823c6ab3f462c7060af0',
+    twitterKey: '8CcbaDkZ6P5U4AsCyDFpqI2sI',
+    twitterSecret: 'pNt4bKHblud2TmbqGElP8LkLC9PvyjSa9hdLhk35NmTD9BKzfc',
+    googleKey: 'AIzaSyD3yA-DyCpAJnbwQ0p0jbAZSpSg0dzPpvE',
+    googleServerKey: 'AIzaSyBZ63pS3QFjYlXuaNwPUTvcYdM-SGRmeJ0',
+    googleSecret: 'PY2QWsCLXHVr5bTAEd_w92sI',
+    linkedInKey: '75g2nxzppxpqjs',
+    linkedInSecret: 'jNbubafbNyfVN4F7'
 
 };

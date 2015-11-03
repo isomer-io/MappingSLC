@@ -87,7 +87,7 @@ thead tr {
 }
 
 /*tbody tr, tbody > tr:nth-of-type(odd), tbody > tr:nth-of-type(even) {*/
-tbody > tr, {
+tbody > tr {
     color: #262626;
     font-size: 1.7rem;
 }
@@ -282,4 +282,15 @@ td i .selected {
 
 .admin-user span.pull-right {
     margin-left: 5%;
+}
+
+.tile {
+    width: 95%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tile img {
+    width: 64px;
+    height: auto;
 }

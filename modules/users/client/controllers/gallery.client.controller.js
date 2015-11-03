@@ -14,7 +14,7 @@ angular.module('users').controller('GalleryController', ['$scope', '$stateParams
                 event.preventDefault();
 
                 $modal.open({
-                    templateUrl: '/modules/.projects/directives/views/modal.html',
+                    templateUrl: '/modules/projects/directives/views/modal.html',
                     controller: function ($scope, $modalInstance) {
                         $scope.closeMe = function () {
                             $modalInstance.dismiss(function (reason) {

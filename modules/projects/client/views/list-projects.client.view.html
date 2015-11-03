@@ -8,7 +8,8 @@
 
         <div class="main-content-outer">
 
-            <section data-ng-controller="ProjectsController" data-ng-init="find()" class="main-content-inner">
+            <section data-ng-controller="ProjectsController" data-ng-init="init()" class="main-content-inner">
+            <!--<section data-ng-controller="ProjectsController" data-ng-init="find()" class="main-content-inner">-->
 
                 <div class="list-projects">
 
@@ -21,27 +22,29 @@
                     <div class="list-group">
                         <div class="row">
                             <div class="col-md-12">
-                                <a data-ng-repeat="project in projects" data-ng-href="/projects/{{project._id}}" class="col-md-4 story-summary animation-cards">
+                                <a data-ng-repeat="publishedProject in publishedProjects" data-ng-href="/projects/{{publishedProject._id}}" class="col-md-4 story-summary animation-cards">
                                     <span>
                                         <span>
-                                            <img data-ng-src="{{thumbs[0]['image']}}"/>
+                                            <img data-ng-src="{{publishedProject.mainImgThumbnail}}"/>
                                         </span>
 
                                         <span class="pull-right">
-                                            <span data-ng-bind="project.title"></span><br/>
-                                            <span data-ng-bind="project.user.displayName">there</span><br/>
+                                            <span data-ng-bind="publishedProject.title"></span><br/>
+                                            <span data-ng-bind="publishedProject.user.displayName">there</span><br/>
                                         </span>
                                     </span>
                                 </a>
                             </div>
                         </div>
 
-                        <div class="alert alert-warning text-center" data-ng-hide="!projects.$resolved || projects.length">
+
+                        <div class="alert alert-warning text-center" data-ng-hide="!PublishingService.getPublishedProjects() || projects.length">
                             No Projects yet, why don't you <a href="/projects/create">create one</a>?
                         </div>
 
                     </div>
                 </div>
+              <pagination boundary-links="true" max-size="8" items-per-page="itemsPerPage" total-items="filterLength" ng-model="currentPage" ng-change="pageChanged()"></pagination>
 
             </section>
         </div>
