@@ -9,8 +9,8 @@ var path = require('path'),
 		Project = mongoose.model('Project'),
 		_ = require('lodash'),
 		keys = require('../../../users/server/config/private/keys.js'),
+		Kraken = require('kraken'),
 		AlchemyAPI = require('alchemy-api'),
-		alchemyapi = new AlchemyAPI(keys.alchemyKey),
 		sanitizeHtml = require('sanitize-html');
 		//Promise = require('bluebird'),
 		//fs = Promise.promisifyAll(require('fs')),
@@ -147,29 +147,48 @@ exports.list = function (req, res) {
 };
 
 /**
+ * List of Projects with status "published"
+ *
+ * .find({ "invitees._id": req.query.invitation_id })
+ * .populate('invitees.user')
+ *
+ */
+exports.listPublished = function (req, res) {
+	//req.params
+	Project.find({
+		'status': 'published'
+	})
+			.sort('-created')
+			.populate('user')
+			.exec(function (err, projects) {
+				if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					//projects.user;
+					console.log('published projects:\n', projects);
+					res.jsonp(projects);
+				}
+			});
+};
+
+
+/**
  * List of GeoCoordinates for Projects
  */
 exports.markerList = function (req, res) {
-	Project.find()
+	Project.find({
+				'status': 'published'
+			})
 		.sort('-created')
-		//.populate('status', 'lat', 'lng')
 		.exec(function (err, projects) {
 			if (err) {
 				return res.status(400).send({
 					message: errorHandler.getErrorMessage(err)
 				});
 			} else {
-				//var lng = [];
-				//for(var prop in projects) {
-				//console.log('projects.lng: ' + prop + ' \n', projects[prop].lng);
-				//console.log('projects.lng: \n', projects[prop].lng);
-				//console.log('lng: \n', projects[0].lng);
-				//res.jsonp(projects[prop].lng);
-				//lng = lng.push(projects[prop].lng);
-				//console.log('lng: \n', lng);
-				//}
-				//return lng;
-				//console.log('projects: ', projects);
+				console.log('projects: ', projects);
 				res.jsonp(projects);
 			}
 		});
@@ -204,6 +223,7 @@ exports.hasAuthorization = function (req, res, next) {
  **/
 
 exports.nlpProjects = function (req, res) {
+	var alchemyapi = new AlchemyAPI(keys.alchemyKey);
 	var myText = "Whoa, AlchemyAPI's Node.js SDK is really great, I can't wait to build my app!";
 	alchemyapi.sentiment("text", myText, {}, function (response) {
 		console.log("Sentiment: " + response["docSentiment"]["type"]);
@@ -224,3 +244,28 @@ exports.nlpProjects = function (req, res) {
 //		}
 //	);
 //};
+
+/**
+ * Kraken.io Img Optimization
+ */
+
+exports.krakenImageUpload = function(req, res) {
+	var kraken = new Kraken({
+		api_key: keys.krakenKey,
+		api_secret: keys.krakenSecret
+	});
+
+	var opts = {
+		file: '/path/to/image/file.jpg',
+		wait: true
+	};
+
+	kraken.upload(opts, function(data) {
+		if (data.success) {
+			console.log('Success. Optimized image URL: %s', data.kraked_url);
+		} else {
+			console.log('Fail. Error message: %s', data.error);
+		}
+	});
+
+};
